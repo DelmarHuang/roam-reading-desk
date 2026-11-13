@@ -1,0 +1,161 @@
+/* Magazine Mark · 完整替换旧版 CSS */
+
+html body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) {
+  position: relative !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-right: 10px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(244, 215, 88, 0.05) 35%,
+      rgba(244, 215, 88, 0.16) 100%
+    ) !important;
+
+  border: 0 !important;
+  border-right: 3px solid var(--mag-gold, #b79a37) !important;
+  border-radius: 0 6px 6px 0 !important;
+  box-shadow: none !important;
+}
+
+html body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(
+  .rm-block__input,
+  .rm-block-text,
+  textarea.rm-block-input
+) {
+  color: var(--mag-ink, #1a1a2e) !important;
+  font-weight: 590 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 只处理正文中的 #mark，不影响搜索结果、侧边栏标题和其他 mark 引用 */
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 17px !important;
+  min-width: 17px !important;
+  height: 17px !important;
+  margin: 0 1px 0 6px !important;
+  padding: 0 !important;
+
+  vertical-align: -2px !important;
+  overflow: visible !important;
+
+  font-size: 0 !important;
+  line-height: 1 !important;
+  color: transparent !important;
+
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+)::before {
+  content: "★" !important;
+  display: block !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 17px !important;
+
+  color: var(--mag-gold, #b79a37) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+)::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+):hover::before {
+  color: var(--mag-gold-ink, #8b773e) !important;
+  transform: scale(1.12) !important;
+}
+
+/* 原生菜单 */
+
+html body .mag-mark-menu-entry > [role="menuitem"] {
+  font-family: var(
+    --mag-aside-font,
+    "Noto Serif SC",
+    Georgia,
+    serif
+  ) !important;
+
+  font-style: italic !important;
+  color: var(--mag-gold-ink, #8b773e) !important;
+}
+
+html body .mag-mark-menu-entry:hover > [role="menuitem"] {
+  background: var(--mag-yellow-soft, rgba(244, 215, 88, 0.28)) !important;
+}
+
+html body .mag-mark-menu-entry [class$="-menu-item-label"] {
+  font-family: var(--mag-body, sans-serif) !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  color: var(--mag-faint, #92909a) !important;
+}

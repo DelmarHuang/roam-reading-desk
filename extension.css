@@ -1,0 +1,750 @@
+.rei-backdrop{position:fixed;inset:0;z-index:10000;background:rgba(16,22,26,.55);display:flex;align-items:flex-start;justify-content:center;padding:8vh 20px;overflow:auto}.rei-modal{width:min(680px,100%);max-height:84vh;overflow:auto;background:var(--bc-app-background,#fff);color:var(--bc-app-color,#182026);border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,.28)}.rei-header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid rgba(92,112,128,.22);background:inherit}.rei-header h2{margin:0;font-size:20px}.rei-body{padding:22px}.rei-close{font-size:25px!important;line-height:1;padding:2px 9px!important}.rei-button{border:1px solid rgba(92,112,128,.42);border-radius:5px;background:transparent;color:inherit;padding:8px 13px;cursor:pointer}.rei-button:hover{background:rgba(92,112,128,.09)}.rei-button:disabled{opacity:.45;cursor:not-allowed}.rei-primary{background:#137cbd;color:#fff;border-color:#137cbd}.rei-danger{background:#c23030;color:#fff;border-color:#c23030}.rei-danger-link{color:#c23030}.rei-body h3{margin:8px 0}.rei-muted{color:#73808c}.rei-notice{padding:11px 13px;margin:14px 0;border-radius:5px;background:rgba(19,124,189,.09)}.rei-error{background:rgba(194,48,48,.12);color:#a82a2a}.rei-success{background:rgba(15,153,96,.12);color:#0c7d50}.rei-file{display:block;margin:18px 0;width:100%}.rei-field{display:grid;gap:6px;margin:16px 0}.rei-input{width:100%;box-sizing:border-box;border:1px solid rgba(92,112,128,.45);border-radius:5px;background:transparent;color:inherit;padding:9px 10px}.rei-preview{padding:15px;border:1px solid rgba(92,112,128,.22);border-radius:7px}.rei-preview p{margin:7px 0}.rei-kicker{text-transform:uppercase;font-size:11px;letter-spacing:.09em;color:#137cbd}.rei-toc{margin:15px 0}.rei-toc ol{max-height:190px;overflow:auto}.rei-section{margin-top:24px;padding-top:16px;border-top:1px solid rgba(92,112,128,.22)}.rei-row,.rei-book{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(92,112,128,.16)}.rei-grow{min-width:0;flex:1}.rei-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.rei-progress-wrap{display:grid;gap:8px;margin:20px 0}.rei-progress{width:100%}
+.rei-directory{list-style:none;padding-left:18px;margin:5px 0}.rei-directory li{margin:6px 0}.rei-toc>.rei-directory{max-height:340px;overflow:auto;padding-left:4px}.rei-toc summary{cursor:pointer}
+.rei-math-examples{max-height:380px;overflow:auto}.rei-math-example{border-bottom:1px solid rgba(92,112,128,.2);padding:12px 4px;overflow-x:auto}.rei-math-example math{font-size:1.2em;margin:10px 0}.rei-math-source{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:180px;overflow:auto}
+/* Manage Books / Import dialogs use the Reading Desk paper palette (the
+   Magazine theme variables when present). */
+.rei-backdrop{background:rgba(37,39,53,.34)}
+.rei-modal{background:var(--mag-paper,#fefcf6);color:var(--mag-ink,#252735);border:1px solid var(--mag-border,#d8d2c3);border-radius:12px;box-shadow:0 18px 50px rgba(60,48,20,.22);font:14px/1.55 var(--mag-body,system-ui,sans-serif)}
+.rei-modal .rei-header{background:var(--mag-paper,#fefcf6);border-bottom:1px solid #e4dccb}
+.rei-modal .rei-header h2{font-family:var(--mag-display,var(--mag-aside-font,Georgia,"Noto Serif SC",serif));font-weight:600;color:var(--mag-ink,#252735)}
+.rei-modal .rei-body h3{font-family:var(--mag-display,var(--mag-aside-font,Georgia,"Noto Serif SC",serif));font-weight:600}
+.rei-modal .rei-button{border:1px solid #d8d3c4;border-radius:6px;background:#f5f2e9;color:var(--mag-ink,#252735);box-shadow:none}
+.rei-modal .rei-button:hover{background:#efe9d8}
+.rei-modal .rei-button.rei-primary{background:var(--mag-gold,#b79a37);border-color:var(--mag-gold,#b79a37);color:#fff}
+.rei-modal .rei-button.rei-primary:hover{background:#a3882e;border-color:#a3882e}
+.rei-modal .rei-button.rei-danger{background:#b4483c;border-color:#b4483c;color:#fff}
+.rei-modal .rei-button.rei-danger:hover{background:#9c3c31}
+.rei-modal .rei-button.rei-danger-link{background:transparent;border-color:transparent;color:#a8463b}
+.rei-modal .rei-button.rei-danger-link:hover{background:#f6e1dc}
+.rei-modal .rei-button.rei-close{background:transparent;border-color:transparent;color:#7d7766}
+.rei-modal .rei-muted{color:#7d7766}
+.rei-modal .rei-notice{background:#f4ecd4;color:#4a4232}
+.rei-modal .rei-notice.rei-error{background:#f6e1dc;color:#9a3a2f}
+.rei-modal .rei-notice.rei-success{background:#e6efdf;color:#3c6b3a}
+.rei-modal .rei-kicker{color:var(--mag-gold-ink,#8b773e)}
+.rei-modal :is(.rei-book,.rei-row){border-bottom:1px solid #ece7db}
+.rei-modal .rei-book strong{font-family:var(--mag-display,var(--mag-aside-font,Georgia,"Noto Serif SC",serif));font-size:15px}
+.rei-modal :is(.rei-input,.rei-preview){border-color:#d8d3c4;background:#fffdf7}
+.rei-modal .rei-section{border-top-color:#e4dccb}
+.rei-modal details>summary{cursor:pointer;color:var(--mag-gold-ink,#8b773e)}
+.rei-modal pre{white-space:pre-wrap;font-size:12px;background:#fbf8ef;border:1px solid #ece7db;border-radius:6px;padding:8px}
+.rei-modal input[type=checkbox]{accent-color:var(--mag-gold,#b79a37)}
+.rei-modal progress{accent-color:var(--mag-gold,#b79a37)}
+
+/* Esther Magazine · Native Comment Rail */
+html body .roam-app :is(.roam-article, .roam-log-page).mag-comment-rail-host {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+html body .roam-app .mag-native-comment {
+  appearance: none !important;
+  box-sizing: border-box !important;
+  color: var(--mag-muted, #666675) !important;
+  background: color-mix(in srgb, var(--mag-paper, #fefcf6) 92%, var(--mag-yellow, #f4d758) 8%) !important;
+  border: 0 !important;
+  border-left: 2px solid var(--mag-gold, #b79a37) !important;
+  border-radius: 0 7px 7px 0 !important;
+  box-shadow: none !important;
+  cursor: default !important;
+  font-family: var(--mag-aside-font, Georgia, serif) !important;
+  font-size: 12.5px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  text-align: left !important;
+  transition: color 120ms ease, background 120ms ease, border-color 120ms ease !important;
+}
+
+html body .roam-app .mag-native-comment:hover,
+html body .roam-app .mag-native-comment:focus-within {
+  color: var(--mag-ink, #1a1a2e) !important;
+  background: color-mix(in srgb, var(--mag-paper, #fefcf6) 78%, var(--mag-yellow, #f4d758) 22%) !important;
+  border-left-color: var(--mag-blue, #236dbb) !important;
+  outline: none !important;
+}
+
+html body .roam-app .mag-native-comment--margin {
+  position: absolute !important;
+  z-index: 4 !important;
+  top: var(--mag-comment-top) !important;
+  left: var(--mag-comment-left) !important;
+  width: var(--mag-comment-width) !important;
+  min-height: 28px !important;
+  padding: 6px 24px 7px 11px !important;
+}
+
+html body .roam-app .mag-native-comment--inline {
+  position: relative !important;
+  display: block !important;
+  width: calc(100% - 30px) !important;
+  max-width: 680px !important;
+  margin: 3px 0 7px 30px !important;
+  padding: 5px 9px 6px 10px !important;
+}
+
+html body .roam-app .mag-native-comment__item {
+  position: relative !important;
+  padding: 1px 0 !important;
+}
+
+html body .roam-app .mag-native-comment__item + .mag-native-comment__item {
+  margin-top: 5px !important;
+  padding-top: 5px !important;
+  border-top: 1px solid color-mix(in srgb, var(--mag-gold, #b79a37) 28%, transparent) !important;
+}
+
+html body .roam-app .mag-native-comment__text {
+  display: -webkit-box !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 4 !important;
+  cursor: text !important;
+  border-radius: 3px !important;
+  outline: none !important;
+}
+
+html body .roam-app .mag-native-comment__item.is-editing .mag-native-comment__text {
+  display: block !important;
+  overflow: visible !important;
+  padding: 3px 4px !important;
+  margin: -3px -4px !important;
+  color: var(--mag-ink, #1a1a2e) !important;
+  background: color-mix(in srgb, var(--mag-paper, #fefcf6) 76%, white 24%) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mag-gold, #b79a37) 56%, transparent) !important;
+  font-style: normal !important;
+  -webkit-line-clamp: unset !important;
+}
+
+html body .roam-app .mag-native-comment__item.is-saving {
+  opacity: .58 !important;
+}
+
+html body .roam-app .mag-native-comment--inline .mag-native-comment__text {
+  -webkit-line-clamp: 2 !important;
+}
+
+html body .roam-app .mag-native-comment__open {
+  position: absolute !important;
+  z-index: 2 !important;
+  top: 3px !important;
+  right: 4px !important;
+  width: 18px !important;
+  height: 18px !important;
+  padding: 0 !important;
+  color: var(--mag-gold-ink, #8b773e) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  font-family: var(--mag-body, sans-serif) !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 18px !important;
+  text-align: center !important;
+}
+
+html body .roam-app .mag-native-comment__open:hover,
+html body .roam-app .mag-native-comment__open:focus-visible {
+  color: var(--mag-blue, #236dbb) !important;
+  background: color-mix(in srgb, var(--mag-yellow, #f4d758) 28%, transparent) !important;
+  outline: none !important;
+}
+
+html body .roam-app .rm-block.mag-comment-anchor-active > .rm-block-main {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--mag-yellow, #f4d758) 17%, transparent), transparent 78%) !important;
+}
+
+html body .roam-app .rm-block.mag-comment-anchor-rail > .rm-block-main {
+  box-sizing: border-box !important;
+  padding-right: var(--mag-comment-reserve, 176px) !important;
+}
+
+html body .roam-app .mag-comment-fold-count {
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  margin: 0 5px 0 8px !important;
+  padding: 2px 7px !important;
+  color: var(--mag-gold-ink, #8b773e) !important;
+  background: var(--mag-yellow-soft, rgba(244, 215, 88, .28)) !important;
+  border: 1px solid color-mix(in srgb, var(--mag-gold, #b79a37) 48%, transparent) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  font-family: var(--mag-body, sans-serif) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  letter-spacing: .03em !important;
+  white-space: nowrap !important;
+}
+
+html body .roam-app .mag-comment-fold-count:hover {
+  color: var(--mag-ink, #1a1a2e) !important;
+  background: color-mix(in srgb, var(--mag-yellow, #f4d758) 38%, var(--mag-paper, #fefcf6)) !important;
+}
+
+@media (max-width: 899px) {
+  html body .roam-app .mag-native-comment--margin { display: none !important; }
+}
+
+
+html body .roam-app .mag-native-comment__item.mag-native-comment__text {width:100%!important; border:0!important; background:transparent!important; box-shadow:none!important; color:inherit!important; font:inherit!important; text-align:left!important; cursor:pointer!important; padding:0!important;}
+
+/* Magazine Mark · 完整替换旧版 CSS */
+
+html body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) {
+  position: relative !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-right: 10px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(244, 215, 88, 0.05) 35%,
+      rgba(244, 215, 88, 0.16) 100%
+    ) !important;
+
+  border: 0 !important;
+  border-right: 3px solid var(--mag-gold, #b79a37) !important;
+  border-radius: 0 6px 6px 0 !important;
+  box-shadow: none !important;
+}
+
+html body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(
+  .rm-block__input,
+  .rm-block-text,
+  textarea.rm-block-input
+) {
+  color: var(--mag-ink, #1a1a2e) !important;
+  font-weight: 590 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 只处理正文中的 #mark，不影响搜索结果、侧边栏标题和其他 mark 引用 */
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 17px !important;
+  min-width: 17px !important;
+  height: 17px !important;
+  margin: 0 1px 0 6px !important;
+  padding: 0 !important;
+
+  vertical-align: -2px !important;
+  overflow: visible !important;
+
+  font-size: 0 !important;
+  line-height: 1 !important;
+  color: transparent !important;
+
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+)::before {
+  content: "★" !important;
+  display: block !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 17px !important;
+
+  color: var(--mag-gold, #b79a37) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+)::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .roam-app .rm-block-main > :is(
+  .rm-block__input,
+  .rm-block-text
+) :is(
+  [data-tag="mark"],
+  [data-link-title="mark"]
+):hover::before {
+  color: var(--mag-gold-ink, #8b773e) !important;
+  transform: scale(1.12) !important;
+}
+
+/* 原生菜单 */
+
+html body .mag-mark-menu-entry > [role="menuitem"] {
+  font-family: var(
+    --mag-aside-font,
+    "Noto Serif SC",
+    Georgia,
+    serif
+  ) !important;
+
+  font-style: italic !important;
+  color: var(--mag-gold-ink, #8b773e) !important;
+}
+
+html body .mag-mark-menu-entry:hover > [role="menuitem"] {
+  background: var(--mag-yellow-soft, rgba(244, 215, 88, 0.28)) !important;
+}
+
+html body .mag-mark-menu-entry [class$="-menu-item-label"] {
+  font-family: var(--mag-body, sans-serif) !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  color: var(--mag-faint, #92909a) !important;
+}
+
+/* Reading Desk additions (0.4.2). Loaded after the user's original
+   Magazine Mark and Native Comment Rail CSS, which are bundled verbatim.
+   Only behaviour the reader asked for is added here. */
+
+html.reading-desk {
+  --rd-hl: 255, 128, 100;
+}
+html.reading-desk[data-rd-highlight="rose"] { --rd-hl: 236, 104, 156; }
+html.reading-desk[data-rd-highlight="mint"] { --rd-hl: 52, 184, 132; }
+html.reading-desk[data-rd-highlight="sky"] { --rd-hl: 72, 152, 226; }
+html.reading-desk[data-rd-highlight="lilac"] { --rd-hl: 150, 112, 226; }
+
+/* Side notes: full text instead of the 4-line clamp; reply lines; the note
+   lined up with its paragraph uses the theme gold. */
+html.reading-desk body .roam-app .mag-native-comment__text,
+html.reading-desk body .roam-app .mag-native-comment--inline .mag-native-comment__text {
+  display: block !important;
+  overflow: visible !important;
+  -webkit-line-clamp: unset !important;
+  cursor: pointer !important;
+}
+html.reading-desk body .roam-app .mag-native-comment { cursor: pointer !important; white-space: normal !important; overflow-wrap: anywhere !important; }
+html.reading-desk body .roam-app .mag-native-comment__child {
+  display: block !important;
+  margin: 3px 0 0 calc((var(--rd-depth, 1) - 1) * 10px + 8px) !important;
+  padding-left: 7px !important;
+  border-left: 1px solid color-mix(in srgb, var(--mag-gold, #b79a37) 30%, transparent) !important;
+  font-size: 12px !important;
+}
+html.reading-desk body .roam-app .mag-native-comment.is-active {
+  color: var(--mag-ink, #1a1a2e) !important;
+  background: color-mix(in srgb, var(--mag-paper, #fefcf6) 78%, var(--mag-yellow, #f4d758) 22%) !important;
+  border-left-color: var(--mag-gold-ink, #8b773e) !important;
+  z-index: 5 !important;
+}
+html.reading-desk body .roam-app .rd-comment-animate > .mag-native-comment--margin {
+  transition: transform 240ms cubic-bezier(.2, .7, .2, 1), color 120ms ease, background 120ms ease, border-color 120ms ease !important;
+  will-change: transform !important;
+}
+html.reading-desk body .roam-app .mag-native-comment :is(strong, b) { font-weight: 650 !important; }
+html.reading-desk body .roam-app .mag-native-comment .rd-rich-highlight { color: inherit !important; background: rgba(var(--rd-hl, 255, 128, 100), .28) !important; border-radius: 2px !important; padding: 0 1px !important; }
+html.reading-desk body .roam-app .mag-native-comment :is(.rd-rich-page, .rd-rich-tag, .rd-rich-link) { color: var(--mag-gold-ink, #8b773e) !important; }
+html.reading-desk body .roam-app .mag-native-comment .rd-rich-muted { opacity: .6 !important; }
+
+/* Narrow layout: the commented paragraph keeps its reserved right space even
+   when it is also marked (the Mark rule sets padding-right: 10px). */
+html.reading-desk body .roam-app .rm-block.rm-block.mag-comment-anchor-rail > .rm-block-main {
+  box-sizing: border-box !important;
+  padding-right: var(--mag-comment-reserve, 176px) !important;
+}
+
+
+
+
+/* Notes in the strip between the text and the row edge (themes that cap
+   the text width). The reference count moves next to the text, and the
+   original Mark wash/edge is drawn on the text box so it ends where the text
+   ends instead of running under the notes. */
+html.reading-desk body .roam-app :is(.roam-article, .roam-log-page).rd-notes-gap .rm-block-main > .rm-block-separator {
+  flex: 0 0 6px !important;
+  min-width: 6px !important;
+  width: 6px !important;
+}
+
+
+
+/* Mark It shows no icon: the #mark tag stays in the text (Alt+M toggles it)
+   but is hidden while reading. */
+html.reading-desk body .roam-app .rm-block-main > :is(.rm-block__input, .rm-block-text) :is([data-tag="mark"], [data-link-title="mark"]) {
+  display: none !important;
+}
+
+/* ---------- Mark styles (Settings → Highlights → Mark style) ----------
+   dot         semibold text with a gold dot in the right margin (default)
+   bookmark    gold ribbon hanging from the paragraph's top-right corner
+   highlighter gold highlighter stroke under each line
+   pullquote   magazine pull quote: serif, gold ink, rules and a quote mark
+   sticky      pale gold sticky note with a small MARKED label
+   ink         deep ink-brown semibold text on a faint warm wash
+   The original Magazine Mark CSS is still bundled verbatim; every style
+   first clears its row decoration. */
+html.reading-desk:where([data-rd-mark]) body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) {
+  background: none !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+  padding-right: 0 !important;
+}
+html.reading-desk:where([data-rd-mark]) body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) {
+  position: relative !important;
+  overflow: visible !important;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* bookmark */
+html.reading-desk[data-rd-mark="bookmark"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) { font-weight: inherit !important; color: var(--mag-ink, #1d1e25) !important; }
+html.reading-desk[data-rd-mark="bookmark"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text)::after {
+  content: "" !important; position: absolute !important; right: -8px !important; top: -6px !important;
+  width: 14px !important; height: 26px !important; background: var(--mag-gold, #b79a37) !important;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%) !important;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .08)) !important; pointer-events: none !important;
+}
+
+/* highlighter */
+html.reading-desk[data-rd-mark="highlighter"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) { font-weight: 560 !important; }
+html.reading-desk[data-rd-mark="highlighter"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text) > span {
+  background: linear-gradient(transparent 58%, color-mix(in srgb, var(--mag-gold, #b79a37) 34%, transparent) 58%, color-mix(in srgb, var(--mag-gold, #b79a37) 34%, transparent) 94%, transparent 94%) !important;
+  -webkit-box-decoration-break: clone !important;
+  box-decoration-break: clone !important;
+}
+
+/* dot */
+html.reading-desk[data-rd-mark="dot"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) { font-weight: 600 !important; color: var(--mag-ink, #1d1e25) !important; padding-right: 20px !important; }
+html.reading-desk[data-rd-mark="dot"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text)::after {
+  content: "" !important; position: absolute !important; right: 3px !important; top: .62em !important;
+  width: 9px !important; height: 9px !important; border-radius: 50% !important; background: var(--mag-gold, #b79a37) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mag-gold, #b79a37) 20%, transparent) !important; pointer-events: none !important;
+}
+
+/* pullquote */
+html.reading-desk[data-rd-mark="pullquote"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) {
+  font-family: var(--mag-aside-font, "Noto Serif SC", "Songti SC", Georgia, serif) !important;
+  font-size: 1.1em !important; font-weight: 500 !important; line-height: 1.75 !important;
+  color: var(--mag-gold-ink, #8b6f22) !important;
+  padding: 10px 6px 10px 20px !important; margin: 8px 0 !important;
+  border-top: 1px solid var(--mag-gold, #b79a37) !important; border-bottom: 1px solid var(--mag-gold, #b79a37) !important;
+}
+html.reading-desk[data-rd-mark="pullquote"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text)::before {
+  content: "\201C" !important; position: absolute !important; left: -2px !important; top: -2px !important;
+  font: 400 40px/1 Georgia, serif !important; color: var(--mag-gold, #b79a37) !important; pointer-events: none !important;
+}
+
+/* sticky */
+html.reading-desk[data-rd-mark="sticky"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) {
+  background: color-mix(in srgb, var(--mag-gold, #b79a37) 14%, #fffaf0) !important;
+  border-radius: 8px !important; padding: 22px 14px 10px !important; margin: 4px 0 !important;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--mag-gold, #b79a37) 25%, transparent), 0 4px 12px -6px color-mix(in srgb, var(--mag-gold, #b79a37) 70%, transparent) !important;
+  color: var(--mag-ink, #1d1e25) !important; font-weight: inherit !important;
+}
+html.reading-desk[data-rd-mark="sticky"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text)::before {
+  content: "MARKED" !important; position: absolute !important; left: 14px !important; top: 4px !important;
+  font: 700 10px/1.6 var(--mag-body, system-ui, sans-serif) !important; letter-spacing: .14em !important;
+  color: var(--mag-gold-ink, #8b6f22) !important; pointer-events: none !important;
+}
+
+/* ink */
+html.reading-desk[data-rd-mark="ink"] body .roam-app .rm-block-main:is(
+  .mag-marked,
+  :has(> .rm-block__input [data-tag="mark"]),
+  :has(> .rm-block__input [data-link-title="mark"]),
+  :has(> .rm-block-text [data-tag="mark"]),
+  :has(> .rm-block-text [data-link-title="mark"])
+) > :is(.rm-block__input, .rm-block-text, textarea.rm-block-input) {
+  font-weight: 620 !important; color: #3b2f12 !important;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--mag-gold, #b79a37) 0%, transparent), color-mix(in srgb, var(--mag-gold, #b79a37) 12%, transparent)) !important;
+  border-radius: 6px !important; padding: 0 8px 0 4px !important; margin-left: -4px !important;
+}
+
+/* Native ^^highlights^^: a marker colour that stays visible on warm paper.
+   Choose "Theme" in Reading Desk → Settings to keep the theme's own colour. */
+html.reading-desk:not([data-rd-highlight="theme"]) body .roam-app .rm-highlight {
+  color: inherit !important;
+  background: rgba(var(--rd-hl), .30) !important;
+  box-shadow: inset 0 -2px 0 rgba(var(--rd-hl), .62) !important;
+  border-radius: 3px !important;
+  padding: 0 2px !important;
+  margin: 0 -1px !important;
+  -webkit-box-decoration-break: clone !important;
+  box-decoration-break: clone !important;
+}
+html.reading-desk[data-rd-highlight-shape="underline"]:not([data-rd-highlight="theme"]) body .roam-app .rm-highlight {
+  background: linear-gradient(transparent 58%, rgba(var(--rd-hl), .45) 58%) !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+
+/* ---------- Side note styles (Settings → Native Comments) ---------- */
+/* Each colour is a hand-tuned set: background, hover background, hairline
+   border, active border, accent, text and time colour. */
+html.reading-desk { --rd-note: #9C7A1E; --rd-note-bg: #FBF5E4; --rd-note-bg-hover: #F7EED3; --rd-note-border: #EADDB5; --rd-note-border-strong: #D3BD7C; --rd-note-ink: #3A3325; --rd-note-time: #A8986E; --rd-note-soft: #F7EED3; }
+html.reading-desk[data-rd-note-colour="gray"] { --rd-note: #6B675E; --rd-note-bg: #F7F6F3; --rd-note-bg-hover: #F0EEE9; --rd-note-border: #E4E1DA; --rd-note-border-strong: #C9C4B8; --rd-note-ink: #33322E; --rd-note-time: #A19D94; --rd-note-soft: #F0EEE9; }
+html.reading-desk[data-rd-note-colour="blue"] { --rd-note: #2B64A8; --rd-note-bg: #F1F6FC; --rd-note-bg-hover: #E6EFFA; --rd-note-border: #D3E2F4; --rd-note-border-strong: #A9C5E8; --rd-note-ink: #23303F; --rd-note-time: #8DA2BC; --rd-note-soft: #E6EFFA; }
+html.reading-desk[data-rd-note-colour="green"] { --rd-note: #367A50; --rd-note-bg: #F1F7F2; --rd-note-bg-hover: #E5F0E8; --rd-note-border: #D2E6D8; --rd-note-border-strong: #A8CDB3; --rd-note-ink: #24332A; --rd-note-time: #8FAA98; --rd-note-soft: #E5F0E8; }
+html.reading-desk[data-rd-note-colour="rose"] { --rd-note: #B04A6C; --rd-note-bg: #FCF1F4; --rd-note-bg-hover: #F8E5EB; --rd-note-border: #F0D3DD; --rd-note-border-strong: #E2AABD; --rd-note-ink: #3B2A30; --rd-note-time: #B5949F; --rd-note-soft: #F8E5EB; }
+html.reading-desk[data-rd-note-colour="purple"] { --rd-note: #6A52B8; --rd-note-bg: #F5F2FC; --rd-note-bg-hover: #EDE8FA; --rd-note-border: #DDD5F2; --rd-note-border-strong: #BFB0E8; --rd-note-ink: #2E2940; --rd-note-time: #A39CBC; --rd-note-soft: #EDE8FA; }
+
+/* Author/date header: only the Notion style shows it. */
+
+/* Magazine (original) and Minimal use the chosen colour for the edge, hover
+   and active state (no stray blue). */
+html.reading-desk:not([data-rd-note-style="notion"]) body .roam-app .mag-native-comment { border-left-color: var(--rd-note) !important; }
+html.reading-desk:not([data-rd-note-style="notion"]) body .roam-app .mag-native-comment:is(:hover, :focus-within, .is-active) { border-left-color: var(--rd-note) !important; }
+html.reading-desk body .roam-app .mag-native-comment__open:is(:hover, :focus-visible) { color: var(--rd-note) !important; }
+
+/* Notion: white rounded card, hairline border, soft shadow, avatar + name +
+   date header, body in the UI font. */
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment {
+  color: var(--rd-note-ink) !important;
+  background: var(--rd-note-bg) !important;
+  border: 1px solid var(--rd-note-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgba(15, 15, 15, .04), 0 2px 8px rgba(15, 15, 15, .04) !important;
+  font-family: var(--mag-body, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif) !important;
+  font-size: 13.5px !important;
+  font-style: normal !important;
+  line-height: 1.6 !important;
+}
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment--margin { padding: 12px 30px 12px 14px !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment--inline { padding: 10px 30px 10px 12px !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment:is(:hover, :focus-within) {
+  background: var(--rd-note-bg-hover) !important;
+  border-color: var(--rd-note-border-strong) !important;
+  box-shadow: 0 2px 4px rgba(15, 15, 15, .05), 0 6px 16px rgba(15, 15, 15, .06) !important;
+}
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment.is-active {
+  background: var(--rd-note-bg) !important;
+  border-color: var(--rd-note-border-strong) !important;
+  box-shadow: 0 0 0 1px var(--rd-note-border-strong), 0 6px 18px -6px color-mix(in srgb, var(--rd-note) 30%, transparent) !important;
+}
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 0 3px !important;
+  line-height: 22px !important;
+}
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__avatar {
+  flex: 0 0 22px !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  background: var(--rd-note-soft) !important;
+  color: var(--rd-note) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__author { font-weight: 600 !important; color: #37352f !important; font-size: 13.5px !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__time { color: var(--rd-note-time) !important; font-size: 12px !important; }
+/* No author: the header is just the edit time. */
+html.reading-desk[data-rd-note-style="notion"] body .roam-app :is(.mag-native-comment__avatar, .mag-native-comment__author) { display: none !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__meta { line-height: 18px !important; margin-bottom: 4px !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__child { border-left-color: var(--rd-note-border) !important; font-size: 13px !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__item + .mag-native-comment__item {
+  margin-top: 10px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid var(--rd-note-border) !important;
+}
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment :is(.rd-rich-page, .rd-rich-tag, .rd-rich-link) { color: var(--rd-note) !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__open { top: 10px !important; right: 8px !important; color: var(--rd-note-time) !important; }
+/* × (delete) and ↗ (open thread): one aligned row in the top-right corner,
+   always visible. */
+/* Header row: [time …ellipsis][× ↗]. In Minimal (no time) the row is a
+   small corner overlay. */
+html.reading-desk body .roam-app .mag-native-comment { container-type: inline-size !important; }
+html.reading-desk body .roam-app .mag-native-comment__meta { display: flex !important; align-items: center !important; gap: 6px !important; min-width: 0 !important; }
+html.reading-desk body .roam-app .mag-native-comment__time { flex: 1 1 auto !important; min-width: 0 !important; overflow: hidden !important; white-space: nowrap !important; text-overflow: ellipsis !important; }
+html.reading-desk body .roam-app .mag-native-comment__actions { position: static !important; display: flex !important; align-items: center !important; gap: 2px !important; height: 20px !important; flex: 0 0 auto !important; margin-left: auto !important; }
+html.reading-desk:not([data-rd-note-style="notion"]) body .roam-app .mag-native-comment__meta { float: right !important; position: relative !important; z-index: 2 !important; margin: -2px -6px 2px 6px !important; }
+html.reading-desk:not([data-rd-note-style="notion"]) body .roam-app .mag-native-comment__time { display: none !important; }
+/* Full "2026/11/07 18:47" when it fits beside the buttons; otherwise the
+   short date "11/07" (time and year dropped together). */
+@container (max-width: 164px) { html.reading-desk body .roam-app :is(.mag-native-comment__year, .mag-native-comment__clock) { display: none !important; } }
+/* Very narrow cards keep the short date: smaller buttons, and if it still
+   does not fit the buttons wrap below the date instead of hiding it. */
+@container (max-width: 90px) {
+  html.reading-desk.reading-desk[class] body .roam-app .mag-native-comment__meta { flex-wrap: wrap !important; row-gap: 0 !important; column-gap: 2px !important; margin-right: -10px !important; }
+  html.reading-desk.reading-desk[class] body .roam-app .mag-native-comment__time { flex: 0 1 auto !important; overflow: visible !important; text-overflow: clip !important; font-size: 11px !important; }
+  html.reading-desk.reading-desk[class] body .roam-app .mag-native-comment__actions { gap: 0 !important; }
+  html.reading-desk.reading-desk[class] body .roam-app .mag-native-comment__actions > :is(.mag-native-comment__open, .mag-native-comment__delete) { width: 16px !important; height: 16px !important; }
+  html.reading-desk.reading-desk[class] body .roam-app .mag-native-comment__actions svg { width: 11px !important; height: 11px !important; }
+}
+html.reading-desk body .roam-app .mag-native-comment__actions > :is(.mag-native-comment__open, .mag-native-comment__delete) {
+  position: static !important; inset: auto !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  width: 20px !important; height: 20px !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important;
+  color: var(--rd-note-time, var(--mag-gold-ink, #8b773e)) !important; background: transparent !important; border: 0 !important; border-radius: 5px !important;
+  box-shadow: none !important; cursor: pointer !important; opacity: .8 !important; line-height: 0 !important; font-size: 0 !important;
+}
+html.reading-desk body .roam-app .mag-native-comment__actions svg { width: 13px !important; height: 13px !important; fill: none !important; stroke: currentColor !important; stroke-width: 1.7 !important; stroke-linecap: round !important; stroke-linejoin: round !important; display: block !important; }
+html.reading-desk body .roam-app .mag-native-comment__actions > .mag-native-comment__open:is(:hover, :focus-visible) { opacity: 1 !important; color: var(--rd-note, #b79a37) !important; background: color-mix(in srgb, var(--rd-note, #b79a37) 14%, transparent) !important; outline: none !important; }
+html.reading-desk body .roam-app .mag-native-comment__actions > .mag-native-comment__delete:is(:hover, :focus-visible) { opacity: 1 !important; color: #b4483c !important; background: rgba(180, 72, 60, .1) !important; outline: none !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment__meta { margin-right: -6px !important; }
+html.reading-desk[data-rd-note-style="notion"] body .roam-app .mag-native-comment--margin { padding-right: 14px !important; }
+
+/* Minimal: no card, a thin coloured line and small UI text. */
+html.reading-desk[data-rd-note-style="minimal"] body .roam-app .mag-native-comment {
+  color: #6b6a66 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-left: 2px solid var(--rd-note-border-strong) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--mag-body, system-ui, sans-serif) !important;
+  font-style: normal !important;
+  font-size: 12.5px !important;
+}
+html.reading-desk[data-rd-note-style="minimal"] body .roam-app .mag-native-comment:is(:hover, .is-active) { color: var(--rd-note-ink) !important; background: var(--rd-note-bg) !important; border-left-color: var(--rd-note) !important; }
+
+/* Minimal notes: room for × and ↗ on the first line. */
+
+
+/* Text width: by default paragraphs run to the end of their row, so wide
+   windows do not leave an empty strip between the text and the reference
+   count (Settings → Reading → Text width). Side notes sit outside the
+   article, in the margin, as in Folio. */
+html.reading-desk[data-rd-text="fill"] body .roam-app :is(.roam-article, .roam-log-page) .rm-block-main > :is(.rm-block__input, .rm-block-text, .rm-autocomplete__wrapper) {
+  flex: 1 1 0% !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+}
+html.reading-desk[data-rd-text="fill"] body .roam-app :is(.roam-article, .roam-log-page) .rm-block-main > .rm-block-separator {
+  flex: 0 0 10px !important;
+  min-width: 10px !important;
+  max-width: 10px !important;
+}

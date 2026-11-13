@@ -1,0 +1,32 @@
+.rei-backdrop{position:fixed;inset:0;z-index:10000;background:rgba(16,22,26,.55);display:flex;align-items:flex-start;justify-content:center;padding:8vh 20px;overflow:auto}.rei-modal{width:min(680px,100%);max-height:84vh;overflow:auto;background:var(--bc-app-background,#fff);color:var(--bc-app-color,#182026);border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,.28)}.rei-header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid rgba(92,112,128,.22);background:inherit}.rei-header h2{margin:0;font-size:20px}.rei-body{padding:22px}.rei-close{font-size:25px!important;line-height:1;padding:2px 9px!important}.rei-button{border:1px solid rgba(92,112,128,.42);border-radius:5px;background:transparent;color:inherit;padding:8px 13px;cursor:pointer}.rei-button:hover{background:rgba(92,112,128,.09)}.rei-button:disabled{opacity:.45;cursor:not-allowed}.rei-primary{background:#137cbd;color:#fff;border-color:#137cbd}.rei-danger{background:#c23030;color:#fff;border-color:#c23030}.rei-danger-link{color:#c23030}.rei-body h3{margin:8px 0}.rei-muted{color:#73808c}.rei-notice{padding:11px 13px;margin:14px 0;border-radius:5px;background:rgba(19,124,189,.09)}.rei-error{background:rgba(194,48,48,.12);color:#a82a2a}.rei-success{background:rgba(15,153,96,.12);color:#0c7d50}.rei-file{display:block;margin:18px 0;width:100%}.rei-field{display:grid;gap:6px;margin:16px 0}.rei-input{width:100%;box-sizing:border-box;border:1px solid rgba(92,112,128,.45);border-radius:5px;background:transparent;color:inherit;padding:9px 10px}.rei-preview{padding:15px;border:1px solid rgba(92,112,128,.22);border-radius:7px}.rei-preview p{margin:7px 0}.rei-kicker{text-transform:uppercase;font-size:11px;letter-spacing:.09em;color:#137cbd}.rei-toc{margin:15px 0}.rei-toc ol{max-height:190px;overflow:auto}.rei-section{margin-top:24px;padding-top:16px;border-top:1px solid rgba(92,112,128,.22)}.rei-row,.rei-book{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(92,112,128,.16)}.rei-grow{min-width:0;flex:1}.rei-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.rei-progress-wrap{display:grid;gap:8px;margin:20px 0}.rei-progress{width:100%}
+.rei-directory{list-style:none;padding-left:18px;margin:5px 0}.rei-directory li{margin:6px 0}.rei-toc>.rei-directory{max-height:340px;overflow:auto;padding-left:4px}.rei-toc summary{cursor:pointer}
+.rei-math-examples{max-height:380px;overflow:auto}.rei-math-example{border-bottom:1px solid rgba(92,112,128,.2);padding:12px 4px;overflow-x:auto}.rei-math-example math{font-size:1.2em;margin:10px 0}.rei-math-source{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:180px;overflow:auto}
+/* Manage Books / Import dialogs use the Reading Desk paper palette (the
+   Magazine theme variables when present). */
+.rei-backdrop{background:rgba(37,39,53,.34)}
+.rei-modal{background:var(--mag-paper,#fefcf6);color:var(--mag-ink,#252735);border:1px solid var(--mag-border,#d8d2c3);border-radius:12px;box-shadow:0 18px 50px rgba(60,48,20,.22);font:14px/1.55 var(--mag-body,system-ui,sans-serif)}
+.rei-modal .rei-header{background:var(--mag-paper,#fefcf6);border-bottom:1px solid #e4dccb}
+.rei-modal .rei-header h2{font-family:var(--mag-display,var(--mag-aside-font,Georgia,"Noto Serif SC",serif));font-weight:600;color:var(--mag-ink,#252735)}
+.rei-modal .rei-body h3{font-family:var(--mag-display,var(--mag-aside-font,Georgia,"Noto Serif SC",serif));font-weight:600}
+.rei-modal .rei-button{border:1px solid #d8d3c4;border-radius:6px;background:#f5f2e9;color:var(--mag-ink,#252735);box-shadow:none}
+.rei-modal .rei-button:hover{background:#efe9d8}
+.rei-modal .rei-button.rei-primary{background:var(--mag-gold,#b79a37);border-color:var(--mag-gold,#b79a37);color:#fff}
+.rei-modal .rei-button.rei-primary:hover{background:#a3882e;border-color:#a3882e}
+.rei-modal .rei-button.rei-danger{background:#b4483c;border-color:#b4483c;color:#fff}
+.rei-modal .rei-button.rei-danger:hover{background:#9c3c31}
+.rei-modal .rei-button.rei-danger-link{background:transparent;border-color:transparent;color:#a8463b}
+.rei-modal .rei-button.rei-danger-link:hover{background:#f6e1dc}
+.rei-modal .rei-button.rei-close{background:transparent;border-color:transparent;color:#7d7766}
+.rei-modal .rei-muted{color:#7d7766}
+.rei-modal .rei-notice{background:#f4ecd4;color:#4a4232}
+.rei-modal .rei-notice.rei-error{background:#f6e1dc;color:#9a3a2f}
+.rei-modal .rei-notice.rei-success{background:#e6efdf;color:#3c6b3a}
+.rei-modal .rei-kicker{color:var(--mag-gold-ink,#8b773e)}
+.rei-modal :is(.rei-book,.rei-row){border-bottom:1px solid #ece7db}
+.rei-modal .rei-book strong{font-family:var(--mag-display,var(--mag-aside-font,Georgia,"Noto Serif SC",serif));font-size:15px}
+.rei-modal :is(.rei-input,.rei-preview){border-color:#d8d3c4;background:#fffdf7}
+.rei-modal .rei-section{border-top-color:#e4dccb}
+.rei-modal details>summary{cursor:pointer;color:var(--mag-gold-ink,#8b773e)}
+.rei-modal pre{white-space:pre-wrap;font-size:12px;background:#fbf8ef;border:1px solid #ece7db;border-radius:6px;padding:8px}
+.rei-modal input[type=checkbox]{accent-color:var(--mag-gold,#b79a37)}
+.rei-modal progress{accent-color:var(--mag-gold,#b79a37)}
