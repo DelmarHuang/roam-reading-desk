@@ -27,7 +27,8 @@ input[type=checkbox] { flex:0 0 14px; width:14px; height:14px; margin:3px 0 0; a
 .rei-chip { min-height:24px; padding:2px 9px; border-radius:999px; font-size:11.5px; background:transparent; }
 .rei-chip:hover { background:#efe9d8; }
 .rei-notes-entry { display:flex; gap:6px; align-items:center; margin:8px 0 10px; }
-.rei-notes-entry .rei-primary { flex:1 1 auto; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rei-notes-entry .rei-primary { display:block; flex:1 1 0; min-width:0; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rei-notes-entry .rei-chip { flex:0 0 auto; white-space:nowrap; overflow-wrap:normal; }
 .rei-notes-day { border:1px solid #e4dccb; border-radius:8px; margin:6px 0; background:#fffdf7; }
 .rei-notes-day>summary { cursor:pointer; padding:7px 10px; font-size:12.5px; font-weight:600; color:#3d3a33; }
 .rei-notes-day[open]>summary { border-bottom:1px solid #eee6d4; }

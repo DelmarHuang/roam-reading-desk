@@ -318,7 +318,7 @@ export function installReader(extensionAPI) {
       return;
     }
     const entry = el('div', null, 'rei-notes-entry');
-    const open = button(`${title} ↗`, event => openNotes(event.shiftKey), 'rei-primary'); open.title = t("Open the notes page (Shift+click: sidebar)");
+    const open = button(`${title} ↗`, event => openNotes(event.shiftKey), 'rei-primary'); open.title = `${title}\n${t("Open the notes page (Shift+click: sidebar)")}`;
     entry.append(open, button(t("Sidebar"), () => openNotes(true), 'rei-chip')); body.append(entry);
     const page = api().data.pull("[:block/uid :block/string :block/order :create/time {:block/children ...}]", [":block/uid", pageUid]);
     const roots = [...(page?.[":block/children"] || [])].sort((a, b) => (a[":block/order"] || 0) - (b[":block/order"] || 0));
