@@ -21853,15 +21853,27 @@ function installReader(extensionAPI) {
 // src/magazine-comments.js
 var KEY = "__readingDeskCommentRail";
 var FOLIO_KEY = "__magNativeCommentRailCleanup";
+var armTrap = null;
 function evictFolioRail() {
   let evicted = false;
-  if (typeof window[FOLIO_KEY] === "function") {
+  const folio = window[FOLIO_KEY];
+  if (typeof folio === "function") {
     try {
-      window[FOLIO_KEY]();
+      folio();
       evicted = true;
     } catch {
     }
-    delete window[FOLIO_KEY];
+    try {
+      delete window[FOLIO_KEY];
+    } catch {
+    }
+  }
+  if (armTrap) armTrap();
+  else if (evicted) {
+    try {
+      delete window[FOLIO_KEY];
+    } catch {
+    }
   }
   document.querySelectorAll(".folio-comment-room").forEach((node) => {
     node.classList.remove("folio-comment-room");
@@ -21914,7 +21926,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   evictFolioRail();
   document.querySelectorAll(".rei-native-comment,.rei-comment-count").forEach((node) => node.remove());
   let disposed = false, loading = false, renderTimer, dataTimer, activeTarget = null, activeComment = null, lastOrder;
-  const models = /* @__PURE__ */ new Map(), cleanups = [], layouts = /* @__PURE__ */ new Map(), replyCache = /* @__PURE__ */ new Map(), railMode = /* @__PURE__ */ new Map(), stickyRails = /* @__PURE__ */ new Set();
+  const models = /* @__PURE__ */ new Map(), cleanups = [], layouts = /* @__PURE__ */ new Map(), replyCache = /* @__PURE__ */ new Map(), railMode = /* @__PURE__ */ new Map(), stickyRails = /* @__PURE__ */ new Set(), animationTimers = /* @__PURE__ */ new Map();
   const on = (target, type, fn, options) => {
     target.addEventListener(type, fn, options);
     cleanups.push(() => target.removeEventListener(type, fn, options));
@@ -21936,17 +21948,24 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     const sig = [language(), mode, record.uid, record.text, meta(record.uid).stamp || 0, replies(record.uid).map((line) => line.text).join("")].join("");
     let card = cardPool.get(key2);
     if (!card || card.dataset.sig !== sig) {
-      card?.remove();
+      if (card) {
+        resize?.unobserve(card);
+        card.remove();
+      }
       card = makeCard(record, mode, targetUid);
       card.dataset.sig = sig;
       cardPool.set(key2, card);
+      resize?.observe(card);
     }
     used.add(key2);
     return card;
   }
   function clearProjection({ keepRails = false, keepCards = false } = {}) {
     document.querySelectorAll(keepCards ? `.${BADGE}` : `.${NOTE},.${BADGE}`).forEach((node) => node.remove());
-    if (!keepCards) cardPool.clear();
+    if (!keepCards) {
+      cardPool.forEach((card) => resize?.unobserve(card));
+      cardPool.clear();
+    }
     document.querySelectorAll(`.${ANCHOR}`).forEach((node) => node.classList.remove(ANCHOR));
     if (!keepRails) {
       document.querySelectorAll(`.${HOST}`).forEach((node) => node.classList.remove(HOST, "rd-notes-gap"));
@@ -22065,7 +22084,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
       if (event.target.closest(".mag-native-comment__open,.mag-native-comment__delete")) return;
       event.preventDefault();
       event.stopPropagation();
-      activate(targetUid, { reveal: true, commentUid: record.uid });
+      activate(targetUid, { reveal: true, commentUid: record.uid, sourceCard: card });
     });
     return card;
   }
@@ -22075,6 +22094,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     await deleteNativeComment(record);
     cardPool.forEach((card, key2) => {
       if (card.dataset.commentUid === record.uid) {
+        resize?.unobserve(card);
         card.remove();
         cardPool.delete(key2);
       }
@@ -22130,13 +22150,13 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   function place(article, { animate = false } = {}) {
     const state = layouts.get(article);
     if (!state) return;
-    const items = state.items.map((item) => ({ ...item, height: item.height || item.card.offsetHeight || 28 }));
+    const items = state.items.map((item) => ({ ...item, height: item.card.offsetHeight || 28 }));
     const active = items.findIndex((item) => item.targetUid === activeTarget && (!activeComment || item.commentUid === activeComment));
     const tops = stackNotes(items, active);
     items.forEach((item, index) => {
       const top = Math.round(tops[index]);
       state.items[index].top = top;
-      if (animate && state.items[index].base != null) item.card.style.setProperty("transform", `translate3d(0, ${top - state.items[index].base}px, 0)`);
+      if (animate && state.items[index].base != null) item.card.style.setProperty("transform", `translate3d(0, ${top - state.items[index].base}px, 0)`, "important");
       else {
         state.items[index].base = top;
         item.card.style.setProperty("--mag-comment-top", `${top}px`);
@@ -22148,6 +22168,10 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   }
   function render3() {
     if (disposed || window[KEY] !== cleanup2) return;
+    if (Date.now() < quietUntil) {
+      schedule();
+      return;
+    }
     clearProjection({ keepRails: true, keepCards: true });
     if (!enabled()) {
       clearProjection();
@@ -22295,6 +22319,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
         const badge = document.createElement("button");
         badge.type = "button";
         badge.className = BADGE;
+        badge.dataset.rdBadge = "1";
         badge.textContent = foldSummary(counts);
         badge.title = t("Expand this section");
         badge.onclick = (event) => {
@@ -22309,6 +22334,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     }
     cardPool.forEach((card, key2) => {
       if (!used.has(key2)) {
+        resize?.unobserve(card);
         card.remove();
         cardPool.delete(key2);
       }
@@ -22320,26 +22346,33 @@ function projection({ enabled, onError, order = () => "oldest" }) {
       if (!railBlocks.has(block) && !(stickyRails.has(block) && block.isConnected && [...railMode.keys()].some((article) => article.contains(block)))) releaseRail(block);
     });
   }
-  function activate(targetUid, { reveal = false, commentUid = null } = {}) {
+  function animateArticle(article) {
+    clearTimeout(animationTimers.get(article));
+    article.classList.add("rd-comment-animate");
+    place(article, { animate: true });
+    animationTimers.set(article, setTimeout(() => {
+      article.classList.remove("rd-comment-animate");
+      animationTimers.delete(article);
+    }, 320));
+  }
+  function activate(targetUid, { reveal = false, commentUid = null, sourceCard = null } = {}) {
     if (activeTarget === targetUid && activeComment === commentUid && !reveal) return;
     activeTarget = targetUid;
     activeComment = commentUid;
-    if (reveal) quietUntil = Date.now() + 1e3;
+    quietUntil = Date.now() + (reveal ? 1e3 : 360);
     if ([...layouts.keys()].some((article) => railMode.get(article))) schedule();
     document.querySelectorAll(`.${ANCHOR}`).forEach((node) => node.classList.remove(ANCHOR));
     for (const [article, state] of layouts) {
-      article.classList.add("rd-comment-animate");
-      place(article, { animate: true });
-      setTimeout(() => article.classList.remove("rd-comment-animate"), 320);
-      const item = state.items.find((entry) => entry.targetUid === targetUid);
+      animateArticle(article);
+      const item = state.items.find((entry) => sourceCard ? entry.card === sourceCard : entry.targetUid === targetUid);
       if (!item) continue;
       if (reveal) {
         item.block.classList.add(ANCHOR);
         setTimeout(() => item.block.classList.remove(ANCHOR), 1400);
-        const main3 = item.block.querySelector(":scope > .rm-block-main") || item.block;
+        const main3 = item.anchorMain || item.block.querySelector(":scope > .rm-block-main") || item.block;
         const previous = main3.style.scrollMarginTop;
         main3.style.scrollMarginTop = "88px";
-        main3.scrollIntoView?.({ behavior: "smooth", block: "start" });
+        main3.scrollIntoView?.({ behavior: "smooth", block: "start", inline: "nearest" });
         setTimeout(() => {
           main3.style.scrollMarginTop = previous;
         }, 900);
@@ -22350,12 +22383,9 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     if (!activeTarget) return;
     activeTarget = null;
     activeComment = null;
+    quietUntil = Date.now() + 360;
     document.querySelectorAll(`.${ANCHOR}`).forEach((node) => node.classList.remove(ANCHOR));
-    for (const article of layouts.keys()) {
-      article.classList.add("rd-comment-animate");
-      place(article, { animate: true });
-      setTimeout(() => article.classList.remove("rd-comment-animate"), 320);
-    }
+    for (const article of layouts.keys()) animateArticle(article);
   }
   let quietUntil = 0;
   const schedule = () => {
@@ -22364,6 +22394,10 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   };
   async function refresh() {
     if (disposed || loading || !enabled()) return;
+    if (Date.now() < quietUntil) {
+      scheduleData();
+      return;
+    }
     loading = true;
     try {
       const mainUid = await currentUid();
@@ -22416,7 +22450,8 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   };
   const OURS = new RegExp(`(?:^|\\s)(?:${HOST}|${ANCHOR}|${RAIL}|${GAP_CLASS}|rd-comment-animate)(?=\\s|$)`, "g");
   const stripOurs = (value2) => String(value2 || "").replace(OURS, " ").replace(/\s+/g, " ").trim();
-  const isOwn = (node) => node.nodeType !== 1 || node.matches?.(`.${NOTE},.${BADGE}`) || Boolean(node.closest?.(`.${NOTE},.${BADGE}`));
+  const OWN = `.${NOTE}[data-rd-card],.${BADGE}[data-rd-badge]`;
+  const isOwn = (node) => node.nodeType !== 1 || node.matches?.(OWN) || Boolean(node.closest?.(OWN));
   const observer = new window.MutationObserver((mutations) => {
     const own = mutations.every((mutation) => isOwn(mutation.target) || mutation.type === "attributes" && stripOurs(mutation.oldValue) === stripOurs(mutation.target.getAttribute?.("class")) || mutation.type === "childList" && [...mutation.addedNodes, ...mutation.removedNodes].every(isOwn));
     if (!own) schedule();
@@ -22453,6 +22488,11 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     observer.disconnect();
     resize?.disconnect();
     cleanups.forEach((fn) => fn());
+    animationTimers.forEach((timer, article) => {
+      clearTimeout(timer);
+      article.classList.remove("rd-comment-animate");
+    });
+    animationTimers.clear();
     if (window[KEY] === cleanup2) {
       clearProjection();
       delete window[KEY];
@@ -22469,6 +22509,39 @@ function projection({ enabled, onError, order = () => "oldest" }) {
 function installCommentRail({ enabled = () => true, onError = () => {
 }, order } = {}) {
   let instance, disposed = false;
+  let folioCleanup;
+  const arm = () => {
+    const existing = Object.getOwnPropertyDescriptor(window, FOLIO_KEY);
+    if (existing?.get) return;
+    folioCleanup = typeof existing?.value === "function" ? existing.value : void 0;
+    try {
+      Object.defineProperty(window, FOLIO_KEY, {
+        configurable: true,
+        get: () => folioCleanup,
+        set: (value2) => {
+          folioCleanup = value2;
+          if (typeof value2 === "function" && !disposed && enabled()) setTimeout(() => {
+            if (folioCleanup === value2) {
+              evictFolioRail();
+              instance?.schedule?.();
+            }
+          }, 0);
+        }
+      });
+    } catch {
+    }
+  };
+  armTrap = arm;
+  arm();
+  const releaseTrap = () => {
+    if (armTrap === arm) armTrap = null;
+    const value2 = folioCleanup;
+    try {
+      delete window[FOLIO_KEY];
+      if (value2) window[FOLIO_KEY] = value2;
+    } catch {
+    }
+  };
   const refresh = () => {
     if (disposed) return;
     if (!enabled()) {
@@ -22488,6 +22561,7 @@ function installCommentRail({ enabled = () => true, onError = () => {
     disposed = true;
     window.removeEventListener("reading-desk-comments-refresh", refresh);
     instance?.cleanup();
+    releaseTrap();
   } };
 }
 

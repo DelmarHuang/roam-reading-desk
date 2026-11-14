@@ -70,6 +70,9 @@ html body .roam-app .mag-native-comment--margin {
   top: var(--mag-comment-top) !important;
   left: var(--mag-comment-left) !important;
   width: var(--mag-comment-width) !important;
+  /* The stack already includes its 8px gap; theme aside margins must not
+     add another offset or change the measured card-to-card spacing. */
+  margin: 0 !important;
   min-height: 28px !important;
   padding: 6px 24px 7px 11px !important;
 }

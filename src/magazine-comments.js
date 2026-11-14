@@ -16,9 +16,15 @@ const KEY = "__readingDeskCommentRail";
 const FOLIO_KEY = "__magNativeCommentRailCleanup";
 // Stop Folio's duplicate comment rail while ours is on; its cleanup removes
 // its cards and the folio-comment-room padding.
+// While our rail runs, FOLIO_KEY is a trap (see installCommentRail): a cleanup
+// Folio stores there is run at once. Folio's own cleanup deletes the key, so
+// the trap is armed again afterwards.
+let armTrap = null;
 export function evictFolioRail() {
   let evicted = false;
-  if (typeof window[FOLIO_KEY] === "function") { try { window[FOLIO_KEY](); evicted = true; } catch { /* keep going */ } delete window[FOLIO_KEY]; }
+  const folio = window[FOLIO_KEY];
+  if (typeof folio === "function") { try { folio(); evicted = true; } catch { /* keep going */ } try { delete window[FOLIO_KEY]; } catch { /* ignore */ } }
+  if (armTrap) armTrap(); else if (evicted) { try { delete window[FOLIO_KEY]; } catch { /* ignore */ } }
   document.querySelectorAll(".folio-comment-room").forEach(node => { node.classList.remove("folio-comment-room"); node.style.removeProperty("--folio-comment-padding"); evicted = true; });
   return evicted;
 }
@@ -60,7 +66,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   evictFolioRail();
   document.querySelectorAll(".rei-native-comment,.rei-comment-count").forEach(node => node.remove());
   let disposed = false, loading = false, renderTimer, dataTimer, activeTarget = null, activeComment = null, lastOrder;
-  const models = new Map(), cleanups = [], layouts = new Map(), replyCache = new Map(), railMode = new Map(), stickyRails = new Set();
+  const models = new Map(), cleanups = [], layouts = new Map(), replyCache = new Map(), railMode = new Map(), stickyRails = new Set(), animationTimers = new Map();
   const on = (target, type, fn, options) => { target.addEventListener(type, fn, options); cleanups.push(() => target.removeEventListener(type, fn, options)); };
   const articles = () => {
     const daily = [...document.querySelectorAll(".roam-main .roam-log-page:not(.roam-log-preview)")];
@@ -84,12 +90,12 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   function obtainCard(record, mode, targetUid, key, used) {
     const sig = [language(), mode, record.uid, record.text, meta(record.uid).stamp || 0, replies(record.uid).map(line => line.text).join("\u0001")].join("\u0002");
     let card = cardPool.get(key);
-    if (!card || card.dataset.sig !== sig) { card?.remove(); card = makeCard(record, mode, targetUid); card.dataset.sig = sig; cardPool.set(key, card); }
+    if (!card || card.dataset.sig !== sig) { if (card) { resize?.unobserve(card); card.remove(); } card = makeCard(record, mode, targetUid); card.dataset.sig = sig; cardPool.set(key, card); resize?.observe(card); }
     used.add(key); return card;
   }
   function clearProjection({ keepRails = false, keepCards = false } = {}) {
     document.querySelectorAll(keepCards ? `.${BADGE}` : `.${NOTE},.${BADGE}`).forEach(node => node.remove());
-    if (!keepCards) cardPool.clear();
+    if (!keepCards) { cardPool.forEach(card => resize?.unobserve(card)); cardPool.clear(); }
     document.querySelectorAll(`.${ANCHOR}`).forEach(node => node.classList.remove(ANCHOR));
     if (!keepRails) { document.querySelectorAll(`.${HOST}`).forEach(node => node.classList.remove(HOST, "rd-notes-gap")); document.querySelectorAll(`.${RAIL}`).forEach(releaseRail); }
     layouts.clear();
@@ -145,14 +151,14 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     // never overlap it.
     const actions = document.createElement("div"); actions.className = "mag-native-comment__actions"; actions.append(remove, open);
     (card.querySelector(".mag-native-comment__meta") || card).append(actions);
-    card.addEventListener("click", event => { if (event.target.closest(".mag-native-comment__open,.mag-native-comment__delete")) return; event.preventDefault(); event.stopPropagation(); activate(targetUid, { reveal: true, commentUid: record.uid }); });
+    card.addEventListener("click", event => { if (event.target.closest(".mag-native-comment__open,.mag-native-comment__delete")) return; event.preventDefault(); event.stopPropagation(); activate(targetUid, { reveal: true, commentUid: record.uid, sourceCard: card }); });
     return card;
   }
   async function deleteComment(record) {
     const preview = textOf(pull(record.uid)).slice(0, 120);
     if (!window.confirm(t("Delete this comment?\n\n{0}{1}", [preview, replies(record.uid).length ? t("\n\nIts replies are deleted too.") : ""]))) return;
     await deleteNativeComment(record);
-    cardPool.forEach((card, key) => { if (card.dataset.commentUid === record.uid) { card.remove(); cardPool.delete(key); } });
+    cardPool.forEach((card, key) => { if (card.dataset.commentUid === record.uid) { resize?.unobserve(card); card.remove(); cardPool.delete(key); } });
     await refresh();
   }
   function anchorsFor(article, uid) {
@@ -222,12 +228,14 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   // GPU transform, so the cards glide without re-laying out the page.
   function place(article, { animate = false } = {}) {
     const state = layouts.get(article); if (!state) return;
-    const items = state.items.map(item => ({ ...item, height: item.height || item.card.offsetHeight || 28 }));
+    // Fonts, wrapping, images and replies can change card height without a
+    // data refresh. Measure at placement time, including on every click.
+    const items = state.items.map(item => ({ ...item, height: item.card.offsetHeight || 28 }));
     const active = items.findIndex(item => item.targetUid === activeTarget && (!activeComment || item.commentUid === activeComment));
     const tops = stackNotes(items, active);
     items.forEach((item, index) => {
       const top = Math.round(tops[index]); state.items[index].top = top;
-      if (animate && state.items[index].base != null) item.card.style.setProperty("transform", `translate3d(0, ${top - state.items[index].base}px, 0)`);
+      if (animate && state.items[index].base != null) item.card.style.setProperty("transform", `translate3d(0, ${top - state.items[index].base}px, 0)`, "important");
       else { state.items[index].base = top; item.card.style.setProperty("--mag-comment-top", `${top}px`); item.card.style.removeProperty("transform"); }
       item.card.classList.toggle("is-active", index === active);
     });
@@ -235,6 +243,9 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   }
   function render() {
     if (disposed || window[KEY] !== cleanup) return;
+    // A timer queued BEFORE the click also has to respect the animation.
+    // Otherwise it resets top/transform in the middle of the slide.
+    if (Date.now() < quietUntil) { schedule(); return; }
     clearProjection({ keepRails: true, keepCards: true });
     if (!enabled()) { clearProjection(); return; }
     evictFolioRail();
@@ -333,37 +344,41 @@ function projection({ enabled, onError, order = () => "oldest" }) {
       }
       for (const [block, counts] of folded) {
         const main = block.querySelector(":scope > .rm-block-main"); if (!main) continue;
-        const badge = document.createElement("button"); badge.type = "button"; badge.className = BADGE;
+        const badge = document.createElement("button"); badge.type = "button"; badge.className = BADGE; badge.dataset.rdBadge = "1";
         badge.textContent = foldSummary(counts); badge.title = t("Expand this section");
         badge.onclick = event => { event.preventDefault(); event.stopPropagation(); const caret = main.querySelector(".rm-caret-closed"); if (caret) caret.click(); else openAt(block.getAttribute("data-block-uid")).catch(onError); };
         main.append(badge);
       }
     }
-    cardPool.forEach((card, key) => { if (!used.has(key)) { card.remove(); cardPool.delete(key); } });
+    cardPool.forEach((card, key) => { if (!used.has(key)) { resize?.unobserve(card); card.remove(); cardPool.delete(key); } });
     document.querySelectorAll(`.${NOTE}`).forEach(card => { if (![...cardPool.values()].includes(card)) card.remove(); });
     document.querySelectorAll(`.${RAIL}`).forEach(block => { if (!railBlocks.has(block) && !(stickyRails.has(block) && block.isConnected && [...railMode.keys()].some(article => article.contains(block)))) releaseRail(block); });
   }
   // Clicking a note pins that note level with the top of its paragraph (the
   // notes above it move up) and scrolls the paragraph to the top of the view.
-  function activate(targetUid, { reveal = false, commentUid = null } = {}) {
+  function animateArticle(article) {
+    clearTimeout(animationTimers.get(article));
+    article.classList.add("rd-comment-animate"); place(article, { animate: true });
+    animationTimers.set(article, setTimeout(() => { article.classList.remove("rd-comment-animate"); animationTimers.delete(article); }, 320));
+  }
+  function activate(targetUid, { reveal = false, commentUid = null, sourceCard = null } = {}) {
     if (activeTarget === targetUid && activeComment === commentUid && !reveal) return;
     activeTarget = targetUid; activeComment = commentUid;
-    if (reveal) quietUntil = Date.now() + 1000;
+    quietUntil = Date.now() + (reveal ? 1000 : 360);
     // The narrow layout re-checks overlaps once the movement has settled.
     if ([...layouts.keys()].some(article => railMode.get(article))) schedule();
     document.querySelectorAll(`.${ANCHOR}`).forEach(node => node.classList.remove(ANCHOR));
     for (const [article, state] of layouts) {
-      article.classList.add("rd-comment-animate"); place(article, { animate: true });
-      setTimeout(() => article.classList.remove("rd-comment-animate"), 320);
-      const item = state.items.find(entry => entry.targetUid === targetUid);
+      animateArticle(article);
+      const item = state.items.find(entry => sourceCard ? entry.card === sourceCard : entry.targetUid === targetUid);
       if (!item) continue;
       if (reveal) {
         // Brief, neutral flash on the paragraph; no lasting tint while editing.
         item.block.classList.add(ANCHOR);
         setTimeout(() => item.block.classList.remove(ANCHOR), 1400);
-        const main = item.block.querySelector(":scope > .rm-block-main") || item.block;
+        const main = item.anchorMain || item.block.querySelector(":scope > .rm-block-main") || item.block;
         const previous = main.style.scrollMarginTop; main.style.scrollMarginTop = "88px";
-        main.scrollIntoView?.({ behavior: "smooth", block: "start" });
+        main.scrollIntoView?.({ behavior: "smooth", block: "start", inline: "nearest" });
         setTimeout(() => { main.style.scrollMarginTop = previous; }, 900);
       }
     }
@@ -371,14 +386,16 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   function deactivate() {
     if (!activeTarget) return;
     activeTarget = null; activeComment = null;
+    quietUntil = Date.now() + 360;
     document.querySelectorAll(`.${ANCHOR}`).forEach(node => node.classList.remove(ANCHOR));
-    for (const article of layouts.keys()) { article.classList.add("rd-comment-animate"); place(article, { animate: true }); setTimeout(() => article.classList.remove("rd-comment-animate"), 320); }
+    for (const article of layouts.keys()) animateArticle(article);
   }
   // Hold re-renders and data reloads while a click-triggered scroll runs.
   let quietUntil = 0;
   const schedule = () => { clearTimeout(renderTimer); renderTimer = setTimeout(render, Math.max(180, quietUntil - Date.now())); };
   async function refresh() {
     if (disposed || loading || !enabled()) return;
+    if (Date.now() < quietUntil) { scheduleData(); return; }
     loading = true;
     try {
       const mainUid = await currentUid(); if (disposed) return;
@@ -407,7 +424,10 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   const scheduleData = () => { clearTimeout(dataTimer); dataTimer = setTimeout(refresh, Math.max(900, quietUntil - Date.now())); };
   const OURS = new RegExp(`(?:^|\\s)(?:${HOST}|${ANCHOR}|${RAIL}|${GAP_CLASS}|rd-comment-animate)(?=\\s|$)`, "g");
   const stripOurs = value => String(value || "").replace(OURS, " ").replace(/\s+/g, " ").trim();
-  const isOwn = node => node.nodeType !== 1 || node.matches?.(`.${NOTE},.${BADGE}`) || Boolean(node.closest?.(`.${NOTE},.${BADGE}`));
+  // Only our own cards and badges are ignored. Cards Folio's copy of this
+  // rail adds (no data-rd-card) trigger a render, which removes that copy.
+  const OWN = `.${NOTE}[data-rd-card],.${BADGE}[data-rd-badge]`;
+  const isOwn = node => node.nodeType !== 1 || node.matches?.(OWN) || Boolean(node.closest?.(OWN));
   const observer = new window.MutationObserver(mutations => {
     const own = mutations.every(mutation => isOwn(mutation.target) || (mutation.type === "attributes" && stripOurs(mutation.oldValue) === stripOurs(mutation.target.getAttribute?.("class"))) || (mutation.type === "childList" && [...mutation.addedNodes, ...mutation.removedNodes].every(isOwn)));
     if (!own) schedule();
@@ -429,6 +449,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   });
   function cleanup() {
     if (disposed) return; disposed = true; clearTimeout(renderTimer); clearTimeout(dataTimer); observer.disconnect(); resize?.disconnect(); cleanups.forEach(fn => fn());
+    animationTimers.forEach((timer, article) => { clearTimeout(timer); article.classList.remove("rd-comment-animate"); }); animationTimers.clear();
     if (window[KEY] === cleanup) { clearProjection(); delete window[KEY]; }
     models.clear(); replyCache.clear();
   }
@@ -440,6 +461,28 @@ function projection({ enabled, onError, order = () => "oldest" }) {
 
 export function installCommentRail({ enabled = () => true, onError = () => {}, order } = {}) {
   let instance, disposed = false;
+  // Folio can load after Reading Desk and start its own (older) comment rail,
+  // which replaces our cards with ones that do not slide or align. Its boot
+  // ends by storing its cleanup under FOLIO_KEY: while our rail is on, that
+  // cleanup runs right away.
+  let folioCleanup;
+  const arm = () => {
+    const existing = Object.getOwnPropertyDescriptor(window, FOLIO_KEY);
+    if (existing?.get) return;
+    folioCleanup = typeof existing?.value === "function" ? existing.value : undefined;
+    try {
+      Object.defineProperty(window, FOLIO_KEY, {
+        configurable: true,
+        get: () => folioCleanup,
+        set: value => {
+          folioCleanup = value;
+          if (typeof value === "function" && !disposed && enabled()) setTimeout(() => { if (folioCleanup === value) { evictFolioRail(); instance?.schedule?.(); } }, 0);
+        }
+      });
+    } catch { /* render() still evicts it */ }
+  };
+  armTrap = arm; arm();
+  const releaseTrap = () => { if (armTrap === arm) armTrap = null; const value = folioCleanup; try { delete window[FOLIO_KEY]; if (value) window[FOLIO_KEY] = value; } catch { /* nothing to release */ } };
   const refresh = () => {
     if (disposed) return;
     if (!enabled()) { if (typeof window[KEY] === "function") window[KEY](); return; }
@@ -447,5 +490,5 @@ export function installCommentRail({ enabled = () => true, onError = () => {}, o
     return instance.refresh();
   };
   window.addEventListener("reading-desk-comments-refresh", refresh); refresh();
-  return { refresh, relayout() { if (instance?.alive) instance.schedule(); }, get instance() { return instance; }, cleanup() { disposed = true; window.removeEventListener("reading-desk-comments-refresh", refresh); instance?.cleanup(); } };
+  return { refresh, relayout() { if (instance?.alive) instance.schedule(); }, get instance() { return instance; }, cleanup() { disposed = true; window.removeEventListener("reading-desk-comments-refresh", refresh); instance?.cleanup(); releaseTrap(); } };
 }
