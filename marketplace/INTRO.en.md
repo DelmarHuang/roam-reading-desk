@@ -14,19 +14,19 @@ Expand or collapse subsections, see your current chapter, and click an entry to 
 
 That makes the table of contents useful for books, project stages, research topics, course notes and meeting agendas alike. See the whole before entering the details, and quickly find a particular passage when you return.
 
-![Page structure and table of contents](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/docs/screenshots/image1.webp)
+![Page structure and table of contents](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/marketplace/screenshots/image1.webp)
 
 ## Keep annotations beside the source
 
 As you read, use Roam's native highlighting to mark text that interests you, mark an entire paragraph, or record a question to think about further.
 
-![Highlights and margin comments](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/docs/screenshots/image2.webp)
+![Highlights and margin comments](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/marketplace/screenshots/image2.webp)
 
 Native comments can appear beside their paragraphs, keeping the source and your own thoughts in the same field of view. Each paragraph supports multiple comments, and you can adjust the margin-note style, colour and chronological order. When you reread a passage, your earlier understanding, objections and supporting threads remain easy to find.
 
-![Collected annotations](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/docs/screenshots/image3.webp)
+![Collected annotations](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/marketplace/screenshots/image3.webp)
 
-![Collected questions](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/docs/screenshots/image4.webp)
+![Collected questions](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/marketplace/screenshots/image4.webp)
 
 ## Bring scattered highlights and questions together
 
@@ -34,7 +34,7 @@ Reading Desk gathers highlights, comments, paragraph marks and questions, with f
 
 Gather material from the current page, imported books or ordinary pages you explicitly add to the collection scope. For example, if a project's source material is spread across several pages, include those pages to review important annotations and unresolved matters together.
 
-![Reading notes and their source material](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/docs/screenshots/image5.webp)
+![Reading notes and their source material](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/marketplace/screenshots/image5.webp)
 
 ## Turn annotations into your own notes
 
@@ -58,4 +58,4 @@ Open a page and click the **Reading Desk** icon in the top bar to begin with the
 
 Interface translations and documentation are available in English, Chinese, Italian, German, French and Spanish. See [Reading Desk's GitHub page](https://github.com/DelmarHuang/roam-reading-desk) for detailed features and instructions, including the [full manual](https://github.com/DelmarHuang/roam-reading-desk/blob/depot-submission-2026-11-15/README.md).
 
-![Imported-book management](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/docs/screenshots/image6.webp)
+![Imported-book management](https://raw.githubusercontent.com/DelmarHuang/roam-reading-desk/depot-submission-2026-11-15/marketplace/screenshots/image6.webp)
