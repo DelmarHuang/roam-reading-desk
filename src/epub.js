@@ -1,3 +1,5 @@
+import { splitImages } from "./image-split.js";
+import { styledHeadings } from "./epub-headings.js";
 import { unzip } from "fflate";
 import { convertDelimitedMath, finalizeMath, prepareMathDocument } from "./math.js";
 import { t } from "./i18n.js";
@@ -101,13 +103,29 @@ function htmlToFlow(bytes, sourcePath, context) {
   }
   const mathContext = { ...context, sourcePath };
   prepareMathDocument(document, mathContext);
+  const css = [], seenCss = new Set();
+  const addCss = path => {
+    if (seenCss.has(path)) return; seenCss.add(path);
+    const text = context.cssFiles?.get(path); if (!text) return;
+    for (const match of text.matchAll(/@import\s+(?:url\(\s*)?["']?([^"'\s);]+)["']?\s*\)?[^;]*;/g)) addCss(resolvePath(path, match[1]));
+    css.push(text);
+  };
+  document.querySelectorAll('link[rel="stylesheet"]').forEach(link => addCss(resolvePath(sourcePath, link.getAttribute('href') || '')));
+  const visualHeadings = styledHeadings(document, css);
+  context.styledHeadingCount = (context.styledHeadingCount || 0) + visualHeadings.size;
   const blocks = [];
   const anchors = new Map([[sourcePath, 0]]);
   let buffer = "";
   let mode = { kind: "paragraph" };
   const flush = () => {
     const text = cleanText(mode.literal ? buffer : convertDelimitedMath(buffer, mathContext));
-    if (text) blocks.push({ text, ...mode, sourcePath, targetKeys: [], children: [] });
+    if (text) {
+      // Literal/code blocks retain their syntax. Image-only pieces are never headings.
+      const parts = mode.literal ? [{text,image:false}] : splitImages(text, true);
+      // Formatting surrounding an inline image stays intact until it can be split safely.
+      const balanced = parts.filter(p => !p.image).every(p => ['**','__','`'].every(mark => p.text.split(mark).length % 2 === 1));
+      for (const part of balanced ? parts : [{text,image:false}]) blocks.push({ ...mode, text:part.text.trim(), ...(part.image ? {kind:'image',rank:undefined} : {}), sourcePath, targetKeys:[], children:[] });
+    }
     buffer = "";
   };
   const addAnchor = element => {
@@ -150,11 +168,14 @@ function htmlToFlow(bytes, sourcePath, context) {
     if (node.nodeType !== 1) return;
     const tag = tagOf(node);
     if (OMIT.has(tag) || node.hasAttribute("hidden")) return;
-    const block = FLOW_BLOCKS.has(tag);
+    const ariaHeading = node.getAttribute("role") === "heading" && /^[1-6]$/.test(node.getAttribute("aria-level") || "");
+    const block = FLOW_BLOCKS.has(tag) || ariaHeading;
     if (block) flush();
     addAnchor(node);
     const previousMode = mode;
     if (/^h[1-6]$/.test(tag)) mode = { kind: "heading", rank: Number(tag.slice(1)) };
+    else if (ariaHeading) mode = { kind: "heading", rank: Number(node.getAttribute("aria-level")), headingEvidence: "ARIA heading" };
+    else if (visualHeadings.has(node) && context.includeStyledHeadings) mode = visualHeadings.get(node);
     else if (block) mode = { kind: tag === "figure" ? "image" : "paragraph", ...(tag === "pre" ? { literal: true } : {}) };
 
     // Recurse through containers, but serialize an inline link/format once.
@@ -215,7 +236,7 @@ function parseNcx(bytes, ncxPath) {
   return [...(navMap?.children || [])].filter(child => child.localName === "navPoint").map(readPoint);
 }
 
-const titleKey = text => cleanText(text).replace(/[\s\u3000·•:：.。,，、\-—–_|]/g, "").toLowerCase();
+const titleKey = text => cleanText(text).replace(/\*\*|__/g, "").replace(/[\s\u3000·•:：.。,，、\-—–_|]/g, "").toLowerCase();
 
 function headingTree(blocks) {
   const root = { children: [], rank: 0 };
@@ -239,7 +260,11 @@ function assembleChapters(toc, documents, warnings, { directoryPaths = new Set()
   });
   if (!toc.length) {
     warnings.push(t("No usable EPUB TOC was found. The outline uses body headings; review the preview."));
-    return headingTree(flow);
+    const tree = headingTree(flow);
+    const firstHeading = tree.findIndex(node => node.kind === "heading");
+    if (firstHeading === 0) return tree;
+    const leading = firstHeading < 0 ? tree : tree.slice(0, firstHeading);
+    return [{ text: firstHeading < 0 ? "Body" : "Before contents", kind: "supplement", children: leading, targetKeys: [] }, ...(firstHeading < 0 ? [] : tree.slice(firstHeading))];
   }
   const entries = [];
   const copy = items => items.map(item => {
@@ -347,7 +372,7 @@ function countNodes(nodes) {
   return nodes.reduce((total, node) => total + 1 + countNodes(node.children || []), 0);
 }
 
-export async function parseEpub(arrayBuffer, filename = "book.epub") {
+export async function parseEpub(arrayBuffer, filename = "book.epub", { includeStyledHeadings = false } = {}) {
   const rawFiles = await new Promise((resolve, reject) => unzip(new Uint8Array(arrayBuffer), (error, result) => error ? reject(error) : resolve(result)));
   const files = new Map(Object.entries(rawFiles).map(([path, bytes]) => [normalizePath(path), bytes]));
   const get = path => files.get(normalizePath(path));
@@ -378,7 +403,7 @@ export async function parseEpub(arrayBuffer, filename = "book.epub") {
   const tocTargets = new Set();
   const collectTargets = items => items.forEach(item => { if (item.targetKey) tocTargets.add(item.targetKey); collectTargets(item.children); });
   collectTargets(toc);
-  const context = { links, images: imageRefs, formulas, warnings, tocTargets };
+  const context = { links, images: imageRefs, formulas, warnings, tocTargets, includeStyledHeadings, cssFiles: new Map([...files].filter(([path]) => /\.css$/i.test(path)).map(([path, bytes]) => [path, decodeBytes(bytes)])) };
   const documents = new Map();
   const contentItems = [...spine];
   const addTocDocuments = items => items.forEach(item => {
@@ -394,6 +419,7 @@ export async function parseEpub(arrayBuffer, filename = "book.epub") {
     if (!get(item.path)) { warnings.push(t("Missing EPUB body file: {0}", [item.path])); return; }
     if (/xhtml|html/i.test(item.type)) documents.set(item.path, htmlToFlow(get(item.path), item.path, context));
   });
+  if (context.styledHeadingCount) warnings.push(t("{0} possible subheadings use typography rather than heading tags. Enable typography-based headings only after reviewing the preview.", [context.styledHeadingCount]));
   const guides = [...opf.getElementsByTagNameNS("*", "reference")];
   const directoryPaths = new Set(guides.filter(item => item.getAttribute("type") === "toc").map(item => resolvePath(opfPath, item.getAttribute("href") || "")));
   const coverPaths = new Set(guides.filter(item => item.getAttribute("type") === "cover").map(item => resolvePath(opfPath, item.getAttribute("href") || "")));
@@ -415,7 +441,7 @@ export async function parseEpub(arrayBuffer, filename = "book.epub") {
   }));
   const fileHash = await sha256Hex(new Uint8Array(arrayBuffer));
   const book = finalizeMath({
-    parserVersion: 4, id: `epub-${fileHash.slice(0, 16)}`, fileHash, filename, title, author,
+    parserVersion: 4, includeStyledHeadings, id: `epub-${fileHash.slice(0, 16)}`, fileHash, filename, title, author,
     chapters, toc, tocSource, warnings, links, assets, formulas, targetMarkers: {}
   });
   book.stats = {

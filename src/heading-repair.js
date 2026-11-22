@@ -1,39 +1,26 @@
-// Heading repair for books imported before 0.4: chapters (the confirmed book
-// catalog) become H1/H2/H3 by depth, a body heading that repeats its chapter
-// title is removed (its children move up, UIDs unchanged), and other body
-// headings become bold paragraphs. Preview first, full backup, undo available.
+// Preview-based heading repair. Heading levels come only from the source EPUB;
+// manual/body headings are preserved. Original EPUB matching can restore
+// missing levels without changing UIDs or paragraph text.
 import { api, childrenOf, plain, pull, textOf, uidOf, updateBlock, value } from "./graph.js";
 import { documentHeaders, putDocument, readDocument } from "./reader-store.js";
 import { isFootnoteHeading } from "./catalog.js";
 import { t } from "./i18n.js";
+import { sourceHeadingChanges, matchSourceHeadings } from "./source-headings.js";
+import { referenceSnapshot, referencesUnchanged } from "./repair-snapshot.js";
 
 const key = text => plain(text).replace(/[\s　·•:：.。,，、\-—–_|]/g, "").toLowerCase();
-const boldable = text => text && !/\*\*|!\[|\$\$|^\s*```/.test(text);
 const move = (uid, parentUid, order) => api().data.block.move({ block: { uid }, location: { "parent-uid": parentUid, order } });
 const referencedBy = uid => (api().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", uid) || []).map(row => row[0]).filter(other => other !== uid);
 const indexIn = (parentUid, uid) => childrenOf(pull(parentUid)).findIndex(node => uidOf(node) === uid);
 
-export function previewHeadingRepair(content) {
+export function previewHeadingRepair(content, sourceBook = null) {
   if (content.ordinaryPage) throw new Error(t("Heading repair is available for managed books only."));
-  const chapters = new Map(content.chapters.map(chapter => [chapter.uid, chapter]));
-  const depth = uid => { let level = 0, parent = chapters.get(uid)?.parentUid; const seen = new Set(); while (parent && chapters.has(parent) && !seen.has(parent)) { seen.add(parent); level++; parent = chapters.get(parent).parentUid; } return level; };
+  const knownChapters = content.record.catalog?.chapters || [];
+  const chapters = new Map(knownChapters.map(chapter => [chapter.uid, chapter]));
+  // Stored catalogs describe import scope, not authoritative heading levels.
+  // They may predate source-assisted repairs. Only an original EPUB can
+  // propose new levels; otherwise keep the current formatting unchanged.
   const changes = [];
-  for (const chapter of content.chapters) {
-    const node = content.byUid.get(chapter.uid)?.node; if (!node) continue;
-    const before = Number(value(node, "heading")) || 0, after = Math.min(3, depth(chapter.uid) + 1);
-    if (before !== after) changes.push({ type: "chapter", uid: chapter.uid, text: textOf(node), before: { heading: before }, after: { heading: after } });
-  }
-  // Catalog entries below level 3 (folded into their H3 in Contents): the
-  // fourth level becomes bold text, deeper levels plain text.
-  for (const [uid, target] of content.chapterAliases || []) {
-    const item = content.byUid.get(uid); if (!item || chapters.has(uid) || isFootnoteHeading(item.text)) continue;
-    let level = depth(target) + 2, parent = content.record.catalog?.chapters?.find(chapter => chapter.uid === uid)?.parentUid; const seen = new Set();
-    while (parent && !chapters.has(parent) && !seen.has(parent)) { seen.add(parent); level++; parent = content.record.catalog?.chapters?.find(chapter => chapter.uid === parent)?.parentUid; }
-    if (level < 4) continue;
-    const heading = Number(value(item.node, "heading")) || 0;
-    const string = level === 4 && boldable(item.text) && !/^\s*\*\*[^]*\*\*\s*$/.test(item.text) ? `**${item.text.trim()}**` : item.text;
-    if (heading || string !== item.text) changes.push({ type: "demote", uid, text: item.text, before: { heading, string: item.text }, after: { heading: 0, string }, deepEntry: true });
-  }
   // Footnote markers split off their heading by old imports: "2.3 Title"
   // followed by a block "[3](((note)))" (often holding the whole section).
   // The marker goes back to the end of its heading, the section's paragraphs
@@ -68,11 +55,34 @@ export function previewHeadingRepair(content) {
         continue;
       }
     }
-    // Footnote markers formatted as headings become plain text, not bold.
-    const footnote = isFootnoteHeading(item.text);
-    const string = !footnote && boldable(item.text) ? `**${item.text.trim()}**` : item.text;
-    changes.push({ type: "demote", uid: item.uid, text: item.text, before: { heading, string: item.text }, after: { heading: 0, string }, duplicateKept: Boolean(duplicate), footnote });
+    // User headings and non-TOC body headings are not evidence of corruption.
+    // Preserve them; original-EPUB matching below can restore known levels.
   }
+  if (sourceBook) {
+    const restored = sourceHeadingChanges(content, sourceBook);
+    const matched = new Set(restored.map(change => change.uid));
+    for (let i = changes.length - 1; i >= 0; i--) if (matched.has(changes[i].uid)) changes.splice(i, 1);
+    changes.push(...restored.filter(change => change.before.heading !== change.after.heading));
+    const titleKey = text => plain(text).replace(/\s+/g, '');
+    for (const {node: source, item: outer, level} of matchSourceHeadings(content, sourceBook, {navigationOnly: true})) {
+      const children = childrenOf(outer.node);
+      // Narrow legacy shape: a directory entry contains only a repeated
+      // title, whose body starts with the source's expected text. Keep all
+      // real paragraphs and their IDs; never remove a referenced title.
+      if (children.length !== 1) continue;
+      const duplicate = children[0], uid = uidOf(duplicate), text = textOf(duplicate);
+      if (!Number(value(duplicate, 'heading')) || titleKey(text) !== titleKey(outer.text) || /\^\^|#mark|\[\[mark\]\]/.test(text)) continue;
+      if ((source.children || []).some(child => titleKey(child.text) === titleKey(source.text))) continue;
+      const expected = (source.children || []).filter(child => child.text && !/⟦EPUB[IL]:/.test(child.text)).slice(0, 2);
+      const body = childrenOf(duplicate).filter(child => !/!\[[^\]]*\]\(/.test(textOf(child)));
+      if (!expected.length || !expected.every((child, index) => titleKey(child.text) === titleKey(textOf(body[index]))) || referencedBy(uid).length) continue;
+      if (changes.some(change => change.uid === uid)) continue;
+      const before = Number(value(outer.node, 'heading')) || 0;
+      if (level <= 3 && before !== level && !changes.some(change => change.uid === outer.uid)) changes.push({type: 'chapter', uid: outer.uid, text: outer.text, before: {heading: before}, after: {heading: level}, source: 'EPUB outline'});
+      changes.push({type: 'duplicate', uid, text, parentUid: outer.uid, heading: Number(value(duplicate, 'heading')), open: value(duplicate, 'open') !== false, childUids: childrenOf(duplicate).map(uidOf), chapterTitle: outer.text});
+    }
+  }
+  for (const change of changes) if (change.type === "footnote") change.referenceChanges = referenceSnapshot(change.uid, change.targetUid);
   return { bookKey: content.key, title: content.record.title, changes, counts: { chapters: changes.filter(change => change.type === "chapter").length, duplicates: changes.filter(change => change.type === "duplicate").length, demoted: changes.filter(change => change.type === "demote").length, footnotes: changes.filter(change => change.type === "footnote").length } };
 }
 
@@ -87,17 +97,16 @@ export async function applyHeadingRepair(plan, types = ["chapter", "duplicate", 
   try {
     for (const change of changes) {
       const node = pull(change.uid);
-      if (!node || textOf(node) !== change.text) { backup.skipped.push(change.uid); continue; }
+      if (!node || textOf(node) !== change.text || (Number(value(node, "heading")) || 0) !== (change.before?.heading ?? change.heading ?? 0)) { backup.skipped.push(change.uid); continue; }
       if (change.type === "chapter") await updateBlock({ uid: change.uid, heading: change.after.heading });
       else if (change.type === "demote") await updateBlock({ uid: change.uid, heading: 0, string: change.after.string });
       else if (change.type === "footnote") {
         const target = pull(change.targetUid), children = childrenOf(node).map(uidOf);
-        if (!target || textOf(target) !== change.targetText || children.join() !== change.childUids.join()) { backup.skipped.push(change.uid); continue; }
+        if (!target || textOf(target) !== change.targetText || children.join() !== change.childUids.join() || indexIn(change.parentUid, change.uid) !== change.order || !referencesUnchanged(change.uid, change.referenceChanges || [])) { backup.skipped.push(change.uid); continue; }
         await updateBlock({ uid: change.targetUid, string: change.targetAfter });
         change.retargeted = [];
-        for (const uid of referencedBy(change.uid)) {
-          const before = textOf(pull(uid)), after = before.split(`((${change.uid}))`).join(`((${change.targetUid}))`);
-          if (after !== before) { await updateBlock({ uid, string: after }); change.retargeted.push({ uid, before, after }); }
+        for (const item of change.referenceChanges || []) {
+          await updateBlock({ uid: item.uid, string: item.after }); change.retargeted.push({ ...item });
         }
         const at = change.intoParent ? indexIn(change.parentUid, change.uid) : childrenOf(target).length;
         for (const [index, child] of children.entries()) await move(child, change.intoParent ? change.parentUid : change.targetUid, at + index);

@@ -1,5 +1,19 @@
 // zh interface strings. Keys are the English text.
 export default {
+  "Resize panel: drag the corner, or use arrow keys": "调整面板大小：拖动右下角，或使用方向键",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "拆分 {0} 个图文混合块；保留文字块 ID 和子块",
+  "Separate images and text in existing blocks (preview first)": "拆分已有块中的图片与文字（先预览）",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} 个结构复杂或位于章节根部的图文块保持不变。",
+  "{0} image/text blocks": "{0} 个图文块",
+
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "为加快导入，建议在导入完成前保持当前 Roam 窗口和标签页处于前台。切换到其他应用或标签页可能使导入变慢。",
+  "Book or referenced content changed since preview. Preview the repair again.": "书籍或引用内容在预览后发生了变化，请重新预览修复方案。",
+  "Reference check failed; deletion stopped.": "引用检查失败，已停止删除。",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "这本书的内容仍被章节之外的块引用。请先移除这些引用，再删除书籍。",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "书外有 {0} 个块引用书中内容。为保护这些引用，已禁止删除。",
+  "Reference checking failed. Deletion is blocked.": "引用检查失败，已禁止删除。",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk 已关闭，请启用后再导入。",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Reading Desk 已关闭，导入已暂停。重新启用后可继续导入。",
   "Enter a destination page title.": "请输入目标页面标题。",
   "Select annotations to include first.": "请先选择要加入的批注。",
   "Book repair is available for managed books only.": "书籍修复仅适用于已管理的书籍。",

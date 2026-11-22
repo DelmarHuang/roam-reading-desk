@@ -1,3 +1,4 @@
+import { publishFeature } from "./coexistence.js";
 // Adapted from the user's Magazine/Zenith quick-mark script: retain native
 // #mark data, IME safeguards, selection restoration, and native-menu entry.
 import { api, pull, textOf, updateBlock } from "./graph.js";
@@ -66,8 +67,7 @@ function writeEditor(editor, value, selection) {
 }
 
 export function installMark(onChange = () => {}, { getQuestionTag = () => 'question', getQuestionStyle = () => 'tag', shortcutLabel = () => '' } = {}) {
-  window.__zenithQuickMark?.cleanup?.();
-  window.__magQuickMark?.cleanup?.();
+  publishFeature("mark", true);
   const history = new Map(), busy = new Set(), cleanups = [];
   let disposed = false, composing = false, menuObserver, menuTimer;
   const on = (target, name, callback, options) => { target.addEventListener(name, callback, options); cleanups.push(() => target.removeEventListener(name, callback, options)); };
@@ -146,7 +146,7 @@ export function installMark(onChange = () => {}, { getQuestionTag = () => 'quest
   };
   on(document, "contextmenu", armMenu, true);
   on(document, "dblclick", armMenu, true);
-  return { toggle, toggleQuestion: uid => toggle(uid, "question"), cleanup() {
+  return { toggle, toggleQuestion: uid => toggle(uid, "question"), cleanup() { publishFeature("mark", false);
     disposed = true; stopWatch(); cleanups.forEach(fn => fn());
     document.querySelectorAll(".mag-mark-menu-entry").forEach(item => item.remove());
     document.querySelectorAll(".mag-marked").forEach(item => item.classList.remove("mag-marked"));

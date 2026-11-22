@@ -1,3 +1,71 @@
+## 0.7.14 · 2026-11-22 (test build)
+
+- Replace the solid resize triangle with a subtle, theme-colored two-line grip, rounded strokes, and hover/focus feedback. Keep the resize behavior and accessible label unchanged.
+
+## 0.7.13 · 2026-11-22 (test build)
+
+- Align both repair-option checkboxes beside their labels, with wrapped text remaining in the label column.
+- Add a bottom-right resize handle with pointer capture, keyboard arrows, viewport bounds and in-session size retention across panel reopen. Localize its accessible label in all supported languages.
+- No changes to import, repair or book data logic.
+
+## 0.7.12 · 2026-11-22 (test build)
+
+- Show a localized blocking alert when the book or referenced content has changed since the approved repair preview; abort before writes.
+- Explain in all supported languages that keeping the Roam window/tab active can improve import speed; show the notice during new imports and Resume.
+- Split complete EPUB image tokens and remote image embeds from adjacent text while retaining reading order. Preserve literal text and ambiguous inline formatting. Existing resumable block plans are unchanged.
+- Add an opt-in image/text repair preview for existing books. Keep the original text UID, heading, children and external references; create image siblings without uploading files. Skip chapter roots, interleaved text, highlights, macros and ambiguous formatting.
+- Journal split operations before writes, including interrupted operations. Undo preserves images that gained references, children or edits. No outside reference text is rewritten by image splitting.
+- Validation: 53 automated tests pass. Both supplied EPUBs retain their full reading-order text/image-token stream, asset lists and original navigation compared with 0.7.11. This validates parser preservation, not every historical graph import or every EPUB in existence.
+
+## 0.7.11 · 2026-11-22 (test build)
+
+- Resolve block references to readable text in the Delete Book reference preview, with a 240-character excerpt. Preserve the source-page button, jump target and deletion protection.
+
+## 0.7.10 · 2026-11-22 (test build)
+
+- Repair source-confirmed legacy TOC wrappers containing a sole repeated body heading: set the outer heading level and lift the existing body blocks before removing the unreferenced duplicate. Preview, stale-content checks, last-minute reference checks and Undo remain in effect.
+- Require matching source opening text and skip source-intentional repeated headings, ambiguous structures and referenced duplicates. Original directory targets and paragraph UIDs remain unchanged.
+- Verified that the current book proposes only the second-lecture wrapper and its duplicate. All 45 automated tests pass.
+
+## 0.7.9 · 2026-11-21 (test build)
+
+- Separate EPUB NAV/NCX Contents from body heading formatting. New imports use the original directory, including deeper navigation levels; books without a directory retain heading-based Contents.
+- Original-EPUB repair previews and saves an exact directory mapping for existing books, with stale-preview checks and Undo. Ambiguous or missing entries block directory replacement instead of saving a partial list.
+- Refresh live headings for legacy linked books without the newer headings flag, retaining their confirmed chapter roots.
+- Verified the real recovered-book catalog and current graph against all 37 original directory entries, including the eleven lectures under chapter four; 44 automated tests pass.
+
+## 0.7.8 · 2026-11-21 (test build)
+
+- Source heading repair distinguishes image-bearing captions from actual text headings with the same title. Genuine duplicate text headings remain untouched. This restores missing chapter entries and their Contents hierarchy after previewed repair without changing images or body text.
+
+## 0.7.7 · 2026-11-21 (test build)
+
+- Heading levels are proposed only from the original EPUB. The old import catalog can no longer undo source-assisted heading repairs, including repairs already applied in 0.7.6.
+- Contents follows current H1–H3 within the confirmed book scope; no book blocks or stored import scope are automatically rewritten.
+- Opening from native Desk with no current page defaults to All Books; explicit book selection remains available.
+- Fixed ZIP root folder: `reading-desk`. Removed the separate Chinese test guide and its README link.
+
+## 0.7.6 · 2026-11-21 (test build)
+
+- Keep all panel tabs at their scroll positions. Editing Roam text no longer silently replaces the panel or its repair preview; Refresh explicitly rebuilds the preview.
+- Open registered books from native Roam Desk even when no current page UID exists.
+- Import semantic body headings omitted from NAV/NCX. Normalize nested heading levels into Roam H1–H3; keep deeper sections nested with bold/plain labels. Handle ARIA headings, skipped levels and books without a TOC. Recognize split formatted chapter titles without duplicating them.
+- Offer opt-in typography-based headings from inline/linked CSS, with an import heading-level preview. Bold alone is not sufficient. This is a conservative heuristic, not a guarantee for arbitrary publisher formatting.
+- Original-EPUB repair restores uniquely matched headings within the same chapter, preserving block IDs and text. Ambiguous/edited matches are skipped. Ordinary user headings are no longer demoted merely for being outside the import catalog.
+- List external referencing pages and text in Delete Book; clicking a page opens the referring block. Deletion remains blocked.
+- Batch import timer waits while checking cancellation before every write. Existing uploaded image hashes continue to be reused on Resume.
+- Avoid reading-tracker rescans for image/label changes; avoid comment data reloads for unrelated focus changes. Apply native lazy-loading/async-decoding hints only to managed-book images without an explicit existing setting, and remove owned hints on cleanup. Browser background throttling and native Roam rendering still apply.
+- Verified the resumed Psychology of Money import against the prior import parser: all 1,767 blocks match; 25 chapter roots and 10 distinct images.
+
+## 0.7.5 · 2026-11-17
+
+- Repair executes the exact approved plan. Changed book content invalidates the preview; changed reference sets or text cause the affected operation to be skipped. External reference edits are listed in the preview. Later steps invalidated by an earlier repair require a fresh preview, rather than automatic replanning.
+- Metadata reads pull the known library and reader pages, never a whole-graph prefix query. Page UIDs are saved in extension settings so subsequent renames remain discoverable.
+- Closing, redrawing or unloading the reader releases shortcut recording. Unload cancels import writing, including page creation, block/link loops and the final metadata save; already submitted API requests may finish, but no subsequent mutation is started. Local checkpoints remain resumable.
+- Delete Book is blocked if any external reference remains, including references added after preview. Reference-scan failure also blocks deletion. Entire deletion subtrees (including fragment archives) are checked.
+- Reading Desk publishes its active comment/Mark features. Removed all cleanup calls and property traps that controlled Folio.
+- Regression suite: `npm ci`, `npm run build`, `npm test`.
+
 # Changelog
 
 ## 0.7.4

@@ -8,26 +8,8 @@ import { FRAGMENT_ARCHIVE } from "./paragraph-repair.js";
 import { renderRich } from "./rich-text.js";
 import { language, t } from "./i18n.js";
 
-// Private singleton key. Folio ships an older copy of this rail under
-// "__magNativeCommentRailCleanup"; sharing that key let Folio's copy replace
-// ours (old cards, "Comment" placeholders for block references, and a 244px
-// folio-comment-room padding that narrowed the text).
+import { publishFeature } from "./coexistence.js";
 const KEY = "__readingDeskCommentRail";
-const FOLIO_KEY = "__magNativeCommentRailCleanup";
-// Stop Folio's duplicate comment rail while ours is on; its cleanup removes
-// its cards and the folio-comment-room padding.
-// While our rail runs, FOLIO_KEY is a trap (see installCommentRail): a cleanup
-// Folio stores there is run at once. Folio's own cleanup deletes the key, so
-// the trap is armed again afterwards.
-let armTrap = null;
-export function evictFolioRail() {
-  let evicted = false;
-  const folio = window[FOLIO_KEY];
-  if (typeof folio === "function") { try { folio(); evicted = true; } catch { /* keep going */ } try { delete window[FOLIO_KEY]; } catch { /* ignore */ } }
-  if (armTrap) armTrap(); else if (evicted) { try { delete window[FOLIO_KEY]; } catch { /* ignore */ } }
-  document.querySelectorAll(".folio-comment-room").forEach(node => { node.classList.remove("folio-comment-room"); node.style.removeProperty("--folio-comment-padding"); evicted = true; });
-  return evicted;
-}
 const NOTE = "mag-native-comment", BADGE = "mag-comment-fold-count", HOST = "mag-comment-rail-host", ANCHOR = "mag-comment-anchor-active", RAIL = "mag-comment-anchor-rail";
 const GAP = 8;
 const cssEscape = value => window.CSS?.escape ? window.CSS.escape(value) : String(value).replace(/["\\]/g, "\\$&");
@@ -63,7 +45,6 @@ export function stackNotes(items, activeIndex = -1, gap = GAP) {
 
 function projection({ enabled, onError, order = () => "oldest" }) {
   if (typeof window[KEY] === "function") window[KEY]();
-  evictFolioRail();
   document.querySelectorAll(".rei-native-comment,.rei-comment-count").forEach(node => node.remove());
   let disposed = false, loading = false, renderTimer, dataTimer, activeTarget = null, activeComment = null, lastOrder;
   const models = new Map(), cleanups = [], layouts = new Map(), replyCache = new Map(), railMode = new Map(), stickyRails = new Set(), animationTimers = new Map();
@@ -247,9 +228,9 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     // Otherwise it resets top/transform in the middle of the slide.
     if (Date.now() < quietUntil) { schedule(); return; }
     clearProjection({ keepRails: true, keepCards: true });
+    publishFeature("comments", enabled());
     if (!enabled()) { clearProjection(); return; }
-    evictFolioRail();
-    const used = new Set();
+      const used = new Set();
     // Changing the order only reverses the stack under each paragraph
     // (C1 C2 C3 → C3 C2 C1). Drop any previous click alignment so the first
     // card in the new order sits level with the paragraph, nothing shifts up.
@@ -436,7 +417,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
   const main = document.querySelector(".roam-main"); if (main) observer.observe(main, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"], attributeOldValue: true });
   const resize = window.ResizeObserver ? new window.ResizeObserver(schedule) : null; if (main) resize?.observe(main);
   on(window, "resize", schedule, { passive: true }); on(window, "hashchange", () => { activeTarget = null; activeComment = null; scheduleData(); });
-  on(document, "focusout", event => { if (event.target.id !== "reading-desk-panel") scheduleData(); });
+  on(document, "focusout", event => { if (event.target.matches?.('textarea.rm-block-input,[contenteditable="true"]')) scheduleData(); });
   // Clicking a paragraph that has notes brings its note level with it.
   on(document, "click", event => {
     const target = event.target;
@@ -461,34 +442,13 @@ function projection({ enabled, onError, order = () => "oldest" }) {
 
 export function installCommentRail({ enabled = () => true, onError = () => {}, order } = {}) {
   let instance, disposed = false;
-  // Folio can load after Reading Desk and start its own (older) comment rail,
-  // which replaces our cards with ones that do not slide or align. Its boot
-  // ends by storing its cleanup under FOLIO_KEY: while our rail is on, that
-  // cleanup runs right away.
-  let folioCleanup;
-  const arm = () => {
-    const existing = Object.getOwnPropertyDescriptor(window, FOLIO_KEY);
-    if (existing?.get) return;
-    folioCleanup = typeof existing?.value === "function" ? existing.value : undefined;
-    try {
-      Object.defineProperty(window, FOLIO_KEY, {
-        configurable: true,
-        get: () => folioCleanup,
-        set: value => {
-          folioCleanup = value;
-          if (typeof value === "function" && !disposed && enabled()) setTimeout(() => { if (folioCleanup === value) { evictFolioRail(); instance?.schedule?.(); } }, 0);
-        }
-      });
-    } catch { /* render() still evicts it */ }
-  };
-  armTrap = arm; arm();
-  const releaseTrap = () => { if (armTrap === arm) armTrap = null; const value = folioCleanup; try { delete window[FOLIO_KEY]; if (value) window[FOLIO_KEY] = value; } catch { /* nothing to release */ } };
   const refresh = () => {
     if (disposed) return;
+    publishFeature("comments", enabled());
     if (!enabled()) { if (typeof window[KEY] === "function") window[KEY](); return; }
     if (!instance?.alive) instance = projection({ enabled, onError, ...(order ? { order } : {}) });
     return instance.refresh();
   };
   window.addEventListener("reading-desk-comments-refresh", refresh); refresh();
-  return { refresh, relayout() { if (instance?.alive) instance.schedule(); }, get instance() { return instance; }, cleanup() { disposed = true; window.removeEventListener("reading-desk-comments-refresh", refresh); instance?.cleanup(); releaseTrap(); } };
+  return { refresh, relayout() { if (instance?.alive) instance.schedule(); }, get instance() { return instance; }, cleanup() { disposed = true; window.removeEventListener("reading-desk-comments-refresh", refresh); instance?.cleanup(); publishFeature("comments", false); } };
 }

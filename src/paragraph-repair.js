@@ -1,6 +1,7 @@
 import { api, childrenOf, pull, textOf, uidOf, updateBlock, value } from './graph.js';
 import { documentHeaders, putDocument, readDocument } from './reader-store.js';
 import { t } from "./i18n.js";
+import { referenceSnapshot, referencesUnchanged, referencesTo } from "./repair-snapshot.js";
 
 export const FRAGMENT_ARCHIVE = 'EPUB-READER:paragraph-fragments';
 const move = (uid,parentUid,order) => api().data.block.move({ block:{uid}, location:{'parent-uid':parentUid,order} });
@@ -112,10 +113,11 @@ export function previewArchiveCleanup(content) {
   const archives = [], seen = new Set();
   const consider = (child, parentUid, repaired) => {
     const uid = uidOf(child); if (seen.has(uid)) return; seen.add(uid);
-    const fragments = childrenOf(child).map(fragment => ({ uid: uidOf(fragment), text: textOf(fragment), children: childrenOf(fragment).length, refs: fragmentRefs(uidOf(fragment)) }));
-    const blocked = fragments.filter(fragment => fragment.children || (!repaired && fragment.refs.length));
+    const fragments = childrenOf(child).map(fragment => ({ uid: uidOf(fragment), text: textOf(fragment), children: childrenOf(fragment).length, refs: fragmentRefs(uidOf(fragment)), referenceChanges: referenceSnapshot(uidOf(fragment), parentUid) }));
+    const blocked = fragments.filter(fragment => fragment.children || (!repaired && fragment.refs.length) || fragment.referenceChanges.some(item => item.before === item.after));
+    const archiveRefs = referencesTo(uid);
     const references = fragments.reduce((sum, fragment) => sum + fragment.refs.length, 0);
-    archives.push({ uid, parentUid, repaired, order: value(child, 'order') ?? 0, fragments, references, safe: !blocked.length, reason: blocked.length ? `${blocked.length} fragment(s) have child blocks${repaired ? '' : ' or references'}` : '' });
+    archives.push({ uid, parentUid, repaired, order: value(child, 'order') ?? 0, fragments, references, safe: !blocked.length && !archiveRefs.length, reason: blocked.length ? `${blocked.length} fragment(s) have child blocks${repaired ? '' : ' or references'}` : '' });
   };
   for (const item of content.nodes) for (const child of childrenOf(item.node)) if (textOf(child) === FRAGMENT_ARCHIVE) consider(child, item.uid, true);
   // Archives left directly on a book page (outside any paragraph).
@@ -130,13 +132,18 @@ export async function applyArchiveCleanup(plan) {
     const node = pull(archive.uid);
     const current = node && childrenOf(node).map(fragment => uidOf(fragment));
     if (!node || textOf(node) !== FRAGMENT_ARCHIVE || current.join() !== archive.fragments.map(fragment => fragment.uid).join() || childrenOf(node).some(fragment => childrenOf(fragment).length)) { backup.skipped.push(archive.uid); continue; }
-    const refs = archive.fragments.flatMap(fragment => fragmentRefs(fragment.uid).map(uid => [uid, fragment.uid]));
-    if (refs.length && !archive.repaired) { backup.skipped.push(archive.uid); continue; }
-    for (const [uid, fragmentUid] of refs) {
-      const before = textOf(pull(uid)), after = retargetText(before, fragmentUid, archive.parentUid);
-      if (after === before) continue;
-      await updateBlock({ uid, string: after });
-      backup.retargeted.push({ uid, before, after });
+    if (!isChild(archive.uid, archive.parentUid) || referencesTo(archive.uid).length ||
+        archive.fragments.some(fragment => textOf(pull(fragment.uid)) !== fragment.text || !referencesUnchanged(fragment.uid, fragment.referenceChanges || []))) { backup.skipped.push(archive.uid); continue; }
+    const updates = new Map();
+    for (const fragment of archive.fragments) for (const item of fragment.referenceChanges || []) {
+      if (!updates.has(item.uid)) updates.set(item.uid, { uid: item.uid, before: item.before, after: item.before });
+      const change = updates.get(item.uid);
+      change.after = retargetText(change.after, fragment.uid, archive.parentUid);
+    }
+    if (updates.size && !archive.repaired) { backup.skipped.push(archive.uid); continue; }
+    for (const change of updates.values()) {
+      await updateBlock({ uid: change.uid, string: change.after });
+      backup.retargeted.push(change);
       await putDocument('archive-cleanup', key, backup);
     }
     await api().data.block.delete({ block: { uid: archive.uid } });

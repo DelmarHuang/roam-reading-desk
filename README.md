@@ -1,3 +1,9 @@
+> **0.7.14 test build:** Repair checkboxes now sit beside their wrapping labels. Drag the panel’s bottom-right corner to resize, or focus the corner and use arrow keys. Dimensions are retained while the extension remains loaded. The extracted folder is always `reading-desk`.
+
+> **0.7.5 safety update:** Repair applies the previewed plan only; new/changed content requires a new preview. Delete Book is blocked by external references. Disabling the extension pauses imports. Folio compatibility is handled by Folio 1.4.26 or later.
+>
+> Metadata pages are read directly. Their UIDs are remembered on first load. If these pages were renamed *before* this upgrade and no UID has been recorded, restore the original names `roam/epub-importer/library` and `roam/epub-importer/reader` before loading; they may be renamed again afterwards. No full-graph discovery runs during progress saves.
+
 <a id="top"></a>
 
 # Reading Desk

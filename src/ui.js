@@ -1,9 +1,11 @@
+import { chapterNodeKind } from "./writer.js";
 import { parseEpub } from "./epub.js";
 import { getJob, listJobs, removeJob, saveJob } from "./storage.js";
 import { createImportJob, deleteManagedBook, getManagedBooks, prepareBookDeletion, prepareImageRemoval, removeBookImages, runImport } from "./roam.js";
 import { renderFormulaMathML } from "./math.js";
 import { findRecoveryPages, recoverExistingBook } from "./library.js";
 import { t } from "./i18n.js";
+import { plainText } from "./rich-text.js";
 
 let activeModal = null;
 let readerController = null;
@@ -58,7 +60,7 @@ function progressView(body) {
   const progress = element("progress", "rei-progress");
   progress.max = 1;
   progress.value = 0;
-  wrap.append(label, progress);
+  wrap.append(label, progress, element("p", "rei-muted", t('For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.')));
   body.append(wrap);
   return update => {
     label.textContent = update.message || t("Processing…");
@@ -104,7 +106,7 @@ async function startJob(job, extensionAPI, body) {
   }
 }
 
-function renderPreview(body, book, extensionAPI) {
+function renderPreview(body, book, extensionAPI, sourceFile) {
   body.replaceChildren();
   const card = element("div", "rei-preview");
   card.append(element("div", "rei-kicker", t("Book Preview")));
@@ -120,11 +122,36 @@ function renderPreview(body, book, extensionAPI) {
   label.append(titleInput);
   body.append(label);
 
+  if (sourceFile) {
+    const row = element("label", "rei-field");
+    const toggle = element("input"); toggle.type = "checkbox"; toggle.checked = Boolean(book.includeStyledHeadings);
+    row.append(toggle, element("span", "", t("Include typography-based subheadings (larger bold paragraphs; review before importing)")));
+    toggle.onchange = async () => {
+      toggle.disabled = true; start.disabled = true;
+      try {
+        const next = await parseEpub(await sourceFile.arrayBuffer(), sourceFile.name, { includeStyledHeadings: toggle.checked });
+        next.title = titleInput.value; renderPreview(body, next, extensionAPI, sourceFile);
+      } catch (error) { notice(body, error.message, "rei-error"); toggle.disabled = false; start.disabled = false; }
+    };
+    body.append(row);
+  }
   const toc = element("details", "rei-toc");
   toc.open = true;
   toc.append(element("summary", "", book.toc?.length ? t("Original EPUB TOC ({0}, full hierarchy)", [book.tocSource === "ncx" ? "NCX" : "NAV"]) : t("Outline generated from body headings")));
   toc.append(directoryList(book.toc?.length ? book.toc : book.chapters));
   body.append(toc);
+  const outline = element("details", "rei-toc");
+  outline.append(element("summary", "", t("Heading levels to import (H1–H3)")));
+  const headings = element("ul", "rei-directory");
+  const showHeadings = (nodes, parent = null, depth = 0) => nodes.forEach(node => {
+    const heading = chapterNodeKind(node, parent, book);
+    if (heading) {
+      const row = element("li", "", `${depth < 3 ? `H${depth + 1}` : depth === 3 ? "Bold" : "Text"} · ${node.text}${node.headingEvidence ? " [" + node.headingEvidence + "]" : ""}`);
+      row.style.marginLeft = `${Math.min(depth, 6) * 12}px`; headings.append(row);
+    }
+    showHeadings(node.children || [], node, depth + (heading ? 1 : 0));
+  });
+  showHeadings(book.chapters); outline.append(headings); body.append(outline);
   (book.warnings || []).forEach(warning => notice(body, warning, "rei-error"));
   if (book.formulas?.length) {
     const math = element("details", "rei-toc");
@@ -153,7 +180,7 @@ function renderPreview(body, book, extensionAPI) {
     const list = element("ul", "rei-directory");
     nodes.forEach(node => {
       const row = element("li", "");
-      row.append(element("span", "", node.text.replace(/⟦EPUBI:(i\d+)⟧/g, (_, id) => `[Image: ${images.get(id)?.path || id}]`).replace(/⟦EPUBL:(l\d+)⟧/g, (_, id) => book.links.find(link => link.id === id)?.label || "Internal link")));
+      row.append(element("span", "", ((node.kind === "heading" || node.kind === "toc" || node.kind === "supplement") ? "[Heading] " : "") + node.text.replace(/⟦EPUBI:(i\d+)⟧/g, (_, id) => `[Image: ${images.get(id)?.path || id}]`).replace(/⟦EPUBL:(l\d+)⟧/g, (_, id) => book.links.find(link => link.id === id)?.label || "Internal link")));
       if (node.children?.length) row.append(previewNodes(node.children));
       list.append(row);
     });
@@ -210,6 +237,7 @@ function resumeSection(body, jobs, extensionAPI) {
 
 export async function openImporter(extensionAPI) {
   const body = modal(t("EPUB Importer"));
+  body.append(element("p", "rei-muted", t('For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.')));
   body.append(element("p", "", t("Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.")));
   const picker = element("input", "rei-file");
   picker.type = "file";
@@ -223,7 +251,7 @@ export async function openImporter(extensionAPI) {
     picker.disabled = true;
     try {
       const book = await parseEpub(await file.arrayBuffer(), file.name);
-      renderPreview(body, book, extensionAPI);
+      renderPreview(body, book, extensionAPI, file);
     } catch (error) {
       status.textContent = t("Cannot read file: {0}", [error?.message || error]);
       status.className = "rei-notice rei-error";
@@ -290,9 +318,16 @@ async function confirmDeletion(body, record, extensionAPI) {
   }
   status.textContent = attachmentSummary(plan);
   if (plan.pages.length) notice(body, t("Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.", [plan.pages.join("; ")]), "rei-muted");
-  if (plan.externalBlockReferences) notice(body, t("{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.", [plan.externalBlockReferences]), "rei-error");
+  if (plan.externalBlockReferences) notice(body, t("{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.", [plan.externalBlockReferences]), "rei-error");
+  for (const ref of plan.externalReferences || []) {
+    const item = element("div", "rei-notice");
+    const link = button(ref.page?.title || ref.uid);
+    link.onclick = async () => { closeModal(); await window.roamAlphaAPI.ui.mainWindow.openBlock({ block: { uid: ref.uid } }); };
+    const preview = plainText(ref.text);
+    item.append(link, element("p", "rei-muted", preview.length > 240 ? `${preview.slice(0, 240)}…` : preview)); body.append(item);
+  }
   if (plan.scanFailed) {
-    notice(body, t("Reference checking failed. Attachments will be retained."), "rei-error");
+    notice(body, t("Reference checking failed. Deletion is blocked."), "rei-error");
   }
   if (record.status === "recovered") notice(body, t("This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained."), "rei-muted");
   const label = element("label", "rei-field");
@@ -305,7 +340,7 @@ async function confirmDeletion(body, record, extensionAPI) {
   cancel.onclick = () => openManager(extensionAPI);
   const remove = button(t("Delete Permanently"), "rei-danger");
   remove.disabled = true;
-  input.oninput = () => { remove.disabled = input.value !== record.title; };
+  input.oninput = () => { remove.disabled = Boolean(plan.scanFailed || plan.externalBlockReferences || input.value !== record.title); };
   remove.onclick = async () => {
     remove.disabled = true;
     input.disabled = true;
@@ -320,7 +355,7 @@ async function confirmDeletion(body, record, extensionAPI) {
       status.textContent = t("Deletion failed: {0}", [error?.message || error]);
       status.className = "rei-notice rei-error";
       input.disabled = false;
-      remove.disabled = input.value !== record.title;
+      remove.disabled = Boolean(plan.scanFailed || plan.externalBlockReferences || input.value !== record.title);
     }
   };
   actions.append(cancel, remove);

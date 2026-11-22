@@ -1,3 +1,3765 @@
+// src/locales/fr.js
+var fr_default = {
+  "Resize panel: drag the corner, or use arrow keys": "Redimensionner le panneau : faites glisser le coin ou utilisez les touches fl\xE9ch\xE9es",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "S\xE9parer les images et le texte dans {0} blocs ; conserver les identifiants du texte et les blocs enfants",
+  "Separate images and text in existing blocks (preview first)": "S\xE9parer les images et le texte dans les blocs existants (aper\xE7u pr\xE9alable)",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} blocs complexes ou \xE0 la racine des chapitres sont rest\xE9s inchang\xE9s.",
+  "{0} image/text blocks": "{0} blocs image/texte",
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "Pour acc\xE9l\xE9rer l\u2019importation, gardez cette fen\xEAtre et cet onglet Roam actifs jusqu\u2019\xE0 la fin. Passer \xE0 une autre application ou un autre onglet peut la ralentir.",
+  "Book or referenced content changed since preview. Preview the repair again.": "Le livre ou les r\xE9f\xE9rences ont chang\xE9 depuis l\u2019aper\xE7u. Relancez l\u2019aper\xE7u.",
+  "Reference check failed; deletion stopped.": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences ; suppression arr\xEAt\xE9e.",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "Ce livre est r\xE9f\xE9renc\xE9 hors de ses chapitres. Retirez ces r\xE9f\xE9rences avant de le supprimer.",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "{0} blocs externes r\xE9f\xE9rencent le livre. La suppression est bloqu\xE9e pour les pr\xE9server.",
+  "Reference checking failed. Deletion is blocked.": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences. Suppression bloqu\xE9e.",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk est d\xE9sactiv\xE9. Activez-le avant d\u2019importer.",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Importation suspendue : Reading Desk a \xE9t\xE9 d\xE9sactiv\xE9. R\xE9activez-le pour reprendre.",
+  "Enter a destination page title.": "Saisissez le titre de la page de destination.",
+  "Select annotations to include first.": "S\xE9lectionnez d\u2019abord les annotations \xE0 inclure.",
+  "Book repair is available for managed books only.": "La r\xE9paration n\u2019est disponible que pour les livres g\xE9r\xE9s.",
+  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "Recoller {0} paragraphe(s) coup\xE9(s) (v\xE9rifi\xE9 avec l\u2019EPUB d\u2019origine)",
+  "Fix {0} block(s) with broken numbered links": "Corriger {0} bloc(s) aux liens num\xE9rot\xE9s cass\xE9s",
+  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": " ; {0} r\xE9f\xE9rence(s) vers d\u2019anciens fragments (commentaires, liens de notes) passent au paragraphe r\xE9par\xE9",
+  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "Supprimer {0} archive(s) EPUB-READER:paragraph-fragments{1}",
+  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "Mettre {0} titre(s) de chapitre en H1/H2/H3 selon la profondeur",
+  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "Supprimer {0} titre(s) qui r\xE9p\xE8tent le titre du chapitre (les paragraphes remontent, ID inchang\xE9s)",
+  "Turn {0} other body heading(s) into bold text": "Transformer {0} autre(s) titre(s) du texte en gras",
+  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "Remettre {0} appel(s) de note \xE0 la fin de leur titre (ex. \xAB 2.3 Titre [3] \xBB) ; les paragraphes sous l\u2019appel passent sous le titre",
+  "Turn {0} footnote marker heading(s) such as [3] into plain text": "Transformer {0} titre(s) d\u2019appel de note comme [3] en texte simple",
+  "Rejoining split paragraphs\u2026": "Recollage des paragraphes coup\xE9s\u2026",
+  "Fixing numbered links\u2026": "Correction des liens num\xE9rot\xE9s\u2026",
+  "Removing paragraph archives\u2026": "Suppression des archives de paragraphes\u2026",
+  "Fixing heading levels\u2026": "Correction des niveaux de titres\u2026",
+  "No book repair record was found.": "Aucun enregistrement de r\xE9paration trouv\xE9.",
+  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "La page d\u2019origine n\u2019existe plus. Ouvrez la page actuelle du livre, s\xE9lectionnez ce livre et reliez ses chapitres. Aucune r\xE9importation n\u2019est n\xE9cessaire.",
+  "Select at least one existing book chapter.": "S\xE9lectionnez au moins un chapitre existant.",
+  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Confirmez d\u2019abord les chapitres de ce livre dans le panneau de lecture. Aucune r\xE9importation ni modification du texte n\u2019est n\xE9cessaire.",
+  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "Le p\xE9rim\xE8tre des chapitres ne peut pas inclure une page enti\xE8re. Confirmez \xE0 nouveau les chapitres ; la page est conserv\xE9e.",
+  "The current page or block cannot be read.": "Impossible de lire la page ou le bloc actuel.",
+  "Could not parse {0}": "Impossible d\u2019analyser {0}",
+  "Invalid EPUB: META-INF/container.xml is missing": "EPUB invalide : META-INF/container.xml est absent",
+  "The EPUB manifest is missing": "Le manifeste de l\u2019EPUB est absent",
+  "No readable chapter content was found in the EPUB": "Aucun contenu de chapitre lisible dans l\u2019EPUB",
+  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Ce bloc n\u2019existe plus. Actualisez la table des mati\xE8res ou les annotations ; le livre ne sera pas recr\xE9\xE9.",
+  "Cannot find the page containing this block.": "Impossible de trouver la page qui contient ce bloc.",
+  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "La page est ouverte, mais ce paragraphe n\u2019est pas encore affich\xE9. D\xE9pliez son chapitre et r\xE9essayez.",
+  "Heading repair is available for managed books only.": "La r\xE9paration des titres n\u2019est disponible que pour les livres g\xE9r\xE9s.",
+  "This Roam version does not expose block.move. No headings were changed.": "Cette version de Roam n\u2019expose pas block.move. Aucun titre n\u2019a \xE9t\xE9 modifi\xE9.",
+  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Utilisez \xAB Annuler la derni\xE8re r\xE9paration \xBB pour restaurer les modifications.",
+  "No heading repair backup was found.": "Aucune sauvegarde de r\xE9paration des titres trouv\xE9e.",
+  "Language": "Langue",
+  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Langue de l\u2019interface (Auto suit votre navigateur). Le panneau de lecture change aussit\xF4t ; cet onglet de r\xE9glages apr\xE8s rechargement de l\u2019extension.",
+  "Import EPUB": "Importer un EPUB",
+  "Choose, preview, and import an EPUB book": "Choisir, pr\xE9visualiser et importer un livre EPUB",
+  "Open Importer": "Ouvrir l\u2019importateur",
+  "Manage Imported Books": "G\xE9rer les livres import\xE9s",
+  "Manage imported books, recover existing pages, and safely clean up attachments": "G\xE9rer les livres import\xE9s, r\xE9cup\xE9rer des pages existantes et nettoyer les pi\xE8ces jointes en toute s\xE9curit\xE9",
+  "Manage Books": "G\xE9rer les livres",
+  "Reading Desk": "Reading Desk",
+  "Open reading tools for books or ordinary pages": "Outils de lecture pour les livres ou les pages ordinaires",
+  "Open Reading Desk": "Ouvrir Reading Desk",
+  "Automatic Browsing Progress": "Progression de lecture automatique",
+  "Estimate foreground browsing per chapter; never infer comprehension": "Estime la lecture au premier plan par chapitre ; n\u2019en d\xE9duit jamais la compr\xE9hension",
+  "Native Comment Side Notes": "Commentaires natifs en marge",
+  "Show native comments in full beside the text throughout the graph": "Afficher les commentaires natifs en entier \xE0 c\xF4t\xE9 du texte dans tout le graphe",
+  "Highlight Colour": "Couleur de surlignage",
+  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Couleur des ^^surlignages^^ natifs (Th\xE8me par d\xE9faut conserve la couleur de votre th\xE8me)",
+  "Question Tags": "Tags de question",
+  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Tags existants, s\xE9par\xE9s par des virgules, pour les questions ouvertes. Le raccourci \xAB Question \xBB ajoute #question.",
+  "Invalid library format. Stopped to protect existing data.": "Format de biblioth\xE8que invalide. Arr\xEAt pour prot\xE9ger les donn\xE9es existantes.",
+  "Cannot read the library. Stopped to protect existing data.": "Impossible de lire la biblioth\xE8que. Arr\xEAt pour prot\xE9ger les donn\xE9es existantes.",
+  "Unsupported library version or structure. Stopped to protect existing data.": "Version ou structure de biblioth\xE8que non prise en charge. Arr\xEAt pour prot\xE9ger les donn\xE9es existantes.",
+  "The attachment ledger is incomplete. Stopped to protect attachments.": "Le registre des pi\xE8ces jointes est incomplet. Arr\xEAt pour prot\xE9ger les pi\xE8ces jointes.",
+  "Attachment ledger validation failed.": "La validation du registre des pi\xE8ces jointes a \xE9chou\xE9.",
+  "The book record has no stable identity.": "La fiche du livre n\u2019a pas d\u2019identit\xE9 stable.",
+  "Enter at least two characters of the page title.": "Saisissez au moins deux caract\xE8res du titre de la page.",
+  "The specified book page could not be found.": "La page du livre indiqu\xE9e est introuvable.",
+  "Native Roam comment": "Commentaire Roam natif",
+  "Open the native comment thread to edit": "Ouvrir le fil de commentaires natif pour le modifier",
+  "Open native comment thread": "Ouvrir le fil de commentaires natif",
+  "Delete this comment": "Supprimer ce commentaire",
+  "Delete comment": "Supprimer le commentaire",
+  "\n\nIts replies are deleted too.": "\n\nSes r\xE9ponses seront aussi supprim\xE9es.",
+  "Delete this comment?\n\n{0}{1}": "Supprimer ce commentaire ?\n\n{0}{1}",
+  "Expand this section": "D\xE9plier cette section",
+  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Utilisez un tag de question non vide, sans crochets, #, accolades ni retours \xE0 la ligne (80 caract\xE8res max.).",
+  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Placez d\u2019abord le curseur dans un paragraphe ou un commentaire natif, puis basculez la question.",
+  "Unmark It": "Retirer la marque",
+  "Mark It": "Marquer",
+  "This Roam version does not expose block.move. No paragraphs were changed.": "Cette version de Roam n\u2019expose pas block.move. Aucun paragraphe n\u2019a \xE9t\xE9 modifi\xE9.",
+  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Les ID des fragments d\u2019origine sont conserv\xE9s. Utilisez \xAB Annuler la derni\xE8re r\xE9paration de paragraphes \xBB pour les modifications interrompues.",
+  "Paragraph repair backup is missing.": "La sauvegarde de r\xE9paration des paragraphes est introuvable.",
+  "Archive cleanup backup is missing.": "La sauvegarde du nettoyage des archives est introuvable.",
+  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "Les m\xE9tadonn\xE9es de lecture sont incompl\xE8tes. Actualisez et r\xE9essayez ; le livre d\u2019origine n\u2019est pas touch\xE9.",
+  "just now": "\xE0 l\u2019instant",
+  "{0} min ago": "il y a {0} min",
+  "{0} h ago": "il y a {0} h",
+  "{0} d ago": "il y a {0} j",
+  "All Books": "Tous les livres",
+  "Selected block: {0}": "Bloc s\xE9lectionn\xE9 : {0}",
+  "Click a paragraph or native comment to select an action target.": "Cliquez sur un paragraphe ou un commentaire natif pour choisir la cible de l\u2019action.",
+  " \xB7 approx. {0}%": " \xB7 env. {0} %",
+  "Read \xB7 click to unmark": "Lu \xB7 cliquer pour annuler",
+  "Mark as read": "Marquer comme lu",
+  "Could not collapse the previous chapter: {0}": "Impossible de replier le chapitre pr\xE9c\xE9dent : {0}",
+  "The page {0} does not exist yet.": "La page {0} n\u2019existe pas encore.",
+  "Open a book or page first.": "Ouvrez d\u2019abord un livre ou une page.",
+  "Remove from All Books": "Retirer de Tous les livres",
+  "Include in All Books": "Inclure dans Tous les livres",
+  "Pages you include appear in the All Books scope with your books": "Les pages incluses apparaissent avec vos livres dans \xAB Tous les livres \xBB",
+  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Confirmez les chapitres existants qui appartiennent \xE0 ce livre. D\xE9cochez vos propres notes. Seuls les ID de blocs sont enregistr\xE9s ; le texte, les commentaires et les surlignages existants sont conserv\xE9s.",
+  "Confirm Book Scope": "Confirmer les chapitres",
+  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Annotations et questions de tous les livres g\xE9r\xE9s et de toutes les pages incluses. Choisissez une source pour l\u2019ouvrir.",
+  "{0} \xB7 {1} annotations": "{0} \xB7 {1} annotations",
+  "Last read \xB7 {0}": "Derni\xE8re lecture \xB7 {0}",
+  "Body": "Texte",
+  "Continue": "Continuer",
+  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "Aucune table des mati\xE8res sur cette page. Elle est construite \xE0 partir des titres H1, H2 et H3.",
+  "No chapters were found.": "Aucun chapitre trouv\xE9.",
+  "Collapse All Chapters": "Replier tous les chapitres",
+  "Collapse Subdirectories": "Replier les sous-sections",
+  "Expand Subdirectories": "D\xE9plier les sous-sections",
+  "Current section: {0}": "Section actuelle : {0}",
+  "Toggle subdirectory: {0}": "Basculer la sous-section : {0}",
+  "Resume": "Reprendre",
+  "Reset": "R\xE9initialiser",
+  "Reset browsing progress for {0}? Text and annotations will be preserved.": "R\xE9initialiser la progression de lecture de {0} ? Le texte et les annotations sont conserv\xE9s.",
+  "Fold": "Replier",
+  "{0} chapter entries are missing. Use the action below to link their current location.": "{0} entr\xE9es de chapitre sont manquantes. Utilisez l\u2019action ci-dessous pour relier leur emplacement actuel.",
+  "Link Current Page to This Book": "Relier la page actuelle \xE0 ce livre",
+  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "La table des mati\xE8res vient des titres H1, H2 et H3. Cliquer sur un titre ne fait que d\xE9filer ; rien n\u2019est repli\xE9 ni modifi\xE9 sur la page.",
+  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "Les chapitres non visit\xE9s ne sont pas des t\xE2ches. La couverture estime les paragraphes affich\xE9s, pas les mots lus ni la compr\xE9hension. Utilisez \u2713 pour marquer vous-m\xEAme un chapitre comme lu.",
+  "Include in notes draft": "Inclure dans le brouillon de notes",
+  "This page": "Cette page",
+  "(Empty annotation)": "(Annotation vide)",
+  "Open Native Comment": "Ouvrir le commentaire natif",
+  "Open in Sidebar": "Ouvrir dans la barre lat\xE9rale",
+  "Search annotations": "Rechercher dans les annotations",
+  "All types": "Tous les types",
+  "Highlights": "Surlignages",
+  "Comments": "Commentaires",
+  "Marks": "Marques",
+  "Questions": "Questions",
+  "All sources": "Toutes les sources",
+  "All chapters": "Tous les chapitres",
+  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} \xE9l\xE9ments \xB7 Cliquez pour situer dans le contexte ; Maj+clic pour la barre lat\xE9rale.",
+  "Load More": "Charger plus",
+  "Question:: \u2026": "Question:: \u2026",
+  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Questions rassemble tout ce qui reste ouvert : TODO natifs, vos tags de question et attributs de question (par exemple {0}). Les \xE9l\xE9ments DONE sont exclus. Alt+Q en bascule une sur le bloc actuel ; choisissez le style tag ou attribut dans R\xE9glages.",
+  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Annotations rassemble surlignages, commentaires natifs, marques et questions. Cochez des \xE9l\xE9ments pour cr\xE9er une page de notes de lecture qui renvoie aux originaux.",
+  "Destination page for notes draft": "Page de destination du brouillon de notes",
+  "Create Notes Draft from Selection": "Cr\xE9er un brouillon de notes \xE0 partir de la s\xE9lection",
+  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "{0} notes r\xE9f\xE9renc\xE9es ajout\xE9es \xE0 {1}, avec un lien vers la page source. Ouvert dans {2}.",
+  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "Pas encore de notes de lecture pour {0}. Dans Annotations, cochez des \xE9l\xE9ments et choisissez \xAB Cr\xE9er un brouillon de notes \xBB ; la page de notes ({1}) s\u2019ouvre dans la barre lat\xE9rale.",
+  "Create Notes Page": "Cr\xE9er la page de notes",
+  "Open the notes page (Shift+click: sidebar)": "Ouvrir la page de notes (Maj+clic : barre lat\xE9rale)",
+  "Sidebar": "Barre lat\xE9rale",
+  "No generated drafts on this page yet. Create one from the Annotations tab.": "Aucun brouillon g\xE9n\xE9r\xE9 sur cette page. Cr\xE9ez-en un depuis l\u2019onglet Annotations.",
+  "Show in the book (Shift+click: sidebar)": "Afficher dans le livre (Maj+clic : barre lat\xE9rale)",
+  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} brouillon(s) \xB7 {3} note(s)",
+  "Open this draft (Shift+click: sidebar)": "Ouvrir ce brouillon (Maj+clic : barre lat\xE9rale)",
+  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "La page de notes contient aussi {0} bloc(s) que vous avez \xE9crits vous-m\xEAme ; ouvrez la page pour les voir.",
+  "Back to Settings": "Retour aux r\xE9glages",
+  "Repair This Book": "R\xE9parer ce livre",
+  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "La r\xE9paration n\u2019est disponible que pour les livres g\xE9r\xE9s. Choisissez un livre dans le menu. Les pages ordinaires ne sont jamais modifi\xE9es automatiquement.",
+  "Nothing to repair in this book.": "Rien \xE0 r\xE9parer dans ce livre.",
+  "This repair will:": "Cette r\xE9paration va :",
+  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} archive(s) restent, car un ancien fragment a ses propres blocs enfants.",
+  "Preview the changes": "Aper\xE7u des modifications",
+  "Nothing to change.": "Rien \xE0 modifier.",
+  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "R\xE9parer {0} ?\n\n{1}\n\nTout est sauvegard\xE9 ; une seule annulation restaure l\u2019ensemble.",
+  "{0} paragraphs": "{0} paragraphes",
+  "{0} link blocks": "{0} blocs de liens",
+  "{0} archives ({1} references moved)": "{0} archives ({1} r\xE9f\xE9rences d\xE9plac\xE9es)",
+  "{0} headings": "{0} titres",
+  "nothing needed": "rien \xE0 faire",
+  " {0} block(s) changed since the preview were skipped; run the repair again.": " {0} bloc(s) modifi\xE9(s) depuis l\u2019aper\xE7u ont \xE9t\xE9 ignor\xE9s ; relancez la r\xE9paration.",
+  "Repaired: {0}.{1} Undo is available.": "R\xE9par\xE9 : {0}.{1} Annulation possible.",
+  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Corrige en une \xE9tape tout ce qui peut l\u2019\xEAtre sans risque : niveaux de titres pour la table des mati\xE8res, appels de note pr\xE9sent\xE9s comme titres, liens num\xE9rot\xE9s cass\xE9s et archives EPUB-READER:paragraph-fragments restantes. Le texte, les commentaires et les surlignages sont conserv\xE9s.",
+  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Facultatif : choisissez l\u2019EPUB d\u2019origine pour aussi recoller les paragraphes coup\xE9s par d\u2019anciens imports (lu localement, rien n\u2019est envoy\xE9)",
+  "Original EPUB for paragraph repair": "EPUB d\u2019origine pour la r\xE9paration des paragraphes",
+  "Checking the original EPUB\u2026": "V\xE9rification de l\u2019EPUB d\u2019origine\u2026",
+  "Undo Last Repair": "Annuler la derni\xE8re r\xE9paration",
+  "Undo the last book repair? Blocks edited since then are left as they are.": "Annuler la derni\xE8re r\xE9paration du livre ? Les blocs modifi\xE9s depuis restent tels quels.",
+  "Restored {0} items; skipped {1} edited items.": "{0} \xE9l\xE9ments restaur\xE9s ; {1} \xE9l\xE9ments modifi\xE9s ignor\xE9s.",
+  "Undo a repair made with an earlier version": "Annuler une r\xE9paration faite avec une version pr\xE9c\xE9dente",
+  "Undo {0}": "Annuler : {0}",
+  "Restored {0} items; skipped {1}.": "{0} \xE9l\xE9ments restaur\xE9s ; {1} ignor\xE9s.",
+  "its shortcut (not set)": "son raccourci (non d\xE9fini)",
+  "Press keys\u2026": "Appuyez sur les touches\u2026",
+  "{0}: shortcut cleared.": "{0} : raccourci effac\xE9.",
+  "{0} is already used by {1}.": "{0} est d\xE9j\xE0 utilis\xE9 par {1}.",
+  "Click, then press the new shortcut": "Cliquez, puis appuyez sur le nouveau raccourci",
+  "Reset to {0}": "Revenir \xE0 {0}",
+  "Library": "Biblioth\xE8que",
+  "Reading": "Lecture",
+  "Collapse the previous chapter when navigating": "Replier le chapitre pr\xE9c\xE9dent lors de la navigation",
+  "Track browsing automatically (estimated, not comprehension)": "Suivre la lecture automatiquement (estimation, pas de compr\xE9hension)",
+  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "La progression automatique ne concerne que les livres g\xE9r\xE9s. Replier les sous-sections du panneau ne modifie pas le livre.",
+  "Text width": "Largeur du texte",
+  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Remplir la ligne : les paragraphes vont jusqu\u2019au bout de leur rang\xE9e, sans bande vide avant le compteur de r\xE9f\xE9rences sur les grands \xE9crans. Les notes en marge se placent hors du texte, comme dans Folio.",
+  "Native Comments": "Commentaires natifs",
+  "Native comment side notes (graph-wide)": "Commentaires natifs en marge (tout le graphe)",
+  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Les notes sont affich\xE9es en entier et empil\xE9es \xE0 c\xF4t\xE9 du texte. Cliquez sur une note ou son paragraphe pour les aligner ; \u2197 ouvre le fil natif pour le modifier.",
+  "Side note style": "Style des notes en marge",
+  "Side note colour": "Couleur des notes en marge",
+  "Side note order": "Ordre des notes en marge",
+  "Highlight colour": "Couleur de surlignage",
+  "Highlight style": "Style de surlignage",
+  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "S\u2019applique partout aux ^^surlignages^^ natifs. Th\xE8me par d\xE9faut conserve la couleur de votre th\xE8me.",
+  "Mark style": "Style de marque",
+  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} ou le menu du bloc bascule #mark ; le tag reste dans le texte et est masqu\xE9 pendant la lecture.",
+  "Recognized question tags (comma-separated)": "Tags de question reconnus (s\xE9par\xE9s par des virgules)",
+  "Recognized question tags": "Tags de question reconnus",
+  "Quick question tag ({0})": "Tag de question rapide ({0})",
+  "Quick question tag": "Tag de question rapide",
+  "Toggle Question inserts": "\xAB Question \xBB ins\xE8re",
+  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Saisissez les noms de tags sans #. Le tag de question rapide est toujours reconnu, y compris dans les commentaires natifs. \xAB Marquer \xBB conserve #mark pour rester compatible avec votre style d\u2019origine.",
+  "Save Question Settings": "Enregistrer les r\xE9glages de questions",
+  "Question settings saved. Toggle Question uses your quick question tag.": "R\xE9glages de questions enregistr\xE9s. \xAB Question \xBB utilise votre tag de question rapide.",
+  "Question settings are active for this session; settings storage could not sync.": "Les r\xE9glages de questions sont actifs pour cette session ; ils n\u2019ont pas pu \xEAtre synchronis\xE9s.",
+  "Keyboard Shortcuts": "Raccourcis clavier",
+  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Cliquez sur un raccourci, puis appuyez sur les nouvelles touches (avec Ctrl, Cmd/\u2318 ou Alt/\u2325). \xC9chap annule, Retour arri\xE8re efface. Reading Desk traite ces touches avant Roam, donc Option+M ne tape plus \xAB \xB5 \xBB. Faites glisser la barre de titre pour d\xE9placer ce panneau. Maj+clic ouvre le contenu dans la barre lat\xE9rale.",
+  "Reading Notes": "Notes de lecture",
+  "Open new reading notes in": "Ouvrir les nouvelles notes de lecture dans",
+  "Maintenance": "Maintenance",
+  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Une \xE9tape pour les livres import\xE9s : niveaux de titres, appels de note en titre, liens cass\xE9s et archives de paragraphes restantes (et, en option, paragraphes coup\xE9s). Montre d\u2019abord ce qui va changer ; une seule annulation restaure le tout.",
+  "Click a paragraph or native comment first, then use this action.": "Cliquez d\u2019abord sur un paragraphe ou un commentaire natif, puis utilisez cette action.",
+  "Open a page or book, then click Refresh.": "Ouvrez une page ou un livre, puis cliquez sur Actualiser.",
+  "Current Page": "Page actuelle",
+  "Books": "Livres",
+  "Included pages": "Pages incluses",
+  "All Books \xB7 {0} sources \xB7 {1} annotations": "Tous les livres \xB7 {0} sources \xB7 {1} annotations",
+  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "Page \xB7 {0} titres \xB7 {1} annotations \xB7 la progression n\u2019est suivie que pour les livres",
+  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} blocs \xB7 {2} annotations \xB7 {3} pages",
+  "Close": "Fermer",
+  "Drag to move Reading Desk": "Faire glisser pour d\xE9placer Reading Desk",
+  "Reading scope": "Port\xE9e de lecture",
+  "Refresh": "Actualiser",
+  "Loading\u2026": "Chargement\u2026",
+  "Text or comments changed. Click Refresh to update without interrupting your work.": "Le texte ou les commentaires ont chang\xE9. Cliquez sur Actualiser pour mettre \xE0 jour sans interrompre votre travail.",
+  "No repair backup was found.": "Aucune sauvegarde de r\xE9paration trouv\xE9e.",
+  "Image conversion failed": "\xC9chec de la conversion de l\u2019image",
+  "Cannot read image: {0}": "Impossible de lire l\u2019image : {0}",
+  "Processing image {0}/{1}": "Traitement de l\u2019image {0}/{1}",
+  "Image upload returned no valid URL: {0}": "L\u2019envoi de l\u2019image n\u2019a renvoy\xE9 aucune URL valide : {0}",
+  "The imported page was removed. Select the EPUB again to import.": "La page import\xE9e a \xE9t\xE9 supprim\xE9e. S\xE9lectionnez \xE0 nouveau l\u2019EPUB pour l\u2019importer.",
+  "A book is already being imported. Wait for it to finish.": "Un livre est d\xE9j\xE0 en cours d\u2019import. Attendez la fin.",
+  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Cette ancienne t\xE2che a des correspondances de chapitres incorrectes. S\xE9lectionnez \xE0 nouveau l\u2019EPUB pour cr\xE9er un nouvel import.",
+  "Import complete": "Import termin\xE9",
+  "This book's record has changed or was removed. Reopen the book list.": "La fiche de ce livre a chang\xE9 ou a \xE9t\xE9 supprim\xE9e. Rouvrez la liste des livres.",
+  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Un stockage de commentaires natifs se trouve dans les chapitres. La suppression est bloqu\xE9e pour pr\xE9server les commentaires. Placez d\u2019abord ce stockage sur la page, hors des chapitres du livre.",
+  "Reference check failed; retained": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences ; conserv\xE9",
+  "Original upload ownership is unknown; retained": "Origine de l\u2019envoi inconnue ; conserv\xE9",
+  "Shared with another imported book": "Partag\xE9 avec un autre livre import\xE9",
+  "{0} references outside this book": "{0} r\xE9f\xE9rences hors de ce livre",
+  "Used only by this book": "Utilis\xE9 uniquement par ce livre",
+  "Chapter scope changed. Review the deletion preview again.": "Les chapitres ont chang\xE9. V\xE9rifiez \xE0 nouveau l\u2019aper\xE7u de suppression.",
+  "New content was added inside the book scope. Deletion stopped; review the preview again.": "Du contenu a \xE9t\xE9 ajout\xE9 dans le livre. Suppression arr\xEAt\xE9e ; v\xE9rifiez \xE0 nouveau l\u2019aper\xE7u.",
+  "Deleting book chapters (preserving pages and native comments)\u2026": "Suppression des chapitres du livre (pages et commentaires natifs conserv\xE9s)\u2026",
+  "Deleting attachment {0}/{1}\u2026": "Suppression de la pi\xE8ce jointe {0}/{1}\u2026",
+  "This book is waiting for attachment cleanup. Finish that first.": "Ce livre attend un nettoyage des pi\xE8ces jointes. Terminez-le d\u2019abord.",
+  "Not uploaded by this import; file retained": "Non envoy\xE9 par cet import ; fichier conserv\xE9",
+  "Original upload ownership is unknown; file retained": "Origine de l\u2019envoi inconnue ; fichier conserv\xE9",
+  "Reference check failed; file retained": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences ; fichier conserv\xE9",
+  "Removing images from blocks {0}/{1}\u2026": "Retrait des images des blocs {0}/{1}\u2026",
+  "Deleting image file {0}/{1}\u2026": "Suppression du fichier image {0}/{1}\u2026",
+  "Not set": "Non d\xE9fini",
+  "Could not save local progress": "Impossible d\u2019enregistrer la progression locale",
+  "Local progress save was aborted": "L\u2019enregistrement local de la progression a \xE9t\xE9 interrompu",
+  "The local EPUB cache is missing. Select the original file again.": "Le cache EPUB local est absent. S\xE9lectionnez \xE0 nouveau le fichier d\u2019origine.",
+  "Preparing\u2026": "Pr\xE9paration\u2026",
+  "Processing\u2026": "Traitement\u2026",
+  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} entr\xE9es de sommaire \xB7 {1} n\u0153uds de premier niveau \xB7 env. {2} blocs \xB7 {3} images \xB7 {4} liens internes",
+  " \xB7 {0} formulas": " \xB7 {0} formules",
+  "Resume importing {0}": "Reprendre l\u2019import de {0}",
+  "Import {0}": "Importer {0}",
+  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Gardez Roam ouvert pendant l\u2019import. La progression est enregistr\xE9e pour pouvoir reprendre un import interrompu.",
+  "Created {0}. Images and links are in their original positions.": "{0} cr\xE9\xE9. Images et liens sont \xE0 leur place d\u2019origine.",
+  "Import paused: {0}. Progress was saved; you can resume later.": "Import en pause : {0}. La progression est enregistr\xE9e ; vous pourrez reprendre plus tard.",
+  "Retry / Resume": "R\xE9essayer / Reprendre",
+  "Book Preview": "Aper\xE7u du livre",
+  "Author: {0}": "Auteur : {0}",
+  "Roam page title": "Titre de la page Roam",
+  "Original EPUB TOC ({0}, full hierarchy)": "Sommaire EPUB d\u2019origine ({0}, hi\xE9rarchie compl\xE8te)",
+  "Outline generated from body headings": "Plan g\xE9n\xE9r\xE9 \xE0 partir des titres du texte",
+  "; {0} need review (source retained)": " ; {0} \xE0 v\xE9rifier (source conserv\xE9e)",
+  "Formulas: {0} converted{1}": "Formules : {0} converties{1}",
+  "Formula {0} \xB7 {1}": "Formule {0} \xB7 {1}",
+  "Preview text and image order": "Aper\xE7u de l\u2019ordre du texte et des images",
+  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Les images sont envoy\xE9es \xE0 leur place d\u2019origine. Les liens externes sont conserv\xE9s ; les liens internes deviennent des r\xE9f\xE9rences de blocs Roam.",
+  "Start Import": "Lancer l\u2019import",
+  "Unfinished Imports": "Imports inachev\xE9s",
+  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Cette t\xE2che utilise un ancien analyseur. S\xE9lectionnez \xE0 nouveau l\u2019EPUB pour cr\xE9er un import corrig\xE9.",
+  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Cette ancienne t\xE2che n\u2019a pas v\xE9rifi\xE9 les formules. S\xE9lectionnez \xE0 nouveau l\u2019EPUB si le livre contient des formules.",
+  "Discard Job": "Abandonner la t\xE2che",
+  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Une page Roam existe d\xE9j\xE0. Utilisez \xAB G\xE9rer les livres import\xE9s \xBB pour retirer cet import.",
+  "EPUB Importer": "Importateur EPUB",
+  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "Choisissez un EPUB. L\u2019analyse reste sur votre appareil ; les images ne sont envoy\xE9es dans le graphe Roam actuel qu\u2019apr\xE8s confirmation de l\u2019import.",
+  "No file selected.": "Aucun fichier s\xE9lectionn\xE9.",
+  "Reading contents, text, images, and links\u2026": "Lecture de la table des mati\xE8res, du texte, des images et des liens\u2026",
+  "Cannot read file: {0}": "Impossible de lire le fichier : {0}",
+  "Cannot read saved jobs: {0}": "Impossible de lire les t\xE2ches enregistr\xE9es : {0}",
+  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Ceci supprime {0} chapitres racines, {1} blocs et {2} pi\xE8ces jointes exclusives. Les pages et les commentaires natifs sont conserv\xE9s.",
+  " {0} shared or unverified attachments will be retained.": " {0} pi\xE8ces jointes partag\xE9es ou non v\xE9rifi\xE9es seront conserv\xE9es.",
+  "Remove images \xB7 {0}": "Retirer les images \xB7 {0}",
+  "Finding images and checking where their files are used\u2026": "Recherche des images et de l\u2019usage de leurs fichiers\u2026",
+  "Check failed: {0}": "\xC9chec de la v\xE9rification : {0}",
+  "Back to Book List": "Retour \xE0 la liste des livres",
+  "This book has no images left in its text.": "Ce livre ne contient plus d\u2019images dans son texte.",
+  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} blocs contiennent des images. Les images en sont retir\xE9es ({1} blocs ne contenant qu\u2019une image sont supprim\xE9s ; les blocs avec du texte, des enfants ou des r\xE9f\xE9rences sont conserv\xE9s). Le livre, son texte, ses titres, commentaires et surlignages restent.",
+  " ({0} shared, outside-referenced or unverified files are kept)": " ({0} fichiers partag\xE9s, r\xE9f\xE9renc\xE9s ailleurs ou non v\xE9rifi\xE9s sont conserv\xE9s)",
+  " Also delete {0} uploaded image files used only by this book{1}.": " Supprimer aussi {0} fichiers image envoy\xE9s et utilis\xE9s uniquement par ce livre{1}.",
+  "Preview the first changes": "Aper\xE7u des premi\xE8res modifications",
+  "This cannot be undone: deleted image files are gone from Roam storage.": "Action irr\xE9versible : les fichiers image supprim\xE9s disparaissent du stockage Roam.",
+  "Cancel": "Annuler",
+  "Remove Images": "Retirer les images",
+  "Remove images from {0}? The book itself is kept.": "Retirer les images de {0} ? Le livre lui-m\xEAme est conserv\xE9.",
+  " {0} blocks changed since the preview and were skipped.": " {0} blocs modifi\xE9s depuis l\u2019aper\xE7u ont \xE9t\xE9 ignor\xE9s.",
+  " {0} files could not be deleted and remain listed.": " {0} fichiers n\u2019ont pas pu \xEAtre supprim\xE9s et restent list\xE9s.",
+  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Images retir\xE9es de {0} blocs ({1} blocs image seule supprim\xE9s) et {2} fichiers supprim\xE9s.{3}{4}",
+  "Image removal failed: {0}": "\xC9chec du retrait des images : {0}",
+  "Delete {0}": "Supprimer {0}",
+  "Checking attachment references in other pages and books\u2026": "V\xE9rification des r\xE9f\xE9rences aux pi\xE8ces jointes dans les autres pages et livres\u2026",
+  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "Pages concern\xE9es : {0}. Seuls les chapitres confirm\xE9s du livre seront supprim\xE9s ; ces pages restent.",
+  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} blocs hors du livre font r\xE9f\xE9rence \xE0 son contenu (y compris peut-\xEAtre des commentaires natifs). Ces r\xE9f\xE9rences peuvent se casser apr\xE8s la suppression ; les commentaires et notes ind\xE9pendantes restent.",
+  "Reference checking failed. Attachments will be retained.": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences. Les pi\xE8ces jointes seront conserv\xE9es.",
+  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Ce livre r\xE9cup\xE9r\xE9 n\u2019a pas de registre d\u2019envoi d\u2019origine. Les chapitres peuvent \xEAtre supprim\xE9s, mais les images d\xE9tect\xE9es seront conserv\xE9es.",
+  "Type the full book title to confirm: {0}": "Saisissez le titre complet du livre pour confirmer : {0}",
+  "Delete Permanently": "Supprimer d\xE9finitivement",
+  " {0} failed deletions are saved for retry.": " {0} suppressions \xE9chou\xE9es sont enregistr\xE9es pour un nouvel essai.",
+  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Chapitres du livre et {0} pi\xE8ces jointes exclusives supprim\xE9s. Pages et commentaires natifs conserv\xE9s. {1} pi\xE8ces jointes partag\xE9es ou non v\xE9rifi\xE9es conserv\xE9es.{2}",
+  "Deletion failed: {0}": "\xC9chec de la suppression : {0}",
+  "Recover Existing Book": "R\xE9cup\xE9rer un livre existant",
+  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Saisissez tout ou partie du titre de la page d\u2019origine du livre. La r\xE9cup\xE9ration enregistre le livre existant sans r\xE9importer, modifier le texte ni envoyer d\u2019images. Les pi\xE8ces jointes sans registre d\u2019envoi sont marqu\xE9es non v\xE9rifi\xE9es et conserv\xE9es lors d\u2019une suppression.",
+  "Page title or book keywords": "Titre de la page ou mots-cl\xE9s du livre",
+  "Find an existing book page": "Trouver une page de livre existante",
+  "Find Pages": "Chercher des pages",
+  "No matching pages. Try a shorter book title.": "Aucune page correspondante. Essayez un titre plus court.",
+  "Register This Book": "Enregistrer ce livre",
+  "Recovery failed: {0}": "\xC9chec de la r\xE9cup\xE9ration : {0}",
+  "Reading the graph's book library\u2026": "Lecture de la biblioth\xE8que du graphe\u2026",
+  "Cannot read the library: {0}. Existing books are unchanged.": "Impossible de lire la biblioth\xE8que : {0}. Les livres existants sont inchang\xE9s.",
+  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "La biblioth\xE8que est vide. Utilisez \xAB R\xE9cup\xE9rer un livre existant \xBB pour les livres absents apr\xE8s une mise \xE0 jour ; aucune r\xE9importation n\u2019est n\xE9cessaire.",
+  "Unknown author": "Auteur inconnu",
+  " \xB7 Cleanup pending": " \xB7 Nettoyage en attente",
+  " \xB7 Recovered (original attachments retained)": " \xB7 R\xE9cup\xE9r\xE9 (pi\xE8ces jointes d\u2019origine conserv\xE9es)",
+  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} pi\xE8ces jointes{2}",
+  "Clean Up Attachments": "Nettoyer les pi\xE8ces jointes",
+  "Delete Book": "Supprimer le livre",
+  "Delete this book's images but keep the book": "Supprimer les images de ce livre mais garder le livre",
+  "Open Reader": "Ouvrir le lecteur",
+  "The chapter structure has not been prepared.": "La structure des chapitres n\u2019a pas \xE9t\xE9 pr\xE9par\xE9e.",
+  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Un bloc import\xE9 a \xE9t\xE9 modifi\xE9 ou d\xE9plac\xE9. Reprise en pause pour pr\xE9server vos modifications. S\xE9lectionnez l\u2019EPUB pour l\u2019importer dans une page s\xE9par\xE9e.",
+  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Import du chapitre {0}/{1} \xB7 bloc {2}/{3}",
+  "Resolving internal link {0}/{1}": "R\xE9solution du lien interne {0}/{1}",
+  "{0} comment": "{0} commentaire",
+  "{0} comments": "{0} commentaires",
+  "{0} highlight": "{0} surlignage",
+  "{0} highlights": "{0} surlignages",
+  "{0} mark": "{0} marque",
+  "{0} marks": "{0} marques",
+  "Read": "Lu",
+  "Unvisited": "Non visit\xE9",
+  "Browsed": "Parcouru",
+  "Browsing": "En cours",
+  "highlight": "surlignage",
+  "comment": "commentaire",
+  "mark": "marque",
+  "question": "question",
+  "sidebar": "la barre lat\xE9rale",
+  "main window": "la fen\xEAtre principale",
+  "Heading repair": "R\xE9paration des titres",
+  "Link repair": "R\xE9paration des liens",
+  "Paragraph repair": "R\xE9paration des paragraphes",
+  "Archive removal": "Suppression des archives",
+  "Toggle Mark": "Marquer / d\xE9marquer",
+  "Toggle Question": "Question / pas question",
+  "Open / close Reading Desk": "Ouvrir / fermer Reading Desk",
+  "Continue reading": "Continuer la lecture",
+  "Open reading notes": "Ouvrir les notes de lecture",
+  "Contents": "Sommaire",
+  "Annotations": "Annotations",
+  "Notes": "Notes",
+  "Settings": "R\xE9glages",
+  "Theme default": "Th\xE8me par d\xE9faut",
+  "Margin dot + bold": "Point en marge + gras",
+  "Bookmark ribbon": "Ruban signet",
+  "Gold highlighter": "Surligneur dor\xE9",
+  "Pull quote": "Citation en exergue",
+  "Sticky note": "Note adh\xE9sive",
+  "Ink emphasis": "Encre appuy\xE9e",
+  "Fill the line": "Remplir la ligne",
+  "Theme line length": "Longueur de ligne du th\xE8me",
+  "Cards": "Cartes",
+  "Minimal": "Minimal",
+  "Coral": "Corail",
+  "Rose": "Rose",
+  "Mint": "Menthe",
+  "Sky": "Ciel",
+  "Lilac": "Lilas",
+  "Gold": "Or",
+  "Gray": "Gris",
+  "Blue": "Bleu",
+  "Green": "Vert",
+  "Purple": "Violet",
+  "Marker": "Surligneur",
+  "Underline": "Soulign\xE9",
+  "Oldest first": "Plus anciennes d\u2019abord",
+  "Newest first": "Plus r\xE9centes d\u2019abord",
+  "A tag at the end (#question)": "Un tag \xE0 la fin (#question)",
+  "An attribute at the start (Question::)": "Un attribut au d\xE9but (Question::)",
+  "The right sidebar": "La barre lat\xE9rale droite",
+  "The main window": "La fen\xEAtre principale",
+  "Auto (browser language)": "Auto (langue du navigateur)",
+  "Page": "Page",
+  "Book": "Livre",
+  "Earlier": "Plus ancien",
+  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "Aucun sommaire EPUB exploitable n\u2019a \xE9t\xE9 trouv\xE9. Le plan utilise les titres du texte ; v\xE9rifiez l\u2019aper\xE7u.",
+  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Cible de sommaire manquante pour {0} : {1}. Le texte non rattach\xE9 est conserv\xE9 \xE0 part.",
+  "TOC file is outside the EPUB reading order: {0}": "Le fichier de sommaire est hors de l\u2019ordre de lecture de l\u2019EPUB : {0}",
+  "Missing EPUB body file: {0}": "Fichier de texte EPUB manquant : {0}",
+  "Missing EPUB image: {0}": "Image EPUB manquante : {0}",
+  "Auto": "Auto",
+  "Interface language": "Langue de l\u2019interface",
+  "Interface language for Reading Desk (Auto follows your browser).": "Langue de l\u2019interface de Reading Desk (Auto suit votre navigateur)."
+};
+
+// src/locales/it.js
+var it_default = {
+  "Resize panel: drag the corner, or use arrow keys": "Ridimensiona il pannello: trascina l\u2019angolo o usa i tasti freccia",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "Separare immagini e testo in {0} blocchi; mantenere gli ID del testo e i blocchi figli",
+  "Separate images and text in existing blocks (preview first)": "Separare immagini e testo nei blocchi esistenti (prima visualizza l\u2019anteprima)",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} blocchi complessi o alla radice dei capitoli sono rimasti invariati.",
+  "{0} image/text blocks": "{0} blocchi immagine/testo",
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "Per importare pi\xF9 velocemente, mantieni attivi questa finestra e questa scheda di Roam fino al termine. Passare a un\u2019altra app o scheda pu\xF2 rallentare l\u2019importazione.",
+  "Book or referenced content changed since preview. Preview the repair again.": "Il libro o i riferimenti sono cambiati dopo l\u2019anteprima. Ripeti l\u2019anteprima.",
+  "Reference check failed; deletion stopped.": "Verifica dei riferimenti non riuscita; eliminazione interrotta.",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "Questo libro ha riferimenti esterni ai capitoli. Rimuovili prima di eliminare il libro.",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "{0} blocchi esterni fanno riferimento al libro. Eliminazione bloccata per conservarli.",
+  "Reference checking failed. Deletion is blocked.": "Verifica dei riferimenti non riuscita. Eliminazione bloccata.",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk \xE8 disattivato. Attivalo prima di importare.",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Importazione sospesa: Reading Desk \xE8 disattivato. Riattivalo per riprendere.",
+  "Enter a destination page title.": "Inserisci il titolo della pagina di destinazione.",
+  "Select annotations to include first.": "Seleziona prima le annotazioni da includere.",
+  "Book repair is available for managed books only.": "La riparazione \xE8 disponibile solo per i libri gestiti.",
+  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "Riunisci {0} paragrafo/i spezzato/i (verificato sull\u2019EPUB originale)",
+  "Fix {0} block(s) with broken numbered links": "Correggi {0} blocco/i con collegamenti numerati rotti",
+  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "; {0} riferimento/i a vecchi frammenti (commenti, link alle note) passano al paragrafo riparato",
+  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "Rimuovi {0} archivio/i EPUB-READER:paragraph-fragments{1}",
+  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "Imposta {0} titolo/i di capitolo come H1/H2/H3 in base alla profondit\xE0",
+  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "Rimuovi {0} titolo/i che ripetono il titolo del capitolo (i paragrafi salgono, ID invariati)",
+  "Turn {0} other body heading(s) into bold text": "Trasforma {0} altro/i titolo/i del testo in grassetto",
+  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "Riporta {0} richiamo/i di nota alla fine del loro titolo (es. \xAB2.3 Titolo [3]\xBB); i paragrafi sotto il richiamo passano sotto il titolo",
+  "Turn {0} footnote marker heading(s) such as [3] into plain text": "Trasforma {0} titolo/i con richiamo di nota come [3] in testo semplice",
+  "Rejoining split paragraphs\u2026": "Riunione dei paragrafi spezzati\u2026",
+  "Fixing numbered links\u2026": "Correzione dei collegamenti numerati\u2026",
+  "Removing paragraph archives\u2026": "Rimozione degli archivi di paragrafi\u2026",
+  "Fixing heading levels\u2026": "Correzione dei livelli dei titoli\u2026",
+  "No book repair record was found.": "Nessun registro di riparazione trovato.",
+  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "La pagina originale non esiste pi\xF9. Apri la pagina attuale del libro, seleziona questo libro e collega i suoi capitoli. Non serve reimportare.",
+  "Select at least one existing book chapter.": "Seleziona almeno un capitolo esistente.",
+  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Conferma prima i capitoli di questo libro nel pannello di lettura. Non servono reimportazioni n\xE9 modifiche al testo.",
+  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "L\u2019ambito dei capitoli non pu\xF2 includere un\u2019intera pagina. Conferma di nuovo i capitoli; la pagina viene mantenuta.",
+  "The current page or block cannot be read.": "Impossibile leggere la pagina o il blocco attuale.",
+  "Could not parse {0}": "Impossibile analizzare {0}",
+  "Invalid EPUB: META-INF/container.xml is missing": "EPUB non valido: manca META-INF/container.xml",
+  "The EPUB manifest is missing": "Manca il manifest dell\u2019EPUB",
+  "No readable chapter content was found in the EPUB": "Nessun contenuto di capitolo leggibile nell\u2019EPUB",
+  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Questo blocco non esiste pi\xF9. Aggiorna l\u2019indice o le annotazioni; il libro non verr\xE0 ricreato.",
+  "Cannot find the page containing this block.": "Impossibile trovare la pagina che contiene questo blocco.",
+  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "La pagina \xE8 aperta, ma questo paragrafo non \xE8 ancora visualizzato. Espandi il suo capitolo e riprova.",
+  "Heading repair is available for managed books only.": "La riparazione dei titoli \xE8 disponibile solo per i libri gestiti.",
+  "This Roam version does not expose block.move. No headings were changed.": "Questa versione di Roam non espone block.move. Nessun titolo \xE8 stato modificato.",
+  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Usa \xABAnnulla l\u2019ultima riparazione\xBB per ripristinare le modifiche.",
+  "No heading repair backup was found.": "Nessun backup della riparazione dei titoli trovato.",
+  "Language": "Lingua",
+  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Lingua dell\u2019interfaccia (Auto segue il browser). Il pannello di lettura cambia subito; questa scheda delle impostazioni dopo aver ricaricato il plugin.",
+  "Import EPUB": "Importa EPUB",
+  "Choose, preview, and import an EPUB book": "Scegli, visualizza in anteprima e importa un libro EPUB",
+  "Open Importer": "Apri l\u2019importatore",
+  "Manage Imported Books": "Gestisci i libri importati",
+  "Manage imported books, recover existing pages, and safely clean up attachments": "Gestisci i libri importati, recupera pagine esistenti e ripulisci gli allegati in sicurezza",
+  "Manage Books": "Gestisci libri",
+  "Reading Desk": "Reading Desk",
+  "Open reading tools for books or ordinary pages": "Strumenti di lettura per libri o pagine normali",
+  "Open Reading Desk": "Apri Reading Desk",
+  "Automatic Browsing Progress": "Avanzamento di lettura automatico",
+  "Estimate foreground browsing per chapter; never infer comprehension": "Stima la lettura in primo piano per capitolo; non deduce mai la comprensione",
+  "Native Comment Side Notes": "Commenti nativi a margine",
+  "Show native comments in full beside the text throughout the graph": "Mostra i commenti nativi per intero accanto al testo in tutto il grafo",
+  "Highlight Colour": "Colore dell\u2019evidenziazione",
+  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Colore delle ^^evidenziazioni^^ native (Predefinito del tema mantiene il colore del tuo tema)",
+  "Question Tags": "Tag delle domande",
+  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Tag esistenti separati da virgole per le domande aperte. La scorciatoia \xABDomanda\xBB aggiunge #question.",
+  "Invalid library format. Stopped to protect existing data.": "Formato della biblioteca non valido. Interrotto per proteggere i dati esistenti.",
+  "Cannot read the library. Stopped to protect existing data.": "Impossibile leggere la biblioteca. Interrotto per proteggere i dati esistenti.",
+  "Unsupported library version or structure. Stopped to protect existing data.": "Versione o struttura della biblioteca non supportata. Interrotto per proteggere i dati esistenti.",
+  "The attachment ledger is incomplete. Stopped to protect attachments.": "Il registro degli allegati \xE8 incompleto. Interrotto per proteggere gli allegati.",
+  "Attachment ledger validation failed.": "Convalida del registro degli allegati non riuscita.",
+  "The book record has no stable identity.": "La scheda del libro non ha un\u2019identit\xE0 stabile.",
+  "Enter at least two characters of the page title.": "Inserisci almeno due caratteri del titolo della pagina.",
+  "The specified book page could not be found.": "La pagina del libro indicata non \xE8 stata trovata.",
+  "Native Roam comment": "Commento nativo di Roam",
+  "Open the native comment thread to edit": "Apri il thread del commento nativo per modificarlo",
+  "Open native comment thread": "Apri il thread del commento nativo",
+  "Delete this comment": "Elimina questo commento",
+  "Delete comment": "Elimina commento",
+  "\n\nIts replies are deleted too.": "\n\nAnche le sue risposte verranno eliminate.",
+  "Delete this comment?\n\n{0}{1}": "Eliminare questo commento?\n\n{0}{1}",
+  "Expand this section": "Espandi questa sezione",
+  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Usa un tag di domanda non vuoto, senza parentesi quadre, #, graffe o a capo (max 80 caratteri).",
+  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Metti prima il cursore in un paragrafo o in un commento nativo, poi attiva la domanda.",
+  "Unmark It": "Togli il segno",
+  "Mark It": "Segna",
+  "This Roam version does not expose block.move. No paragraphs were changed.": "Questa versione di Roam non espone block.move. Nessun paragrafo \xE8 stato modificato.",
+  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Gli ID dei frammenti originali sono mantenuti. Usa \xABAnnulla l\u2019ultima riparazione dei paragrafi\xBB per le modifiche interrotte.",
+  "Paragraph repair backup is missing.": "Backup della riparazione dei paragrafi mancante.",
+  "Archive cleanup backup is missing.": "Backup della pulizia degli archivi mancante.",
+  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "I metadati di lettura sono incompleti. Aggiorna e riprova; il libro originale non \xE8 toccato.",
+  "just now": "proprio ora",
+  "{0} min ago": "{0} min fa",
+  "{0} h ago": "{0} h fa",
+  "{0} d ago": "{0} g fa",
+  "All Books": "Tutti i libri",
+  "Selected block: {0}": "Blocco selezionato: {0}",
+  "Click a paragraph or native comment to select an action target.": "Fai clic su un paragrafo o un commento nativo per scegliere il destinatario dell\u2019azione.",
+  " \xB7 approx. {0}%": " \xB7 circa {0}%",
+  "Read \xB7 click to unmark": "Letto \xB7 clic per annullare",
+  "Mark as read": "Segna come letto",
+  "Could not collapse the previous chapter: {0}": "Impossibile comprimere il capitolo precedente: {0}",
+  "The page {0} does not exist yet.": "La pagina {0} non esiste ancora.",
+  "Open a book or page first.": "Apri prima un libro o una pagina.",
+  "Remove from All Books": "Rimuovi da Tutti i libri",
+  "Include in All Books": "Includi in Tutti i libri",
+  "Pages you include appear in the All Books scope with your books": "Le pagine incluse compaiono con i tuoi libri in \xABTutti i libri\xBB",
+  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Conferma quali capitoli esistenti appartengono a questo libro. Deseleziona le tue note. Vengono registrati solo gli ID dei blocchi; testo, commenti ed evidenziazioni esistenti restano invariati.",
+  "Confirm Book Scope": "Conferma i capitoli",
+  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Annotazioni e domande da tutti i libri gestiti e da tutte le pagine incluse. Scegli una fonte per aprirla.",
+  "{0} \xB7 {1} annotations": "{0} \xB7 {1} annotazioni",
+  "Last read \xB7 {0}": "Ultima lettura \xB7 {0}",
+  "Body": "Testo",
+  "Continue": "Continua",
+  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "Nessun indice in questa pagina. L\u2019indice si basa sui titoli H1, H2 e H3.",
+  "No chapters were found.": "Nessun capitolo trovato.",
+  "Collapse All Chapters": "Comprimi tutti i capitoli",
+  "Collapse Subdirectories": "Comprimi le sottosezioni",
+  "Expand Subdirectories": "Espandi le sottosezioni",
+  "Current section: {0}": "Sezione attuale: {0}",
+  "Toggle subdirectory: {0}": "Mostra/nascondi sottosezione: {0}",
+  "Resume": "Riprendi",
+  "Reset": "Azzera",
+  "Reset browsing progress for {0}? Text and annotations will be preserved.": "Azzerare l\u2019avanzamento di lettura di {0}? Testo e annotazioni restano.",
+  "Fold": "Comprimi",
+  "{0} chapter entries are missing. Use the action below to link their current location.": "Mancano {0} voci di capitolo. Usa l\u2019azione qui sotto per collegare la loro posizione attuale.",
+  "Link Current Page to This Book": "Collega la pagina attuale a questo libro",
+  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "L\u2019indice deriva dai titoli H1, H2 e H3. Fare clic su un titolo scorre soltanto; nulla nella pagina viene compresso o modificato.",
+  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "I capitoli non visitati non sono compiti. La copertura stima i paragrafi visualizzati, non le parole lette n\xE9 la comprensione. Usa \u2713 per segnare tu stesso un capitolo come letto.",
+  "Include in notes draft": "Includi nella bozza di note",
+  "This page": "Questa pagina",
+  "(Empty annotation)": "(Annotazione vuota)",
+  "Open Native Comment": "Apri il commento nativo",
+  "Open in Sidebar": "Apri nella barra laterale",
+  "Search annotations": "Cerca nelle annotazioni",
+  "All types": "Tutti i tipi",
+  "Highlights": "Evidenziazioni",
+  "Comments": "Commenti",
+  "Marks": "Segni",
+  "Questions": "Domande",
+  "All sources": "Tutte le fonti",
+  "All chapters": "Tutti i capitoli",
+  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} elementi \xB7 Fai clic per vederli nel contesto; Maiusc+clic per la barra laterale.",
+  "Load More": "Carica altro",
+  "Question:: \u2026": "Question:: \u2026",
+  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Domande raccoglie tutto ci\xF2 che \xE8 ancora aperto: TODO nativi, i tuoi tag di domanda e gli attributi di domanda (ad esempio {0}). Gli elementi DONE sono esclusi. Alt+Q ne attiva una sul blocco attuale; scegli lo stile tag o attributo nelle Impostazioni.",
+  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Annotazioni raccoglie evidenziazioni, commenti nativi, segni e domande. Spunta gli elementi per creare una pagina di note di lettura che rimanda agli originali.",
+  "Destination page for notes draft": "Pagina di destinazione della bozza di note",
+  "Create Notes Draft from Selection": "Crea una bozza di note dalla selezione",
+  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "Aggiunte {0} note con riferimento a {1}, collegate alla pagina di origine. Aperta in {2}.",
+  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "Ancora nessuna nota di lettura per {0}. In Annotazioni, spunta gli elementi e scegli \xABCrea una bozza di note\xBB; la pagina delle note ({1}) si apre nella barra laterale.",
+  "Create Notes Page": "Crea la pagina delle note",
+  "Open the notes page (Shift+click: sidebar)": "Apri la pagina delle note (Maiusc+clic: barra laterale)",
+  "Sidebar": "Barra laterale",
+  "No generated drafts on this page yet. Create one from the Annotations tab.": "Ancora nessuna bozza generata in questa pagina. Creane una dalla scheda Annotazioni.",
+  "Show in the book (Shift+click: sidebar)": "Mostra nel libro (Maiusc+clic: barra laterale)",
+  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} bozza/e \xB7 {3} nota/e",
+  "Open this draft (Shift+click: sidebar)": "Apri questa bozza (Maiusc+clic: barra laterale)",
+  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "La pagina delle note contiene anche {0} blocco/i scritto/i da te; apri la pagina per vederli.",
+  "Back to Settings": "Torna alle impostazioni",
+  "Repair This Book": "Ripara questo libro",
+  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "La riparazione \xE8 disponibile solo per i libri gestiti. Scegli un libro nel menu. Le pagine normali non vengono mai modificate automaticamente.",
+  "Nothing to repair in this book.": "Niente da riparare in questo libro.",
+  "This repair will:": "Questa riparazione:",
+  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} archivio/i restano perch\xE9 un vecchio frammento ha blocchi figli propri.",
+  "Preview the changes": "Anteprima delle modifiche",
+  "Nothing to change.": "Niente da modificare.",
+  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "Riparare {0}?\n\n{1}\n\nTutto viene salvato; un solo Annulla ripristina tutto.",
+  "{0} paragraphs": "{0} paragrafi",
+  "{0} link blocks": "{0} blocchi di collegamenti",
+  "{0} archives ({1} references moved)": "{0} archivi ({1} riferimenti spostati)",
+  "{0} headings": "{0} titoli",
+  "nothing needed": "niente da fare",
+  " {0} block(s) changed since the preview were skipped; run the repair again.": " {0} blocco/i modificato/i dopo l\u2019anteprima sono stati saltati; esegui di nuovo la riparazione.",
+  "Repaired: {0}.{1} Undo is available.": "Riparato: {0}.{1} \xC8 possibile annullare.",
+  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Corregge in un solo passaggio tutto ci\xF2 che si pu\xF2 correggere in sicurezza: livelli dei titoli per l\u2019indice, richiami di nota mostrati come titoli, collegamenti numerati rotti e archivi EPUB-READER:paragraph-fragments rimasti. Testo, commenti ed evidenziazioni restano.",
+  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Facoltativo: scegli l\u2019EPUB originale per riunire anche i paragrafi spezzati da vecchie importazioni (letto in locale, nulla viene caricato)",
+  "Original EPUB for paragraph repair": "EPUB originale per la riparazione dei paragrafi",
+  "Checking the original EPUB\u2026": "Verifica dell\u2019EPUB originale\u2026",
+  "Undo Last Repair": "Annulla l\u2019ultima riparazione",
+  "Undo the last book repair? Blocks edited since then are left as they are.": "Annullare l\u2019ultima riparazione del libro? I blocchi modificati da allora restano come sono.",
+  "Restored {0} items; skipped {1} edited items.": "Ripristinati {0} elementi; saltati {1} elementi modificati.",
+  "Undo a repair made with an earlier version": "Annulla una riparazione fatta con una versione precedente",
+  "Undo {0}": "Annulla: {0}",
+  "Restored {0} items; skipped {1}.": "Ripristinati {0} elementi; saltati {1}.",
+  "its shortcut (not set)": "la sua scorciatoia (non impostata)",
+  "Press keys\u2026": "Premi i tasti\u2026",
+  "{0}: shortcut cleared.": "{0}: scorciatoia rimossa.",
+  "{0} is already used by {1}.": "{0} \xE8 gi\xE0 usata da {1}.",
+  "Click, then press the new shortcut": "Fai clic, poi premi la nuova scorciatoia",
+  "Reset to {0}": "Ripristina {0}",
+  "Library": "Biblioteca",
+  "Reading": "Lettura",
+  "Collapse the previous chapter when navigating": "Comprimi il capitolo precedente durante la navigazione",
+  "Track browsing automatically (estimated, not comprehension)": "Registra la lettura automaticamente (stima, non comprensione)",
+  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "L\u2019avanzamento automatico riguarda solo i libri gestiti. Comprimere le sottosezioni del pannello non modifica il libro.",
+  "Text width": "Larghezza del testo",
+  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Riempi la riga: i paragrafi arrivano fino alla fine della loro riga, senza fascia vuota prima del conteggio dei riferimenti sugli schermi larghi. Le note a margine stanno fuori dal testo, come in Folio.",
+  "Native Comments": "Commenti nativi",
+  "Native comment side notes (graph-wide)": "Commenti nativi a margine (tutto il grafo)",
+  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Le note sono mostrate per intero e impilate accanto al testo. Fai clic su una nota o sul suo paragrafo per allinearli; \u2197 apre il thread nativo per modificarlo.",
+  "Side note style": "Stile delle note a margine",
+  "Side note colour": "Colore delle note a margine",
+  "Side note order": "Ordine delle note a margine",
+  "Highlight colour": "Colore dell\u2019evidenziazione",
+  "Highlight style": "Stile dell\u2019evidenziazione",
+  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "Vale ovunque per le ^^evidenziazioni^^ native. Predefinito del tema mantiene il colore del tuo tema.",
+  "Mark style": "Stile del segno",
+  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} o il menu del blocco attiva #mark; il tag resta nel testo ed \xE8 nascosto durante la lettura.",
+  "Recognized question tags (comma-separated)": "Tag delle domande riconosciuti (separati da virgole)",
+  "Recognized question tags": "Tag delle domande riconosciuti",
+  "Quick question tag ({0})": "Tag di domanda rapido ({0})",
+  "Quick question tag": "Tag di domanda rapido",
+  "Toggle Question inserts": "\xABDomanda\xBB inserisce",
+  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Inserisci i nomi dei tag senza #. Il tag di domanda rapido \xE8 sempre riconosciuto, anche nei commenti nativi. \xABSegna\xBB mantiene #mark per restare compatibile con il tuo stile originale.",
+  "Save Question Settings": "Salva le impostazioni delle domande",
+  "Question settings saved. Toggle Question uses your quick question tag.": "Impostazioni delle domande salvate. \xABDomanda\xBB usa il tuo tag di domanda rapido.",
+  "Question settings are active for this session; settings storage could not sync.": "Le impostazioni delle domande sono attive per questa sessione; non \xE8 stato possibile sincronizzarle.",
+  "Keyboard Shortcuts": "Scorciatoie da tastiera",
+  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Fai clic su una scorciatoia, poi premi i nuovi tasti (con Ctrl, Cmd/\u2318 o Alt/\u2325). Esc annulla, Backspace cancella. Reading Desk gestisce questi tasti prima di Roam, quindi Option+M non scrive pi\xF9 \xAB\xB5\xBB. Trascina la barra del titolo per spostare il pannello. Maiusc+clic apre il contenuto nella barra laterale.",
+  "Reading Notes": "Note di lettura",
+  "Open new reading notes in": "Apri le nuove note di lettura in",
+  "Maintenance": "Manutenzione",
+  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Un solo passaggio per i libri importati: livelli dei titoli, richiami di nota come titoli, collegamenti rotti e archivi di paragrafi rimasti (e, se vuoi, paragrafi spezzati). Mostra prima cosa cambier\xE0; un solo Annulla ripristina tutto.",
+  "Click a paragraph or native comment first, then use this action.": "Fai prima clic su un paragrafo o un commento nativo, poi usa questa azione.",
+  "Open a page or book, then click Refresh.": "Apri una pagina o un libro, poi fai clic su Aggiorna.",
+  "Current Page": "Pagina attuale",
+  "Books": "Libri",
+  "Included pages": "Pagine incluse",
+  "All Books \xB7 {0} sources \xB7 {1} annotations": "Tutti i libri \xB7 {0} fonti \xB7 {1} annotazioni",
+  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "Pagina \xB7 {0} titoli \xB7 {1} annotazioni \xB7 l\u2019avanzamento \xE8 registrato solo per i libri",
+  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} blocchi \xB7 {2} annotazioni \xB7 {3} pagine",
+  "Close": "Chiudi",
+  "Drag to move Reading Desk": "Trascina per spostare Reading Desk",
+  "Reading scope": "Ambito di lettura",
+  "Refresh": "Aggiorna",
+  "Loading\u2026": "Caricamento\u2026",
+  "Text or comments changed. Click Refresh to update without interrupting your work.": "Testo o commenti sono cambiati. Fai clic su Aggiorna per aggiornare senza interrompere il lavoro.",
+  "No repair backup was found.": "Nessun backup di riparazione trovato.",
+  "Image conversion failed": "Conversione dell\u2019immagine non riuscita",
+  "Cannot read image: {0}": "Impossibile leggere l\u2019immagine: {0}",
+  "Processing image {0}/{1}": "Elaborazione immagine {0}/{1}",
+  "Image upload returned no valid URL: {0}": "Il caricamento dell\u2019immagine non ha restituito un URL valido: {0}",
+  "The imported page was removed. Select the EPUB again to import.": "La pagina importata \xE8 stata rimossa. Seleziona di nuovo l\u2019EPUB per importarlo.",
+  "A book is already being imported. Wait for it to finish.": "\xC8 gi\xE0 in corso l\u2019importazione di un libro. Attendi che finisca.",
+  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Questo vecchio processo ha corrispondenze di capitolo errate. Seleziona di nuovo l\u2019EPUB per creare una nuova importazione.",
+  "Import complete": "Importazione completata",
+  "This book's record has changed or was removed. Reopen the book list.": "La scheda di questo libro \xE8 cambiata o \xE8 stata rimossa. Riapri l\u2019elenco dei libri.",
+  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Un archivio di commenti nativi si trova all\u2019interno dei capitoli. L\u2019eliminazione \xE8 bloccata per preservare i commenti. Sposta prima l\u2019archivio dei commenti nella pagina, fuori dai capitoli del libro.",
+  "Reference check failed; retained": "Verifica dei riferimenti non riuscita; mantenuto",
+  "Original upload ownership is unknown; retained": "Origine del caricamento sconosciuta; mantenuto",
+  "Shared with another imported book": "Condiviso con un altro libro importato",
+  "{0} references outside this book": "{0} riferimenti fuori da questo libro",
+  "Used only by this book": "Usato solo da questo libro",
+  "Chapter scope changed. Review the deletion preview again.": "I capitoli sono cambiati. Controlla di nuovo l\u2019anteprima di eliminazione.",
+  "New content was added inside the book scope. Deletion stopped; review the preview again.": "\xC8 stato aggiunto contenuto nel libro. Eliminazione interrotta; controlla di nuovo l\u2019anteprima.",
+  "Deleting book chapters (preserving pages and native comments)\u2026": "Eliminazione dei capitoli del libro (pagine e commenti nativi mantenuti)\u2026",
+  "Deleting attachment {0}/{1}\u2026": "Eliminazione allegato {0}/{1}\u2026",
+  "This book is waiting for attachment cleanup. Finish that first.": "Questo libro \xE8 in attesa della pulizia degli allegati. Completala prima.",
+  "Not uploaded by this import; file retained": "Non caricato da questa importazione; file mantenuto",
+  "Original upload ownership is unknown; file retained": "Origine del caricamento sconosciuta; file mantenuto",
+  "Reference check failed; file retained": "Verifica dei riferimenti non riuscita; file mantenuto",
+  "Removing images from blocks {0}/{1}\u2026": "Rimozione delle immagini dai blocchi {0}/{1}\u2026",
+  "Deleting image file {0}/{1}\u2026": "Eliminazione file immagine {0}/{1}\u2026",
+  "Not set": "Non impostata",
+  "Could not save local progress": "Impossibile salvare l\u2019avanzamento locale",
+  "Local progress save was aborted": "Il salvataggio locale dell\u2019avanzamento \xE8 stato interrotto",
+  "The local EPUB cache is missing. Select the original file again.": "Manca la cache EPUB locale. Seleziona di nuovo il file originale.",
+  "Preparing\u2026": "Preparazione\u2026",
+  "Processing\u2026": "Elaborazione\u2026",
+  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} voci di indice \xB7 {1} nodi di primo livello \xB7 circa {2} blocchi \xB7 {3} immagini \xB7 {4} collegamenti interni",
+  " \xB7 {0} formulas": " \xB7 {0} formule",
+  "Resume importing {0}": "Riprendi l\u2019importazione di {0}",
+  "Import {0}": "Importa {0}",
+  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Tieni Roam aperto durante l\u2019importazione. L\u2019avanzamento viene salvato, cos\xEC un\u2019importazione interrotta pu\xF2 riprendere.",
+  "Created {0}. Images and links are in their original positions.": "Creato {0}. Immagini e collegamenti sono nelle loro posizioni originali.",
+  "Import paused: {0}. Progress was saved; you can resume later.": "Importazione in pausa: {0}. L\u2019avanzamento \xE8 salvato; puoi riprendere pi\xF9 tardi.",
+  "Retry / Resume": "Riprova / Riprendi",
+  "Book Preview": "Anteprima del libro",
+  "Author: {0}": "Autore: {0}",
+  "Roam page title": "Titolo della pagina Roam",
+  "Original EPUB TOC ({0}, full hierarchy)": "Indice EPUB originale ({0}, gerarchia completa)",
+  "Outline generated from body headings": "Struttura generata dai titoli del testo",
+  "; {0} need review (source retained)": "; {0} da controllare (sorgente mantenuta)",
+  "Formulas: {0} converted{1}": "Formule: {0} convertite{1}",
+  "Formula {0} \xB7 {1}": "Formula {0} \xB7 {1}",
+  "Preview text and image order": "Anteprima dell\u2019ordine di testo e immagini",
+  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Le immagini vengono caricate nelle loro posizioni originali. I collegamenti esterni restano; quelli interni diventano riferimenti a blocchi Roam.",
+  "Start Import": "Avvia importazione",
+  "Unfinished Imports": "Importazioni non completate",
+  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Questo processo usa un vecchio analizzatore. Seleziona di nuovo l\u2019EPUB per creare un\u2019importazione corretta.",
+  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Questo vecchio processo non ha verificato le formule. Seleziona di nuovo l\u2019EPUB se il libro contiene formule.",
+  "Discard Job": "Scarta il processo",
+  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Esiste gi\xE0 una pagina Roam. Usa \xABGestisci i libri importati\xBB per rimuovere questa importazione.",
+  "EPUB Importer": "Importatore EPUB",
+  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "Scegli un EPUB. L\u2019analisi resta sul tuo dispositivo; le immagini vengono caricate nel grafo Roam attuale solo dopo che confermi l\u2019importazione.",
+  "No file selected.": "Nessun file selezionato.",
+  "Reading contents, text, images, and links\u2026": "Lettura di indice, testo, immagini e collegamenti\u2026",
+  "Cannot read file: {0}": "Impossibile leggere il file: {0}",
+  "Cannot read saved jobs: {0}": "Impossibile leggere i processi salvati: {0}",
+  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Verranno eliminati {0} capitoli radice, {1} blocchi e {2} allegati esclusivi. Pagine e commenti nativi restano.",
+  " {0} shared or unverified attachments will be retained.": " {0} allegati condivisi o non verificati verranno mantenuti.",
+  "Remove images \xB7 {0}": "Rimuovi immagini \xB7 {0}",
+  "Finding images and checking where their files are used\u2026": "Ricerca delle immagini e di dove sono usati i loro file\u2026",
+  "Check failed: {0}": "Verifica non riuscita: {0}",
+  "Back to Book List": "Torna all\u2019elenco dei libri",
+  "This book has no images left in its text.": "Questo libro non ha pi\xF9 immagini nel testo.",
+  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} blocchi contengono immagini. Le immagini vengono tolte ({1} blocchi con sola immagine vengono eliminati; quelli con testo, figli o riferimenti restano). Il libro, il testo, i titoli, i commenti e le evidenziazioni restano.",
+  " ({0} shared, outside-referenced or unverified files are kept)": " ({0} file condivisi, citati altrove o non verificati vengono mantenuti)",
+  " Also delete {0} uploaded image files used only by this book{1}.": " Elimina anche {0} file immagine caricati e usati solo da questo libro{1}.",
+  "Preview the first changes": "Anteprima delle prime modifiche",
+  "This cannot be undone: deleted image files are gone from Roam storage.": "Operazione irreversibile: i file immagine eliminati spariscono dall\u2019archivio di Roam.",
+  "Cancel": "Annulla",
+  "Remove Images": "Rimuovi immagini",
+  "Remove images from {0}? The book itself is kept.": "Rimuovere le immagini da {0}? Il libro resta.",
+  " {0} blocks changed since the preview and were skipped.": " {0} blocchi modificati dopo l\u2019anteprima sono stati saltati.",
+  " {0} files could not be deleted and remain listed.": " {0} file non sono stati eliminati e restano nell\u2019elenco.",
+  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Immagini rimosse da {0} blocchi ({1} blocchi con sola immagine eliminati) e {2} file eliminati.{3}{4}",
+  "Image removal failed: {0}": "Rimozione delle immagini non riuscita: {0}",
+  "Delete {0}": "Elimina {0}",
+  "Checking attachment references in other pages and books\u2026": "Verifica dei riferimenti agli allegati in altre pagine e libri\u2026",
+  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "Pagine interessate: {0}. Vengono eliminati solo i capitoli confermati del libro; queste pagine restano.",
+  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} blocchi fuori dal libro fanno riferimento al suo contenuto (forse anche commenti nativi). Questi riferimenti possono rompersi dopo l\u2019eliminazione; commenti e note indipendenti restano.",
+  "Reference checking failed. Attachments will be retained.": "Verifica dei riferimenti non riuscita. Gli allegati verranno mantenuti.",
+  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Questo libro recuperato non ha un registro di caricamento originale. I capitoli possono essere eliminati, ma le immagini rilevate verranno mantenute.",
+  "Type the full book title to confirm: {0}": "Digita il titolo completo del libro per confermare: {0}",
+  "Delete Permanently": "Elimina definitivamente",
+  " {0} failed deletions are saved for retry.": " {0} eliminazioni non riuscite sono salvate per un nuovo tentativo.",
+  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Eliminati i capitoli del libro e {0} allegati esclusivi. Pagine e commenti nativi restano. Mantenuti {1} allegati condivisi o non verificati.{2}",
+  "Deletion failed: {0}": "Eliminazione non riuscita: {0}",
+  "Recover Existing Book": "Recupera un libro esistente",
+  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Inserisci tutto o parte del titolo della pagina originale del libro. Il recupero registra il libro esistente senza reimportare, modificare il testo o caricare immagini. Gli allegati senza registro di caricamento sono segnati come non verificati e mantenuti in caso di eliminazione.",
+  "Page title or book keywords": "Titolo della pagina o parole chiave del libro",
+  "Find an existing book page": "Trova una pagina di libro esistente",
+  "Find Pages": "Cerca pagine",
+  "No matching pages. Try a shorter book title.": "Nessuna pagina corrispondente. Prova con un titolo pi\xF9 breve.",
+  "Register This Book": "Registra questo libro",
+  "Recovery failed: {0}": "Recupero non riuscito: {0}",
+  "Reading the graph's book library\u2026": "Lettura della biblioteca del grafo\u2026",
+  "Cannot read the library: {0}. Existing books are unchanged.": "Impossibile leggere la biblioteca: {0}. I libri esistenti restano invariati.",
+  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "La biblioteca \xE8 vuota. Usa \xABRecupera un libro esistente\xBB per i libri mancanti dopo un aggiornamento; non serve reimportare.",
+  "Unknown author": "Autore sconosciuto",
+  " \xB7 Cleanup pending": " \xB7 Pulizia in sospeso",
+  " \xB7 Recovered (original attachments retained)": " \xB7 Recuperato (allegati originali mantenuti)",
+  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} allegati{2}",
+  "Clean Up Attachments": "Ripulisci gli allegati",
+  "Delete Book": "Elimina libro",
+  "Delete this book's images but keep the book": "Elimina le immagini di questo libro ma mantieni il libro",
+  "Open Reader": "Apri il lettore",
+  "The chapter structure has not been prepared.": "La struttura dei capitoli non \xE8 stata preparata.",
+  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Un blocco importato \xE8 stato modificato o spostato. Ripresa in pausa per preservare le tue modifiche. Seleziona l\u2019EPUB per importarlo in una pagina separata.",
+  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Importazione capitolo {0}/{1} \xB7 blocco {2}/{3}",
+  "Resolving internal link {0}/{1}": "Risoluzione collegamento interno {0}/{1}",
+  "{0} comment": "{0} commento",
+  "{0} comments": "{0} commenti",
+  "{0} highlight": "{0} evidenziazione",
+  "{0} highlights": "{0} evidenziazioni",
+  "{0} mark": "{0} segno",
+  "{0} marks": "{0} segni",
+  "Read": "Letto",
+  "Unvisited": "Non visitato",
+  "Browsed": "Sfogliato",
+  "Browsing": "In lettura",
+  "highlight": "evidenziazione",
+  "comment": "commento",
+  "mark": "segno",
+  "question": "domanda",
+  "sidebar": "la barra laterale",
+  "main window": "la finestra principale",
+  "Heading repair": "Riparazione dei titoli",
+  "Link repair": "Riparazione dei collegamenti",
+  "Paragraph repair": "Riparazione dei paragrafi",
+  "Archive removal": "Rimozione degli archivi",
+  "Toggle Mark": "Segna / togli segno",
+  "Toggle Question": "Domanda / non domanda",
+  "Open / close Reading Desk": "Apri / chiudi Reading Desk",
+  "Continue reading": "Continua a leggere",
+  "Open reading notes": "Apri le note di lettura",
+  "Contents": "Indice",
+  "Annotations": "Annotazioni",
+  "Notes": "Note",
+  "Settings": "Impostazioni",
+  "Theme default": "Predefinito del tema",
+  "Margin dot + bold": "Punto a margine + grassetto",
+  "Bookmark ribbon": "Nastro segnalibro",
+  "Gold highlighter": "Evidenziatore dorato",
+  "Pull quote": "Citazione in evidenza",
+  "Sticky note": "Post-it",
+  "Ink emphasis": "Inchiostro marcato",
+  "Fill the line": "Riempi la riga",
+  "Theme line length": "Lunghezza di riga del tema",
+  "Cards": "Schede",
+  "Minimal": "Minimale",
+  "Coral": "Corallo",
+  "Rose": "Rosa",
+  "Mint": "Menta",
+  "Sky": "Cielo",
+  "Lilac": "Lilla",
+  "Gold": "Oro",
+  "Gray": "Grigio",
+  "Blue": "Blu",
+  "Green": "Verde",
+  "Purple": "Viola",
+  "Marker": "Evidenziatore",
+  "Underline": "Sottolineato",
+  "Oldest first": "Prima le pi\xF9 vecchie",
+  "Newest first": "Prima le pi\xF9 recenti",
+  "A tag at the end (#question)": "Un tag alla fine (#question)",
+  "An attribute at the start (Question::)": "Un attributo all\u2019inizio (Question::)",
+  "The right sidebar": "La barra laterale destra",
+  "The main window": "La finestra principale",
+  "Auto (browser language)": "Auto (lingua del browser)",
+  "Page": "Pagina",
+  "Book": "Libro",
+  "Earlier": "In precedenza",
+  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "Nessun indice EPUB utilizzabile trovato. La struttura usa i titoli del testo; controlla l\u2019anteprima.",
+  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Destinazione dell\u2019indice mancante per {0}: {1}. Il testo non abbinato viene conservato a parte.",
+  "TOC file is outside the EPUB reading order: {0}": "Il file dell\u2019indice \xE8 fuori dall\u2019ordine di lettura dell\u2019EPUB: {0}",
+  "Missing EPUB body file: {0}": "File di testo EPUB mancante: {0}",
+  "Missing EPUB image: {0}": "Immagine EPUB mancante: {0}",
+  "Auto": "Auto",
+  "Interface language": "Lingua dell\u2019interfaccia",
+  "Interface language for Reading Desk (Auto follows your browser).": "Lingua dell\u2019interfaccia di Reading Desk (Auto segue il browser)."
+};
+
+// src/locales/de.js
+var de_default = {
+  "Resize panel: drag the corner, or use arrow keys": "Panelgr\xF6\xDFe \xE4ndern: Ecke ziehen oder Pfeiltasten verwenden",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "Bilder und Text in {0} Bl\xF6cken trennen; Text-IDs und Unterbl\xF6cke beibehalten",
+  "Separate images and text in existing blocks (preview first)": "Bilder und Text in bestehenden Bl\xF6cken trennen (zuerst Vorschau pr\xFCfen)",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} komplexe Bildbl\xF6cke oder Kapitelwurzelbl\xF6cke wurden unver\xE4ndert gelassen.",
+  "{0} image/text blocks": "{0} Bild-/Textbl\xF6cke",
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "F\xFCr einen schnelleren Import lassen Sie dieses Roam-Fenster und diesen Tab bis zum Abschluss aktiv. Der Wechsel zu einer anderen App oder einem anderen Tab kann den Import verlangsamen.",
+  "Book or referenced content changed since preview. Preview the repair again.": "Buch oder Verweise wurden seit der Vorschau ge\xE4ndert. Vorschau erneut \xF6ffnen.",
+  "Reference check failed; deletion stopped.": "Verweispr\xFCfung fehlgeschlagen; L\xF6schen gestoppt.",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "Dieses Buch wird au\xDFerhalb seiner Kapitel referenziert. Entfernen Sie diese Verweise vor dem L\xF6schen.",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "{0} externe Bl\xF6cke verweisen auf das Buch. L\xF6schen wurde zum Schutz der Verweise blockiert.",
+  "Reference checking failed. Deletion is blocked.": "Verweispr\xFCfung fehlgeschlagen. L\xF6schen blockiert.",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk ist deaktiviert. Vor dem Import aktivieren.",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Import pausiert, weil Reading Desk deaktiviert wurde. Zum Fortsetzen aktivieren.",
+  "Enter a destination page title.": "Gib den Titel der Zielseite ein.",
+  "Select annotations to include first.": "W\xE4hle zuerst die Anmerkungen aus, die aufgenommen werden sollen.",
+  "Book repair is available for managed books only.": "Die Reparatur ist nur f\xFCr verwaltete B\xFCcher verf\xFCgbar.",
+  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "{0} getrennte(n) Absatz/Abs\xE4tze zusammenf\xFCgen (mit dem Original-EPUB gepr\xFCft)",
+  "Fix {0} block(s) with broken numbered links": "{0} Block/Bl\xF6cke mit defekten nummerierten Links korrigieren",
+  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "; {0} Verweis(e) auf alte Fragmente (Kommentare, Fu\xDFnotenlinks) zeigen auf den reparierten Absatz",
+  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "{0} Archiv(e) EPUB-READER:paragraph-fragments entfernen{1}",
+  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "{0} Kapitel\xFCberschrift(en) je nach Tiefe auf H1/H2/H3 setzen",
+  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "{0} \xDCberschrift(en) entfernen, die den Kapiteltitel wiederholen (Abs\xE4tze r\xFCcken nach oben, IDs bleiben)",
+  "Turn {0} other body heading(s) into bold text": "{0} weitere \xDCberschrift(en) im Text in Fettdruck umwandeln",
+  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "{0} Fu\xDFnotenzeichen wieder ans Ende ihrer \xDCberschrift setzen (z. B. \u201E2.3 Titel [3]\u201C); die Abs\xE4tze unter dem Zeichen wandern unter die \xDCberschrift",
+  "Turn {0} footnote marker heading(s) such as [3] into plain text": "{0} Fu\xDFnotenzeichen-\xDCberschrift(en) wie [3] in normalen Text umwandeln",
+  "Rejoining split paragraphs\u2026": "Getrennte Abs\xE4tze werden zusammengef\xFCgt\u2026",
+  "Fixing numbered links\u2026": "Nummerierte Links werden korrigiert\u2026",
+  "Removing paragraph archives\u2026": "Absatzarchive werden entfernt\u2026",
+  "Fixing heading levels\u2026": "\xDCberschriftenebenen werden korrigiert\u2026",
+  "No book repair record was found.": "Kein Reparaturprotokoll gefunden.",
+  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "Die urspr\xFCngliche Seite existiert nicht mehr. \xD6ffne die aktuelle Seite des Buchs, w\xE4hle dieses Buch aus und verkn\xFCpfe seine Kapitel. Ein erneuter Import ist nicht n\xF6tig.",
+  "Select at least one existing book chapter.": "W\xE4hle mindestens ein vorhandenes Kapitel aus.",
+  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Best\xE4tige zuerst die Kapitel dieses Buchs im Lesepanel. Kein erneuter Import und keine Text\xE4nderungen n\xF6tig.",
+  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "Der Kapitelumfang darf keine ganze Seite enthalten. Best\xE4tige die Kapitel erneut; die Seite bleibt erhalten.",
+  "The current page or block cannot be read.": "Die aktuelle Seite oder der aktuelle Block kann nicht gelesen werden.",
+  "Could not parse {0}": "{0} konnte nicht gelesen werden",
+  "Invalid EPUB: META-INF/container.xml is missing": "Ung\xFCltiges EPUB: META-INF/container.xml fehlt",
+  "The EPUB manifest is missing": "Das EPUB-Manifest fehlt",
+  "No readable chapter content was found in the EPUB": "Im EPUB wurde kein lesbarer Kapitelinhalt gefunden",
+  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Dieser Block existiert nicht mehr. Aktualisiere Inhalt oder Anmerkungen; das Buch wird nicht neu erstellt.",
+  "Cannot find the page containing this block.": "Die Seite mit diesem Block wurde nicht gefunden.",
+  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "Die Seite ist ge\xF6ffnet, aber dieser Absatz wird noch nicht angezeigt. Klappe sein Kapitel auf und versuche es erneut.",
+  "Heading repair is available for managed books only.": "Die \xDCberschriftenreparatur ist nur f\xFCr verwaltete B\xFCcher verf\xFCgbar.",
+  "This Roam version does not expose block.move. No headings were changed.": "Diese Roam-Version stellt block.move nicht bereit. Es wurden keine \xDCberschriften ge\xE4ndert.",
+  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Mit \u201ELetzte Reparatur r\xFCckg\xE4ngig machen\u201C stellst du die \xC4nderungen wieder her.",
+  "No heading repair backup was found.": "Keine Sicherung der \xDCberschriftenreparatur gefunden.",
+  "Language": "Sprache",
+  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Sprache der Oberfl\xE4che (Auto folgt deinem Browser). Das Lesepanel wechselt sofort, dieser Einstellungs-Tab nach dem Neuladen des Plugins.",
+  "Import EPUB": "EPUB importieren",
+  "Choose, preview, and import an EPUB book": "Ein EPUB-Buch ausw\xE4hlen, ansehen und importieren",
+  "Open Importer": "Importer \xF6ffnen",
+  "Manage Imported Books": "Importierte B\xFCcher verwalten",
+  "Manage imported books, recover existing pages, and safely clean up attachments": "Importierte B\xFCcher verwalten, vorhandene Seiten wiederherstellen und Anh\xE4nge sicher aufr\xE4umen",
+  "Manage Books": "B\xFCcher verwalten",
+  "Reading Desk": "Reading Desk",
+  "Open reading tools for books or ordinary pages": "Lesewerkzeuge f\xFCr B\xFCcher oder normale Seiten",
+  "Open Reading Desk": "Reading Desk \xF6ffnen",
+  "Automatic Browsing Progress": "Automatischer Lesefortschritt",
+  "Estimate foreground browsing per chapter; never infer comprehension": "Sch\xE4tzt das Lesen im Vordergrund pro Kapitel; leitet nie Verst\xE4ndnis ab",
+  "Native Comment Side Notes": "Native Kommentare am Rand",
+  "Show native comments in full beside the text throughout the graph": "Native Kommentare im ganzen Graphen vollst\xE4ndig neben dem Text anzeigen",
+  "Highlight Colour": "Hervorhebungsfarbe",
+  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Farbe f\xFCr native ^^Hervorhebungen^^ (Theme-Standard beh\xE4lt die Farbe deines Themes)",
+  "Question Tags": "Frage-Tags",
+  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Vorhandene Tags, durch Kommas getrennt, f\xFCr offene Fragen. Das K\xFCrzel \u201EFrage\u201C f\xFCgt #question hinzu.",
+  "Invalid library format. Stopped to protect existing data.": "Ung\xFCltiges Bibliotheksformat. Abgebrochen, um vorhandene Daten zu sch\xFCtzen.",
+  "Cannot read the library. Stopped to protect existing data.": "Die Bibliothek kann nicht gelesen werden. Abgebrochen, um vorhandene Daten zu sch\xFCtzen.",
+  "Unsupported library version or structure. Stopped to protect existing data.": "Nicht unterst\xFCtzte Bibliotheksversion oder -struktur. Abgebrochen, um vorhandene Daten zu sch\xFCtzen.",
+  "The attachment ledger is incomplete. Stopped to protect attachments.": "Das Anhangsverzeichnis ist unvollst\xE4ndig. Abgebrochen, um Anh\xE4nge zu sch\xFCtzen.",
+  "Attachment ledger validation failed.": "Pr\xFCfung des Anhangsverzeichnisses fehlgeschlagen.",
+  "The book record has no stable identity.": "Der Bucheintrag hat keine stabile Identit\xE4t.",
+  "Enter at least two characters of the page title.": "Gib mindestens zwei Zeichen des Seitentitels ein.",
+  "The specified book page could not be found.": "Die angegebene Buchseite wurde nicht gefunden.",
+  "Native Roam comment": "Nativer Roam-Kommentar",
+  "Open the native comment thread to edit": "Nativen Kommentar-Thread zum Bearbeiten \xF6ffnen",
+  "Open native comment thread": "Nativen Kommentar-Thread \xF6ffnen",
+  "Delete this comment": "Diesen Kommentar l\xF6schen",
+  "Delete comment": "Kommentar l\xF6schen",
+  "\n\nIts replies are deleted too.": "\n\nSeine Antworten werden ebenfalls gel\xF6scht.",
+  "Delete this comment?\n\n{0}{1}": "Diesen Kommentar l\xF6schen?\n\n{0}{1}",
+  "Expand this section": "Diesen Abschnitt aufklappen",
+  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Verwende einen nicht leeren Frage-Tag ohne eckige Klammern, #, geschweifte Klammern oder Zeilenumbr\xFCche (h\xF6chstens 80 Zeichen).",
+  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Setze zuerst den Cursor in einen Absatz oder nativen Kommentar und schalte dann die Frage um.",
+  "Unmark It": "Markierung entfernen",
+  "Mark It": "Markieren",
+  "This Roam version does not expose block.move. No paragraphs were changed.": "Diese Roam-Version stellt block.move nicht bereit. Es wurden keine Abs\xE4tze ge\xE4ndert.",
+  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Die IDs der Originalfragmente bleiben erhalten. F\xFCr unterbrochene \xC4nderungen \u201ELetzte Absatzreparatur r\xFCckg\xE4ngig machen\u201C verwenden.",
+  "Paragraph repair backup is missing.": "Sicherung der Absatzreparatur fehlt.",
+  "Archive cleanup backup is missing.": "Sicherung der Archivbereinigung fehlt.",
+  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "Lesemetadaten sind unvollst\xE4ndig. Aktualisiere und versuche es erneut; das Originalbuch ist nicht betroffen.",
+  "just now": "gerade eben",
+  "{0} min ago": "vor {0} Min.",
+  "{0} h ago": "vor {0} Std.",
+  "{0} d ago": "vor {0} T.",
+  "All Books": "Alle B\xFCcher",
+  "Selected block: {0}": "Ausgew\xE4hlter Block: {0}",
+  "Click a paragraph or native comment to select an action target.": "Klicke auf einen Absatz oder nativen Kommentar, um das Ziel der Aktion zu w\xE4hlen.",
+  " \xB7 approx. {0}%": " \xB7 ca. {0} %",
+  "Read \xB7 click to unmark": "Gelesen \xB7 klicken zum Zur\xFCcksetzen",
+  "Mark as read": "Als gelesen markieren",
+  "Could not collapse the previous chapter: {0}": "Das vorherige Kapitel konnte nicht eingeklappt werden: {0}",
+  "The page {0} does not exist yet.": "Die Seite {0} existiert noch nicht.",
+  "Open a book or page first.": "\xD6ffne zuerst ein Buch oder eine Seite.",
+  "Remove from All Books": "Aus \u201EAlle B\xFCcher\u201C entfernen",
+  "Include in All Books": "In \u201EAlle B\xFCcher\u201C aufnehmen",
+  "Pages you include appear in the All Books scope with your books": "Aufgenommene Seiten erscheinen zusammen mit deinen B\xFCchern unter \u201EAlle B\xFCcher\u201C",
+  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Best\xE4tige, welche vorhandenen Kapitel zu diesem Buch geh\xF6ren. Entferne den Haken bei deinen eigenen Notizen. Es werden nur Block-IDs gespeichert; vorhandener Text, Kommentare und Hervorhebungen bleiben erhalten.",
+  "Confirm Book Scope": "Kapitel best\xE4tigen",
+  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Anmerkungen und Fragen aus allen verwalteten B\xFCchern und allen aufgenommenen Seiten. W\xE4hle eine Quelle, um sie zu \xF6ffnen.",
+  "{0} \xB7 {1} annotations": "{0} \xB7 {1} Anmerkungen",
+  "Last read \xB7 {0}": "Zuletzt gelesen \xB7 {0}",
+  "Body": "Text",
+  "Continue": "Weiter",
+  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "Kein Inhaltsverzeichnis auf dieser Seite. Es wird aus H1-, H2- und H3-\xDCberschriften erstellt.",
+  "No chapters were found.": "Keine Kapitel gefunden.",
+  "Collapse All Chapters": "Alle Kapitel einklappen",
+  "Collapse Subdirectories": "Unterabschnitte einklappen",
+  "Expand Subdirectories": "Unterabschnitte aufklappen",
+  "Current section: {0}": "Aktueller Abschnitt: {0}",
+  "Toggle subdirectory: {0}": "Unterabschnitt umschalten: {0}",
+  "Resume": "Fortsetzen",
+  "Reset": "Zur\xFCcksetzen",
+  "Reset browsing progress for {0}? Text and annotations will be preserved.": "Lesefortschritt f\xFCr {0} zur\xFCcksetzen? Text und Anmerkungen bleiben erhalten.",
+  "Fold": "Einklappen",
+  "{0} chapter entries are missing. Use the action below to link their current location.": "{0} Kapiteleintr\xE4ge fehlen. Verkn\xFCpfe ihren aktuellen Ort mit der Aktion unten.",
+  "Link Current Page to This Book": "Aktuelle Seite mit diesem Buch verkn\xFCpfen",
+  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "Das Inhaltsverzeichnis stammt aus H1-, H2- und H3-\xDCberschriften. Ein Klick auf eine \xDCberschrift scrollt nur; auf der Seite wird nichts eingeklappt oder ge\xE4ndert.",
+  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "Nicht besuchte Kapitel sind keine Aufgaben. Die Abdeckung sch\xE4tzt angezeigte Abs\xE4tze, nicht gelesene W\xF6rter oder Verst\xE4ndnis. Mit \u2713 markierst du ein Kapitel selbst als gelesen.",
+  "Include in notes draft": "In den Notizentwurf aufnehmen",
+  "This page": "Diese Seite",
+  "(Empty annotation)": "(Leere Anmerkung)",
+  "Open Native Comment": "Nativen Kommentar \xF6ffnen",
+  "Open in Sidebar": "In der Seitenleiste \xF6ffnen",
+  "Search annotations": "Anmerkungen durchsuchen",
+  "All types": "Alle Typen",
+  "Highlights": "Hervorhebungen",
+  "Comments": "Kommentare",
+  "Marks": "Markierungen",
+  "Questions": "Fragen",
+  "All sources": "Alle Quellen",
+  "All chapters": "Alle Kapitel",
+  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} Eintr\xE4ge \xB7 Klicken, um im Kontext zu zeigen; Umschalt+Klick f\xFCr die Seitenleiste.",
+  "Load More": "Mehr laden",
+  "Question:: \u2026": "Question:: \u2026",
+  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Fragen sammelt alles, was noch offen ist: native TODOs, deine Frage-Tags und Frage-Attribute (zum Beispiel {0}). DONE-Eintr\xE4ge sind ausgeschlossen. Alt+Q schaltet eine Frage im aktuellen Block um; Tag- oder Attributstil in den Einstellungen w\xE4hlen.",
+  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Anmerkungen sammelt Hervorhebungen, native Kommentare, Markierungen und Fragen. Hake Eintr\xE4ge an, um eine Lesenotizen-Seite zu erstellen, die auf die Originale verweist.",
+  "Destination page for notes draft": "Zielseite f\xFCr den Notizentwurf",
+  "Create Notes Draft from Selection": "Notizentwurf aus Auswahl erstellen",
+  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "{0} verkn\xFCpfte Notizen an {1} angeh\xE4ngt, mit Link zur Quellseite. Ge\xF6ffnet in {2}.",
+  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "Noch keine Lesenotizen f\xFCr {0}. Hake unter Anmerkungen Eintr\xE4ge an und w\xE4hle \u201ENotizentwurf erstellen\u201C; die Notizenseite ({1}) \xF6ffnet sich in der Seitenleiste.",
+  "Create Notes Page": "Notizenseite erstellen",
+  "Open the notes page (Shift+click: sidebar)": "Notizenseite \xF6ffnen (Umschalt+Klick: Seitenleiste)",
+  "Sidebar": "Seitenleiste",
+  "No generated drafts on this page yet. Create one from the Annotations tab.": "Auf dieser Seite gibt es noch keine erzeugten Entw\xFCrfe. Erstelle einen im Tab Anmerkungen.",
+  "Show in the book (Shift+click: sidebar)": "Im Buch zeigen (Umschalt+Klick: Seitenleiste)",
+  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} Entwurf/Entw\xFCrfe \xB7 {3} Notiz(en)",
+  "Open this draft (Shift+click: sidebar)": "Diesen Entwurf \xF6ffnen (Umschalt+Klick: Seitenleiste)",
+  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "Die Notizenseite enth\xE4lt au\xDFerdem {0} selbst geschriebene(n) Block/Bl\xF6cke; \xF6ffne die Seite, um sie zu sehen.",
+  "Back to Settings": "Zur\xFCck zu den Einstellungen",
+  "Repair This Book": "Dieses Buch reparieren",
+  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "Die Reparatur ist nur f\xFCr verwaltete B\xFCcher verf\xFCgbar. W\xE4hle im Men\xFC ein Buch. Normale Seiten werden nie automatisch ge\xE4ndert.",
+  "Nothing to repair in this book.": "In diesem Buch gibt es nichts zu reparieren.",
+  "This repair will:": "Diese Reparatur wird:",
+  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} Archiv(e) bleiben, weil ein altes Fragment eigene Unterbl\xF6cke hat.",
+  "Preview the changes": "Vorschau der \xC4nderungen",
+  "Nothing to change.": "Nichts zu \xE4ndern.",
+  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "{0} reparieren?\n\n{1}\n\nAlles wird gesichert; ein einziges R\xFCckg\xE4ngig stellt alles wieder her.",
+  "{0} paragraphs": "{0} Abs\xE4tze",
+  "{0} link blocks": "{0} Linkbl\xF6cke",
+  "{0} archives ({1} references moved)": "{0} Archive ({1} Verweise verschoben)",
+  "{0} headings": "{0} \xDCberschriften",
+  "nothing needed": "nichts n\xF6tig",
+  " {0} block(s) changed since the preview were skipped; run the repair again.": " {0} seit der Vorschau ge\xE4nderte(r) Block/Bl\xF6cke wurde(n) \xFCbersprungen; starte die Reparatur erneut.",
+  "Repaired: {0}.{1} Undo is available.": "Repariert: {0}.{1} R\xFCckg\xE4ngig ist m\xF6glich.",
+  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Behebt in einem Schritt alles, was sich sicher beheben l\xE4sst: \xDCberschriftenebenen f\xFCr das Inhaltsverzeichnis, als \xDCberschriften dargestellte Fu\xDFnotenzeichen, defekte nummerierte Links und \xFCbrig gebliebene Archive EPUB-READER:paragraph-fragments. Text, Kommentare und Hervorhebungen bleiben erhalten.",
+  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Optional: W\xE4hle das Original-EPUB, um auch Abs\xE4tze zusammenzuf\xFCgen, die alte Importe getrennt haben (wird lokal gelesen, nichts wird hochgeladen)",
+  "Original EPUB for paragraph repair": "Original-EPUB f\xFCr die Absatzreparatur",
+  "Checking the original EPUB\u2026": "Original-EPUB wird gepr\xFCft\u2026",
+  "Undo Last Repair": "Letzte Reparatur r\xFCckg\xE4ngig machen",
+  "Undo the last book repair? Blocks edited since then are left as they are.": "Letzte Buchreparatur r\xFCckg\xE4ngig machen? Seitdem bearbeitete Bl\xF6cke bleiben, wie sie sind.",
+  "Restored {0} items; skipped {1} edited items.": "{0} Eintr\xE4ge wiederhergestellt; {1} bearbeitete Eintr\xE4ge \xFCbersprungen.",
+  "Undo a repair made with an earlier version": "Eine Reparatur aus einer fr\xFCheren Version r\xFCckg\xE4ngig machen",
+  "Undo {0}": "R\xFCckg\xE4ngig: {0}",
+  "Restored {0} items; skipped {1}.": "{0} Eintr\xE4ge wiederhergestellt; {1} \xFCbersprungen.",
+  "its shortcut (not set)": "sein Tastenk\xFCrzel (nicht festgelegt)",
+  "Press keys\u2026": "Tasten dr\xFCcken\u2026",
+  "{0}: shortcut cleared.": "{0}: Tastenk\xFCrzel entfernt.",
+  "{0} is already used by {1}.": "{0} wird bereits von {1} verwendet.",
+  "Click, then press the new shortcut": "Klicken, dann das neue Tastenk\xFCrzel dr\xFCcken",
+  "Reset to {0}": "Zur\xFCcksetzen auf {0}",
+  "Library": "Bibliothek",
+  "Reading": "Lesen",
+  "Collapse the previous chapter when navigating": "Beim Navigieren das vorherige Kapitel einklappen",
+  "Track browsing automatically (estimated, not comprehension)": "Lesen automatisch erfassen (Sch\xE4tzung, kein Verst\xE4ndnis)",
+  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "Der automatische Fortschritt gilt nur f\xFCr verwaltete B\xFCcher. Das Einklappen von Unterabschnitten im Panel \xE4ndert das Buch nicht.",
+  "Text width": "Textbreite",
+  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Zeile f\xFCllen: Abs\xE4tze laufen bis zum Ende ihrer Zeile, sodass auf breiten Bildschirmen kein leerer Streifen vor dem Verweisz\xE4hler bleibt. Randnotizen stehen au\xDFerhalb des Textes, wie in Folio.",
+  "Native Comments": "Native Kommentare",
+  "Native comment side notes (graph-wide)": "Native Kommentare am Rand (ganzer Graph)",
+  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Notizen werden vollst\xE4ndig angezeigt und neben dem Text gestapelt. Klicke auf eine Notiz oder ihren Absatz, um beide auszurichten; \u2197 \xF6ffnet den nativen Thread zum Bearbeiten.",
+  "Side note style": "Stil der Randnotizen",
+  "Side note colour": "Farbe der Randnotizen",
+  "Side note order": "Reihenfolge der Randnotizen",
+  "Highlight colour": "Hervorhebungsfarbe",
+  "Highlight style": "Hervorhebungsstil",
+  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "Gilt \xFCberall f\xFCr native ^^Hervorhebungen^^. Theme-Standard beh\xE4lt die Farbe deines Themes.",
+  "Mark style": "Markierungsstil",
+  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} oder das Blockmen\xFC schaltet #mark um; der Tag bleibt im Text und wird beim Lesen ausgeblendet.",
+  "Recognized question tags (comma-separated)": "Erkannte Frage-Tags (durch Kommas getrennt)",
+  "Recognized question tags": "Erkannte Frage-Tags",
+  "Quick question tag ({0})": "Schneller Frage-Tag ({0})",
+  "Quick question tag": "Schneller Frage-Tag",
+  "Toggle Question inserts": "\u201EFrage\u201C f\xFCgt ein",
+  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Tag-Namen ohne # eingeben. Der schnelle Frage-Tag wird immer erkannt, auch in nativen Kommentaren. \u201EMarkieren\u201C beh\xE4lt #mark, um mit deinem urspr\xFCnglichen Stil kompatibel zu bleiben.",
+  "Save Question Settings": "Frage-Einstellungen speichern",
+  "Question settings saved. Toggle Question uses your quick question tag.": "Frage-Einstellungen gespeichert. \u201EFrage\u201C verwendet deinen schnellen Frage-Tag.",
+  "Question settings are active for this session; settings storage could not sync.": "Die Frage-Einstellungen gelten f\xFCr diese Sitzung; sie konnten nicht synchronisiert werden.",
+  "Keyboard Shortcuts": "Tastenk\xFCrzel",
+  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Klicke auf ein K\xFCrzel und dr\xFCcke dann die neuen Tasten (mit Strg, Cmd/\u2318 oder Alt/\u2325). Esc bricht ab, R\xFCcktaste l\xF6scht. Reading Desk verarbeitet diese Tasten vor Roam, daher tippt Option+M kein \u201E\xB5\u201C mehr. Ziehe die Titelleiste, um dieses Panel zu verschieben. Umschalt+Klick \xF6ffnet Inhalte in der Seitenleiste.",
+  "Reading Notes": "Lesenotizen",
+  "Open new reading notes in": "Neue Lesenotizen \xF6ffnen in",
+  "Maintenance": "Wartung",
+  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Ein Schritt f\xFCr importierte B\xFCcher: \xDCberschriftenebenen, Fu\xDFnotenzeichen als \xDCberschriften, defekte Links und \xFCbrig gebliebene Absatzarchive (optional getrennte Abs\xE4tze). Zeigt zuerst, was sich \xE4ndert; ein einziges R\xFCckg\xE4ngig stellt alles wieder her.",
+  "Click a paragraph or native comment first, then use this action.": "Klicke zuerst auf einen Absatz oder nativen Kommentar und verwende dann diese Aktion.",
+  "Open a page or book, then click Refresh.": "\xD6ffne eine Seite oder ein Buch und klicke dann auf Aktualisieren.",
+  "Current Page": "Aktuelle Seite",
+  "Books": "B\xFCcher",
+  "Included pages": "Aufgenommene Seiten",
+  "All Books \xB7 {0} sources \xB7 {1} annotations": "Alle B\xFCcher \xB7 {0} Quellen \xB7 {1} Anmerkungen",
+  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "Seite \xB7 {0} \xDCberschriften \xB7 {1} Anmerkungen \xB7 Fortschritt wird nur f\xFCr B\xFCcher erfasst",
+  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} Bl\xF6cke \xB7 {2} Anmerkungen \xB7 {3} Seiten",
+  "Close": "Schlie\xDFen",
+  "Drag to move Reading Desk": "Ziehen, um Reading Desk zu verschieben",
+  "Reading scope": "Lesebereich",
+  "Refresh": "Aktualisieren",
+  "Loading\u2026": "Wird geladen\u2026",
+  "Text or comments changed. Click Refresh to update without interrupting your work.": "Text oder Kommentare haben sich ge\xE4ndert. Klicke auf Aktualisieren, um ohne Unterbrechung zu aktualisieren.",
+  "No repair backup was found.": "Keine Reparatursicherung gefunden.",
+  "Image conversion failed": "Bildkonvertierung fehlgeschlagen",
+  "Cannot read image: {0}": "Bild kann nicht gelesen werden: {0}",
+  "Processing image {0}/{1}": "Bild {0}/{1} wird verarbeitet",
+  "Image upload returned no valid URL: {0}": "Der Bild-Upload lieferte keine g\xFCltige URL: {0}",
+  "The imported page was removed. Select the EPUB again to import.": "Die importierte Seite wurde entfernt. W\xE4hle das EPUB erneut aus, um es zu importieren.",
+  "A book is already being imported. Wait for it to finish.": "Es wird bereits ein Buch importiert. Warte, bis der Import abgeschlossen ist.",
+  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Dieser alte Auftrag hat falsche Kapitelzuordnungen. W\xE4hle das EPUB erneut aus, um einen neuen Import zu erstellen.",
+  "Import complete": "Import abgeschlossen",
+  "This book's record has changed or was removed. Reopen the book list.": "Der Eintrag dieses Buchs wurde ge\xE4ndert oder entfernt. \xD6ffne die B\xFCcherliste erneut.",
+  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Ein Speicher f\xFCr native Kommentare liegt innerhalb der Kapitel. Das L\xF6schen ist gesperrt, um Kommentare zu sch\xFCtzen. Verschiebe den Kommentarspeicher zuerst auf die Seite, au\xDFerhalb der Buchkapitel.",
+  "Reference check failed; retained": "Verweispr\xFCfung fehlgeschlagen; behalten",
+  "Original upload ownership is unknown; retained": "Herkunft des Uploads unbekannt; behalten",
+  "Shared with another imported book": "Mit einem anderen importierten Buch geteilt",
+  "{0} references outside this book": "{0} Verweise au\xDFerhalb dieses Buchs",
+  "Used only by this book": "Nur von diesem Buch verwendet",
+  "Chapter scope changed. Review the deletion preview again.": "Die Kapitel haben sich ge\xE4ndert. Pr\xFCfe die L\xF6schvorschau erneut.",
+  "New content was added inside the book scope. Deletion stopped; review the preview again.": "Im Buch wurde neuer Inhalt hinzugef\xFCgt. L\xF6schen abgebrochen; pr\xFCfe die Vorschau erneut.",
+  "Deleting book chapters (preserving pages and native comments)\u2026": "Buchkapitel werden gel\xF6scht (Seiten und native Kommentare bleiben)\u2026",
+  "Deleting attachment {0}/{1}\u2026": "Anhang {0}/{1} wird gel\xF6scht\u2026",
+  "This book is waiting for attachment cleanup. Finish that first.": "Dieses Buch wartet auf die Bereinigung der Anh\xE4nge. Schlie\xDFe diese zuerst ab.",
+  "Not uploaded by this import; file retained": "Nicht von diesem Import hochgeladen; Datei behalten",
+  "Original upload ownership is unknown; file retained": "Herkunft des Uploads unbekannt; Datei behalten",
+  "Reference check failed; file retained": "Verweispr\xFCfung fehlgeschlagen; Datei behalten",
+  "Removing images from blocks {0}/{1}\u2026": "Bilder werden aus Bl\xF6cken entfernt {0}/{1}\u2026",
+  "Deleting image file {0}/{1}\u2026": "Bilddatei {0}/{1} wird gel\xF6scht\u2026",
+  "Not set": "Nicht festgelegt",
+  "Could not save local progress": "Lokaler Fortschritt konnte nicht gespeichert werden",
+  "Local progress save was aborted": "Das lokale Speichern des Fortschritts wurde abgebrochen",
+  "The local EPUB cache is missing. Select the original file again.": "Der lokale EPUB-Cache fehlt. W\xE4hle die Originaldatei erneut aus.",
+  "Preparing\u2026": "Wird vorbereitet\u2026",
+  "Processing\u2026": "Wird verarbeitet\u2026",
+  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} Inhaltsverzeichniseintr\xE4ge \xB7 {1} Knoten der obersten Ebene \xB7 ca. {2} Bl\xF6cke \xB7 {3} Bilder \xB7 {4} interne Links",
+  " \xB7 {0} formulas": " \xB7 {0} Formeln",
+  "Resume importing {0}": "Import von {0} fortsetzen",
+  "Import {0}": "{0} importieren",
+  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Lass Roam w\xE4hrend des Imports ge\xF6ffnet. Der Fortschritt wird gespeichert, damit ein unterbrochener Import fortgesetzt werden kann.",
+  "Created {0}. Images and links are in their original positions.": "{0} erstellt. Bilder und Links stehen an ihrer urspr\xFCnglichen Stelle.",
+  "Import paused: {0}. Progress was saved; you can resume later.": "Import pausiert: {0}. Der Fortschritt wurde gespeichert; du kannst sp\xE4ter fortfahren.",
+  "Retry / Resume": "Erneut versuchen / Fortsetzen",
+  "Book Preview": "Buchvorschau",
+  "Author: {0}": "Autor: {0}",
+  "Roam page title": "Titel der Roam-Seite",
+  "Original EPUB TOC ({0}, full hierarchy)": "Original-Inhaltsverzeichnis des EPUB ({0}, vollst\xE4ndige Hierarchie)",
+  "Outline generated from body headings": "Gliederung aus den \xDCberschriften im Text erzeugt",
+  "; {0} need review (source retained)": "; {0} zu pr\xFCfen (Quelle bleibt erhalten)",
+  "Formulas: {0} converted{1}": "Formeln: {0} konvertiert{1}",
+  "Formula {0} \xB7 {1}": "Formel {0} \xB7 {1}",
+  "Preview text and image order": "Vorschau der Reihenfolge von Text und Bildern",
+  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Bilder werden an ihrer urspr\xFCnglichen Stelle hochgeladen. Externe Links bleiben erhalten; interne Links werden zu Roam-Blockverweisen.",
+  "Start Import": "Import starten",
+  "Unfinished Imports": "Unvollst\xE4ndige Importe",
+  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Dieser Auftrag verwendet einen veralteten Parser. W\xE4hle das EPUB erneut aus, um einen korrigierten Import zu erstellen.",
+  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Dieser alte Auftrag hat keine Formeln gepr\xFCft. W\xE4hle das EPUB erneut aus, wenn das Buch Formeln enth\xE4lt.",
+  "Discard Job": "Auftrag verwerfen",
+  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Es existiert bereits eine Roam-Seite. Entferne diesen Import \xFCber \u201EImportierte B\xFCcher verwalten\u201C.",
+  "EPUB Importer": "EPUB-Importer",
+  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "W\xE4hle ein EPUB. Das Einlesen bleibt auf deinem Ger\xE4t; Bilder werden erst nach deiner Best\xE4tigung in den aktuellen Roam-Graphen hochgeladen.",
+  "No file selected.": "Keine Datei ausgew\xE4hlt.",
+  "Reading contents, text, images, and links\u2026": "Inhaltsverzeichnis, Text, Bilder und Links werden gelesen\u2026",
+  "Cannot read file: {0}": "Datei kann nicht gelesen werden: {0}",
+  "Cannot read saved jobs: {0}": "Gespeicherte Auftr\xE4ge k\xF6nnen nicht gelesen werden: {0}",
+  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Dabei werden {0} Kapitelwurzeln, {1} Bl\xF6cke und {2} exklusive Anh\xE4nge gel\xF6scht. Seiten und native Kommentare bleiben erhalten.",
+  " {0} shared or unverified attachments will be retained.": " {0} geteilte oder nicht gepr\xFCfte Anh\xE4nge bleiben erhalten.",
+  "Remove images \xB7 {0}": "Bilder entfernen \xB7 {0}",
+  "Finding images and checking where their files are used\u2026": "Bilder werden gesucht und ihre Verwendung gepr\xFCft\u2026",
+  "Check failed: {0}": "Pr\xFCfung fehlgeschlagen: {0}",
+  "Back to Book List": "Zur\xFCck zur B\xFCcherliste",
+  "This book has no images left in its text.": "Dieses Buch enth\xE4lt keine Bilder mehr im Text.",
+  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} Bl\xF6cke enthalten Bilder. Die Bilder werden daraus entfernt ({1} Bl\xF6cke nur mit Bild werden gel\xF6scht; Bl\xF6cke mit Text, Unterbl\xF6cken oder Verweisen bleiben). Das Buch, sein Text, die \xDCberschriften, Kommentare und Hervorhebungen bleiben.",
+  " ({0} shared, outside-referenced or unverified files are kept)": " ({0} geteilte, anderweitig verwendete oder nicht gepr\xFCfte Dateien bleiben erhalten)",
+  " Also delete {0} uploaded image files used only by this book{1}.": " Auch {0} hochgeladene Bilddateien l\xF6schen, die nur dieses Buch verwendet{1}.",
+  "Preview the first changes": "Vorschau der ersten \xC4nderungen",
+  "This cannot be undone: deleted image files are gone from Roam storage.": "Nicht umkehrbar: Gel\xF6schte Bilddateien verschwinden aus dem Roam-Speicher.",
+  "Cancel": "Abbrechen",
+  "Remove Images": "Bilder entfernen",
+  "Remove images from {0}? The book itself is kept.": "Bilder aus {0} entfernen? Das Buch selbst bleibt erhalten.",
+  " {0} blocks changed since the preview and were skipped.": " {0} seit der Vorschau ge\xE4nderte Bl\xF6cke wurden \xFCbersprungen.",
+  " {0} files could not be deleted and remain listed.": " {0} Dateien konnten nicht gel\xF6scht werden und bleiben aufgef\xFChrt.",
+  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Bilder aus {0} Bl\xF6cken entfernt ({1} Bl\xF6cke nur mit Bild gel\xF6scht) und {2} Dateien gel\xF6scht.{3}{4}",
+  "Image removal failed: {0}": "Entfernen der Bilder fehlgeschlagen: {0}",
+  "Delete {0}": "{0} l\xF6schen",
+  "Checking attachment references in other pages and books\u2026": "Verweise auf Anh\xE4nge in anderen Seiten und B\xFCchern werden gepr\xFCft\u2026",
+  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "Betroffene Seiten: {0}. Nur best\xE4tigte Buchkapitel werden gel\xF6scht; diese Seiten bleiben.",
+  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} Bl\xF6cke au\xDFerhalb des Buchs verweisen auf seinen Inhalt (m\xF6glicherweise auch native Kommentare). Diese Verweise k\xF6nnen nach dem L\xF6schen ins Leere gehen; Kommentare und eigenst\xE4ndige Notizen bleiben.",
+  "Reference checking failed. Attachments will be retained.": "Verweispr\xFCfung fehlgeschlagen. Anh\xE4nge bleiben erhalten.",
+  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Dieses wiederhergestellte Buch hat kein urspr\xFCngliches Upload-Verzeichnis. Kapitel k\xF6nnen gel\xF6scht werden, erkannte Bilder bleiben aber erhalten.",
+  "Type the full book title to confirm: {0}": "Gib zur Best\xE4tigung den vollst\xE4ndigen Buchtitel ein: {0}",
+  "Delete Permanently": "Endg\xFCltig l\xF6schen",
+  " {0} failed deletions are saved for retry.": " {0} fehlgeschlagene L\xF6schvorg\xE4nge sind f\xFCr einen neuen Versuch gespeichert.",
+  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Buchkapitel und {0} exklusive Anh\xE4nge gel\xF6scht. Seiten und native Kommentare bleiben. {1} geteilte oder nicht gepr\xFCfte Anh\xE4nge behalten.{2}",
+  "Deletion failed: {0}": "L\xF6schen fehlgeschlagen: {0}",
+  "Recover Existing Book": "Vorhandenes Buch wiederherstellen",
+  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Gib den ganzen oder einen Teil des urspr\xFCnglichen Seitentitels des Buchs ein. Die Wiederherstellung registriert das vorhandene Buch, ohne neu zu importieren, Text zu \xE4ndern oder Bilder hochzuladen. Anh\xE4nge ohne Upload-Verzeichnis werden als nicht gepr\xFCft markiert und beim L\xF6schen behalten.",
+  "Page title or book keywords": "Seitentitel oder Stichw\xF6rter zum Buch",
+  "Find an existing book page": "Vorhandene Buchseite finden",
+  "Find Pages": "Seiten suchen",
+  "No matching pages. Try a shorter book title.": "Keine passenden Seiten. Versuche einen k\xFCrzeren Titel.",
+  "Register This Book": "Dieses Buch registrieren",
+  "Recovery failed: {0}": "Wiederherstellung fehlgeschlagen: {0}",
+  "Reading the graph's book library\u2026": "Die Buchbibliothek des Graphen wird gelesen\u2026",
+  "Cannot read the library: {0}. Existing books are unchanged.": "Die Bibliothek kann nicht gelesen werden: {0}. Vorhandene B\xFCcher bleiben unver\xE4ndert.",
+  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "Die Bibliothek ist leer. Nutze \u201EVorhandenes Buch wiederherstellen\u201C f\xFCr B\xFCcher, die nach einem Update fehlen; ein erneuter Import ist nicht n\xF6tig.",
+  "Unknown author": "Unbekannter Autor",
+  " \xB7 Cleanup pending": " \xB7 Bereinigung ausstehend",
+  " \xB7 Recovered (original attachments retained)": " \xB7 Wiederhergestellt (Originalanh\xE4nge behalten)",
+  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} Anh\xE4nge{2}",
+  "Clean Up Attachments": "Anh\xE4nge bereinigen",
+  "Delete Book": "Buch l\xF6schen",
+  "Delete this book's images but keep the book": "Die Bilder dieses Buchs l\xF6schen, das Buch aber behalten",
+  "Open Reader": "Leser \xF6ffnen",
+  "The chapter structure has not been prepared.": "Die Kapitelstruktur wurde nicht vorbereitet.",
+  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Ein importierter Block wurde bearbeitet oder verschoben. Fortsetzen pausiert, um deine \xC4nderungen zu sch\xFCtzen. W\xE4hle das EPUB, um es in eine separate Seite zu importieren.",
+  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Kapitel {0}/{1} wird importiert \xB7 Block {2}/{3}",
+  "Resolving internal link {0}/{1}": "Interner Link {0}/{1} wird aufgel\xF6st",
+  "{0} comment": "{0} Kommentar",
+  "{0} comments": "{0} Kommentare",
+  "{0} highlight": "{0} Hervorhebung",
+  "{0} highlights": "{0} Hervorhebungen",
+  "{0} mark": "{0} Markierung",
+  "{0} marks": "{0} Markierungen",
+  "Read": "Gelesen",
+  "Unvisited": "Nicht besucht",
+  "Browsed": "Durchgesehen",
+  "Browsing": "Am Lesen",
+  "highlight": "Hervorhebung",
+  "comment": "Kommentar",
+  "mark": "Markierung",
+  "question": "Frage",
+  "sidebar": "der Seitenleiste",
+  "main window": "dem Hauptfenster",
+  "Heading repair": "\xDCberschriftenreparatur",
+  "Link repair": "Linkreparatur",
+  "Paragraph repair": "Absatzreparatur",
+  "Archive removal": "Archiventfernung",
+  "Toggle Mark": "Markieren / Markierung entfernen",
+  "Toggle Question": "Frage / keine Frage",
+  "Open / close Reading Desk": "Reading Desk \xF6ffnen / schlie\xDFen",
+  "Continue reading": "Weiterlesen",
+  "Open reading notes": "Lesenotizen \xF6ffnen",
+  "Contents": "Inhalt",
+  "Annotations": "Anmerkungen",
+  "Notes": "Notizen",
+  "Settings": "Einstellungen",
+  "Theme default": "Theme-Standard",
+  "Margin dot + bold": "Randpunkt + fett",
+  "Bookmark ribbon": "Lesezeichenband",
+  "Gold highlighter": "Goldener Textmarker",
+  "Pull quote": "Herausgestelltes Zitat",
+  "Sticky note": "Haftnotiz",
+  "Ink emphasis": "Kr\xE4ftige Tinte",
+  "Fill the line": "Zeile f\xFCllen",
+  "Theme line length": "Zeilenl\xE4nge des Themes",
+  "Cards": "Karten",
+  "Minimal": "Minimal",
+  "Coral": "Koralle",
+  "Rose": "Rosa",
+  "Mint": "Minze",
+  "Sky": "Himmel",
+  "Lilac": "Flieder",
+  "Gold": "Gold",
+  "Gray": "Grau",
+  "Blue": "Blau",
+  "Green": "Gr\xFCn",
+  "Purple": "Lila",
+  "Marker": "Textmarker",
+  "Underline": "Unterstrichen",
+  "Oldest first": "\xC4lteste zuerst",
+  "Newest first": "Neueste zuerst",
+  "A tag at the end (#question)": "Ein Tag am Ende (#question)",
+  "An attribute at the start (Question::)": "Ein Attribut am Anfang (Question::)",
+  "The right sidebar": "Die rechte Seitenleiste",
+  "The main window": "Das Hauptfenster",
+  "Auto (browser language)": "Auto (Browsersprache)",
+  "Page": "Seite",
+  "Book": "Buch",
+  "Earlier": "Fr\xFCher",
+  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "Kein verwendbares EPUB-Inhaltsverzeichnis gefunden. Die Gliederung nutzt die \xDCberschriften im Text; pr\xFCfe die Vorschau.",
+  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Fehlendes Inhaltsverzeichnisziel f\xFCr {0}: {1}. Nicht zugeordneter Text wird separat behalten.",
+  "TOC file is outside the EPUB reading order: {0}": "Die Inhaltsverzeichnisdatei liegt au\xDFerhalb der EPUB-Lesereihenfolge: {0}",
+  "Missing EPUB body file: {0}": "Fehlende EPUB-Textdatei: {0}",
+  "Missing EPUB image: {0}": "Fehlendes EPUB-Bild: {0}",
+  "Auto": "Auto",
+  "Interface language": "Sprache der Oberfl\xE4che",
+  "Interface language for Reading Desk (Auto follows your browser).": "Sprache der Oberfl\xE4che von Reading Desk (Auto folgt deinem Browser)."
+};
+
+// src/locales/es.js
+var es_default = {
+  "Resize panel: drag the corner, or use arrow keys": "Cambiar el tama\xF1o del panel: arrastra la esquina o usa las flechas",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "Separar im\xE1genes y texto en {0} bloques; conservar los ID del texto y los bloques hijos",
+  "Separate images and text in existing blocks (preview first)": "Separar im\xE1genes y texto en bloques existentes (revisar primero)",
+  "{0} complex or chapter-root image blocks were left unchanged.": "Se dejaron sin cambios {0} bloques complejos o de ra\xEDz de cap\xEDtulo.",
+  "{0} image/text blocks": "{0} bloques de imagen/texto",
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "Para importar m\xE1s r\xE1pido, mant\xE9n activos esta ventana y esta pesta\xF1a de Roam hasta que termine. Cambiar a otra aplicaci\xF3n o pesta\xF1a puede ralentizar la importaci\xF3n.",
+  "Book or referenced content changed since preview. Preview the repair again.": "El libro o las referencias cambiaron desde la vista previa. Genera otra vista previa.",
+  "Reference check failed; deletion stopped.": "Fall\xF3 la comprobaci\xF3n de referencias; eliminaci\xF3n detenida.",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "Este libro tiene referencias externas a sus cap\xEDtulos. Elim\xEDnalas antes de borrar el libro.",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "{0} bloques externos hacen referencia al libro. La eliminaci\xF3n est\xE1 bloqueada para conservarlos.",
+  "Reference checking failed. Deletion is blocked.": "Fall\xF3 la comprobaci\xF3n de referencias. Eliminaci\xF3n bloqueada.",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk est\xE1 desactivado. Act\xEDvalo antes de importar.",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Importaci\xF3n pausada porque Reading Desk se desactiv\xF3. Act\xEDvalo para continuar.",
+  "Enter a destination page title.": "Escribe el t\xEDtulo de la p\xE1gina de destino.",
+  "Select annotations to include first.": "Selecciona primero las anotaciones que quieres incluir.",
+  "Book repair is available for managed books only.": "La reparaci\xF3n solo est\xE1 disponible para libros gestionados.",
+  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "Unir {0} p\xE1rrafo(s) cortado(s) (comprobado con el EPUB original)",
+  "Fix {0} block(s) with broken numbered links": "Corregir {0} bloque(s) con enlaces numerados rotos",
+  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "; {0} referencia(s) a fragmentos antiguos (comentarios, enlaces de notas) pasan al p\xE1rrafo reparado",
+  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "Eliminar {0} archivo(s) EPUB-READER:paragraph-fragments{1}",
+  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "Poner {0} t\xEDtulo(s) de cap\xEDtulo en H1/H2/H3 seg\xFAn la profundidad",
+  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "Eliminar {0} t\xEDtulo(s) que repiten el t\xEDtulo del cap\xEDtulo (los p\xE1rrafos suben, los ID no cambian)",
+  "Turn {0} other body heading(s) into bold text": "Convertir {0} t\xEDtulo(s) m\xE1s del texto en negrita",
+  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "Devolver {0} llamada(s) de nota al final de su t\xEDtulo (p. ej. \xAB2.3 T\xEDtulo [3]\xBB); los p\xE1rrafos bajo la llamada pasan bajo el t\xEDtulo",
+  "Turn {0} footnote marker heading(s) such as [3] into plain text": "Convertir {0} t\xEDtulo(s) de llamada de nota como [3] en texto normal",
+  "Rejoining split paragraphs\u2026": "Uniendo p\xE1rrafos cortados\u2026",
+  "Fixing numbered links\u2026": "Corrigiendo enlaces numerados\u2026",
+  "Removing paragraph archives\u2026": "Eliminando archivos de p\xE1rrafos\u2026",
+  "Fixing heading levels\u2026": "Corrigiendo niveles de t\xEDtulos\u2026",
+  "No book repair record was found.": "No se encontr\xF3 ning\xFAn registro de reparaci\xF3n.",
+  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "La p\xE1gina original ya no existe. Abre la p\xE1gina actual del libro, selecciona este libro y enlaza sus cap\xEDtulos. No hace falta volver a importar.",
+  "Select at least one existing book chapter.": "Selecciona al menos un cap\xEDtulo existente.",
+  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Confirma primero los cap\xEDtulos de este libro en el panel de lectura. No hace falta volver a importar ni cambiar el texto.",
+  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "El alcance de cap\xEDtulos no puede incluir una p\xE1gina entera. Vuelve a confirmar los cap\xEDtulos; la p\xE1gina se conserva.",
+  "The current page or block cannot be read.": "No se puede leer la p\xE1gina o el bloque actual.",
+  "Could not parse {0}": "No se pudo analizar {0}",
+  "Invalid EPUB: META-INF/container.xml is missing": "EPUB no v\xE1lido: falta META-INF/container.xml",
+  "The EPUB manifest is missing": "Falta el manifiesto del EPUB",
+  "No readable chapter content was found in the EPUB": "No se encontr\xF3 contenido de cap\xEDtulos legible en el EPUB",
+  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Este bloque ya no existe. Actualiza el \xEDndice o las anotaciones; el libro no se volver\xE1 a crear.",
+  "Cannot find the page containing this block.": "No se encuentra la p\xE1gina que contiene este bloque.",
+  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "La p\xE1gina se abri\xF3, pero este p\xE1rrafo a\xFAn no se muestra. Despliega su cap\xEDtulo y vuelve a intentarlo.",
+  "Heading repair is available for managed books only.": "La reparaci\xF3n de t\xEDtulos solo est\xE1 disponible para libros gestionados.",
+  "This Roam version does not expose block.move. No headings were changed.": "Esta versi\xF3n de Roam no ofrece block.move. No se cambi\xF3 ning\xFAn t\xEDtulo.",
+  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Usa \xABDeshacer la \xFAltima reparaci\xF3n\xBB para restaurar los cambios.",
+  "No heading repair backup was found.": "No se encontr\xF3 ninguna copia de seguridad de la reparaci\xF3n de t\xEDtulos.",
+  "Language": "Idioma",
+  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Idioma de la interfaz (Auto sigue al navegador). El panel de lectura cambia al instante; esta pesta\xF1a de ajustes, tras recargar el plugin.",
+  "Import EPUB": "Importar EPUB",
+  "Choose, preview, and import an EPUB book": "Elegir, previsualizar e importar un libro EPUB",
+  "Open Importer": "Abrir el importador",
+  "Manage Imported Books": "Gestionar libros importados",
+  "Manage imported books, recover existing pages, and safely clean up attachments": "Gestionar libros importados, recuperar p\xE1ginas existentes y limpiar adjuntos con seguridad",
+  "Manage Books": "Gestionar libros",
+  "Reading Desk": "Reading Desk",
+  "Open reading tools for books or ordinary pages": "Herramientas de lectura para libros o p\xE1ginas normales",
+  "Open Reading Desk": "Abrir Reading Desk",
+  "Automatic Browsing Progress": "Progreso de lectura autom\xE1tico",
+  "Estimate foreground browsing per chapter; never infer comprehension": "Estima la lectura en primer plano por cap\xEDtulo; nunca deduce la comprensi\xF3n",
+  "Native Comment Side Notes": "Comentarios nativos al margen",
+  "Show native comments in full beside the text throughout the graph": "Mostrar los comentarios nativos completos junto al texto en todo el grafo",
+  "Highlight Colour": "Color de resaltado",
+  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Color de los ^^resaltados^^ nativos (Predeterminado del tema mantiene el color de tu tema)",
+  "Question Tags": "Etiquetas de pregunta",
+  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Etiquetas existentes, separadas por comas, para preguntas abiertas. El atajo \xABPregunta\xBB a\xF1ade #question.",
+  "Invalid library format. Stopped to protect existing data.": "Formato de biblioteca no v\xE1lido. Se detuvo para proteger los datos existentes.",
+  "Cannot read the library. Stopped to protect existing data.": "No se puede leer la biblioteca. Se detuvo para proteger los datos existentes.",
+  "Unsupported library version or structure. Stopped to protect existing data.": "Versi\xF3n o estructura de biblioteca no compatible. Se detuvo para proteger los datos existentes.",
+  "The attachment ledger is incomplete. Stopped to protect attachments.": "El registro de adjuntos est\xE1 incompleto. Se detuvo para proteger los adjuntos.",
+  "Attachment ledger validation failed.": "Fall\xF3 la validaci\xF3n del registro de adjuntos.",
+  "The book record has no stable identity.": "La ficha del libro no tiene una identidad estable.",
+  "Enter at least two characters of the page title.": "Escribe al menos dos caracteres del t\xEDtulo de la p\xE1gina.",
+  "The specified book page could not be found.": "No se encontr\xF3 la p\xE1gina del libro indicada.",
+  "Native Roam comment": "Comentario nativo de Roam",
+  "Open the native comment thread to edit": "Abrir el hilo del comentario nativo para editarlo",
+  "Open native comment thread": "Abrir el hilo del comentario nativo",
+  "Delete this comment": "Eliminar este comentario",
+  "Delete comment": "Eliminar comentario",
+  "\n\nIts replies are deleted too.": "\n\nTambi\xE9n se eliminar\xE1n sus respuestas.",
+  "Delete this comment?\n\n{0}{1}": "\xBFEliminar este comentario?\n\n{0}{1}",
+  "Expand this section": "Desplegar esta secci\xF3n",
+  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Usa una etiqueta de pregunta no vac\xEDa, sin corchetes, #, llaves ni saltos de l\xEDnea (m\xE1x. 80 caracteres).",
+  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Coloca primero el cursor en un p\xE1rrafo o en un comentario nativo y luego activa la pregunta.",
+  "Unmark It": "Quitar marca",
+  "Mark It": "Marcar",
+  "This Roam version does not expose block.move. No paragraphs were changed.": "Esta versi\xF3n de Roam no ofrece block.move. No se cambi\xF3 ning\xFAn p\xE1rrafo.",
+  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Se conservan los ID de los fragmentos originales. Usa \xABDeshacer la \xFAltima reparaci\xF3n de p\xE1rrafos\xBB para los cambios interrumpidos.",
+  "Paragraph repair backup is missing.": "Falta la copia de seguridad de la reparaci\xF3n de p\xE1rrafos.",
+  "Archive cleanup backup is missing.": "Falta la copia de seguridad de la limpieza de archivos.",
+  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "Los metadatos de lectura est\xE1n incompletos. Actualiza y vuelve a intentarlo; el libro original no se ve afectado.",
+  "just now": "ahora mismo",
+  "{0} min ago": "hace {0} min",
+  "{0} h ago": "hace {0} h",
+  "{0} d ago": "hace {0} d",
+  "All Books": "Todos los libros",
+  "Selected block: {0}": "Bloque seleccionado: {0}",
+  "Click a paragraph or native comment to select an action target.": "Haz clic en un p\xE1rrafo o en un comentario nativo para elegir el destino de la acci\xF3n.",
+  " \xB7 approx. {0}%": " \xB7 aprox. {0} %",
+  "Read \xB7 click to unmark": "Le\xEDdo \xB7 clic para desmarcar",
+  "Mark as read": "Marcar como le\xEDdo",
+  "Could not collapse the previous chapter: {0}": "No se pudo plegar el cap\xEDtulo anterior: {0}",
+  "The page {0} does not exist yet.": "La p\xE1gina {0} a\xFAn no existe.",
+  "Open a book or page first.": "Abre primero un libro o una p\xE1gina.",
+  "Remove from All Books": "Quitar de Todos los libros",
+  "Include in All Books": "Incluir en Todos los libros",
+  "Pages you include appear in the All Books scope with your books": "Las p\xE1ginas incluidas aparecen junto a tus libros en \xABTodos los libros\xBB",
+  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Confirma qu\xE9 cap\xEDtulos existentes pertenecen a este libro. Desmarca tus propias notas. Solo se registran los ID de bloque; el texto, los comentarios y los resaltados existentes se conservan.",
+  "Confirm Book Scope": "Confirmar cap\xEDtulos",
+  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Anotaciones y preguntas de todos los libros gestionados y de todas las p\xE1ginas incluidas. Elige una fuente para abrirla.",
+  "{0} \xB7 {1} annotations": "{0} \xB7 {1} anotaciones",
+  "Last read \xB7 {0}": "\xDAltima lectura \xB7 {0}",
+  "Body": "Texto",
+  "Continue": "Continuar",
+  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "No hay \xEDndice en esta p\xE1gina. El \xEDndice se construye con los t\xEDtulos H1, H2 y H3.",
+  "No chapters were found.": "No se encontraron cap\xEDtulos.",
+  "Collapse All Chapters": "Plegar todos los cap\xEDtulos",
+  "Collapse Subdirectories": "Plegar subsecciones",
+  "Expand Subdirectories": "Desplegar subsecciones",
+  "Current section: {0}": "Secci\xF3n actual: {0}",
+  "Toggle subdirectory: {0}": "Mostrar/ocultar subsecci\xF3n: {0}",
+  "Resume": "Reanudar",
+  "Reset": "Restablecer",
+  "Reset browsing progress for {0}? Text and annotations will be preserved.": "\xBFRestablecer el progreso de lectura de {0}? El texto y las anotaciones se conservan.",
+  "Fold": "Plegar",
+  "{0} chapter entries are missing. Use the action below to link their current location.": "Faltan {0} entradas de cap\xEDtulo. Usa la acci\xF3n de abajo para enlazar su ubicaci\xF3n actual.",
+  "Link Current Page to This Book": "Enlazar la p\xE1gina actual con este libro",
+  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "El \xEDndice viene de los t\xEDtulos H1, H2 y H3. Al hacer clic en un t\xEDtulo solo se desplaza; nada en la p\xE1gina se pliega ni se cambia.",
+  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "Los cap\xEDtulos no visitados no son tareas. La cobertura estima los p\xE1rrafos mostrados, no las palabras le\xEDdas ni la comprensi\xF3n. Usa \u2713 para marcar t\xFA mismo un cap\xEDtulo como le\xEDdo.",
+  "Include in notes draft": "Incluir en el borrador de notas",
+  "This page": "Esta p\xE1gina",
+  "(Empty annotation)": "(Anotaci\xF3n vac\xEDa)",
+  "Open Native Comment": "Abrir el comentario nativo",
+  "Open in Sidebar": "Abrir en la barra lateral",
+  "Search annotations": "Buscar en las anotaciones",
+  "All types": "Todos los tipos",
+  "Highlights": "Resaltados",
+  "Comments": "Comentarios",
+  "Marks": "Marcas",
+  "Questions": "Preguntas",
+  "All sources": "Todas las fuentes",
+  "All chapters": "Todos los cap\xEDtulos",
+  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} elementos \xB7 Haz clic para verlos en contexto; May\xFAs+clic para la barra lateral.",
+  "Load More": "Cargar m\xE1s",
+  "Question:: \u2026": "Question:: \u2026",
+  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Preguntas re\xFAne todo lo que sigue abierto: TODO nativos, tus etiquetas de pregunta y atributos de pregunta (por ejemplo {0}). Los elementos DONE se excluyen. Alt+Q activa una en el bloque actual; elige el estilo de etiqueta o atributo en Ajustes.",
+  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Anotaciones re\xFAne resaltados, comentarios nativos, marcas y preguntas. Marca elementos para crear una p\xE1gina de notas de lectura que remita a los originales.",
+  "Destination page for notes draft": "P\xE1gina de destino del borrador de notas",
+  "Create Notes Draft from Selection": "Crear borrador de notas con la selecci\xF3n",
+  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "Se a\xF1adieron {0} notas con referencia a {1}, enlazadas a la p\xE1gina de origen. Abierto en {2}.",
+  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "A\xFAn no hay notas de lectura para {0}. En Anotaciones, marca elementos y elige \xABCrear borrador de notas\xBB; la p\xE1gina de notas ({1}) se abre en la barra lateral.",
+  "Create Notes Page": "Crear p\xE1gina de notas",
+  "Open the notes page (Shift+click: sidebar)": "Abrir la p\xE1gina de notas (May\xFAs+clic: barra lateral)",
+  "Sidebar": "Barra lateral",
+  "No generated drafts on this page yet. Create one from the Annotations tab.": "A\xFAn no hay borradores generados en esta p\xE1gina. Crea uno desde la pesta\xF1a Anotaciones.",
+  "Show in the book (Shift+click: sidebar)": "Mostrar en el libro (May\xFAs+clic: barra lateral)",
+  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} borrador(es) \xB7 {3} nota(s)",
+  "Open this draft (Shift+click: sidebar)": "Abrir este borrador (May\xFAs+clic: barra lateral)",
+  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "La p\xE1gina de notas tambi\xE9n tiene {0} bloque(s) escrito(s) por ti; abre la p\xE1gina para verlos.",
+  "Back to Settings": "Volver a Ajustes",
+  "Repair This Book": "Reparar este libro",
+  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "La reparaci\xF3n solo est\xE1 disponible para libros gestionados. Elige un libro en el men\xFA. Las p\xE1ginas normales nunca se cambian autom\xE1ticamente.",
+  "Nothing to repair in this book.": "No hay nada que reparar en este libro.",
+  "This repair will:": "Esta reparaci\xF3n:",
+  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} archivo(s) se quedan porque un fragmento antiguo tiene sus propios bloques hijos.",
+  "Preview the changes": "Vista previa de los cambios",
+  "Nothing to change.": "Nada que cambiar.",
+  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "\xBFReparar {0}?\n\n{1}\n\nTodo queda respaldado; un solo Deshacer lo restaura todo.",
+  "{0} paragraphs": "{0} p\xE1rrafos",
+  "{0} link blocks": "{0} bloques de enlaces",
+  "{0} archives ({1} references moved)": "{0} archivos ({1} referencias movidas)",
+  "{0} headings": "{0} t\xEDtulos",
+  "nothing needed": "nada que hacer",
+  " {0} block(s) changed since the preview were skipped; run the repair again.": " Se omitieron {0} bloque(s) cambiado(s) desde la vista previa; vuelve a ejecutar la reparaci\xF3n.",
+  "Repaired: {0}.{1} Undo is available.": "Reparado: {0}.{1} Se puede deshacer.",
+  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Corrige en un solo paso todo lo que se puede corregir con seguridad: niveles de t\xEDtulos para el \xEDndice, llamadas de nota mostradas como t\xEDtulos, enlaces numerados rotos y archivos EPUB-READER:paragraph-fragments sobrantes. El texto, los comentarios y los resaltados se conservan.",
+  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Opcional: elige el EPUB original para unir tambi\xE9n los p\xE1rrafos cortados por importaciones antiguas (se lee en local, no se sube nada)",
+  "Original EPUB for paragraph repair": "EPUB original para la reparaci\xF3n de p\xE1rrafos",
+  "Checking the original EPUB\u2026": "Comprobando el EPUB original\u2026",
+  "Undo Last Repair": "Deshacer la \xFAltima reparaci\xF3n",
+  "Undo the last book repair? Blocks edited since then are left as they are.": "\xBFDeshacer la \xFAltima reparaci\xF3n del libro? Los bloques editados desde entonces se quedan como est\xE1n.",
+  "Restored {0} items; skipped {1} edited items.": "Se restauraron {0} elementos; se omitieron {1} elementos editados.",
+  "Undo a repair made with an earlier version": "Deshacer una reparaci\xF3n hecha con una versi\xF3n anterior",
+  "Undo {0}": "Deshacer: {0}",
+  "Restored {0} items; skipped {1}.": "Se restauraron {0} elementos; se omitieron {1}.",
+  "its shortcut (not set)": "su atajo (sin definir)",
+  "Press keys\u2026": "Pulsa las teclas\u2026",
+  "{0}: shortcut cleared.": "{0}: atajo borrado.",
+  "{0} is already used by {1}.": "{0} ya lo usa {1}.",
+  "Click, then press the new shortcut": "Haz clic y luego pulsa el nuevo atajo",
+  "Reset to {0}": "Restablecer a {0}",
+  "Library": "Biblioteca",
+  "Reading": "Lectura",
+  "Collapse the previous chapter when navigating": "Plegar el cap\xEDtulo anterior al navegar",
+  "Track browsing automatically (estimated, not comprehension)": "Registrar la lectura autom\xE1ticamente (estimaci\xF3n, no comprensi\xF3n)",
+  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "El progreso autom\xE1tico solo se aplica a libros gestionados. Plegar subsecciones en el panel no cambia el libro.",
+  "Text width": "Ancho del texto",
+  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Llenar la l\xEDnea: los p\xE1rrafos llegan hasta el final de su fila, as\xED que en pantallas anchas no queda una franja vac\xEDa antes del contador de referencias. Las notas al margen quedan fuera del texto, como en Folio.",
+  "Native Comments": "Comentarios nativos",
+  "Native comment side notes (graph-wide)": "Comentarios nativos al margen (todo el grafo)",
+  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Las notas se muestran completas y apiladas junto al texto. Haz clic en una nota o en su p\xE1rrafo para alinearlos; \u2197 abre el hilo nativo para editarlo.",
+  "Side note style": "Estilo de las notas al margen",
+  "Side note colour": "Color de las notas al margen",
+  "Side note order": "Orden de las notas al margen",
+  "Highlight colour": "Color de resaltado",
+  "Highlight style": "Estilo de resaltado",
+  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "Se aplica a todos los ^^resaltados^^ nativos. Predeterminado del tema mantiene el color de tu tema.",
+  "Mark style": "Estilo de marca",
+  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} o el men\xFA del bloque activa #mark; la etiqueta queda en el texto y se oculta al leer.",
+  "Recognized question tags (comma-separated)": "Etiquetas de pregunta reconocidas (separadas por comas)",
+  "Recognized question tags": "Etiquetas de pregunta reconocidas",
+  "Quick question tag ({0})": "Etiqueta de pregunta r\xE1pida ({0})",
+  "Quick question tag": "Etiqueta de pregunta r\xE1pida",
+  "Toggle Question inserts": "\xABPregunta\xBB inserta",
+  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Escribe los nombres de las etiquetas sin #. La etiqueta de pregunta r\xE1pida siempre se reconoce, tambi\xE9n en comentarios nativos. \xABMarcar\xBB conserva #mark para seguir siendo compatible con tu estilo original.",
+  "Save Question Settings": "Guardar ajustes de preguntas",
+  "Question settings saved. Toggle Question uses your quick question tag.": "Ajustes de preguntas guardados. \xABPregunta\xBB usa tu etiqueta de pregunta r\xE1pida.",
+  "Question settings are active for this session; settings storage could not sync.": "Los ajustes de preguntas est\xE1n activos en esta sesi\xF3n; no se pudieron sincronizar.",
+  "Keyboard Shortcuts": "Atajos de teclado",
+  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Haz clic en un atajo y pulsa las nuevas teclas (con Ctrl, Cmd/\u2318 o Alt/\u2325). Esc cancela, Retroceso borra. Reading Desk procesa estas teclas antes que Roam, as\xED que Opci\xF3n+M ya no escribe \xAB\xB5\xBB. Arrastra la barra de t\xEDtulo para mover este panel. May\xFAs+clic abre el contenido en la barra lateral.",
+  "Reading Notes": "Notas de lectura",
+  "Open new reading notes in": "Abrir las nuevas notas de lectura en",
+  "Maintenance": "Mantenimiento",
+  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Un solo paso para libros importados: niveles de t\xEDtulos, llamadas de nota como t\xEDtulos, enlaces rotos y archivos de p\xE1rrafos sobrantes (y, si quieres, p\xE1rrafos cortados). Muestra primero qu\xE9 cambiar\xE1; un solo Deshacer lo restaura todo.",
+  "Click a paragraph or native comment first, then use this action.": "Haz clic primero en un p\xE1rrafo o en un comentario nativo y luego usa esta acci\xF3n.",
+  "Open a page or book, then click Refresh.": "Abre una p\xE1gina o un libro y luego haz clic en Actualizar.",
+  "Current Page": "P\xE1gina actual",
+  "Books": "Libros",
+  "Included pages": "P\xE1ginas incluidas",
+  "All Books \xB7 {0} sources \xB7 {1} annotations": "Todos los libros \xB7 {0} fuentes \xB7 {1} anotaciones",
+  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "P\xE1gina \xB7 {0} t\xEDtulos \xB7 {1} anotaciones \xB7 el progreso solo se registra para libros",
+  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} bloques \xB7 {2} anotaciones \xB7 {3} p\xE1ginas",
+  "Close": "Cerrar",
+  "Drag to move Reading Desk": "Arrastra para mover Reading Desk",
+  "Reading scope": "Alcance de lectura",
+  "Refresh": "Actualizar",
+  "Loading\u2026": "Cargando\u2026",
+  "Text or comments changed. Click Refresh to update without interrupting your work.": "El texto o los comentarios cambiaron. Haz clic en Actualizar para actualizar sin interrumpir tu trabajo.",
+  "No repair backup was found.": "No se encontr\xF3 ninguna copia de seguridad de reparaci\xF3n.",
+  "Image conversion failed": "Fall\xF3 la conversi\xF3n de la imagen",
+  "Cannot read image: {0}": "No se puede leer la imagen: {0}",
+  "Processing image {0}/{1}": "Procesando imagen {0}/{1}",
+  "Image upload returned no valid URL: {0}": "La subida de la imagen no devolvi\xF3 una URL v\xE1lida: {0}",
+  "The imported page was removed. Select the EPUB again to import.": "La p\xE1gina importada se elimin\xF3. Vuelve a seleccionar el EPUB para importarlo.",
+  "A book is already being imported. Wait for it to finish.": "Ya se est\xE1 importando un libro. Espera a que termine.",
+  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Esta tarea antigua tiene asignaciones de cap\xEDtulos incorrectas. Vuelve a seleccionar el EPUB para crear una nueva importaci\xF3n.",
+  "Import complete": "Importaci\xF3n completada",
+  "This book's record has changed or was removed. Reopen the book list.": "La ficha de este libro cambi\xF3 o se elimin\xF3. Vuelve a abrir la lista de libros.",
+  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Hay un almac\xE9n de comentarios nativos dentro de los cap\xEDtulos. La eliminaci\xF3n est\xE1 bloqueada para conservar los comentarios. Mueve primero el almac\xE9n de comentarios a la p\xE1gina, fuera de los cap\xEDtulos del libro.",
+  "Reference check failed; retained": "Fall\xF3 la comprobaci\xF3n de referencias; se conserva",
+  "Original upload ownership is unknown; retained": "Origen de la subida desconocido; se conserva",
+  "Shared with another imported book": "Compartido con otro libro importado",
+  "{0} references outside this book": "{0} referencias fuera de este libro",
+  "Used only by this book": "Usado solo por este libro",
+  "Chapter scope changed. Review the deletion preview again.": "Los cap\xEDtulos cambiaron. Revisa de nuevo la vista previa de eliminaci\xF3n.",
+  "New content was added inside the book scope. Deletion stopped; review the preview again.": "Se a\xF1adi\xF3 contenido dentro del libro. Eliminaci\xF3n detenida; revisa de nuevo la vista previa.",
+  "Deleting book chapters (preserving pages and native comments)\u2026": "Eliminando cap\xEDtulos del libro (se conservan p\xE1ginas y comentarios nativos)\u2026",
+  "Deleting attachment {0}/{1}\u2026": "Eliminando adjunto {0}/{1}\u2026",
+  "This book is waiting for attachment cleanup. Finish that first.": "Este libro est\xE1 pendiente de la limpieza de adjuntos. Term\xEDnala primero.",
+  "Not uploaded by this import; file retained": "No subido por esta importaci\xF3n; archivo conservado",
+  "Original upload ownership is unknown; file retained": "Origen de la subida desconocido; archivo conservado",
+  "Reference check failed; file retained": "Fall\xF3 la comprobaci\xF3n de referencias; archivo conservado",
+  "Removing images from blocks {0}/{1}\u2026": "Quitando im\xE1genes de los bloques {0}/{1}\u2026",
+  "Deleting image file {0}/{1}\u2026": "Eliminando archivo de imagen {0}/{1}\u2026",
+  "Not set": "Sin definir",
+  "Could not save local progress": "No se pudo guardar el progreso local",
+  "Local progress save was aborted": "Se interrumpi\xF3 el guardado local del progreso",
+  "The local EPUB cache is missing. Select the original file again.": "Falta la cach\xE9 local del EPUB. Vuelve a seleccionar el archivo original.",
+  "Preparing\u2026": "Preparando\u2026",
+  "Processing\u2026": "Procesando\u2026",
+  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} entradas de \xEDndice \xB7 {1} nodos de primer nivel \xB7 aprox. {2} bloques \xB7 {3} im\xE1genes \xB7 {4} enlaces internos",
+  " \xB7 {0} formulas": " \xB7 {0} f\xF3rmulas",
+  "Resume importing {0}": "Reanudar la importaci\xF3n de {0}",
+  "Import {0}": "Importar {0}",
+  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Mant\xE9n Roam abierto durante la importaci\xF3n. El progreso se guarda para poder reanudar una importaci\xF3n interrumpida.",
+  "Created {0}. Images and links are in their original positions.": "Se cre\xF3 {0}. Las im\xE1genes y los enlaces est\xE1n en su posici\xF3n original.",
+  "Import paused: {0}. Progress was saved; you can resume later.": "Importaci\xF3n en pausa: {0}. El progreso se guard\xF3; puedes reanudarla m\xE1s tarde.",
+  "Retry / Resume": "Reintentar / Reanudar",
+  "Book Preview": "Vista previa del libro",
+  "Author: {0}": "Autor: {0}",
+  "Roam page title": "T\xEDtulo de la p\xE1gina de Roam",
+  "Original EPUB TOC ({0}, full hierarchy)": "\xCDndice EPUB original ({0}, jerarqu\xEDa completa)",
+  "Outline generated from body headings": "Esquema generado a partir de los t\xEDtulos del texto",
+  "; {0} need review (source retained)": "; {0} por revisar (se conserva la fuente)",
+  "Formulas: {0} converted{1}": "F\xF3rmulas: {0} convertidas{1}",
+  "Formula {0} \xB7 {1}": "F\xF3rmula {0} \xB7 {1}",
+  "Preview text and image order": "Vista previa del orden del texto y las im\xE1genes",
+  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Las im\xE1genes se suben en su posici\xF3n original. Los enlaces externos se conservan; los internos se convierten en referencias de bloque de Roam.",
+  "Start Import": "Iniciar importaci\xF3n",
+  "Unfinished Imports": "Importaciones sin terminar",
+  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Esta tarea usa un analizador antiguo. Vuelve a seleccionar el EPUB para crear una importaci\xF3n corregida.",
+  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Esta tarea antigua no comprob\xF3 las f\xF3rmulas. Vuelve a seleccionar el EPUB si el libro contiene f\xF3rmulas.",
+  "Discard Job": "Descartar tarea",
+  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Ya existe una p\xE1gina de Roam. Usa \xABGestionar libros importados\xBB para quitar esta importaci\xF3n.",
+  "EPUB Importer": "Importador de EPUB",
+  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "Elige un EPUB. El an\xE1lisis se hace en tu dispositivo; las im\xE1genes solo se suben al grafo de Roam actual despu\xE9s de que confirmes la importaci\xF3n.",
+  "No file selected.": "Ning\xFAn archivo seleccionado.",
+  "Reading contents, text, images, and links\u2026": "Leyendo \xEDndice, texto, im\xE1genes y enlaces\u2026",
+  "Cannot read file: {0}": "No se puede leer el archivo: {0}",
+  "Cannot read saved jobs: {0}": "No se pueden leer las tareas guardadas: {0}",
+  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Esto elimina {0} cap\xEDtulos ra\xEDz, {1} bloques y {2} adjuntos exclusivos. Las p\xE1ginas y los comentarios nativos se conservan.",
+  " {0} shared or unverified attachments will be retained.": " Se conservar\xE1n {0} adjuntos compartidos o no verificados.",
+  "Remove images \xB7 {0}": "Quitar im\xE1genes \xB7 {0}",
+  "Finding images and checking where their files are used\u2026": "Buscando im\xE1genes y comprobando d\xF3nde se usan sus archivos\u2026",
+  "Check failed: {0}": "Fall\xF3 la comprobaci\xF3n: {0}",
+  "Back to Book List": "Volver a la lista de libros",
+  "This book has no images left in its text.": "Este libro ya no tiene im\xE1genes en el texto.",
+  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} bloques contienen im\xE1genes. Se quitan las im\xE1genes ({1} bloques que solo tienen una imagen se eliminan; los bloques con texto, hijos o referencias se conservan). El libro, su texto, t\xEDtulos, comentarios y resaltados se quedan.",
+  " ({0} shared, outside-referenced or unverified files are kept)": " (se conservan {0} archivos compartidos, referenciados en otro lugar o no verificados)",
+  " Also delete {0} uploaded image files used only by this book{1}.": " Eliminar tambi\xE9n {0} archivos de imagen subidos que solo usa este libro{1}.",
+  "Preview the first changes": "Vista previa de los primeros cambios",
+  "This cannot be undone: deleted image files are gone from Roam storage.": "No se puede deshacer: los archivos de imagen eliminados desaparecen del almacenamiento de Roam.",
+  "Cancel": "Cancelar",
+  "Remove Images": "Quitar im\xE1genes",
+  "Remove images from {0}? The book itself is kept.": "\xBFQuitar las im\xE1genes de {0}? El libro se conserva.",
+  " {0} blocks changed since the preview and were skipped.": " Se omitieron {0} bloques cambiados desde la vista previa.",
+  " {0} files could not be deleted and remain listed.": " {0} archivos no se pudieron eliminar y siguen en la lista.",
+  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Im\xE1genes quitadas de {0} bloques ({1} bloques de solo imagen eliminados) y {2} archivos eliminados.{3}{4}",
+  "Image removal failed: {0}": "Fall\xF3 la eliminaci\xF3n de im\xE1genes: {0}",
+  "Delete {0}": "Eliminar {0}",
+  "Checking attachment references in other pages and books\u2026": "Comprobando referencias a adjuntos en otras p\xE1ginas y libros\u2026",
+  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "P\xE1ginas afectadas: {0}. Solo se eliminan los cap\xEDtulos confirmados del libro; estas p\xE1ginas se quedan.",
+  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} bloques fuera del libro hacen referencia a su contenido (quiz\xE1 tambi\xE9n comentarios nativos). Esas referencias pueden romperse tras la eliminaci\xF3n; los comentarios y las notas independientes se quedan.",
+  "Reference checking failed. Attachments will be retained.": "Fall\xF3 la comprobaci\xF3n de referencias. Los adjuntos se conservar\xE1n.",
+  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Este libro recuperado no tiene registro de subida original. Los cap\xEDtulos se pueden eliminar, pero las im\xE1genes detectadas se conservar\xE1n.",
+  "Type the full book title to confirm: {0}": "Escribe el t\xEDtulo completo del libro para confirmar: {0}",
+  "Delete Permanently": "Eliminar definitivamente",
+  " {0} failed deletions are saved for retry.": " Se guardaron {0} eliminaciones fallidas para reintentarlas.",
+  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Se eliminaron los cap\xEDtulos del libro y {0} adjuntos exclusivos. Las p\xE1ginas y los comentarios nativos se quedan. Se conservaron {1} adjuntos compartidos o no verificados.{2}",
+  "Deletion failed: {0}": "Fall\xF3 la eliminaci\xF3n: {0}",
+  "Recover Existing Book": "Recuperar un libro existente",
+  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Escribe todo o parte del t\xEDtulo de la p\xE1gina original del libro. La recuperaci\xF3n registra el libro existente sin volver a importar, editar el texto ni subir im\xE1genes. Los adjuntos sin registro de subida se marcan como no verificados y se conservan al eliminar.",
+  "Page title or book keywords": "T\xEDtulo de la p\xE1gina o palabras clave del libro",
+  "Find an existing book page": "Buscar una p\xE1gina de libro existente",
+  "Find Pages": "Buscar p\xE1ginas",
+  "No matching pages. Try a shorter book title.": "No hay p\xE1ginas coincidentes. Prueba con un t\xEDtulo m\xE1s corto.",
+  "Register This Book": "Registrar este libro",
+  "Recovery failed: {0}": "Fall\xF3 la recuperaci\xF3n: {0}",
+  "Reading the graph's book library\u2026": "Leyendo la biblioteca de libros del grafo\u2026",
+  "Cannot read the library: {0}. Existing books are unchanged.": "No se puede leer la biblioteca: {0}. Los libros existentes no cambian.",
+  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "La biblioteca est\xE1 vac\xEDa. Usa \xABRecuperar un libro existente\xBB para libros que falten tras una actualizaci\xF3n; no hace falta volver a importar.",
+  "Unknown author": "Autor desconocido",
+  " \xB7 Cleanup pending": " \xB7 Limpieza pendiente",
+  " \xB7 Recovered (original attachments retained)": " \xB7 Recuperado (se conservan los adjuntos originales)",
+  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} adjuntos{2}",
+  "Clean Up Attachments": "Limpiar adjuntos",
+  "Delete Book": "Eliminar libro",
+  "Delete this book's images but keep the book": "Eliminar las im\xE1genes de este libro pero conservar el libro",
+  "Open Reader": "Abrir el lector",
+  "The chapter structure has not been prepared.": "La estructura de cap\xEDtulos no se ha preparado.",
+  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Se edit\xF3 o movi\xF3 un bloque importado. Reanudaci\xF3n en pausa para conservar tus cambios. Selecciona el EPUB para importarlo en una p\xE1gina aparte.",
+  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Importando cap\xEDtulo {0}/{1} \xB7 bloque {2}/{3}",
+  "Resolving internal link {0}/{1}": "Resolviendo enlace interno {0}/{1}",
+  "{0} comment": "{0} comentario",
+  "{0} comments": "{0} comentarios",
+  "{0} highlight": "{0} resaltado",
+  "{0} highlights": "{0} resaltados",
+  "{0} mark": "{0} marca",
+  "{0} marks": "{0} marcas",
+  "Read": "Le\xEDdo",
+  "Unvisited": "Sin visitar",
+  "Browsed": "Hojeado",
+  "Browsing": "Leyendo",
+  "highlight": "resaltado",
+  "comment": "comentario",
+  "mark": "marca",
+  "question": "pregunta",
+  "sidebar": "la barra lateral",
+  "main window": "la ventana principal",
+  "Heading repair": "Reparaci\xF3n de t\xEDtulos",
+  "Link repair": "Reparaci\xF3n de enlaces",
+  "Paragraph repair": "Reparaci\xF3n de p\xE1rrafos",
+  "Archive removal": "Eliminaci\xF3n de archivos",
+  "Toggle Mark": "Marcar / desmarcar",
+  "Toggle Question": "Pregunta / quitar pregunta",
+  "Open / close Reading Desk": "Abrir / cerrar Reading Desk",
+  "Continue reading": "Seguir leyendo",
+  "Open reading notes": "Abrir las notas de lectura",
+  "Contents": "\xCDndice",
+  "Annotations": "Anotaciones",
+  "Notes": "Notas",
+  "Settings": "Ajustes",
+  "Theme default": "Predeterminado del tema",
+  "Margin dot + bold": "Punto al margen + negrita",
+  "Bookmark ribbon": "Cinta marcap\xE1ginas",
+  "Gold highlighter": "Rotulador dorado",
+  "Pull quote": "Cita destacada",
+  "Sticky note": "Nota adhesiva",
+  "Ink emphasis": "Tinta intensa",
+  "Fill the line": "Llenar la l\xEDnea",
+  "Theme line length": "Longitud de l\xEDnea del tema",
+  "Cards": "Tarjetas",
+  "Minimal": "M\xEDnimo",
+  "Coral": "Coral",
+  "Rose": "Rosa",
+  "Mint": "Menta",
+  "Sky": "Cielo",
+  "Lilac": "Lila",
+  "Gold": "Oro",
+  "Gray": "Gris",
+  "Blue": "Azul",
+  "Green": "Verde",
+  "Purple": "Morado",
+  "Marker": "Rotulador",
+  "Underline": "Subrayado",
+  "Oldest first": "Las m\xE1s antiguas primero",
+  "Newest first": "Las m\xE1s recientes primero",
+  "A tag at the end (#question)": "Una etiqueta al final (#question)",
+  "An attribute at the start (Question::)": "Un atributo al principio (Question::)",
+  "The right sidebar": "La barra lateral derecha",
+  "The main window": "La ventana principal",
+  "Auto (browser language)": "Auto (idioma del navegador)",
+  "Page": "P\xE1gina",
+  "Book": "Libro",
+  "Earlier": "Anteriores",
+  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "No se encontr\xF3 un \xEDndice EPUB utilizable. El esquema usa los t\xEDtulos del texto; revisa la vista previa.",
+  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Falta el destino del \xEDndice para {0}: {1}. El texto sin asignar se conserva aparte.",
+  "TOC file is outside the EPUB reading order: {0}": "El archivo del \xEDndice est\xE1 fuera del orden de lectura del EPUB: {0}",
+  "Missing EPUB body file: {0}": "Falta un archivo de texto del EPUB: {0}",
+  "Missing EPUB image: {0}": "Falta una imagen del EPUB: {0}",
+  "Auto": "Auto",
+  "Interface language": "Idioma de la interfaz",
+  "Interface language for Reading Desk (Auto follows your browser).": "Idioma de la interfaz de Reading Desk (Auto sigue al navegador)."
+};
+
+// src/locales/zh.js
+var zh_default = {
+  "Resize panel: drag the corner, or use arrow keys": "\u8C03\u6574\u9762\u677F\u5927\u5C0F\uFF1A\u62D6\u52A8\u53F3\u4E0B\u89D2\uFF0C\u6216\u4F7F\u7528\u65B9\u5411\u952E",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "\u62C6\u5206 {0} \u4E2A\u56FE\u6587\u6DF7\u5408\u5757\uFF1B\u4FDD\u7559\u6587\u5B57\u5757 ID \u548C\u5B50\u5757",
+  "Separate images and text in existing blocks (preview first)": "\u62C6\u5206\u5DF2\u6709\u5757\u4E2D\u7684\u56FE\u7247\u4E0E\u6587\u5B57\uFF08\u5148\u9884\u89C8\uFF09",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} \u4E2A\u7ED3\u6784\u590D\u6742\u6216\u4F4D\u4E8E\u7AE0\u8282\u6839\u90E8\u7684\u56FE\u6587\u5757\u4FDD\u6301\u4E0D\u53D8\u3002",
+  "{0} image/text blocks": "{0} \u4E2A\u56FE\u6587\u5757",
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "\u4E3A\u52A0\u5FEB\u5BFC\u5165\uFF0C\u5EFA\u8BAE\u5728\u5BFC\u5165\u5B8C\u6210\u524D\u4FDD\u6301\u5F53\u524D Roam \u7A97\u53E3\u548C\u6807\u7B7E\u9875\u5904\u4E8E\u524D\u53F0\u3002\u5207\u6362\u5230\u5176\u4ED6\u5E94\u7528\u6216\u6807\u7B7E\u9875\u53EF\u80FD\u4F7F\u5BFC\u5165\u53D8\u6162\u3002",
+  "Book or referenced content changed since preview. Preview the repair again.": "\u4E66\u7C4D\u6216\u5F15\u7528\u5185\u5BB9\u5728\u9884\u89C8\u540E\u53D1\u751F\u4E86\u53D8\u5316\uFF0C\u8BF7\u91CD\u65B0\u9884\u89C8\u4FEE\u590D\u65B9\u6848\u3002",
+  "Reference check failed; deletion stopped.": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\uFF0C\u5DF2\u505C\u6B62\u5220\u9664\u3002",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "\u8FD9\u672C\u4E66\u7684\u5185\u5BB9\u4ECD\u88AB\u7AE0\u8282\u4E4B\u5916\u7684\u5757\u5F15\u7528\u3002\u8BF7\u5148\u79FB\u9664\u8FD9\u4E9B\u5F15\u7528\uFF0C\u518D\u5220\u9664\u4E66\u7C4D\u3002",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "\u4E66\u5916\u6709 {0} \u4E2A\u5757\u5F15\u7528\u4E66\u4E2D\u5185\u5BB9\u3002\u4E3A\u4FDD\u62A4\u8FD9\u4E9B\u5F15\u7528\uFF0C\u5DF2\u7981\u6B62\u5220\u9664\u3002",
+  "Reference checking failed. Deletion is blocked.": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\uFF0C\u5DF2\u7981\u6B62\u5220\u9664\u3002",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk \u5DF2\u5173\u95ED\uFF0C\u8BF7\u542F\u7528\u540E\u518D\u5BFC\u5165\u3002",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Reading Desk \u5DF2\u5173\u95ED\uFF0C\u5BFC\u5165\u5DF2\u6682\u505C\u3002\u91CD\u65B0\u542F\u7528\u540E\u53EF\u7EE7\u7EED\u5BFC\u5165\u3002",
+  "Enter a destination page title.": "\u8BF7\u8F93\u5165\u76EE\u6807\u9875\u9762\u6807\u9898\u3002",
+  "Select annotations to include first.": "\u8BF7\u5148\u9009\u62E9\u8981\u52A0\u5165\u7684\u6279\u6CE8\u3002",
+  "Book repair is available for managed books only.": "\u4E66\u7C4D\u4FEE\u590D\u4EC5\u9002\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002",
+  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "\u62FC\u56DE {0} \u4E2A\u88AB\u62C6\u5F00\u7684\u6BB5\u843D\uFF08\u5DF2\u4E0E\u539F EPUB \u6838\u5BF9\uFF09",
+  "Fix {0} block(s) with broken numbered links": "\u4FEE\u590D {0} \u4E2A\u542B\u574F\u7F16\u53F7\u94FE\u63A5\u7684\u5757",
+  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "\uFF1B{0} \u5904\u6307\u5411\u65E7\u7247\u6BB5\u7684\u5F15\u7528\uFF08\u8BC4\u8BBA\u3001\u811A\u6CE8\u94FE\u63A5\uFF09\u6539\u6307\u5411\u4FEE\u590D\u540E\u7684\u6BB5\u843D",
+  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "\u5220\u9664 {0} \u4E2A EPUB-READER:paragraph-fragments \u5B58\u6863{1}",
+  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "\u6309\u5C42\u7EA7\u628A {0} \u4E2A\u7AE0\u8282\u6807\u9898\u8BBE\u4E3A H1/H2/H3",
+  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "\u5220\u9664 {0} \u4E2A\u91CD\u590D\u7AE0\u8282\u540D\u7684\u6807\u9898\uFF08\u6BB5\u843D\u4E0A\u79FB\uFF0C\u5757 ID \u4E0D\u53D8\uFF09",
+  "Turn {0} other body heading(s) into bold text": "\u628A {0} \u4E2A\u5176\u4ED6\u6B63\u6587\u6807\u9898\u6539\u4E3A\u52A0\u7C97",
+  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "\u628A {0} \u4E2A\u811A\u6CE8\u6807\u8BB0\u63A5\u56DE\u6240\u5C5E\u6807\u9898\u672B\u5C3E\uFF08\u5982\u201C2.3 \u6807\u9898 [3]\u201D\uFF09\uFF1B\u6807\u8BB0\u4E0B\u7684\u6BB5\u843D\u79FB\u5230\u6807\u9898\u4E0B",
+  "Turn {0} footnote marker heading(s) such as [3] into plain text": "\u628A {0} \u4E2A\u50CF [3] \u8FD9\u6837\u7684\u811A\u6CE8\u6807\u8BB0\u6807\u9898\u6539\u4E3A\u666E\u901A\u6587\u5B57",
+  "Rejoining split paragraphs\u2026": "\u6B63\u5728\u62FC\u56DE\u88AB\u62C6\u5F00\u7684\u6BB5\u843D\u2026",
+  "Fixing numbered links\u2026": "\u6B63\u5728\u4FEE\u590D\u7F16\u53F7\u94FE\u63A5\u2026",
+  "Removing paragraph archives\u2026": "\u6B63\u5728\u5220\u9664\u6BB5\u843D\u5B58\u6863\u2026",
+  "Fixing heading levels\u2026": "\u6B63\u5728\u4FEE\u590D\u6807\u9898\u5C42\u7EA7\u2026",
+  "No book repair record was found.": "\u672A\u627E\u5230\u4FEE\u590D\u8BB0\u5F55\u3002",
+  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "\u539F\u9875\u9762\u5DF2\u4E0D\u5B58\u5728\u3002\u8BF7\u6253\u5F00\u8FD9\u672C\u4E66\u73B0\u5728\u6240\u5728\u7684\u9875\u9762\uFF0C\u9009\u4E2D\u8FD9\u672C\u4E66\u5E76\u5173\u8054\u5B83\u7684\u7AE0\u8282\u3002\u65E0\u9700\u91CD\u65B0\u5BFC\u5165\u3002",
+  "Select at least one existing book chapter.": "\u8BF7\u81F3\u5C11\u9009\u62E9\u4E00\u4E2A\u73B0\u6709\u7AE0\u8282\u3002",
+  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "\u8BF7\u5148\u5728\u9605\u8BFB\u9762\u677F\u4E2D\u786E\u8BA4\u8FD9\u672C\u4E66\u7684\u7AE0\u8282\u8303\u56F4\u3002\u65E0\u9700\u91CD\u65B0\u5BFC\u5165\u6216\u4FEE\u6539\u6587\u5B57\u3002",
+  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "\u7AE0\u8282\u8303\u56F4\u4E0D\u80FD\u5305\u542B\u6574\u4E2A\u9875\u9762\u3002\u8BF7\u91CD\u65B0\u786E\u8BA4\u4E66\u7C4D\u7AE0\u8282\uFF1B\u9875\u9762\u4F1A\u4FDD\u7559\u3002",
+  "The current page or block cannot be read.": "\u65E0\u6CD5\u8BFB\u53D6\u5F53\u524D\u9875\u9762\u6216\u5757\u3002",
+  "Could not parse {0}": "\u65E0\u6CD5\u89E3\u6790 {0}",
+  "Invalid EPUB: META-INF/container.xml is missing": "\u65E0\u6548\u7684 EPUB\uFF1A\u7F3A\u5C11 META-INF/container.xml",
+  "The EPUB manifest is missing": "\u7F3A\u5C11 EPUB \u6E05\u5355\u6587\u4EF6",
+  "No readable chapter content was found in the EPUB": "EPUB \u4E2D\u6CA1\u6709\u627E\u5230\u53EF\u8BFB\u7684\u7AE0\u8282\u5185\u5BB9",
+  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "\u8FD9\u4E2A\u5757\u5DF2\u4E0D\u5B58\u5728\u3002\u8BF7\u5237\u65B0\u76EE\u5F55\u6216\u6279\u6CE8\uFF1B\u4E66\u4E0D\u4F1A\u88AB\u91CD\u65B0\u521B\u5EFA\u3002",
+  "Cannot find the page containing this block.": "\u627E\u4E0D\u5230\u5305\u542B\u8FD9\u4E2A\u5757\u7684\u9875\u9762\u3002",
+  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "\u9875\u9762\u5DF2\u6253\u5F00\uFF0C\u4F46\u8FD9\u4E2A\u6BB5\u843D\u8FD8\u6CA1\u6709\u663E\u793A\u3002\u8BF7\u5C55\u5F00\u5B83\u6240\u5728\u7684\u7AE0\u8282\u540E\u91CD\u8BD5\u3002",
+  "Heading repair is available for managed books only.": "\u6807\u9898\u4FEE\u590D\u4EC5\u9002\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002",
+  "This Roam version does not expose block.move. No headings were changed.": "\u5F53\u524D Roam \u7248\u672C\u4E0D\u652F\u6301 block.move\uFF0C\u672A\u4FEE\u6539\u4EFB\u4F55\u6807\u9898\u3002",
+  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} \u53EF\u7528\u201C\u64A4\u9500\u4E0A\u6B21\u4FEE\u590D\u201D\u6062\u590D\u5DF2\u505A\u7684\u4FEE\u6539\u3002",
+  "No heading repair backup was found.": "\u672A\u627E\u5230\u6807\u9898\u4FEE\u590D\u7684\u5907\u4EFD\u3002",
+  "Language": "\u8BED\u8A00",
+  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "\u754C\u9762\u8BED\u8A00\uFF08Auto \u8DDF\u968F\u6D4F\u89C8\u5668\uFF09\u3002\u9605\u8BFB\u9762\u677F\u4F1A\u7ACB\u5373\u5207\u6362\uFF1B\u8FD9\u4E2A\u8BBE\u7F6E\u9875\u9700\u91CD\u65B0\u52A0\u8F7D\u63D2\u4EF6\u540E\u751F\u6548\u3002",
+  "Import EPUB": "\u5BFC\u5165 EPUB",
+  "Choose, preview, and import an EPUB book": "\u9009\u62E9\u3001\u9884\u89C8\u5E76\u5BFC\u5165\u4E00\u672C EPUB \u4E66",
+  "Open Importer": "\u6253\u5F00\u5BFC\u5165\u5668",
+  "Manage Imported Books": "\u7BA1\u7406\u5DF2\u5BFC\u5165\u7684\u4E66",
+  "Manage imported books, recover existing pages, and safely clean up attachments": "\u7BA1\u7406\u5DF2\u5BFC\u5165\u7684\u4E66\u3001\u627E\u56DE\u5DF2\u6709\u9875\u9762\uFF0C\u5E76\u5B89\u5168\u6E05\u7406\u9644\u4EF6",
+  "Manage Books": "\u7BA1\u7406\u4E66\u7C4D",
+  "Reading Desk": "Reading Desk",
+  "Open reading tools for books or ordinary pages": "\u7528\u4E8E\u4E66\u7C4D\u6216\u666E\u901A\u9875\u9762\u7684\u9605\u8BFB\u5DE5\u5177",
+  "Open Reading Desk": "\u6253\u5F00 Reading Desk",
+  "Automatic Browsing Progress": "\u81EA\u52A8\u6D4F\u89C8\u8FDB\u5EA6",
+  "Estimate foreground browsing per chapter; never infer comprehension": "\u6309\u7AE0\u8282\u4F30\u7B97\u524D\u53F0\u6D4F\u89C8\u60C5\u51B5\uFF1B\u4ECE\u4E0D\u636E\u6B64\u63A8\u65AD\u7406\u89E3\u7A0B\u5EA6",
+  "Native Comment Side Notes": "\u539F\u751F\u8BC4\u8BBA\u65C1\u6CE8",
+  "Show native comments in full beside the text throughout the graph": "\u5728\u6574\u4E2A\u56FE\u8C31\u4E2D\u628A\u539F\u751F\u8BC4\u8BBA\u5B8C\u6574\u663E\u793A\u5728\u6B63\u6587\u65C1\u8FB9",
+  "Highlight Colour": "\u9AD8\u4EAE\u989C\u8272",
+  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "\u539F\u751F ^^\u9AD8\u4EAE^^ \u7684\u989C\u8272\uFF08\u201C\u4E3B\u9898\u9ED8\u8BA4\u201D\u4FDD\u7559\u4E3B\u9898\u539F\u672C\u7684\u989C\u8272\uFF09",
+  "Question Tags": "\u7591\u95EE\u6807\u7B7E",
+  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "\u7528\u4E8E\u672A\u89E3\u51B3\u95EE\u9898\u7684\u73B0\u6709\u6807\u7B7E\uFF0C\u7528\u9017\u53F7\u5206\u9694\u3002\u201C\u5207\u6362\u7591\u95EE\u201D\u5FEB\u6377\u952E\u4F1A\u52A0\u4E0A #question\u3002",
+  "Invalid library format. Stopped to protect existing data.": "\u4E66\u5E93\u683C\u5F0F\u65E0\u6548\u3002\u4E3A\u4FDD\u62A4\u73B0\u6709\u6570\u636E\u5DF2\u505C\u6B62\u3002",
+  "Cannot read the library. Stopped to protect existing data.": "\u65E0\u6CD5\u8BFB\u53D6\u4E66\u5E93\u3002\u4E3A\u4FDD\u62A4\u73B0\u6709\u6570\u636E\u5DF2\u505C\u6B62\u3002",
+  "Unsupported library version or structure. Stopped to protect existing data.": "\u4E0D\u652F\u6301\u7684\u4E66\u5E93\u7248\u672C\u6216\u7ED3\u6784\u3002\u4E3A\u4FDD\u62A4\u73B0\u6709\u6570\u636E\u5DF2\u505C\u6B62\u3002",
+  "The attachment ledger is incomplete. Stopped to protect attachments.": "\u9644\u4EF6\u6E05\u5355\u4E0D\u5B8C\u6574\u3002\u4E3A\u4FDD\u62A4\u9644\u4EF6\u5DF2\u505C\u6B62\u3002",
+  "Attachment ledger validation failed.": "\u9644\u4EF6\u6E05\u5355\u6821\u9A8C\u5931\u8D25\u3002",
+  "The book record has no stable identity.": "\u8FD9\u672C\u4E66\u7684\u8BB0\u5F55\u6CA1\u6709\u7A33\u5B9A\u7684\u6807\u8BC6\u3002",
+  "Enter at least two characters of the page title.": "\u8BF7\u81F3\u5C11\u8F93\u5165\u9875\u9762\u6807\u9898\u4E2D\u7684\u4E24\u4E2A\u5B57\u3002",
+  "The specified book page could not be found.": "\u627E\u4E0D\u5230\u6307\u5B9A\u7684\u4E66\u7C4D\u9875\u9762\u3002",
+  "Native Roam comment": "Roam \u539F\u751F\u8BC4\u8BBA",
+  "Open the native comment thread to edit": "\u6253\u5F00\u539F\u751F\u8BC4\u8BBA\u7EBF\u7A0B\u8FDB\u884C\u7F16\u8F91",
+  "Open native comment thread": "\u6253\u5F00\u539F\u751F\u8BC4\u8BBA\u7EBF\u7A0B",
+  "Delete this comment": "\u5220\u9664\u8FD9\u6761\u8BC4\u8BBA",
+  "Delete comment": "\u5220\u9664\u8BC4\u8BBA",
+  "\n\nIts replies are deleted too.": "\n\n\u5B83\u7684\u56DE\u590D\u4E5F\u4F1A\u4E00\u5E76\u5220\u9664\u3002",
+  "Delete this comment?\n\n{0}{1}": "\u5220\u9664\u8FD9\u6761\u8BC4\u8BBA\uFF1F\n\n{0}{1}",
+  "Expand this section": "\u5C55\u5F00\u8FD9\u4E00\u8282",
+  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "\u8BF7\u4F7F\u7528\u975E\u7A7A\u7684\u7591\u95EE\u6807\u7B7E\uFF0C\u4E0D\u542B\u65B9\u62EC\u53F7\u3001#\u3001\u82B1\u62EC\u53F7\u6216\u6362\u884C\uFF08\u6700\u591A 80 \u4E2A\u5B57\u7B26\uFF09\u3002",
+  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "\u8BF7\u5148\u628A\u5149\u6807\u653E\u5728\u6BB5\u843D\u6216\u539F\u751F\u8BC4\u8BBA\u91CC\uFF0C\u518D\u5207\u6362\u7591\u95EE\u3002",
+  "Unmark It": "\u53D6\u6D88 Mark It",
+  "Mark It": "Mark It",
+  "This Roam version does not expose block.move. No paragraphs were changed.": "\u5F53\u524D Roam \u7248\u672C\u4E0D\u652F\u6301 block.move\uFF0C\u672A\u4FEE\u6539\u4EFB\u4F55\u6BB5\u843D\u3002",
+  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} \u539F\u7247\u6BB5 ID \u5DF2\u4FDD\u7559\u3002\u4E2D\u65AD\u7684\u4FEE\u6539\u8BF7\u7528\u201C\u64A4\u9500\u4E0A\u6B21\u6BB5\u843D\u4FEE\u590D\u201D\u3002",
+  "Paragraph repair backup is missing.": "\u6BB5\u843D\u4FEE\u590D\u7684\u5907\u4EFD\u4E0D\u5B58\u5728\u3002",
+  "Archive cleanup backup is missing.": "\u5B58\u6863\u6E05\u7406\u7684\u5907\u4EFD\u4E0D\u5B58\u5728\u3002",
+  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "\u9605\u8BFB\u5143\u6570\u636E\u4E0D\u5B8C\u6574\u3002\u8BF7\u5237\u65B0\u540E\u91CD\u8BD5\uFF1B\u539F\u4E66\u4E0D\u53D7\u5F71\u54CD\u3002",
+  "just now": "\u521A\u521A",
+  "{0} min ago": "{0} \u5206\u949F\u524D",
+  "{0} h ago": "{0} \u5C0F\u65F6\u524D",
+  "{0} d ago": "{0} \u5929\u524D",
+  "All Books": "\u5168\u90E8\u4E66\u7C4D",
+  "Selected block: {0}": "\u5DF2\u9009\u5757\uFF1A{0}",
+  "Click a paragraph or native comment to select an action target.": "\u70B9\u51FB\u4E00\u4E2A\u6BB5\u843D\u6216\u539F\u751F\u8BC4\u8BBA\uFF0C\u4F5C\u4E3A\u64CD\u4F5C\u5BF9\u8C61\u3002",
+  " \xB7 approx. {0}%": " \xB7 \u7EA6 {0}%",
+  "Read \xB7 click to unmark": "\u5DF2\u8BFB \xB7 \u70B9\u51FB\u53D6\u6D88",
+  "Mark as read": "\u6807\u8BB0\u4E3A\u5DF2\u8BFB",
+  "Could not collapse the previous chapter: {0}": "\u65E0\u6CD5\u6298\u53E0\u4E0A\u4E00\u7AE0\uFF1A{0}",
+  "The page {0} does not exist yet.": "\u9875\u9762 {0} \u8FD8\u4E0D\u5B58\u5728\u3002",
+  "Open a book or page first.": "\u8BF7\u5148\u6253\u5F00\u4E00\u672C\u4E66\u6216\u4E00\u4E2A\u9875\u9762\u3002",
+  "Remove from All Books": "\u4ECE\u201C\u5168\u90E8\u4E66\u7C4D\u201D\u79FB\u9664",
+  "Include in All Books": "\u52A0\u5165\u201C\u5168\u90E8\u4E66\u7C4D\u201D",
+  "Pages you include appear in the All Books scope with your books": "\u52A0\u5165\u7684\u9875\u9762\u4F1A\u548C\u4F60\u7684\u4E66\u4E00\u8D77\u51FA\u73B0\u5728\u201C\u5168\u90E8\u4E66\u7C4D\u201D\u4E2D",
+  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "\u786E\u8BA4\u54EA\u4E9B\u73B0\u6709\u7AE0\u8282\u5C5E\u4E8E\u8FD9\u672C\u4E66\uFF0C\u53D6\u6D88\u52FE\u9009\u4F60\u81EA\u5DF1\u7684\u7B14\u8BB0\u3002\u8FD9\u91CC\u53EA\u8BB0\u5F55\u5757 ID\uFF1B\u5DF2\u6709\u6587\u5B57\u3001\u8BC4\u8BBA\u548C\u9AD8\u4EAE\u90FD\u4F1A\u4FDD\u7559\u3002",
+  "Confirm Book Scope": "\u786E\u8BA4\u7AE0\u8282\u8303\u56F4",
+  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "\u6765\u81EA\u6240\u6709\u5DF2\u7BA1\u7406\u4E66\u7C4D\u548C\u6240\u6709\u5DF2\u52A0\u5165\u9875\u9762\u7684\u6279\u6CE8\u4E0E\u7591\u95EE\u3002\u9009\u62E9\u4E00\u4E2A\u6765\u6E90\u5373\u53EF\u6253\u5F00\u3002",
+  "{0} \xB7 {1} annotations": "{0} \xB7 {1} \u6761\u6279\u6CE8",
+  "Last read \xB7 {0}": "\u4E0A\u6B21\u9605\u8BFB \xB7 {0}",
+  "Body": "\u6B63\u6587",
+  "Continue": "\u7EE7\u7EED",
+  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "\u6B64\u9875\u6CA1\u6709\u76EE\u5F55\u3002\u76EE\u5F55\u7531 H1\u3001H2\u3001H3 \u6807\u9898\u751F\u6210\u3002",
+  "No chapters were found.": "\u6CA1\u6709\u627E\u5230\u7AE0\u8282\u3002",
+  "Collapse All Chapters": "\u6298\u53E0\u5168\u90E8\u7AE0\u8282",
+  "Collapse Subdirectories": "\u6298\u53E0\u5B50\u76EE\u5F55",
+  "Expand Subdirectories": "\u5C55\u5F00\u5B50\u76EE\u5F55",
+  "Current section: {0}": "\u5F53\u524D\u5C0F\u8282\uFF1A{0}",
+  "Toggle subdirectory: {0}": "\u5C55\u5F00/\u6298\u53E0\u5B50\u76EE\u5F55\uFF1A{0}",
+  "Resume": "\u7EE7\u7EED\u9605\u8BFB",
+  "Reset": "\u91CD\u7F6E",
+  "Reset browsing progress for {0}? Text and annotations will be preserved.": "\u91CD\u7F6E {0} \u7684\u6D4F\u89C8\u8FDB\u5EA6\uFF1F\u6587\u5B57\u548C\u6279\u6CE8\u90FD\u4F1A\u4FDD\u7559\u3002",
+  "Fold": "\u6298\u53E0",
+  "{0} chapter entries are missing. Use the action below to link their current location.": "\u7F3A\u5C11 {0} \u4E2A\u7AE0\u8282\u6761\u76EE\u3002\u8BF7\u7528\u4E0B\u9762\u7684\u64CD\u4F5C\u5173\u8054\u5B83\u4EEC\u73B0\u5728\u7684\u4F4D\u7F6E\u3002",
+  "Link Current Page to This Book": "\u628A\u5F53\u524D\u9875\u9762\u5173\u8054\u5230\u8FD9\u672C\u4E66",
+  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "\u76EE\u5F55\u6765\u81EA H1\u3001H2\u3001H3 \u6807\u9898\u3002\u70B9\u51FB\u6807\u9898\u53EA\u4F1A\u6EDA\u52A8\uFF0C\u4E0D\u4F1A\u6298\u53E0\u6216\u4FEE\u6539\u9875\u9762\u4E0A\u7684\u4EFB\u4F55\u5185\u5BB9\u3002",
+  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "\u672A\u8BBF\u95EE\u7684\u7AE0\u8282\u4E0D\u662F\u4EFB\u52A1\u3002\u8986\u76D6\u7387\u4F30\u7B97\u7684\u662F\u663E\u793A\u8FC7\u7684\u6BB5\u843D\uFF0C\u4E0D\u662F\u8BFB\u8FC7\u7684\u5B57\u6570\u6216\u7406\u89E3\u7A0B\u5EA6\u3002\u7528 \u2713 \u81EA\u5DF1\u628A\u7AE0\u8282\u6807\u4E3A\u5DF2\u8BFB\u3002",
+  "Include in notes draft": "\u52A0\u5165\u7B14\u8BB0\u8349\u7A3F",
+  "This page": "\u672C\u9875",
+  "(Empty annotation)": "\uFF08\u7A7A\u6279\u6CE8\uFF09",
+  "Open Native Comment": "\u6253\u5F00\u539F\u751F\u8BC4\u8BBA",
+  "Open in Sidebar": "\u5728\u4FA7\u8FB9\u680F\u6253\u5F00",
+  "Search annotations": "\u641C\u7D22\u6279\u6CE8",
+  "All types": "\u5168\u90E8\u7C7B\u578B",
+  "Highlights": "\u9AD8\u4EAE",
+  "Comments": "\u8BC4\u8BBA",
+  "Marks": "\u6807\u8BB0",
+  "Questions": "\u7591\u95EE",
+  "All sources": "\u5168\u90E8\u6765\u6E90",
+  "All chapters": "\u5168\u90E8\u7AE0\u8282",
+  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} \u9879 \xB7 \u70B9\u51FB\u5728\u4E0A\u4E0B\u6587\u4E2D\u5B9A\u4F4D\uFF1BShift+\u70B9\u51FB\u5728\u4FA7\u8FB9\u680F\u6253\u5F00\u3002",
+  "Load More": "\u52A0\u8F7D\u66F4\u591A",
+  "Question:: \u2026": "Question:: \u2026",
+  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "\u7591\u95EE\u6C47\u603B\u6240\u6709\u4ECD\u672A\u89E3\u51B3\u7684\u5185\u5BB9\uFF1A\u539F\u751F TODO\u3001\u4F60\u7684\u7591\u95EE\u6807\u7B7E\u548C\u7591\u95EE\u5C5E\u6027\uFF08\u4F8B\u5982 {0}\uFF09\u3002DONE \u4E0D\u8BA1\u5165\u3002Alt+Q \u53EF\u5728\u5F53\u524D\u5757\u4E0A\u5207\u6362\uFF1B\u5728\u8BBE\u7F6E\u4E2D\u9009\u62E9\u6807\u7B7E\u6216\u5C5E\u6027\u6837\u5F0F\u3002",
+  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "\u6279\u6CE8\u6C47\u603B\u9AD8\u4EAE\u3001\u539F\u751F\u8BC4\u8BBA\u3001Mark It \u548C\u7591\u95EE\u3002\u52FE\u9009\u6761\u76EE\u5373\u53EF\u751F\u6210\u5F15\u7528\u539F\u6587\u7684\u8BFB\u4E66\u7B14\u8BB0\u9875\u9762\u3002",
+  "Destination page for notes draft": "\u7B14\u8BB0\u8349\u7A3F\u7684\u76EE\u6807\u9875\u9762",
+  "Create Notes Draft from Selection": "\u7528\u6240\u9009\u5185\u5BB9\u751F\u6210\u7B14\u8BB0\u8349\u7A3F",
+  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "\u5DF2\u5411 {1} \u8FFD\u52A0 {0} \u6761\u5F15\u7528\u7B14\u8BB0\uFF0C\u5E76\u94FE\u63A5\u56DE\u539F\u4E66\u9875\u9762\u3002\u5DF2\u5728{2}\u4E2D\u6253\u5F00\u3002",
+  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "{0} \u8FD8\u6CA1\u6709\u8BFB\u4E66\u7B14\u8BB0\u3002\u5728\u201C\u6279\u6CE8\u201D\u4E2D\u52FE\u9009\u6761\u76EE\u5E76\u70B9\u201C\u7528\u6240\u9009\u5185\u5BB9\u751F\u6210\u7B14\u8BB0\u8349\u7A3F\u201D\uFF1B\u7B14\u8BB0\u9875\u9762\uFF08{1}\uFF09\u4F1A\u5728\u4FA7\u8FB9\u680F\u6253\u5F00\u3002",
+  "Create Notes Page": "\u521B\u5EFA\u7B14\u8BB0\u9875\u9762",
+  "Open the notes page (Shift+click: sidebar)": "\u6253\u5F00\u7B14\u8BB0\u9875\u9762\uFF08Shift+\u70B9\u51FB\uFF1A\u4FA7\u8FB9\u680F\uFF09",
+  "Sidebar": "\u4FA7\u8FB9\u680F",
+  "No generated drafts on this page yet. Create one from the Annotations tab.": "\u6B64\u9875\u8FD8\u6CA1\u6709\u751F\u6210\u7684\u7B14\u8BB0\u3002\u53EF\u5728\u201C\u6279\u6CE8\u201D\u6807\u7B7E\u4E2D\u751F\u6210\u3002",
+  "Show in the book (Shift+click: sidebar)": "\u5728\u4E66\u4E2D\u663E\u793A\uFF08Shift+\u70B9\u51FB\uFF1A\u4FA7\u8FB9\u680F\uFF09",
+  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} \u4EFD\u7B14\u8BB0 \xB7 {3} \u6761",
+  "Open this draft (Shift+click: sidebar)": "\u6253\u5F00\u8FD9\u4EFD\u7B14\u8BB0\uFF08Shift+\u70B9\u51FB\uFF1A\u4FA7\u8FB9\u680F\uFF09",
+  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "\u7B14\u8BB0\u9875\u9762\u91CC\u8FD8\u6709 {0} \u4E2A\u4F60\u81EA\u5DF1\u5199\u7684\u5757\uFF0C\u6253\u5F00\u9875\u9762\u5373\u53EF\u67E5\u770B\u3002",
+  "Back to Settings": "\u8FD4\u56DE\u8BBE\u7F6E",
+  "Repair This Book": "\u4FEE\u590D\u8FD9\u672C\u4E66",
+  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "\u4E66\u7C4D\u4FEE\u590D\u4EC5\u9002\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002\u8BF7\u5728\u8303\u56F4\u83DC\u5355\u4E2D\u9009\u62E9\u4E00\u672C\u4E66\u3002\u666E\u901A\u9875\u9762\u6C38\u8FDC\u4E0D\u4F1A\u88AB\u81EA\u52A8\u4FEE\u6539\u3002",
+  "Nothing to repair in this book.": "\u8FD9\u672C\u4E66\u6CA1\u6709\u9700\u8981\u4FEE\u590D\u7684\u5730\u65B9\u3002",
+  "This repair will:": "\u672C\u6B21\u4FEE\u590D\u5C06\uFF1A",
+  "{0} archive(s) stay because an old fragment has its own child blocks.": "\u6709 {0} \u4E2A\u5B58\u6863\u4FDD\u7559\uFF0C\u56E0\u4E3A\u5176\u4E2D\u7684\u65E7\u7247\u6BB5\u6709\u81EA\u5DF1\u7684\u5B50\u5757\u3002",
+  "Preview the changes": "\u9884\u89C8\u4FEE\u6539",
+  "Nothing to change.": "\u6CA1\u6709\u9700\u8981\u4FEE\u6539\u7684\u5185\u5BB9\u3002",
+  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "\u4FEE\u590D\u300A{0}\u300B\uFF1F\n\n{1}\n\n\u6240\u6709\u5185\u5BB9\u90FD\u4F1A\u5907\u4EFD\uFF1B\u4E00\u6B21\u64A4\u9500\u5373\u53EF\u5168\u90E8\u6062\u590D\u3002",
+  "{0} paragraphs": "{0} \u4E2A\u6BB5\u843D",
+  "{0} link blocks": "{0} \u4E2A\u94FE\u63A5\u5757",
+  "{0} archives ({1} references moved)": "{0} \u4E2A\u5B58\u6863\uFF08\u79FB\u52A8\u4E86 {1} \u5904\u5F15\u7528\uFF09",
+  "{0} headings": "{0} \u4E2A\u6807\u9898",
+  "nothing needed": "\u65E0\u9700\u4FEE\u590D",
+  " {0} block(s) changed since the preview were skipped; run the repair again.": " \u9884\u89C8\u540E\u53C8\u88AB\u4FEE\u6539\u7684 {0} \u4E2A\u5757\u5DF2\u8DF3\u8FC7\uFF0C\u8BF7\u518D\u8FD0\u884C\u4E00\u6B21\u4FEE\u590D\u3002",
+  "Repaired: {0}.{1} Undo is available.": "\u5DF2\u4FEE\u590D\uFF1A{0}\u3002{1} \u53EF\u4EE5\u64A4\u9500\u3002",
+  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "\u4E00\u6B65\u4FEE\u597D\u6240\u6709\u80FD\u5B89\u5168\u4FEE\u590D\u7684\u95EE\u9898\uFF1A\u76EE\u5F55\u6240\u9700\u7684\u6807\u9898\u5C42\u7EA7\u3001\u88AB\u505A\u6210\u6807\u9898\u7684\u811A\u6CE8\u6807\u8BB0\u3001\u574F\u6389\u7684\u7F16\u53F7\u94FE\u63A5\uFF0C\u4EE5\u53CA\u6B8B\u7559\u7684 EPUB-READER:paragraph-fragments \u5B58\u6863\u3002\u6587\u5B57\u3001\u8BC4\u8BBA\u548C\u9AD8\u4EAE\u90FD\u4F1A\u4FDD\u7559\u3002",
+  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "\u53EF\u9009\uFF1A\u9009\u62E9\u539F EPUB\uFF0C\u540C\u65F6\u62FC\u56DE\u65E7\u7248\u5BFC\u5165\u62C6\u5F00\u7684\u6BB5\u843D\uFF08\u53EA\u5728\u672C\u5730\u8BFB\u53D6\uFF0C\u4E0D\u4F1A\u4E0A\u4F20\uFF09",
+  "Original EPUB for paragraph repair": "\u7528\u4E8E\u6BB5\u843D\u4FEE\u590D\u7684\u539F EPUB",
+  "Checking the original EPUB\u2026": "\u6B63\u5728\u6838\u5BF9\u539F EPUB\u2026",
+  "Undo Last Repair": "\u64A4\u9500\u4E0A\u6B21\u4FEE\u590D",
+  "Undo the last book repair? Blocks edited since then are left as they are.": "\u64A4\u9500\u4E0A\u6B21\u4E66\u7C4D\u4FEE\u590D\uFF1F\u4E4B\u540E\u88AB\u7F16\u8F91\u8FC7\u7684\u5757\u4F1A\u4FDD\u6301\u539F\u6837\u3002",
+  "Restored {0} items; skipped {1} edited items.": "\u5DF2\u6062\u590D {0} \u9879\uFF1B\u8DF3\u8FC7 {1} \u9879\u5DF2\u7F16\u8F91\u5185\u5BB9\u3002",
+  "Undo a repair made with an earlier version": "\u64A4\u9500\u65E7\u7248\u672C\u505A\u8FC7\u7684\u4FEE\u590D",
+  "Undo {0}": "\u64A4\u9500\uFF1A{0}",
+  "Restored {0} items; skipped {1}.": "\u5DF2\u6062\u590D {0} \u9879\uFF1B\u8DF3\u8FC7 {1} \u9879\u3002",
+  "its shortcut (not set)": "\u5B83\u7684\u5FEB\u6377\u952E\uFF08\u672A\u8BBE\u7F6E\uFF09",
+  "Press keys\u2026": "\u8BF7\u6309\u4E0B\u6309\u952E\u2026",
+  "{0}: shortcut cleared.": "{0}\uFF1A\u5FEB\u6377\u952E\u5DF2\u6E05\u9664\u3002",
+  "{0} is already used by {1}.": "{0} \u5DF2\u88AB\u201C{1}\u201D\u4F7F\u7528\u3002",
+  "Click, then press the new shortcut": "\u70B9\u51FB\u540E\u6309\u4E0B\u65B0\u7684\u5FEB\u6377\u952E",
+  "Reset to {0}": "\u6062\u590D\u4E3A {0}",
+  "Library": "\u4E66\u5E93",
+  "Reading": "\u9605\u8BFB",
+  "Collapse the previous chapter when navigating": "\u8DF3\u8F6C\u65F6\u6298\u53E0\u4E0A\u4E00\u7AE0",
+  "Track browsing automatically (estimated, not comprehension)": "\u81EA\u52A8\u8BB0\u5F55\u6D4F\u89C8\uFF08\u4F30\u7B97\uFF0C\u4E0D\u4EE3\u8868\u7406\u89E3\uFF09",
+  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "\u81EA\u52A8\u8FDB\u5EA6\u53EA\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002\u5728\u9762\u677F\u4E2D\u6298\u53E0\u5B50\u76EE\u5F55\u4E0D\u4F1A\u6539\u52A8\u4E66\u672C\u8EAB\u3002",
+  "Text width": "\u6B63\u6587\u5BBD\u5EA6",
+  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "\u94FA\u6EE1\u6574\u884C\uFF1A\u6BB5\u843D\u4E00\u76F4\u6392\u5230\u884C\u5C3E\uFF0C\u5BBD\u5C4F\u65F6\u6B63\u6587\u548C\u5F15\u7528\u6570\u4E4B\u95F4\u4E0D\u4F1A\u7559\u51FA\u7A7A\u767D\u3002\u65C1\u6CE8\u653E\u5728\u6B63\u6587\u5916\u7684\u7559\u767D\u91CC\uFF0C\u4E0E Folio \u76F8\u540C\u3002",
+  "Native Comments": "\u539F\u751F\u8BC4\u8BBA",
+  "Native comment side notes (graph-wide)": "\u539F\u751F\u8BC4\u8BBA\u65C1\u6CE8\uFF08\u6574\u4E2A\u56FE\u8C31\uFF09",
+  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "\u65C1\u6CE8\u5B8C\u6574\u663E\u793A\u5E76\u5728\u6B63\u6587\u65C1\u4F9D\u6B21\u6392\u5217\u3002\u70B9\u51FB\u65C1\u6CE8\u6216\u5BF9\u5E94\u6BB5\u843D\u5373\u53EF\u5BF9\u9F50\uFF1B\u2197 \u6253\u5F00\u539F\u751F\u8BC4\u8BBA\u7EBF\u7A0B\u8FDB\u884C\u7F16\u8F91\u3002",
+  "Side note style": "\u65C1\u6CE8\u6837\u5F0F",
+  "Side note colour": "\u65C1\u6CE8\u989C\u8272",
+  "Side note order": "\u65C1\u6CE8\u987A\u5E8F",
+  "Highlight colour": "\u9AD8\u4EAE\u989C\u8272",
+  "Highlight style": "\u9AD8\u4EAE\u6837\u5F0F",
+  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "\u5E94\u7528\u4E8E\u6240\u6709\u539F\u751F ^^\u9AD8\u4EAE^^\u3002\u201C\u4E3B\u9898\u9ED8\u8BA4\u201D\u4FDD\u7559\u4E3B\u9898\u539F\u672C\u7684\u989C\u8272\u3002",
+  "Mark style": "Mark It \u6837\u5F0F",
+  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} \u6216\u5757\u83DC\u5355\u53EF\u5207\u6362 #mark\uFF1B\u6807\u7B7E\u7559\u5728\u6587\u5B57\u91CC\uFF0C\u9605\u8BFB\u65F6\u9690\u85CF\u3002",
+  "Recognized question tags (comma-separated)": "\u8BC6\u522B\u7684\u7591\u95EE\u6807\u7B7E\uFF08\u7528\u9017\u53F7\u5206\u9694\uFF09",
+  "Recognized question tags": "\u8BC6\u522B\u7684\u7591\u95EE\u6807\u7B7E",
+  "Quick question tag ({0})": "\u5FEB\u6377\u7591\u95EE\u6807\u7B7E\uFF08{0}\uFF09",
+  "Quick question tag": "\u5FEB\u6377\u7591\u95EE\u6807\u7B7E",
+  "Toggle Question inserts": "\u201C\u5207\u6362\u7591\u95EE\u201D\u63D2\u5165",
+  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "\u8F93\u5165\u6807\u7B7E\u540D\u65F6\u4E0D\u8981\u5E26 #\u3002\u5FEB\u6377\u7591\u95EE\u6807\u7B7E\u59CB\u7EC8\u4F1A\u88AB\u8BC6\u522B\uFF0C\u5305\u62EC\u5728\u539F\u751F\u8BC4\u8BBA\u4E2D\u3002Mark It \u4FDD\u7559 #mark\uFF0C\u4EE5\u517C\u5BB9\u4F60\u539F\u6765\u7684\u6837\u5F0F\u3002",
+  "Save Question Settings": "\u4FDD\u5B58\u7591\u95EE\u8BBE\u7F6E",
+  "Question settings saved. Toggle Question uses your quick question tag.": "\u7591\u95EE\u8BBE\u7F6E\u5DF2\u4FDD\u5B58\u3002\u201C\u5207\u6362\u7591\u95EE\u201D\u4F1A\u4F7F\u7528\u4F60\u7684\u5FEB\u6377\u7591\u95EE\u6807\u7B7E\u3002",
+  "Question settings are active for this session; settings storage could not sync.": "\u7591\u95EE\u8BBE\u7F6E\u5728\u672C\u6B21\u4F1A\u8BDD\u4E2D\u751F\u6548\uFF1B\u8BBE\u7F6E\u672A\u80FD\u540C\u6B65\u4FDD\u5B58\u3002",
+  "Keyboard Shortcuts": "\u952E\u76D8\u5FEB\u6377\u952E",
+  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "\u70B9\u51FB\u4E00\u4E2A\u5FEB\u6377\u952E\uFF0C\u518D\u6309\u4E0B\u65B0\u7684\u7EC4\u5408\u952E\uFF08\u9700\u542B Ctrl\u3001Cmd/\u2318 \u6216 Alt/\u2325\uFF09\u3002Esc \u53D6\u6D88\uFF0CBackspace \u6E05\u9664\u3002Reading Desk \u4F1A\u5148\u4E8E Roam \u5904\u7406\u8FD9\u4E9B\u6309\u952E\uFF0C\u6240\u4EE5 Option+M \u4E0D\u4F1A\u518D\u8F93\u5165\u201C\xB5\u201D\u3002\u62D6\u52A8\u6807\u9898\u680F\u53EF\u79FB\u52A8\u9762\u677F\u3002Shift+\u70B9\u51FB\u4F1A\u5728\u4FA7\u8FB9\u680F\u6253\u5F00\u5185\u5BB9\u3002",
+  "Reading Notes": "\u8BFB\u4E66\u7B14\u8BB0",
+  "Open new reading notes in": "\u65B0\u7684\u8BFB\u4E66\u7B14\u8BB0\u6253\u5F00\u5728",
+  "Maintenance": "\u7EF4\u62A4",
+  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "\u5BFC\u5165\u4E66\u7C4D\u7684\u4E00\u6B65\u4FEE\u590D\uFF1A\u6807\u9898\u5C42\u7EA7\u3001\u88AB\u505A\u6210\u6807\u9898\u7684\u811A\u6CE8\u3001\u574F\u94FE\u63A5\u548C\u6B8B\u7559\u7684\u6BB5\u843D\u5B58\u6863\uFF08\u4E5F\u53EF\u62FC\u56DE\u62C6\u5F00\u7684\u6BB5\u843D\uFF09\u3002\u5148\u663E\u793A\u5C06\u4FEE\u6539\u7684\u5185\u5BB9\uFF1B\u4E00\u6B21\u64A4\u9500\u5373\u53EF\u5168\u90E8\u6062\u590D\u3002",
+  "Click a paragraph or native comment first, then use this action.": "\u8BF7\u5148\u70B9\u51FB\u4E00\u4E2A\u6BB5\u843D\u6216\u539F\u751F\u8BC4\u8BBA\uFF0C\u518D\u4F7F\u7528\u8FD9\u4E2A\u64CD\u4F5C\u3002",
+  "Open a page or book, then click Refresh.": "\u6253\u5F00\u4E00\u4E2A\u9875\u9762\u6216\u4E00\u672C\u4E66\uFF0C\u7136\u540E\u70B9\u51FB\u201C\u5237\u65B0\u201D\u3002",
+  "Current Page": "\u5F53\u524D\u9875\u9762",
+  "Books": "\u4E66\u7C4D",
+  "Included pages": "\u5DF2\u52A0\u5165\u7684\u9875\u9762",
+  "All Books \xB7 {0} sources \xB7 {1} annotations": "\u5168\u90E8\u4E66\u7C4D \xB7 {0} \u4E2A\u6765\u6E90 \xB7 {1} \u6761\u6279\u6CE8",
+  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "\u9875\u9762 \xB7 {0} \u4E2A\u6807\u9898 \xB7 {1} \u6761\u6279\u6CE8 \xB7 \u4EC5\u4E66\u7C4D\u4F1A\u8BB0\u5F55\u8FDB\u5EA6",
+  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} \u4E2A\u5757 \xB7 {2} \u6761\u6279\u6CE8 \xB7 {3} \u4E2A\u9875\u9762",
+  "Close": "\u5173\u95ED",
+  "Drag to move Reading Desk": "\u62D6\u52A8\u4EE5\u79FB\u52A8 Reading Desk",
+  "Reading scope": "\u9605\u8BFB\u8303\u56F4",
+  "Refresh": "\u5237\u65B0",
+  "Loading\u2026": "\u52A0\u8F7D\u4E2D\u2026",
+  "Text or comments changed. Click Refresh to update without interrupting your work.": "\u6587\u5B57\u6216\u8BC4\u8BBA\u6709\u53D8\u5316\u3002\u70B9\u51FB\u201C\u5237\u65B0\u201D\u5373\u53EF\u66F4\u65B0\uFF0C\u4E0D\u4F1A\u6253\u65AD\u4F60\u7684\u5DE5\u4F5C\u3002",
+  "No repair backup was found.": "\u672A\u627E\u5230\u4FEE\u590D\u5907\u4EFD\u3002",
+  "Image conversion failed": "\u56FE\u7247\u8F6C\u6362\u5931\u8D25",
+  "Cannot read image: {0}": "\u65E0\u6CD5\u8BFB\u53D6\u56FE\u7247\uFF1A{0}",
+  "Processing image {0}/{1}": "\u6B63\u5728\u5904\u7406\u56FE\u7247 {0}/{1}",
+  "Image upload returned no valid URL: {0}": "\u56FE\u7247\u4E0A\u4F20\u672A\u8FD4\u56DE\u6709\u6548\u7F51\u5740\uFF1A{0}",
+  "The imported page was removed. Select the EPUB again to import.": "\u5BFC\u5165\u7684\u9875\u9762\u5DF2\u88AB\u5220\u9664\u3002\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB \u5BFC\u5165\u3002",
+  "A book is already being imported. Wait for it to finish.": "\u5DF2\u6709\u4E00\u672C\u4E66\u6B63\u5728\u5BFC\u5165\uFF0C\u8BF7\u7B49\u5B83\u5B8C\u6210\u3002",
+  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "\u8FD9\u4E2A\u65E7\u4EFB\u52A1\u7684\u7AE0\u8282\u5BF9\u5E94\u5173\u7CFB\u6709\u8BEF\u3002\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB \u521B\u5EFA\u65B0\u7684\u5BFC\u5165\u3002",
+  "Import complete": "\u5BFC\u5165\u5B8C\u6210",
+  "This book's record has changed or was removed. Reopen the book list.": "\u8FD9\u672C\u4E66\u7684\u8BB0\u5F55\u5DF2\u53D8\u66F4\u6216\u88AB\u5220\u9664\u3002\u8BF7\u91CD\u65B0\u6253\u5F00\u4E66\u7C4D\u5217\u8868\u3002",
+  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "\u7AE0\u8282\u8303\u56F4\u5185\u6709\u539F\u751F\u8BC4\u8BBA\u5B58\u50A8\u3002\u4E3A\u4FDD\u62A4\u8BC4\u8BBA\uFF0C\u5DF2\u963B\u6B62\u5220\u9664\u3002\u8BF7\u5148\u628A\u8BC4\u8BBA\u5B58\u50A8\u653E\u5230\u9875\u9762\u4E0A\u3001\u4E66\u7C4D\u7AE0\u8282\u4E4B\u5916\u3002",
+  "Reference check failed; retained": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\uFF1B\u5DF2\u4FDD\u7559",
+  "Original upload ownership is unknown; retained": "\u539F\u59CB\u4E0A\u4F20\u5F52\u5C5E\u672A\u77E5\uFF1B\u5DF2\u4FDD\u7559",
+  "Shared with another imported book": "\u4E0E\u53E6\u4E00\u672C\u5DF2\u5BFC\u5165\u7684\u4E66\u5171\u7528",
+  "{0} references outside this book": "\u672C\u4E66\u4E4B\u5916\u6709 {0} \u5904\u5F15\u7528",
+  "Used only by this book": "\u4EC5\u672C\u4E66\u4F7F\u7528",
+  "Chapter scope changed. Review the deletion preview again.": "\u7AE0\u8282\u8303\u56F4\u5DF2\u53D8\u5316\u3002\u8BF7\u91CD\u65B0\u67E5\u770B\u5220\u9664\u9884\u89C8\u3002",
+  "New content was added inside the book scope. Deletion stopped; review the preview again.": "\u4E66\u7C4D\u8303\u56F4\u5185\u65B0\u589E\u4E86\u5185\u5BB9\u3002\u5DF2\u505C\u6B62\u5220\u9664\uFF0C\u8BF7\u91CD\u65B0\u67E5\u770B\u9884\u89C8\u3002",
+  "Deleting book chapters (preserving pages and native comments)\u2026": "\u6B63\u5728\u5220\u9664\u4E66\u7C4D\u7AE0\u8282\uFF08\u4FDD\u7559\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\uFF09\u2026",
+  "Deleting attachment {0}/{1}\u2026": "\u6B63\u5728\u5220\u9664\u9644\u4EF6 {0}/{1}\u2026",
+  "This book is waiting for attachment cleanup. Finish that first.": "\u8FD9\u672C\u4E66\u6B63\u5728\u7B49\u5F85\u6E05\u7406\u9644\u4EF6\uFF0C\u8BF7\u5148\u5B8C\u6210\u6E05\u7406\u3002",
+  "Not uploaded by this import; file retained": "\u4E0D\u662F\u672C\u6B21\u5BFC\u5165\u4E0A\u4F20\u7684\uFF1B\u6587\u4EF6\u5DF2\u4FDD\u7559",
+  "Original upload ownership is unknown; file retained": "\u539F\u59CB\u4E0A\u4F20\u5F52\u5C5E\u672A\u77E5\uFF1B\u6587\u4EF6\u5DF2\u4FDD\u7559",
+  "Reference check failed; file retained": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\uFF1B\u6587\u4EF6\u5DF2\u4FDD\u7559",
+  "Removing images from blocks {0}/{1}\u2026": "\u6B63\u5728\u4ECE\u5757\u4E2D\u79FB\u9664\u56FE\u7247 {0}/{1}\u2026",
+  "Deleting image file {0}/{1}\u2026": "\u6B63\u5728\u5220\u9664\u56FE\u7247\u6587\u4EF6 {0}/{1}\u2026",
+  "Not set": "\u672A\u8BBE\u7F6E",
+  "Could not save local progress": "\u65E0\u6CD5\u4FDD\u5B58\u672C\u5730\u8FDB\u5EA6",
+  "Local progress save was aborted": "\u672C\u5730\u8FDB\u5EA6\u4FDD\u5B58\u88AB\u4E2D\u65AD",
+  "The local EPUB cache is missing. Select the original file again.": "\u672C\u5730 EPUB \u7F13\u5B58\u4E0D\u5B58\u5728\u3002\u8BF7\u91CD\u65B0\u9009\u62E9\u539F\u6587\u4EF6\u3002",
+  "Preparing\u2026": "\u51C6\u5907\u4E2D\u2026",
+  "Processing\u2026": "\u5904\u7406\u4E2D\u2026",
+  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} \u4E2A\u76EE\u5F55\u6761\u76EE \xB7 {1} \u4E2A\u9876\u5C42\u8282\u70B9 \xB7 \u7EA6 {2} \u4E2A\u5757 \xB7 {3} \u5F20\u56FE\u7247 \xB7 {4} \u4E2A\u5185\u90E8\u94FE\u63A5",
+  " \xB7 {0} formulas": " \xB7 {0} \u4E2A\u516C\u5F0F",
+  "Resume importing {0}": "\u7EE7\u7EED\u5BFC\u5165 {0}",
+  "Import {0}": "\u5BFC\u5165 {0}",
+  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "\u5BFC\u5165\u671F\u95F4\u8BF7\u4FDD\u6301 Roam \u6253\u5F00\u3002\u8FDB\u5EA6\u4F1A\u88AB\u4FDD\u5B58\uFF0C\u4E2D\u65AD\u7684\u5BFC\u5165\u53EF\u4EE5\u7EE7\u7EED\u3002",
+  "Created {0}. Images and links are in their original positions.": "\u5DF2\u521B\u5EFA {0}\u3002\u56FE\u7247\u548C\u94FE\u63A5\u90FD\u5728\u539F\u6765\u7684\u4F4D\u7F6E\u3002",
+  "Import paused: {0}. Progress was saved; you can resume later.": "\u5BFC\u5165\u5DF2\u6682\u505C\uFF1A{0}\u3002\u8FDB\u5EA6\u5DF2\u4FDD\u5B58\uFF0C\u4E4B\u540E\u53EF\u4EE5\u7EE7\u7EED\u3002",
+  "Retry / Resume": "\u91CD\u8BD5 / \u7EE7\u7EED",
+  "Book Preview": "\u4E66\u7C4D\u9884\u89C8",
+  "Author: {0}": "\u4F5C\u8005\uFF1A{0}",
+  "Roam page title": "Roam \u9875\u9762\u6807\u9898",
+  "Original EPUB TOC ({0}, full hierarchy)": "\u539F EPUB \u76EE\u5F55\uFF08{0}\uFF0C\u5B8C\u6574\u5C42\u7EA7\uFF09",
+  "Outline generated from body headings": "\u7531\u6B63\u6587\u6807\u9898\u751F\u6210\u7684\u5927\u7EB2",
+  "; {0} need review (source retained)": "\uFF1B{0} \u4E2A\u9700\u8981\u68C0\u67E5\uFF08\u4FDD\u7559\u539F\u6587\uFF09",
+  "Formulas: {0} converted{1}": "\u516C\u5F0F\uFF1A\u5DF2\u8F6C\u6362 {0} \u4E2A{1}",
+  "Formula {0} \xB7 {1}": "\u516C\u5F0F {0} \xB7 {1}",
+  "Preview text and image order": "\u9884\u89C8\u6587\u5B57\u4E0E\u56FE\u7247\u987A\u5E8F",
+  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "\u56FE\u7247\u4F1A\u4E0A\u4F20\u5230\u539F\u6765\u7684\u4F4D\u7F6E\u3002\u5916\u90E8\u94FE\u63A5\u4FDD\u7559\uFF1B\u5185\u90E8\u94FE\u63A5\u53D8\u4E3A Roam \u5757\u5F15\u7528\u3002",
+  "Start Import": "\u5F00\u59CB\u5BFC\u5165",
+  "Unfinished Imports": "\u672A\u5B8C\u6210\u7684\u5BFC\u5165",
+  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "\u8FD9\u4E2A\u4EFB\u52A1\u4F7F\u7528\u4E86\u65E7\u7684\u89E3\u6790\u5668\u3002\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB \u521B\u5EFA\u4FEE\u6B63\u540E\u7684\u5BFC\u5165\u3002",
+  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "\u8FD9\u4E2A\u65E7\u4EFB\u52A1\u6CA1\u6709\u68C0\u67E5\u516C\u5F0F\u3002\u5982\u679C\u4E66\u4E2D\u6709\u516C\u5F0F\uFF0C\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB\u3002",
+  "Discard Job": "\u653E\u5F03\u4EFB\u52A1",
+  "A Roam page already exists. Use Manage Imported Books to remove this import.": "\u5DF2\u5B58\u5728 Roam \u9875\u9762\u3002\u8BF7\u7528\u201C\u7BA1\u7406\u5DF2\u5BFC\u5165\u7684\u4E66\u201D\u79FB\u9664\u8FD9\u6B21\u5BFC\u5165\u3002",
+  "EPUB Importer": "EPUB \u5BFC\u5165\u5668",
+  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "\u9009\u62E9\u4E00\u4E2A EPUB\u3002\u89E3\u6790\u53EA\u5728\u4F60\u7684\u8BBE\u5907\u4E0A\u8FDB\u884C\uFF1B\u786E\u8BA4\u5BFC\u5165\u540E\uFF0C\u4E66\u4E2D\u56FE\u7247\u624D\u4F1A\u4E0A\u4F20\u5230\u5F53\u524D Roam \u56FE\u8C31\u3002",
+  "No file selected.": "\u672A\u9009\u62E9\u6587\u4EF6\u3002",
+  "Reading contents, text, images, and links\u2026": "\u6B63\u5728\u8BFB\u53D6\u76EE\u5F55\u3001\u6B63\u6587\u3001\u56FE\u7247\u548C\u94FE\u63A5\u2026",
+  "Cannot read file: {0}": "\u65E0\u6CD5\u8BFB\u53D6\u6587\u4EF6\uFF1A{0}",
+  "Cannot read saved jobs: {0}": "\u65E0\u6CD5\u8BFB\u53D6\u5DF2\u4FDD\u5B58\u7684\u4EFB\u52A1\uFF1A{0}",
+  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "\u5C06\u5220\u9664 {0} \u4E2A\u7AE0\u8282\u6839\u5757\u3001\u8303\u56F4\u5185 {1} \u4E2A\u5757\uFF0C\u4EE5\u53CA {2} \u4E2A\u72EC\u5360\u9644\u4EF6\u3002\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\u4F1A\u4FDD\u7559\u3002",
+  " {0} shared or unverified attachments will be retained.": " {0} \u4E2A\u5171\u7528\u6216\u672A\u9A8C\u8BC1\u7684\u9644\u4EF6\u4F1A\u4FDD\u7559\u3002",
+  "Remove images \xB7 {0}": "\u79FB\u9664\u56FE\u7247 \xB7 {0}",
+  "Finding images and checking where their files are used\u2026": "\u6B63\u5728\u67E5\u627E\u56FE\u7247\u5E76\u68C0\u67E5\u6587\u4EF6\u7684\u4F7F\u7528\u60C5\u51B5\u2026",
+  "Check failed: {0}": "\u68C0\u67E5\u5931\u8D25\uFF1A{0}",
+  "Back to Book List": "\u8FD4\u56DE\u4E66\u7C4D\u5217\u8868",
+  "This book has no images left in its text.": "\u8FD9\u672C\u4E66\u7684\u6B63\u6587\u91CC\u5DF2\u7ECF\u6CA1\u6709\u56FE\u7247\u4E86\u3002",
+  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} \u4E2A\u5757\u542B\u6709\u56FE\u7247\u3002\u5C06\u4ECE\u4E2D\u79FB\u9664\u56FE\u7247\uFF08{1} \u4E2A\u53EA\u6709\u56FE\u7247\u7684\u5757\u4F1A\u88AB\u5220\u9664\uFF1B\u542B\u6587\u5B57\u3001\u5B50\u5757\u6216\u88AB\u5F15\u7528\u7684\u5757\u4FDD\u7559\uFF09\u3002\u4E66\u672C\u8EAB\u53CA\u5176\u6587\u5B57\u3001\u6807\u9898\u3001\u8BC4\u8BBA\u548C\u9AD8\u4EAE\u90FD\u4F1A\u4FDD\u7559\u3002",
+  " ({0} shared, outside-referenced or unverified files are kept)": " \uFF08{0} \u4E2A\u5171\u7528\u3001\u88AB\u5176\u4ED6\u5730\u65B9\u5F15\u7528\u6216\u672A\u9A8C\u8BC1\u7684\u6587\u4EF6\u4F1A\u4FDD\u7559\uFF09",
+  " Also delete {0} uploaded image files used only by this book{1}.": " \u540C\u65F6\u5220\u9664\u4EC5\u672C\u4E66\u4F7F\u7528\u7684 {0} \u4E2A\u5DF2\u4E0A\u4F20\u56FE\u7247\u6587\u4EF6{1}\u3002",
+  "Preview the first changes": "\u9884\u89C8\u524D\u51E0\u5904\u4FEE\u6539",
+  "This cannot be undone: deleted image files are gone from Roam storage.": "\u6B64\u64CD\u4F5C\u65E0\u6CD5\u64A4\u9500\uFF1A\u5220\u9664\u7684\u56FE\u7247\u6587\u4EF6\u4F1A\u4ECE Roam \u5B58\u50A8\u4E2D\u6D88\u5931\u3002",
+  "Cancel": "\u53D6\u6D88",
+  "Remove Images": "\u79FB\u9664\u56FE\u7247",
+  "Remove images from {0}? The book itself is kept.": "\u4ECE\u300A{0}\u300B\u4E2D\u79FB\u9664\u56FE\u7247\uFF1F\u4E66\u672C\u8EAB\u4F1A\u4FDD\u7559\u3002",
+  " {0} blocks changed since the preview and were skipped.": " \u9884\u89C8\u540E\u53C8\u88AB\u4FEE\u6539\u7684 {0} \u4E2A\u5757\u5DF2\u8DF3\u8FC7\u3002",
+  " {0} files could not be deleted and remain listed.": " {0} \u4E2A\u6587\u4EF6\u65E0\u6CD5\u5220\u9664\uFF0C\u4ECD\u4FDD\u7559\u5728\u5217\u8868\u4E2D\u3002",
+  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "\u5DF2\u4ECE {0} \u4E2A\u5757\u4E2D\u79FB\u9664\u56FE\u7247\uFF08\u5220\u9664\u4E86 {1} \u4E2A\u53EA\u6709\u56FE\u7247\u7684\u5757\uFF09\uFF0C\u5E76\u5220\u9664\u4E86 {2} \u4E2A\u6587\u4EF6\u3002{3}{4}",
+  "Image removal failed: {0}": "\u79FB\u9664\u56FE\u7247\u5931\u8D25\uFF1A{0}",
+  "Delete {0}": "\u5220\u9664\u300A{0}\u300B",
+  "Checking attachment references in other pages and books\u2026": "\u6B63\u5728\u68C0\u67E5\u5176\u4ED6\u9875\u9762\u548C\u4E66\u7C4D\u5BF9\u9644\u4EF6\u7684\u5F15\u7528\u2026",
+  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "\u53D7\u5F71\u54CD\u7684\u9875\u9762\uFF1A{0}\u3002\u53EA\u4F1A\u5220\u9664\u5DF2\u786E\u8BA4\u7684\u4E66\u7C4D\u7AE0\u8282\uFF0C\u8FD9\u4E9B\u9875\u9762\u4F1A\u4FDD\u7559\u3002",
+  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "\u4E66\u5916\u6709 {0} \u4E2A\u5757\u5F15\u7528\u4E86\u4E66\u4E2D\u5185\u5BB9\uFF08\u53EF\u80FD\u5305\u62EC\u539F\u751F\u8BC4\u8BBA\uFF09\u3002\u5220\u9664\u540E\u8FD9\u4E9B\u5F15\u7528\u53EF\u80FD\u5931\u6548\uFF1B\u8BC4\u8BBA\u548C\u72EC\u7ACB\u7B14\u8BB0\u4F1A\u4FDD\u7559\u3002",
+  "Reference checking failed. Attachments will be retained.": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\u3002\u9644\u4EF6\u4F1A\u4FDD\u7559\u3002",
+  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "\u8FD9\u672C\u627E\u56DE\u7684\u4E66\u6CA1\u6709\u539F\u59CB\u4E0A\u4F20\u6E05\u5355\u3002\u53EF\u4EE5\u5220\u9664\u7AE0\u8282\uFF0C\u4F46\u68C0\u6D4B\u5230\u7684\u56FE\u7247\u4F1A\u4FDD\u7559\u3002",
+  "Type the full book title to confirm: {0}": "\u8F93\u5165\u5B8C\u6574\u4E66\u540D\u4EE5\u786E\u8BA4\uFF1A{0}",
+  "Delete Permanently": "\u6C38\u4E45\u5220\u9664",
+  " {0} failed deletions are saved for retry.": " {0} \u4E2A\u5220\u9664\u5931\u8D25\u7684\u9879\u76EE\u5DF2\u4FDD\u5B58\uFF0C\u53EF\u7A0D\u540E\u91CD\u8BD5\u3002",
+  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "\u5DF2\u5220\u9664\u4E66\u7C4D\u7AE0\u8282\u548C {0} \u4E2A\u72EC\u5360\u9644\u4EF6\u3002\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\u4FDD\u7559\u3002\u4FDD\u7559\u4E86 {1} \u4E2A\u5171\u7528\u6216\u672A\u9A8C\u8BC1\u7684\u9644\u4EF6\u3002{2}",
+  "Deletion failed: {0}": "\u5220\u9664\u5931\u8D25\uFF1A{0}",
+  "Recover Existing Book": "\u627E\u56DE\u5DF2\u6709\u4E66\u7C4D",
+  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "\u8F93\u5165\u539F\u4E66\u9875\u9762\u6807\u9898\u7684\u5168\u90E8\u6216\u4E00\u90E8\u5206\u3002\u627E\u56DE\u4F1A\u767B\u8BB0\u5DF2\u6709\u7684\u4E66\uFF0C\u4E0D\u4F1A\u91CD\u65B0\u5BFC\u5165\u3001\u4FEE\u6539\u6587\u5B57\u6216\u4E0A\u4F20\u56FE\u7247\u3002\u6CA1\u6709\u539F\u59CB\u4E0A\u4F20\u6E05\u5355\u7684\u9644\u4EF6\u4F1A\u6807\u8BB0\u4E3A\u672A\u9A8C\u8BC1\uFF0C\u5220\u9664\u65F6\u4FDD\u7559\u3002",
+  "Page title or book keywords": "\u9875\u9762\u6807\u9898\u6216\u4E66\u540D\u5173\u952E\u8BCD",
+  "Find an existing book page": "\u67E5\u627E\u5DF2\u6709\u7684\u4E66\u7C4D\u9875\u9762",
+  "Find Pages": "\u67E5\u627E\u9875\u9762",
+  "No matching pages. Try a shorter book title.": "\u6CA1\u6709\u5339\u914D\u7684\u9875\u9762\u3002\u8BD5\u8BD5\u66F4\u77ED\u7684\u4E66\u540D\u3002",
+  "Register This Book": "\u767B\u8BB0\u8FD9\u672C\u4E66",
+  "Recovery failed: {0}": "\u627E\u56DE\u5931\u8D25\uFF1A{0}",
+  "Reading the graph's book library\u2026": "\u6B63\u5728\u8BFB\u53D6\u56FE\u8C31\u4E2D\u7684\u4E66\u5E93\u2026",
+  "Cannot read the library: {0}. Existing books are unchanged.": "\u65E0\u6CD5\u8BFB\u53D6\u4E66\u5E93\uFF1A{0}\u3002\u5DF2\u6709\u4E66\u7C4D\u672A\u53D7\u5F71\u54CD\u3002",
+  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "\u4E66\u5E93\u662F\u7A7A\u7684\u3002\u66F4\u65B0\u540E\u627E\u4E0D\u5230\u7684\u4E66\u53EF\u7528\u201C\u627E\u56DE\u5DF2\u6709\u4E66\u7C4D\u201D\u6062\u590D\uFF0C\u65E0\u9700\u91CD\u65B0\u5BFC\u5165\u3002",
+  "Unknown author": "\u672A\u77E5\u4F5C\u8005",
+  " \xB7 Cleanup pending": " \xB7 \u5F85\u6E05\u7406",
+  " \xB7 Recovered (original attachments retained)": " \xB7 \u5DF2\u627E\u56DE\uFF08\u4FDD\u7559\u539F\u9644\u4EF6\uFF09",
+  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} \u4E2A\u9644\u4EF6{2}",
+  "Clean Up Attachments": "\u6E05\u7406\u9644\u4EF6",
+  "Delete Book": "\u5220\u9664\u4E66\u7C4D",
+  "Delete this book's images but keep the book": "\u5220\u9664\u8FD9\u672C\u4E66\u7684\u56FE\u7247\uFF0C\u4F46\u4FDD\u7559\u8FD9\u672C\u4E66",
+  "Open Reader": "\u6253\u5F00\u9605\u8BFB\u5668",
+  "The chapter structure has not been prepared.": "\u7AE0\u8282\u7ED3\u6784\u5C1A\u672A\u51C6\u5907\u597D\u3002",
+  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "\u6709\u5BFC\u5165\u7684\u5757\u88AB\u7F16\u8F91\u6216\u79FB\u52A8\u4E86\u3002\u4E3A\u4FDD\u62A4\u4F60\u7684\u4FEE\u6539\u5DF2\u6682\u505C\u7EE7\u7EED\u5BFC\u5165\u3002\u8BF7\u9009\u62E9 EPUB\uFF0C\u5BFC\u5165\u5230\u5355\u72EC\u7684\u9875\u9762\u3002",
+  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "\u6B63\u5728\u5BFC\u5165\u7B2C {0}/{1} \u7AE0 \xB7 \u5757 {2}/{3}",
+  "Resolving internal link {0}/{1}": "\u6B63\u5728\u89E3\u6790\u5185\u90E8\u94FE\u63A5 {0}/{1}",
+  "{0} comment": "{0} \u6761\u8BC4\u8BBA",
+  "{0} comments": "{0} \u6761\u8BC4\u8BBA",
+  "{0} highlight": "{0} \u5904\u9AD8\u4EAE",
+  "{0} highlights": "{0} \u5904\u9AD8\u4EAE",
+  "{0} mark": "{0} \u4E2A\u6807\u8BB0",
+  "{0} marks": "{0} \u4E2A\u6807\u8BB0",
+  "Read": "\u5DF2\u8BFB",
+  "Unvisited": "\u672A\u8BBF\u95EE",
+  "Browsed": "\u5DF2\u6D4F\u89C8",
+  "Browsing": "\u6D4F\u89C8\u4E2D",
+  "highlight": "\u9AD8\u4EAE",
+  "comment": "\u8BC4\u8BBA",
+  "mark": "\u6807\u8BB0",
+  "question": "\u7591\u95EE",
+  "sidebar": "\u4FA7\u8FB9\u680F",
+  "main window": "\u4E3B\u7A97\u53E3",
+  "Heading repair": "\u6807\u9898\u4FEE\u590D",
+  "Link repair": "\u94FE\u63A5\u4FEE\u590D",
+  "Paragraph repair": "\u6BB5\u843D\u4FEE\u590D",
+  "Archive removal": "\u5B58\u6863\u5220\u9664",
+  "Toggle Mark": "\u5207\u6362 Mark It",
+  "Toggle Question": "\u5207\u6362\u7591\u95EE",
+  "Open / close Reading Desk": "\u6253\u5F00 / \u5173\u95ED Reading Desk",
+  "Continue reading": "\u7EE7\u7EED\u9605\u8BFB",
+  "Open reading notes": "\u6253\u5F00\u8BFB\u4E66\u7B14\u8BB0",
+  "Contents": "\u76EE\u5F55",
+  "Annotations": "\u6279\u6CE8",
+  "Notes": "\u7B14\u8BB0",
+  "Settings": "\u8BBE\u7F6E",
+  "Theme default": "\u4E3B\u9898\u9ED8\u8BA4",
+  "Margin dot + bold": "\u9875\u8FB9\u91D1\u70B9 + \u52A0\u7C97",
+  "Bookmark ribbon": "\u4E66\u7B7E\u4E1D\u5E26",
+  "Gold highlighter": "\u91D1\u8272\u8367\u5149\u7B14",
+  "Pull quote": "\u5F15\u6587",
+  "Sticky note": "\u4FBF\u7B7E",
+  "Ink emphasis": "\u6DF1\u58A8\u5F3A\u8C03",
+  "Fill the line": "\u94FA\u6EE1\u6574\u884C",
+  "Theme line length": "\u4E3B\u9898\u884C\u5BBD",
+  "Cards": "\u5361\u7247",
+  "Minimal": "\u7B80\u6D01",
+  "Coral": "\u73CA\u745A",
+  "Rose": "\u73AB\u7470",
+  "Mint": "\u8584\u8377",
+  "Sky": "\u5929\u7A7A",
+  "Lilac": "\u6DE1\u7D2B",
+  "Gold": "\u91D1\u8272",
+  "Gray": "\u7070\u8272",
+  "Blue": "\u84DD\u8272",
+  "Green": "\u7EFF\u8272",
+  "Purple": "\u7D2B\u8272",
+  "Marker": "\u9A6C\u514B\u7B14",
+  "Underline": "\u4E0B\u5212\u7EBF",
+  "Oldest first": "\u65E7\u7684\u5728\u524D",
+  "Newest first": "\u65B0\u7684\u5728\u524D",
+  "A tag at the end (#question)": "\u672B\u5C3E\u52A0\u6807\u7B7E\uFF08#question\uFF09",
+  "An attribute at the start (Question::)": "\u5F00\u5934\u52A0\u5C5E\u6027\uFF08Question::\uFF09",
+  "The right sidebar": "\u53F3\u4FA7\u8FB9\u680F",
+  "The main window": "\u4E3B\u7A97\u53E3",
+  "Auto (browser language)": "\u81EA\u52A8\uFF08\u8DDF\u968F\u6D4F\u89C8\u5668\u8BED\u8A00\uFF09",
+  "Page": "\u9875\u9762",
+  "Book": "\u4E66\u7C4D",
+  "Earlier": "\u66F4\u65E9",
+  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "\u6CA1\u6709\u627E\u5230\u53EF\u7528\u7684 EPUB \u76EE\u5F55\u3002\u5927\u7EB2\u6539\u7528\u6B63\u6587\u6807\u9898\u751F\u6210\uFF0C\u8BF7\u68C0\u67E5\u9884\u89C8\u3002",
+  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "\u76EE\u5F55\u6761\u76EE {0} \u627E\u4E0D\u5230\u5BF9\u5E94\u4F4D\u7F6E\uFF1A{1}\u3002\u672A\u5339\u914D\u7684\u6B63\u6587\u4F1A\u5355\u72EC\u4FDD\u7559\u3002",
+  "TOC file is outside the EPUB reading order: {0}": "\u76EE\u5F55\u6587\u4EF6\u4E0D\u5728 EPUB \u7684\u9605\u8BFB\u987A\u5E8F\u4E2D\uFF1A{0}",
+  "Missing EPUB body file: {0}": "\u7F3A\u5C11 EPUB \u6B63\u6587\u6587\u4EF6\uFF1A{0}",
+  "Missing EPUB image: {0}": "\u7F3A\u5C11 EPUB \u56FE\u7247\uFF1A{0}",
+  "Auto": "\u81EA\u52A8",
+  "Interface language": "\u754C\u9762\u8BED\u8A00",
+  "Interface language for Reading Desk (Auto follows your browser).": "Reading Desk \u7684\u754C\u9762\u8BED\u8A00\uFF08\u81EA\u52A8\uFF1A\u8DDF\u968F\u6D4F\u89C8\u5668\uFF09\u3002"
+};
+
+// src/i18n.js
+var DICTIONARIES = { fr: fr_default, it: it_default, de: de_default, es: es_default, zh: zh_default };
+var LANGUAGES = [["Auto", "Auto (browser language)"], ["English", "English"], ["Fran\xE7ais", "Fran\xE7ais"], ["Italiano", "Italiano"], ["Deutsch", "Deutsch"], ["Espa\xF1ol", "Espa\xF1ol"], ["\u4E2D\u6587", "\u4E2D\u6587"]];
+var CODES = { auto: "auto", english: "en", "fran\xE7ais": "fr", italiano: "it", deutsch: "de", "espa\xF1ol": "es", "\u4E2D\u6587": "zh", en: "en", fr: "fr", it: "it", de: "de", es: "es", zh: "zh" };
+var languageName = (value2) => {
+  const code = CODES[String(value2 || "auto").toLowerCase()] || "auto";
+  return code === "auto" ? "Auto" : LANGUAGES.find(([name]) => CODES[name.toLowerCase()] === code)[0];
+};
+var current = "en";
+function resolveLanguage(preference = "auto") {
+  const code = CODES[String(preference || "auto").toLowerCase()] || "en";
+  if (code !== "auto") return code;
+  const tags = [...globalThis.navigator?.languages || [], globalThis.navigator?.language].filter(Boolean);
+  for (const tag of tags) {
+    const code2 = String(tag).toLowerCase().slice(0, 2);
+    if (code2 === "en") return "en";
+    if (DICTIONARIES[code2]) return code2;
+  }
+  return "en";
+}
+function setLanguage(preference) {
+  current = resolveLanguage(preference);
+  globalThis.document?.documentElement?.setAttribute?.("data-rd-lang", current);
+  return current;
+}
+var language = () => current;
+function t(text2, values = []) {
+  const template = current !== "en" && DICTIONARIES[current]?.[text2] || text2;
+  return values.length ? template.replace(/\{(\d+)\}/g, (match, index) => values[index] ?? "") : template;
+}
+
+// src/cancellation.js
+function checkCancelled(signal) {
+  if (signal?.aborted) {
+    const error = new Error(t("Import paused because Reading Desk was disabled. Enable it to resume."));
+    error.name = "AbortError";
+    throw error;
+  }
+}
+
+// src/graph.js
+var api = () => window.roamAlphaAPI;
+var value = (node, field) => node?.[`:block/${field}`] ?? node?.[field];
+var uidOf = (node) => value(node, "uid");
+var textOf = (node) => value(node, "string") || "";
+var titleOf = (node) => node?.[":node/title"] ?? node?.title;
+var childrenOf = (node) => [...value(node, "children") || []].sort((a, b) => (value(a, "order") || 0) - (value(b, "order") || 0));
+var bookKey = (book) => book.libraryKey || book.pageUid || book.id;
+var pull = (uid) => api().data.pull("[:block/uid :node/title :block/string :block/order :block/open :block/heading {:block/children ...}]", [":block/uid", uid]);
+var flatten = (node) => node ? [node, ...childrenOf(node).flatMap(flatten)] : [];
+var updateBlock = (block) => api().data?.block?.update ? api().data.block.update({ block }) : api().updateBlock({ block });
+var createBlock = (parentUid, string, order = "last") => {
+  const uid = api().util.generateUID();
+  return api().data.block.create({ location: { "parent-uid": parentUid, order }, block: { uid, string } }).then(() => uid);
+};
+async function ensurePage(title) {
+  const existing = api().data.pull("[:block/uid]", [":node/title", title]);
+  if (uidOf(existing)) return uidOf(existing);
+  const uid = api().util.generateUID();
+  await api().data.page.create({ page: { uid, title } });
+  return uid;
+}
+function owningPage(uid) {
+  const node = api().data.pull("[:block/uid :node/title {:block/page [:block/uid :node/title]} {:block/parents [:block/uid :node/title]}]", [":block/uid", uid]);
+  if (titleOf(node)) return { uid, title: titleOf(node) };
+  const page = value(node, "page") || (value(node, "parents") || []).find(titleOf);
+  if (page) return { uid: uidOf(page), title: titleOf(page) };
+  const rows = api().data.q("[:find ?puid ?title :in $ ?uid :where [?e :block/uid ?uid] [?e :block/parents ?p] [?p :node/title ?title] [?p :block/uid ?puid]]", uid) || [];
+  return rows[0] ? { uid: rows[0][0], title: rows[0][1] } : null;
+}
+async function currentUid() {
+  let open2;
+  try {
+    open2 = await api().ui?.mainWindow?.getOpenPageOrBlockUid?.();
+  } catch {
+  }
+  if (open2) return open2;
+  const hash = decodeURIComponent(window.location?.hash.match(/\/page\/([^/?]+)/)?.[1] || "");
+  if (hash) return hash;
+  const explicit = document.querySelector(".roam-main [data-page-uid]")?.getAttribute("data-page-uid");
+  if (explicit) return explicit;
+  const blockUid = document.querySelector(".roam-main .rm-block[data-block-uid]")?.getAttribute("data-block-uid");
+  return blockUid ? owningPage(blockUid)?.uid || blockUid : "";
+}
+var navigationTicket = 0;
+function renderedBlock(uid) {
+  return [...document.querySelectorAll(".roam-main [data-block-uid],.roam-main .rm-block-text[id],.roam-main textarea.rm-block-input[id]")].find((node) => node.getAttribute("data-block-uid") === uid || node.id?.endsWith(`-${uid}`));
+}
+function waitForBlock(uid, ticket) {
+  return new Promise((resolve) => {
+    let observer, timer;
+    const finish = (node) => {
+      observer?.disconnect();
+      clearTimeout(timer);
+      resolve(node);
+    };
+    const check = () => {
+      const node = renderedBlock(uid);
+      if (ticket !== navigationTicket || node) finish(ticket === navigationTicket ? node : null);
+    };
+    observer = new window.MutationObserver(check);
+    observer.observe(document.body, { childList: true, subtree: true });
+    timer = setTimeout(() => finish(null), 4e3);
+    check();
+  });
+}
+async function openAt(uid, sidebar = false) {
+  if (!uid || !api().data.pull("[:block/uid]", [":block/uid", uid])) throw new Error(t("This block no longer exists. Refresh the contents or annotations; the book will not be recreated."));
+  if (sidebar) {
+    await api().ui.rightSidebar.open();
+    await api().ui.rightSidebar.addWindow({ window: { type: "block", "block-uid": uid } });
+    return;
+  }
+  const ticket = ++navigationTicket;
+  const page = owningPage(uid);
+  if (!page) throw new Error(t("Cannot find the page containing this block."));
+  if (await currentUid() !== page.uid) await api().ui.mainWindow.openPage({ page: { uid: page.uid } });
+  const parents = api().data.pull("[{:block/parents [:block/uid :node/title :block/open]}]", [":block/uid", uid]);
+  for (const parent of value(parents, "parents") || []) {
+    if (ticket !== navigationTicket) return;
+    if (!titleOf(parent) && value(parent, "open") === false) await updateBlock({ uid: uidOf(parent), open: true });
+  }
+  const node = await waitForBlock(uid, ticket);
+  if (ticket !== navigationTicket) return;
+  if (!node) throw new Error(t("The page opened, but this paragraph has not rendered. Expand its chapter and try again."));
+  const target = node.closest(".rm-block-main") || node.querySelector(".rm-block-main") || node;
+  let userMoved = false;
+  const stop = () => {
+    userMoved = true;
+  };
+  const events = ["wheel", "touchstart", "keydown", "pointerdown"];
+  events.forEach((name) => window.addEventListener(name, stop, { capture: true, passive: true, once: true }));
+  const heading = Number(value(api().data.pull("[:block/heading]", [":block/uid", uid]), "heading")) > 0;
+  const previousMargin = target.style?.scrollMarginTop;
+  if (heading && target.style) target.style.scrollMarginTop = "72px";
+  const align = () => target.scrollIntoView?.({ behavior: "auto", block: heading ? "start" : "center", inline: "nearest" });
+  align();
+  const anchorTop = target.getBoundingClientRect?.().top;
+  target.animate?.([{ backgroundColor: "rgba(222,190,76,.35)" }, { backgroundColor: "transparent" }], { duration: 1800 });
+  for (let pass = 0; pass < 3; pass++) {
+    await new Promise((resolve) => setTimeout(resolve, pass ? 300 : 350));
+    if (userMoved || ticket !== navigationTicket || !target.isConnected || anchorTop == null) break;
+    if (Math.abs(target.getBoundingClientRect().top - anchorTop) > 24) align();
+  }
+  events.forEach((name) => window.removeEventListener(name, stop, true));
+  if (target.style) target.style.scrollMarginTop = previousMargin || "";
+}
+var plain = (text2) => String(text2 || "").replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/#?\[\[([^\]]+)\]\]/g, "$1").replace(/[\^*_`]/g, "").trim();
+
+// src/metadata-page.js
+var pagesByApi = /* @__PURE__ */ new WeakMap();
+var SETTINGS_KEY = "metadata-page-uids-v1";
+var TITLES = ["roam/epub-importer/library", "roam/epub-importer/reader"];
+var settings;
+function cache() {
+  let found = pagesByApi.get(api());
+  if (!found) {
+    found = /* @__PURE__ */ new Map();
+    pagesByApi.set(api(), found);
+  }
+  return found;
+}
+async function configureMetadataPages(extensionAPI) {
+  settings = extensionAPI.settings;
+  const stored = settings?.get?.(SETTINGS_KEY) || {};
+  for (const title of TITLES) if (typeof stored[title] === "string") cache().set(title, stored[title]);
+  TITLES.forEach(metadataPage);
+  await persist();
+}
+async function persist() {
+  try {
+    await settings?.set?.(SETTINGS_KEY, Object.fromEntries(cache()));
+  } catch {
+  }
+}
+function metadataPage(title) {
+  const previous = cache().get(title);
+  const pattern = "[:block/uid :node/title {:block/children [:block/uid :block/string]}]";
+  if (previous) {
+    const node2 = api().data.pull(pattern, [":block/uid", previous]);
+    if (titleOf(node2) != null) return node2;
+  }
+  const node = api().data.pull(pattern, [":node/title", title]);
+  if (uidOf(node)) cache().set(title, uidOf(node));
+  return node;
+}
+function metadataRows(title, prefix) {
+  return childrenOf(metadataPage(title)).filter((node) => textOf(node).startsWith(prefix)).map((node) => [uidOf(node), textOf(node)]);
+}
+function metadataPageUids(prefixes) {
+  const titles = TITLES.filter((title) => prefixes.some((prefix) => title.endsWith("/reader") ? prefix.startsWith("EPUB-READER:") : prefix.startsWith("EPUB-IMPORTER:")));
+  return new Set(titles.map((title) => uidOf(metadataPage(title))).filter(Boolean));
+}
+async function ensureMetadataPage(title, prefixes, signal) {
+  const previous = uidOf(metadataPage(title));
+  if (previous) return previous;
+  checkCancelled(signal);
+  const uid = await ensurePage(title);
+  cache().set(title, uid);
+  await persist();
+  return uid;
+}
+
+// src/storage.js
+var DB_NAME = "roam-epub-importer";
+var DB_VERSION = 2;
+var STORE = "jobs";
+var BOOKS = "books";
+var persistedBooks = /* @__PURE__ */ new Set();
+function openDatabase() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "id" });
+      if (!db.objectStoreNames.contains(BOOKS)) db.createObjectStore(BOOKS, { keyPath: "id" });
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+async function transact(stores, mode, action) {
+  const db = await openDatabase();
+  try {
+    return await new Promise((resolve, reject) => {
+      const transaction = db.transaction(stores, mode);
+      const result = action(transaction);
+      transaction.oncomplete = () => resolve(typeof result === "function" ? result() : result);
+      transaction.onerror = () => reject(transaction.error || new Error(t("Could not save local progress")));
+      transaction.onabort = () => reject(transaction.error || new Error(t("Local progress save was aborted")));
+    });
+  } finally {
+    db.close();
+  }
+}
+async function saveJob(job) {
+  const { book, ...state2 } = job;
+  const needsBook = !persistedBooks.has(job.id);
+  await transact([STORE, BOOKS], "readwrite", (transaction) => {
+    if (needsBook) transaction.objectStore(BOOKS).put({ id: job.id, book });
+    transaction.objectStore(STORE).put({ ...state2, bookKey: job.id });
+  });
+  persistedBooks.add(job.id);
+}
+async function hydrate(state2) {
+  if (!state2 || state2.book) return state2;
+  const stored = await transact([BOOKS], "readonly", (transaction) => {
+    const request = transaction.objectStore(BOOKS).get(state2.bookKey);
+    return () => request.result;
+  });
+  if (!stored?.book) throw new Error(t("The local EPUB cache is missing. Select the original file again."));
+  persistedBooks.add(state2.id);
+  return { ...state2, book: stored.book };
+}
+async function getJob(id) {
+  const state2 = await transact([STORE], "readonly", (transaction) => {
+    const request = transaction.objectStore(STORE).get(id);
+    return () => request.result;
+  });
+  return hydrate(state2);
+}
+async function removeJob(id) {
+  await transact([STORE, BOOKS], "readwrite", (transaction) => {
+    transaction.objectStore(STORE).delete(id);
+    transaction.objectStore(BOOKS).delete(id);
+  });
+  persistedBooks.delete(id);
+}
+async function listJobs() {
+  const states = await transact([STORE], "readonly", (transaction) => {
+    const request = transaction.objectStore(STORE).getAll();
+    return () => request.result;
+  });
+  return Promise.all(states.map(hydrate));
+}
+
+// src/link-format.js
+function aliasLabel(label) {
+  const raw = label.replace(/\\([\[\]\\])/g, "$1").trim();
+  const numeric = raw.match(/^\[\s*(\d+)\s*\]$/);
+  return numeric ? numeric[1] : raw.replace(/\[/g, "\uFF3B").replace(/\]/g, "\uFF3D");
+}
+var blockAlias = (label, uid) => `[${aliasLabel(label)}](((${uid})))`;
+
+// src/writer.js
+var IMAGE_PATTERN = /⟦EPUBI:(i\d+)⟧/g;
+var LINK_PATTERN = /⟦EPUBL:(l\d+)⟧/g;
+function valueOf(record, key3) {
+  return record?.[`:block/${key3}`] ?? record?.[key3];
+}
+var chapterNodeKind = (node, parent) => node.kind === "toc" || node.kind === "supplement" || !parent || node.kind === "heading";
+var boldable = (text2) => text2 && !/\*\*|⟦EPUBI:|\$\$|^\s*```/.test(text2);
+function prepareBlockPlan(job, generateUID) {
+  var _a2, _b2;
+  if (job.blockPlan) return job.blockPlan;
+  const blocks = [];
+  const targets = /* @__PURE__ */ new Map();
+  function visit(nodes, parentUid, chapterIndex, depth, parentNode, chapterDepth) {
+    nodes.forEach((node, order) => {
+      const uid = generateUID();
+      if (node.targetMarker) targets.set(node.targetMarker, uid);
+      const chapter = chapterNodeKind(node, parentNode, job.book);
+      const heading = chapter && chapterDepth < 3 ? chapterDepth + 1 : 0;
+      const bold = boldable(node.text) && (chapter ? chapterDepth === 3 : node.kind === "heading");
+      blocks.push({ uid, parentUid, order, chapterIndex, depth, node, heading, bold });
+      visit(node.children || [], uid, chapterIndex, depth + 1, node, chapterDepth + (chapter ? 1 : 0));
+    });
+  }
+  job.book.chapters.forEach((node, chapterIndex) => visit([node], job.progress.pageUid, chapterIndex, 0, null, 0));
+  const links = new Map(job.book.links.map((link) => [link.id, link]));
+  job.blockPlan = blocks.map(({ node, bold, ...record }) => {
+    const source = node.text || "(Empty paragraph)";
+    const text2 = (bold ? `**${source.trim()}**` : source).replace(IMAGE_PATTERN, (_, id) => job.assetEmbeds[id] || `[Missing image: ${id}]`);
+    const pendingLinks = /⟦EPUBL:/.test(text2);
+    const resolveLinks = (final) => text2.replace(LINK_PATTERN, (_, id) => {
+      const link = links.get(id);
+      if (!link) return "[Unrecognized internal link]";
+      const uid = targets.get(link.targetMarker);
+      return final && uid ? blockAlias(link.label, uid) : link.label;
+    });
+    return {
+      ...record,
+      // Literal block strings preserve numeric paragraphs, image positions and
+      // source nesting without a second Markdown parse changing the tree.
+      string: resolveLinks(false),
+      ...pendingLinks ? { finalString: resolveLinks(true) } : {},
+      open: record.depth !== 0
+    };
+  });
+  (_a2 = job.progress).blockIndex || (_a2.blockIndex = 0);
+  (_b2 = job.progress).linkIndex || (_b2.linkIndex = 0);
+  return job.blockPlan;
+}
+async function writeBlockPlan(job, api3, { checkpoint, onProgress, signal, wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)), intervalMs = 65 } = {}) {
+  if (!job.blockPlan) throw new Error(t("The chapter structure has not been prepared."));
+  const plan = job.blockPlan;
+  job.progress.stage = "chapters";
+  for (let index = job.progress.blockIndex || 0; index < plan.length; index += 1) {
+    checkCancelled(signal);
+    const item = plan[index];
+    const existing = api3.data.pull("[:block/uid :block/string {:block/parents [:block/uid]}]", [":block/uid", item.uid]);
+    if (!valueOf(existing, "uid")) {
+      await api3.data.block.create({
+        location: { "parent-uid": item.parentUid, order: item.depth === 0 ? item.chapterIndex : item.order },
+        block: { uid: item.uid, string: item.string, open: item.open, ...item.heading ? { heading: item.heading } : {} }
+      });
+      if ((index + 1) % 10 === 0 || index + 1 === plan.length) await wait(intervalMs * ((index + 1) % 10 || 10));
+    } else {
+      const expected = new Set([item.string, item.finalString].filter((value2) => value2 != null));
+      const parents = valueOf(existing, "parents");
+      if (!expected.has(valueOf(existing, "string")) || !Array.isArray(parents) || !parents.some((parent) => valueOf(parent, "uid") === item.parentUid)) {
+        throw new Error(t("An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page."));
+      }
+    }
+    job.progress.blockIndex = index + 1;
+    job.progress.chapterIndex = index + 1 === plan.length || plan[index + 1].chapterIndex !== item.chapterIndex ? item.chapterIndex + 1 : item.chapterIndex;
+    checkCancelled(signal);
+    if ((index + 1) % 20 === 0 || index + 1 === plan.length) await checkpoint?.(job);
+    onProgress?.({ stage: "chapters", current: index + 1, total: plan.length, message: t("Importing chapter {0}/{1} \xB7 block {2}/{3}", [item.chapterIndex + 1, job.book.chapters.length, index + 1, plan.length]) });
+  }
+  const linked = plan.filter((item) => item.finalString != null);
+  checkCancelled(signal);
+  job.progress.stage = "links";
+  await checkpoint?.(job);
+  for (let index = job.progress.linkIndex || 0; index < linked.length; index += 1) {
+    checkCancelled(signal);
+    const item = linked[index];
+    await api3.data.block.update({ block: { uid: item.uid, string: item.finalString } });
+    if ((index + 1) % 10 === 0 || index + 1 === linked.length) await wait(intervalMs * ((index + 1) % 10 || 10));
+    job.progress.linkIndex = index + 1;
+    checkCancelled(signal);
+    if ((index + 1) % 20 === 0 || index + 1 === linked.length) await checkpoint?.(job);
+    onProgress?.({ stage: "links", current: index + 1, total: linked.length, message: t("Resolving internal link {0}/{1}", [index + 1, linked.length]) });
+  }
+}
+
+// src/reader-store.js
+var PREFIX = "EPUB-READER:DOC:1 ";
+var CHUNK = "EPUB-READER:CHUNK:1 ";
+var PAGE = "roam/epub-importer/reader";
+var queues = /* @__PURE__ */ new Map();
+var parse = (text2) => JSON.parse(text2.slice(PREFIX.length));
+function documentHeaders(type) {
+  return metadataRows(PAGE, PREFIX).map(([uid, text2]) => ({ uid, ...parse(text2) })).filter((header) => !type || header.type === type);
+}
+function readDocument(type, key3, headerHint) {
+  const header = headerHint !== void 0 ? headerHint : documentHeaders(type).filter((item) => item.key === key3).sort((a, b) => b.revision - a.revision)[0];
+  if (!header) return null;
+  const chunks = childrenOf(pull(header.uid)).filter((node) => textOf(node).startsWith(CHUNK)).map((node) => JSON.parse(textOf(node).slice(CHUNK.length))).filter((chunk) => chunk.bank === header.bank && chunk.index < header.count).sort((a, b) => a.index - b.index);
+  if (chunks.length !== header.count || chunks.some((chunk, index) => chunk.index !== index)) throw new Error(t("Reading metadata is incomplete. Refresh and retry; the original book is unaffected."));
+  const joined = chunks.map((chunk) => chunk.text).join("");
+  const json = header.encoding === "base64-utf8" ? new TextDecoder().decode(Uint8Array.from(atob(joined), (character) => character.charCodeAt(0))) : joined;
+  return JSON.parse(json);
+}
+function putDocument(type, key3, data, signal) {
+  const queueKey = `${type}:${key3}`;
+  const previous = queues.get(queueKey) || Promise.resolve();
+  const json = JSON.stringify(data);
+  const snapshot = btoa([...new TextEncoder().encode(json)].map((byte) => String.fromCharCode(byte)).join(""));
+  const task = previous.catch(() => {
+  }).then(async () => {
+    checkCancelled(signal);
+    const prior = documentHeaders(type).filter((item) => item.key === key3).sort((a, b) => b.revision - a.revision)[0];
+    const page = prior ? null : await ensureMetadataPage(PAGE, [PREFIX, "EPUB-READER:PENDING:1 "], signal);
+    checkCancelled(signal);
+    const parent = prior?.uid || await createBlock(page, `EPUB-READER:PENDING:1 ${queueKey}`);
+    const bank = prior ? 1 - prior.bank : 0;
+    const oldChunks = childrenOf(pull(parent)).filter((node) => textOf(node).startsWith(CHUNK)).map((node) => ({ uid: uidOf(node), ...JSON.parse(textOf(node).slice(CHUNK.length)) }));
+    const count = Math.max(1, Math.ceil(snapshot.length / 2e3));
+    for (let index = 0; index < count; index++) {
+      checkCancelled(signal);
+      const string = CHUNK + JSON.stringify({ bank, index, text: snapshot.slice(index * 2e3, (index + 1) * 2e3) });
+      const old = oldChunks.find((chunk) => chunk.bank === bank && chunk.index === index);
+      if (old) await updateBlock({ uid: old.uid, string });
+      else await createBlock(parent, string);
+    }
+    checkCancelled(signal);
+    await updateBlock({ uid: parent, string: PREFIX + JSON.stringify({ type, key: key3, bank, count, encoding: "base64-utf8", revision: (prior?.revision || 0) + 1, updatedAt: Date.now() }), open: false });
+    return parent;
+  });
+  queues.set(queueKey, task);
+  task.finally(() => {
+    if (queues.get(queueKey) === task) queues.delete(queueKey);
+  }).catch(() => {
+  });
+  return task;
+}
+function readerMetadataUids() {
+  const result = /* @__PURE__ */ new Set();
+  documentHeaders().forEach((header) => {
+    result.add(header.uid);
+    childrenOf(pull(header.uid)).forEach((child) => {
+      if (textOf(child).startsWith(CHUNK)) result.add(uidOf(child));
+    });
+  });
+  return result;
+}
+
+// src/library.js
+var settingsCache = /* @__PURE__ */ new WeakMap();
+var SETTINGS_KEY2 = "managed-books-v1";
+var LIBRARY_TITLE = "roam/epub-importer/library";
+var RECORD_PREFIX = "EPUB-IMPORTER:BOOK:1 ";
+var CHUNK_PREFIX = "EPUB-IMPORTER:ASSETS:1 ";
+var PENDING_PREFIX = "EPUB-IMPORTER:PENDING:1 ";
+var CHUNK_SIZE = 12;
+var api2 = () => window.roamAlphaAPI;
+var uidOf2 = (node) => node?.[":block/uid"] || node?.uid;
+var stringOf = (node) => node?.[":block/string"] ?? node?.string ?? "";
+var childrenOf2 = (node) => node?.[":block/children"] || node?.children || [];
+var titleOf2 = (node) => node?.[":node/title"] ?? node?.title;
+var keyOf = (record) => record.libraryKey || record.pageUid || record.id;
+function parseJson(text2, prefix) {
+  if (!text2.startsWith(prefix)) throw new Error(t("Invalid library format. Stopped to protect existing data."));
+  try {
+    return JSON.parse(text2.slice(prefix.length));
+  } catch {
+    throw new Error(t("Cannot read the library. Stopped to protect existing data."));
+  }
+}
+async function cacheSettings(extensionAPI, books) {
+  if (extensionAPI.settings?.canSet === false) return;
+  const fingerprint2 = JSON.stringify(books);
+  if (settingsCache.get(extensionAPI) === fingerprint2) return;
+  try {
+    await extensionAPI.settings?.set?.(SETTINGS_KEY2, books);
+    settingsCache.set(extensionAPI, fingerprint2);
+  } catch {
+  }
+}
+function readGraphLibrary() {
+  const rows = metadataRows(LIBRARY_TITLE, RECORD_PREFIX);
+  const latest = /* @__PURE__ */ new Map();
+  const metadataUids = /* @__PURE__ */ new Set();
+  for (const [uid, text2] of rows) {
+    const metadata = parseJson(text2, RECORD_PREFIX);
+    if (metadata.schema !== 1 || !metadata.key || !Number.isInteger(metadata.sequence) || !["active", "deleted"].includes(metadata.state)) {
+      throw new Error(t("Unsupported library version or structure. Stopped to protect existing data."));
+    }
+    metadataUids.add(uid);
+    const tree = api2().data.pull("[:block/uid :block/string {:block/children ...}]", [":block/uid", uid]);
+    for (const child of childrenOf2(tree)) {
+      if (stringOf(child).startsWith(CHUNK_PREFIX)) metadataUids.add(uidOf2(child));
+    }
+    const prior = latest.get(metadata.key);
+    if (!prior || metadata.sequence > prior.metadata.sequence || metadata.sequence === prior.metadata.sequence && `${metadata.updatedAt}:${uid}` > `${prior.metadata.updatedAt}:${prior.uid}`) {
+      latest.set(metadata.key, { uid, metadata, tree });
+    }
+  }
+  const books = [];
+  for (const { metadata, tree } of latest.values()) {
+    if (metadata.state === "deleted") continue;
+    const chunks = childrenOf2(tree).filter((child) => stringOf(child).startsWith(CHUNK_PREFIX)).map((child) => parseJson(stringOf(child), CHUNK_PREFIX)).sort((a, b) => a.index - b.index);
+    if (chunks.length !== metadata.chunkCount || chunks.some((chunk, index) => chunk.index !== index || !Array.isArray(chunk.attachments))) {
+      throw new Error(t("The attachment ledger is incomplete. Stopped to protect attachments."));
+    }
+    const attachments = chunks.flatMap((chunk) => chunk.attachments);
+    if (attachments.length !== metadata.attachmentCount || !metadata.record?.id) throw new Error(t("Attachment ledger validation failed."));
+    const record = { ...metadata.record, libraryKey: metadata.key, attachments };
+    if (record.catalogKey) record.catalog = readDocument("book-catalog", record.catalogKey);
+    if (record.pageUid && (!record.catalog?.confirmed || record.catalog.rootUids.some((uid) => owningPage(uid)?.uid === record.pageUid))) {
+      const current2 = api2().data.pull("[:node/title]", [":block/uid", record.pageUid]);
+      if (titleOf2(current2)) record.title = titleOf2(current2);
+    }
+    books.push(record);
+  }
+  return { books, metadataUids, latest };
+}
+async function ensureLibraryPage(signal) {
+  return ensureMetadataPage(LIBRARY_TITLE, [RECORD_PREFIX, PENDING_PREFIX], signal);
+}
+async function writeSnapshot(record, state2, library, signal) {
+  const key3 = keyOf(record);
+  if (!key3) throw new Error(t("The book record has no stable identity."));
+  const parentUid = await ensureLibraryPage(signal);
+  const uid = api2().util.generateUID();
+  const attachments = state2 === "deleted" ? [] : record.attachments || [];
+  const { attachments: ignored, ...summary } = record;
+  const metadata = {
+    schema: 1,
+    key: key3,
+    state: state2,
+    sequence: (library.latest.get(key3)?.metadata.sequence || 0) + 1,
+    updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
+    record: { ...summary, libraryKey: key3 },
+    chunkCount: Math.ceil(attachments.length / CHUNK_SIZE),
+    attachmentCount: attachments.length
+  };
+  checkCancelled(signal);
+  await api2().data.block.create({ location: { "parent-uid": parentUid, order: "last" }, block: { uid, string: `${PENDING_PREFIX}${key3}`, open: false } });
+  for (let index = 0; index < metadata.chunkCount; index++) {
+    checkCancelled(signal);
+    await api2().data.block.create({
+      location: { "parent-uid": uid, order: index },
+      block: { uid: api2().util.generateUID(), string: CHUNK_PREFIX + JSON.stringify({ index, attachments: attachments.slice(index * CHUNK_SIZE, (index + 1) * CHUNK_SIZE) }), open: false }
+    });
+  }
+  checkCancelled(signal);
+  await api2().data.block.update({ block: { uid, string: RECORD_PREFIX + JSON.stringify(metadata), open: false } });
+}
+async function getManagedLibrary(extensionAPI, signal) {
+  checkCancelled(signal);
+  let library = readGraphLibrary();
+  const cached = extensionAPI.settings?.get?.(SETTINGS_KEY2);
+  for (const record of Array.isArray(cached) ? cached : []) {
+    if (!record?.id || !keyOf(record) || library.latest.has(keyOf(record))) continue;
+    await writeSnapshot(record, "active", library, signal);
+    library = readGraphLibrary();
+  }
+  await cacheSettings(extensionAPI, library.books);
+  return library;
+}
+async function getManagedBooks(extensionAPI, signal) {
+  return (await getManagedLibrary(extensionAPI, signal)).books;
+}
+async function saveManagedBook(extensionAPI, record, signal) {
+  checkCancelled(signal);
+  const library = await getManagedLibrary(extensionAPI, signal);
+  const { catalog, ...summary } = record;
+  if (catalog) {
+    await putDocument("book-catalog", keyOf(record), catalog, signal);
+    summary.catalogKey = keyOf(record);
+  }
+  await writeSnapshot(summary, "active", library, signal);
+  await cacheSettings(extensionAPI, readGraphLibrary().books);
+}
+async function forgetManagedBook(extensionAPI, record, signal) {
+  checkCancelled(signal);
+  const library = await getManagedLibrary(extensionAPI, signal);
+  await writeSnapshot(record, "deleted", library);
+  await cacheSettings(extensionAPI, readGraphLibrary().books);
+}
+var normalizeTitle = (title) => title.normalize("NFKC").replace(/[\p{P}\p{S}\s]/gu, "").toLowerCase();
+function findRecoveryPages(search) {
+  const input = search.trim();
+  if (input.length < 2) throw new Error(t("Enter at least two characters of the page title."));
+  const needle = normalizeTitle(input);
+  const rows = api2().data.q("[:find ?uid ?title :where [?e :node/title ?title] [?e :block/uid ?uid]]") || [];
+  const internal = metadataPageUids([RECORD_PREFIX, PENDING_PREFIX, "EPUB-READER:DOC:1 ", "EPUB-READER:PENDING:1 "]);
+  return rows.filter(([uid, title]) => !internal.has(uid) && title !== LIBRARY_TITLE && title !== "roam/epub-importer/reader" && normalizeTitle(title).includes(needle)).map(([pageUid, title]) => ({ pageUid, title })).slice(0, 30);
+}
+async function recoverExistingBook(pageUid, extensionAPI, signal) {
+  checkCancelled(signal);
+  const library = await getManagedLibrary(extensionAPI, signal);
+  const existing = library.books.find((record2) => record2.pageUid === pageUid || record2.catalog?.rootUids.some((uid) => {
+    const root = api2().data.pull("[{:block/parents [:block/uid]}]", [":block/uid", uid]);
+    return (root?.[":block/parents"] || []).some((parent) => uidOf2(parent) === pageUid);
+  }));
+  if (existing) return existing;
+  const tree = api2().data.pull("[:block/uid :node/title :block/string {:block/children ...}]", [":block/uid", pageUid]);
+  if (!titleOf2(tree) || [LIBRARY_TITLE, "roam/epub-importer/reader"].includes(titleOf2(tree)) || metadataPageUids([RECORD_PREFIX, PENDING_PREFIX, "EPUB-READER:DOC:1 ", "EPUB-READER:PENDING:1 "]).has(pageUid)) throw new Error(t("The specified book page could not be found."));
+  const urls = /* @__PURE__ */ new Set();
+  let blocks = 0;
+  const visit = (node) => {
+    blocks++;
+    for (const match of stringOf(node).matchAll(/!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g)) urls.add(match[1]);
+    childrenOf2(node).forEach(visit);
+  };
+  childrenOf2(tree).forEach(visit);
+  const record = {
+    id: `recovered-${pageUid}`,
+    libraryKey: pageUid,
+    pageUid,
+    title: titleOf2(tree),
+    recoveredAt: (/* @__PURE__ */ new Date()).toISOString(),
+    status: "recovered",
+    stats: { blocks },
+    // Seeing a URL in a page does NOT prove that this plugin uploaded it.
+    attachments: [...urls].map((url) => ({ url, ownership: "unknown" }))
+  };
+  await saveManagedBook(extensionAPI, record, signal);
+  return record;
+}
+
+// src/repair-snapshot.js
+var referencesTo = (uid) => (api().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", uid) || []).map((row) => row[0]).filter((other) => other !== uid).sort();
+function referenceSnapshot(from, to) {
+  return referencesTo(from).map((uid) => {
+    const before = textOf(pull(uid));
+    return { uid, before, after: before.split(`((${from}))`).join(`((${to}))`) };
+  });
+}
+function referencesUnchanged(from, changes) {
+  return JSON.stringify(referencesTo(from)) === JSON.stringify(changes.map((item) => item.uid).sort()) && changes.every((item) => {
+    const node = pull(item.uid);
+    return node && textOf(node) === item.before && item.after !== item.before;
+  });
+}
+function fingerprint(uid) {
+  const node = api().data.pull("[:block/uid :block/string :block/heading :block/open :block/order {:block/children [:block/uid :block/order]} {:block/parents [:block/uid]}]", [":block/uid", uid]);
+  const canonical = (value2) => Array.isArray(value2) ? value2.map(canonical).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b))) : value2 && typeof value2 === "object" ? Object.fromEntries(Object.keys(value2).sort().map((key3) => [key3, canonical(value2[key3])])) : value2;
+  return JSON.stringify(canonical(node));
+}
+
+// src/paragraph-repair.js
+var FRAGMENT_ARCHIVE = "EPUB-READER:paragraph-fragments";
+var move = (uid, parentUid, order) => api().data.block.move({ block: { uid }, location: { "parent-uid": parentUid, order } });
+var isChild = (uid, parentUid) => childrenOf(pull(parentUid)).some((node) => uidOf(node) === uid);
+var clean = (text2) => text2.replace(/\[\\\[\s*(\d+)\s*\\\]\]\(\(\([^()]+\)\)\)/g, "$1").replace(/\[([^\]]+)\]\(\(\([^()]+\)\)\)/g, "$1").replace(/\[\s*(\d+)\s*\]/g, "$1").replace(/\^\^|\*\*|__/g, "").replace(/\s+/g, " ").trim();
+var compact = (text2) => clean(text2).replace(/\s/g, "");
+var startsNote = (text2) => /^\s*(?:\[\d+\]\(\(\([^()]+\)\)\)|\[\\\[\s*\d+\s*\\\]\]\(\(\([^()]+\)\)\))/.test(text2.trimStart().replace(/^(?:\^\^|\*\*|__)+/, ""));
+function previewParagraphRepair(content, book) {
+  const links = new Map(book.links.map((link) => [link.id, link.label]));
+  const source = [];
+  const walk = (nodes) => nodes.forEach((node) => {
+    if (node.kind !== "toc" && !/⟦EPUBI:/.test(node.text)) source.push(clean(node.text.replace(/⟦EPUBL:([^⟧]+)⟧/g, (_, id) => links.get(id) || "")));
+    walk(node.children || []);
+  });
+  walk(book.chapters);
+  const paragraphs = /* @__PURE__ */ new Map();
+  source.forEach((text2) => {
+    const key3 = compact(text2);
+    paragraphs.set(key3, (paragraphs.get(key3) || []).concat(text2));
+  });
+  const chapterUids = new Set(content.chapters.map((chapter) => chapter.uid));
+  const groups = /* @__PURE__ */ new Map();
+  content.nodes.forEach((node) => {
+    if (node.parentUid) {
+      if (!groups.has(node.parentUid)) groups.set(node.parentUid, []);
+      groups.get(node.parentUid).push(node);
+    }
+  });
+  const changes = [];
+  for (const siblings of groups.values()) {
+    siblings.sort((a, b) => (value(a.node, "order") || 0) - (value(b.node, "order") || 0));
+    for (let i = 0; i < siblings.length - 1; i++) {
+      const first = siblings[i];
+      if (chapterUids.has(first.uid) || value(first.node, "heading") || childrenOf(first.node).length || !first.text.trim() || /```|!\[|\$\$/.test(first.text)) continue;
+      const parts = [first];
+      let joined = first.text;
+      for (let j = i + 1; j < siblings.length && j < i + 8; j++) {
+        const next = siblings[j];
+        if (chapterUids.has(next.uid) || value(next.node, "heading") || childrenOf(next.node).length || next.chapterUid !== first.chapterUid || !startsNote(next.text) || /```|!\[|\$\$/.test(next.text)) break;
+        parts.push(next);
+        joined += next.text;
+        const matches = paragraphs.get(compact(joined));
+        if (matches?.length === 1) {
+          const original = matches[0];
+          let after = first.text.trimEnd();
+          let prefix = clean(first.text);
+          for (const part of parts.slice(1)) {
+            const start = original.replace(/\s/g, "").indexOf(compact(prefix));
+            let consumed = 0, at = 0;
+            while (at < original.length && consumed < compact(prefix).length + Math.max(start, 0)) {
+              if (!/\s/.test(original[at])) consumed++;
+              at++;
+            }
+            after += (/\s/.test(original[at] || "") ? " " : "") + part.text.trimStart();
+            prefix += part.text;
+          }
+          changes.push({
+            uid: first.uid,
+            parentUid: first.parentUid,
+            before: first.text,
+            after,
+            open: value(first.node, "open") ?? true,
+            fragments: parts.slice(1).map((part) => ({ uid: part.uid, text: part.text, order: value(part.node, "order") || 0 })),
+            source: original
+          });
+          i = j;
+          break;
+        }
+      }
+    }
+  }
+  return { bookKey: content.key, title: content.record.title, sourceTitle: book.title, changes };
+}
+function unchanged(change) {
+  const siblings = childrenOf(pull(change.parentUid));
+  const index = siblings.findIndex((node) => uidOf(node) === change.uid);
+  return index >= 0 && textOf(siblings[index]) === change.before && !childrenOf(siblings[index]).length && change.fragments.every((fragment, i) => uidOf(siblings[index + i + 1]) === fragment.uid && textOf(siblings[index + i + 1]) === fragment.text && !childrenOf(siblings[index + i + 1]).length);
+}
+async function applyParagraphRepair(plan) {
+  if (!api().data.block.move) throw new Error(t("This Roam version does not expose block.move. No paragraphs were changed."));
+  const key3 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
+  const backup = { ...plan, changes: plan.changes.map((change) => ({ ...change, fragments: change.fragments.map((fragment) => ({ ...fragment })), archiveUid: api().util.generateUID() })), key: key3, createdAt: Date.now(), applied: [], skipped: [] };
+  await putDocument("paragraph-repair", key3, backup);
+  try {
+    for (const change of backup.changes) {
+      if (!unchanged(change)) {
+        backup.skipped.push(change.uid);
+        continue;
+      }
+      await api().data.block.create({ location: { "parent-uid": change.uid, order: "last" }, block: { uid: change.archiveUid, string: FRAGMENT_ARCHIVE, open: false } });
+      for (const fragment of change.fragments) await move(fragment.uid, change.archiveUid, "last");
+      await updateBlock({ uid: change.uid, string: change.after, open: false });
+      backup.applied.push(change.uid);
+    }
+  } catch (error) {
+    backup.error = error.message;
+    await putDocument("paragraph-repair", key3, backup);
+    throw new Error(t("{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.", [error.message]));
+  }
+  await putDocument("paragraph-repair", key3, backup);
+  return backup;
+}
+function latestParagraphRepair(content) {
+  const headers = documentHeaders("paragraph-repair").filter((header) => header.key.startsWith(`${content.key}:`)).sort((a, b) => b.updatedAt - a.updatedAt);
+  return headers[0] ? readDocument("paragraph-repair", headers[0].key) : null;
+}
+async function undoParagraphRepair(key3) {
+  const backup = readDocument("paragraph-repair", key3);
+  if (!backup) throw new Error(t("Paragraph repair backup is missing."));
+  const result = { restored: [], skipped: [] };
+  for (const change of backup.changes) {
+    if (!change.archiveUid || !pull(change.archiveUid)) continue;
+    const current2 = pull(change.uid), archive = pull(change.archiveUid);
+    const valid = current2 && [change.before, change.after].includes(textOf(current2)) && isChild(change.uid, change.parentUid) && childrenOf(current2).every((child) => uidOf(child) === change.archiveUid) && textOf(archive) === FRAGMENT_ARCHIVE && isChild(change.archiveUid, change.uid) && childrenOf(archive).every((child) => change.fragments.some((fragment) => fragment.uid === uidOf(child))) && change.fragments.every((fragment) => {
+      const node = pull(fragment.uid);
+      return node && textOf(node) === fragment.text && !childrenOf(node).length && (isChild(fragment.uid, change.archiveUid) || isChild(fragment.uid, change.parentUid));
+    });
+    if (!valid) {
+      result.skipped.push(change.uid);
+      continue;
+    }
+    const order = childrenOf(pull(change.parentUid)).findIndex((node) => uidOf(node) === change.uid);
+    for (const [index, fragment] of change.fragments.entries()) await move(fragment.uid, change.parentUid, order + index + 1);
+    await updateBlock({ uid: change.uid, string: change.before, open: change.open });
+    await api().data.block.delete({ block: { uid: change.archiveUid } });
+    result.restored.push(change.uid);
+  }
+  await putDocument("paragraph-repair", key3, { ...backup, ...result.skipped.length ? {} : { undoneAt: Date.now() }, undo: result });
+  return result;
+}
+var fragmentRefs = (uid) => (api().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", uid) || []).map((row) => row[0]).filter((other) => other !== uid);
+var retargetText = (text2, from, to) => String(text2 || "").split(`((${from}))`).join(`((${to}))`);
+function previewArchiveCleanup(content) {
+  const archives = [], seen = /* @__PURE__ */ new Set();
+  const consider = (child, parentUid, repaired) => {
+    const uid = uidOf(child);
+    if (seen.has(uid)) return;
+    seen.add(uid);
+    const fragments = childrenOf(child).map((fragment) => ({ uid: uidOf(fragment), text: textOf(fragment), children: childrenOf(fragment).length, refs: fragmentRefs(uidOf(fragment)), referenceChanges: referenceSnapshot(uidOf(fragment), parentUid) }));
+    const blocked = fragments.filter((fragment) => fragment.children || !repaired && fragment.refs.length || fragment.referenceChanges.some((item) => item.before === item.after));
+    const archiveRefs = referencesTo(uid);
+    const references = fragments.reduce((sum, fragment) => sum + fragment.refs.length, 0);
+    archives.push({ uid, parentUid, repaired, order: value(child, "order") ?? 0, fragments, references, safe: !blocked.length && !archiveRefs.length, reason: blocked.length ? `${blocked.length} fragment(s) have child blocks${repaired ? "" : " or references"}` : "" });
+  };
+  for (const item of content.nodes) for (const child of childrenOf(item.node)) if (textOf(child) === FRAGMENT_ARCHIVE) consider(child, item.uid, true);
+  for (const pageUid of content.pages?.keys?.() || []) for (const child of childrenOf(pull(pageUid))) if (textOf(child) === FRAGMENT_ARCHIVE) consider(child, pageUid, false);
+  return { bookKey: content.key, archives, removable: archives.filter((archive) => archive.safe), references: archives.filter((archive) => archive.safe).reduce((sum, archive) => sum + archive.references, 0) };
+}
+async function applyArchiveCleanup(plan) {
+  const key3 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
+  const backup = { bookKey: plan.bookKey, archives: plan.removable, key: key3, createdAt: Date.now(), removed: [], skipped: [], retargeted: [] };
+  await putDocument("archive-cleanup", key3, backup);
+  for (const archive of plan.removable) {
+    const node = pull(archive.uid);
+    const current2 = node && childrenOf(node).map((fragment) => uidOf(fragment));
+    if (!node || textOf(node) !== FRAGMENT_ARCHIVE || current2.join() !== archive.fragments.map((fragment) => fragment.uid).join() || childrenOf(node).some((fragment) => childrenOf(fragment).length)) {
+      backup.skipped.push(archive.uid);
+      continue;
+    }
+    if (!isChild(archive.uid, archive.parentUid) || referencesTo(archive.uid).length || archive.fragments.some((fragment) => textOf(pull(fragment.uid)) !== fragment.text || !referencesUnchanged(fragment.uid, fragment.referenceChanges || []))) {
+      backup.skipped.push(archive.uid);
+      continue;
+    }
+    const updates = /* @__PURE__ */ new Map();
+    for (const fragment of archive.fragments) for (const item of fragment.referenceChanges || []) {
+      if (!updates.has(item.uid)) updates.set(item.uid, { uid: item.uid, before: item.before, after: item.before });
+      const change = updates.get(item.uid);
+      change.after = retargetText(change.after, fragment.uid, archive.parentUid);
+    }
+    if (updates.size && !archive.repaired) {
+      backup.skipped.push(archive.uid);
+      continue;
+    }
+    for (const change of updates.values()) {
+      await updateBlock({ uid: change.uid, string: change.after });
+      backup.retargeted.push(change);
+      await putDocument("archive-cleanup", key3, backup);
+    }
+    await api().data.block.delete({ block: { uid: archive.uid } });
+    backup.removed.push(archive.uid);
+  }
+  await putDocument("archive-cleanup", key3, backup);
+  return backup;
+}
+function latestArchiveCleanup(content) {
+  const headers = documentHeaders("archive-cleanup").filter((header) => header.key.startsWith(`${content.key}:`)).sort((a, b) => b.updatedAt - a.updatedAt);
+  return headers[0] ? readDocument("archive-cleanup", headers[0].key) : null;
+}
+async function undoArchiveCleanup(key3) {
+  const backup = readDocument("archive-cleanup", key3);
+  if (!backup) throw new Error(t("Archive cleanup backup is missing."));
+  const result = { restored: [], skipped: [] };
+  for (const archive of backup.archives) {
+    if (!backup.removed.includes(archive.uid) || pull(archive.uid) || !pull(archive.parentUid)) {
+      result.skipped.push(archive.uid);
+      continue;
+    }
+    await api().data.block.create({ location: { "parent-uid": archive.parentUid, order: "last" }, block: { uid: archive.uid, string: FRAGMENT_ARCHIVE, open: false } });
+    for (const fragment of archive.fragments) await api().data.block.create({ location: { "parent-uid": archive.uid, order: "last" }, block: { uid: fragment.uid, string: fragment.text } });
+    result.restored.push(archive.uid);
+  }
+  for (const change of [...backup.retargeted || []].reverse()) {
+    const node = pull(change.uid);
+    if (node && textOf(node) === change.after) {
+      await updateBlock({ uid: change.uid, string: change.before });
+      result.restored.push(change.uid);
+    } else result.skipped.push(change.uid);
+  }
+  await putDocument("archive-cleanup", key3, { ...backup, undoneAt: Date.now(), undo: result });
+  return result;
+}
+
+// src/source-headings.js
+var key = (text2) => plain(text2).replace(/\s+/g, "").replace(/\*\*|__/g, "");
+var hasImage = (text2) => /!\[[^\]]*\]\(|⟦EPUBI:/.test(text2 || "");
+function matchSourceHeadings(content, book, { navigationOnly = false } = {}) {
+  const result = [];
+  const linkLabels = new Map((book.links || []).map((link) => [link.id, link.label]));
+  const sourceKey = (node) => key(node.text.replace(/⟦EPUBL:([^⟧]+)⟧/g, (_, id) => linkLabels.get(id) || ""));
+  const matchesSource = (item, node) => hasImage(item.text) === hasImage(node.text) && key(item.text) === sourceKey(node);
+  const roots = (content.catalog?.rootUids || content.record.catalog?.rootUids || []).map((uid) => content.byUid.get(uid)).filter(Boolean);
+  const under = (item, uid) => {
+    const seen = /* @__PURE__ */ new Set();
+    while (item && !seen.has(item.uid)) {
+      if (item.uid === uid) return true;
+      seen.add(item.uid);
+      item = content.byUid.get(item.parentUid);
+    }
+    return false;
+  };
+  for (const root of book.chapters) {
+    const matches = roots.filter((item) => matchesSource(item, root));
+    if (matches.length !== 1 || book.chapters.filter((other) => sourceKey(other) === sourceKey(root)).length !== 1) continue;
+    const targetRoot = matches[0];
+    const source = [];
+    const visit = (node, parent, depth) => {
+      const heading = chapterNodeKind(node, parent, book);
+      if (navigationOnly ? node.kind === "toc" : heading && depth < 3) source.push({ node, parent, level: depth + 1 });
+      (node.children || []).forEach((child) => visit(child, node, depth + (heading ? 1 : 0)));
+    };
+    visit(root, null, 0);
+    const items = content.nodes.filter((item) => under(item, targetRoot.uid));
+    const matchedNodes = /* @__PURE__ */ new Map([[root, targetRoot]]);
+    for (const entry of source) {
+      if (source.filter((other) => sourceKey(other.node) === sourceKey(entry.node) && (!navigationOnly || other.parent === entry.parent)).length !== 1) continue;
+      let candidates = items.filter((item2) => matchesSource(item2, entry.node));
+      if (navigationOnly && candidates.length > 1 && matchedNodes.has(entry.parent)) {
+        candidates = candidates.filter((item2) => item2.parentUid === matchedNodes.get(entry.parent).uid);
+      }
+      if (navigationOnly && candidates.length > 1) {
+        const children = (entry.node.children || []).filter((node) => !hasImage(node.text) && sourceKey(node));
+        if (children.length) candidates = candidates.filter((item2) => children.every((child) => items.some((candidate) => candidate.parentUid === item2.uid && matchesSource(candidate, child))));
+      }
+      if (candidates.length !== 1) continue;
+      const item = candidates[0];
+      matchedNodes.set(entry.node, item);
+      result.push({ ...entry, item });
+    }
+  }
+  return result;
+}
+function sourceHeadingChanges(content, book) {
+  return matchSourceHeadings(content, book).filter((entry) => entry.level <= 3).map(({ node, level, item }) => ({
+    type: "chapter",
+    uid: item.uid,
+    text: item.text,
+    before: { heading: Number(value(item.node, "heading")) || 0 },
+    after: { heading: level },
+    source: node.headingEvidence || "EPUB outline"
+  }));
+}
+
+// src/book-navigation.js
+var hasSourceNavigation = (book) => ["nav", "ncx"].includes(book?.tocSource) && book.toc?.length > 0;
+function sourceNavigation(book, uidForNode) {
+  if (!hasSourceNavigation(book)) return null;
+  const chapters = [], unmatched = [];
+  const visit = (nodes, parentUid = null, level = 1) => {
+    for (const node of nodes) {
+      if (node.kind === "toc") {
+        const uid = uidForNode(node);
+        if (!uid) unmatched.push(node.text);
+        else chapters.push({ uid, title: node.text, parentUid, level, progress: !/^(?:封面|目录|版权页|扉页|Cover|Contents|Copyright|Title page)$/i.test(node.text) });
+        visit(node.children || [], uid || parentUid, level + 1);
+      } else visit(node.children || [], parentUid, level);
+    }
+  };
+  visit(book.chapters);
+  return { source: book.tocSource, chapters, unmatched };
+}
+function previewNavigationRepair(content, book) {
+  if (!hasSourceNavigation(book)) return null;
+  const matches = new Map(matchSourceHeadings(content, book, { navigationOnly: true }).map((entry) => [entry.node, entry.item.uid]));
+  const navigation = sourceNavigation(book, (node) => matches.get(node));
+  if (navigation.unmatched.length || !navigation.chapters.length) return { unmatched: navigation.unmatched, changes: false };
+  const before = readDocument("book-navigation", content.key);
+  const after = { source: navigation.source, chapters: navigation.chapters };
+  const active = before || content.record.catalog?.navigation || null;
+  return { before, after, unmatched: [], changes: JSON.stringify(active) !== JSON.stringify(after) };
+}
+
+// src/catalog.js
+var isCommentRoot = (node) => textOf(node).trim() === "[[roam/comments]]";
+var chapterTitle = (text2) => plain(text2).replace(/\s+/g, "");
+var isMetadata = (node) => isCommentRoot(node) || /^#?\[\[Book\]\]$|^#Book\s*$/i.test(textOf(node).trim()) || /^EPUB-(?:IMPORTER|READER):/.test(textOf(node));
+function isFootnoteHeading(text2) {
+  const bare = String(text2 || "").replace(/\\([\[\]])/g, "$1").replace(/\[\[([^\]]*)\]\]\(/g, "[$1](").replace(/\[([^\]]*)\]\((?:\(\([^()]*\)\)|[^()]*)\)/g, "$1").replace(/\(\([^()]*\)\)/g, "").replace(/<\/?su[pb]>|\^\^|\*\*|__|~~/g, "").replace(/[\s\u00a0]/g, "");
+  if (!/^[\[\(（【〔]?(?:\u6ce8|\u8a3b|note|fn)?[\[\(（【〔]?(?:\d{1,4}|[ivxlc]{1,6}|[*†‡§]{1,3}|[①-⑳])[\]\)）】〕.、:：]*$/i.test(bare)) return false;
+  return /\]\(|\(\(/.test(String(text2)) || /^[\[\(（【〔]|^(?:\u6ce8|\u8a3b|note|fn)|^[*†‡§①-⑳]/i.test(bare);
+}
+var headingLevel = (node) => {
+  const level = Number(value(node, "heading")) || 0;
+  return level >= 1 && level <= 3 && !isFootnoteHeading(textOf(node)) ? level : 0;
+};
+var isHeading = (node) => headingLevel(node) > 0;
+var SKIP_PROGRESS = /^(?:封面|目录|版权页|前置图文|扉页|Cover|Contents|Copyright|Front matter|Title page|Before contents)$/i;
+function headingOutline(roots, { rootsAreChapters = false, progress = false } = {}) {
+  const chapters = [], chapterOf = /* @__PURE__ */ new Map(), aliases = /* @__PURE__ */ new Map();
+  const stack = [], path2 = /* @__PURE__ */ new Set(["#root"]);
+  for (const root of roots) {
+    const visit = (node, parentUid) => {
+      if (!node || isMetadata(node) || textOf(node) === FRAGMENT_ARCHIVE) return;
+      const uid = uidOf(node);
+      while (stack.length && !path2.has(stack.at(-1).scope)) stack.pop();
+      const level = node === root && rootsAreChapters ? 0 : headingLevel(node);
+      if (node === root && rootsAreChapters) {
+        const title = plain(textOf(node)).slice(0, 150) || "(Untitled)";
+        chapters.push({ uid, title, parentUid: null, level: 0, progress: progress && !SKIP_PROGRESS.test(textOf(node)) });
+        stack.push({ uid, level: 0, scope: "#root", title });
+      } else if (level) {
+        while (stack.length && stack.at(-1).level >= level) stack.pop();
+        const parent = stack.at(-1), title = plain(textOf(node)).slice(0, 150) || "(Untitled)";
+        if (parent && chapterTitle(title) === chapterTitle(parent.title)) aliases.set(uid, parent.uid);
+        else {
+          chapters.push({ uid, title, parentUid: parent?.uid ?? null, level, progress: progress && !SKIP_PROGRESS.test(title) });
+          stack.push({ uid, level, scope: parentUid ?? "#root", title });
+        }
+      }
+      chapterOf.set(uid, stack.at(-1)?.uid ?? null);
+      path2.add(uid);
+      childrenOf(node).forEach((child) => visit(child, uid));
+      path2.delete(uid);
+    };
+    visit(root, null);
+  }
+  return { chapters, chapterOf, aliases };
+}
+function catalogFromPlan(job) {
+  const byNode = /* @__PURE__ */ new Map();
+  let index = 0;
+  const walk = (nodes) => nodes.forEach((node) => {
+    byNode.set(node, job.blockPlan[index++].uid);
+    walk(node.children || []);
+  });
+  walk(job.book.chapters);
+  const chapters = [];
+  const visit = (nodes, parent = null, level = 0) => nodes.forEach((node) => {
+    const uid = byNode.get(node);
+    const chapter = chapterNodeKind(node, parent, job.book) && level < 3;
+    if (chapter) chapters.push({ uid, title: plain(node.text) || node.text, parentUid: parent, progress: !SKIP_PROGRESS.test(node.text) });
+    visit(node.children || [], chapter ? uid : parent, chapter ? level + 1 : level);
+  });
+  visit(job.book.chapters);
+  const navigation = sourceNavigation(job.book, (node) => byNode.get(node));
+  return {
+    version: 1,
+    confirmed: true,
+    source: "import",
+    headings: true,
+    rootUids: job.book.chapters.map((node) => byNode.get(node)),
+    chapters,
+    ...navigation && !navigation.unmatched.length ? { navigation: { source: navigation.source, chapters: navigation.chapters } } : {}
+  };
+}
+function suggestCatalog(record, pageUid = record.pageUid) {
+  const page = pull(pageUid);
+  if (!page) throw new Error(t("The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed."));
+  const roots = childrenOf(page).filter((node) => !isMetadata(node));
+  const { chapters } = headingOutline(roots, { rootsAreChapters: true, progress: true });
+  return { version: 1, confirmed: false, source: "legacy", rootUids: roots.map(uidOf), chapters: chapters.map(({ level, ...chapter }) => chapter) };
+}
+async function confirmCatalog(record, proposed, selectedRootUids, extensionAPI) {
+  const selected = new Set(selectedRootUids);
+  const allowed = new Set(proposed.rootUids);
+  if (!selected.size || [...selected].some((uid) => !allowed.has(uid) || !pull(uid))) throw new Error(t("Select at least one existing book chapter."));
+  const keep = /* @__PURE__ */ new Set();
+  proposed.chapters.forEach((chapter) => {
+    if (!chapter.parentUid && selected.has(chapter.uid) || keep.has(chapter.parentUid)) keep.add(chapter.uid);
+  });
+  const catalog = { ...proposed, confirmed: true, rootUids: [...selected], chapters: proposed.chapters.filter((chapter) => keep.has(chapter.uid)) };
+  const updated = { ...record, catalog };
+  await saveManagedBook(extensionAPI, updated);
+  return updated;
+}
+function readBookContent(record, { allowSuggested = true } = {}) {
+  let catalog = record.catalog?.confirmed ? record.catalog : allowSuggested ? suggestCatalog(record) : null;
+  if (!catalog) throw new Error(t("Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required."));
+  const rootTrees = new Map(catalog.rootUids.map((uid) => [uid, pull(uid)]));
+  const navigation = String(record.id || "").startsWith("page:") ? null : readDocument("book-navigation", bookKey(record)) || catalog.navigation;
+  if (navigation) catalog = { ...catalog, chapters: navigation.chapters };
+  else if (catalog.headings || catalog.source === "legacy") {
+    const outline = headingOutline([...rootTrees.values()].filter(Boolean), {
+      rootsAreChapters: !catalog.headings && catalog.source === "legacy",
+      progress: !String(record.id || "").startsWith("page:")
+    });
+    catalog = { ...catalog, chapters: outline.chapters };
+  }
+  const chapterByUid = new Map(catalog.chapters.map((chapter) => [chapter.uid, chapter]));
+  const nodes = [];
+  const byUid = /* @__PURE__ */ new Map();
+  const parentByUid = /* @__PURE__ */ new Map();
+  const pages = /* @__PURE__ */ new Map();
+  const missing = [];
+  const fragmentAliases = /* @__PURE__ */ new Map();
+  const levels = /* @__PURE__ */ new Map();
+  const levelOf = (uid) => {
+    if (levels.has(uid)) return levels.get(uid);
+    let level = 1, parent = chapterByUid.get(uid)?.parentUid;
+    const seen = /* @__PURE__ */ new Set();
+    while (parent && chapterByUid.has(parent) && !seen.has(parent)) {
+      seen.add(parent);
+      level++;
+      parent = chapterByUid.get(parent).parentUid;
+    }
+    levels.set(uid, level);
+    return level;
+  };
+  const stack = [], path2 = /* @__PURE__ */ new Set(["#root"]);
+  const visit = (node, parentUid) => {
+    if (!node || isCommentRoot(node)) return;
+    if (textOf(node) === FRAGMENT_ARCHIVE) {
+      childrenOf(node).forEach((fragment) => fragmentAliases.set(uidOf(fragment), parentUid));
+      return;
+    }
+    const uid = uidOf(node);
+    if (byUid.has(uid)) return;
+    while (stack.length && !path2.has(stack.at(-1).scope)) stack.pop();
+    if (chapterByUid.has(uid)) {
+      const level = levelOf(uid);
+      while (stack.length && stack.at(-1).level >= level) stack.pop();
+      stack.push({ uid, level, scope: parentUid ?? "#root" });
+    }
+    const chapterUid = stack.at(-1)?.uid ?? null;
+    const item = { uid, text: textOf(node), chapterUid, parentUid, node };
+    nodes.push(item);
+    byUid.set(uid, item);
+    parentByUid.set(uid, parentUid);
+    path2.add(uid);
+    childrenOf(node).forEach((child) => visit(child, uid));
+    path2.delete(uid);
+  };
+  for (const uid of catalog.rootUids) {
+    const root = rootTrees.get(uid);
+    if (!root) {
+      missing.push(uid);
+      continue;
+    }
+    if (titleOf(root)) throw new Error(t("Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained."));
+    const page = owningPage(uid);
+    if (page) pages.set(page.uid, page.title);
+    visit(root, null);
+  }
+  const chapterAliases = /* @__PURE__ */ new Map(), visibleChapters = [], seenChapters = /* @__PURE__ */ new Set();
+  const resolve = (uid) => {
+    const visited = /* @__PURE__ */ new Set();
+    while (chapterAliases.has(uid) && !visited.has(uid)) {
+      visited.add(uid);
+      uid = chapterAliases.get(uid);
+    }
+    return uid;
+  };
+  for (const chapter of catalog.chapters) {
+    if (seenChapters.has(chapter.uid) || !byUid.has(chapter.uid)) continue;
+    seenChapters.add(chapter.uid);
+    const parentUid = resolve(chapter.parentUid);
+    const parent = visibleChapters.find((candidate) => candidate.uid === parentUid);
+    let depth = 0, ancestor = parent;
+    const chain = /* @__PURE__ */ new Set();
+    while (ancestor && !chain.has(ancestor.uid)) {
+      chain.add(ancestor.uid);
+      depth++;
+      ancestor = visibleChapters.find((candidate) => candidate.uid === ancestor.parentUid);
+    }
+    if (!navigation && isFootnoteHeading(byUid.get(chapter.uid).text)) chapterAliases.set(chapter.uid, parent?.uid ?? null);
+    else if (!navigation && depth >= 3 && parent) chapterAliases.set(chapter.uid, parent.uid);
+    else if (!navigation && catalog.source !== "import" && parent && isHeading(byUid.get(chapter.uid).node) && chapterTitle(chapter.title) === chapterTitle(parent.title)) chapterAliases.set(chapter.uid, parent.uid);
+    else visibleChapters.push({ ...chapter, parentUid });
+  }
+  nodes.forEach((node) => {
+    node.chapterUid = resolve(node.chapterUid);
+  });
+  catalog = { ...catalog, chapters: visibleChapters };
+  return { key: bookKey(record), record, catalog, nodes, byUid, parentByUid, pages, missing, chapterAliases, fragmentAliases, chapters: visibleChapters };
+}
+function contentForPage(uid) {
+  const tree = pull(uid);
+  if (!tree) throw new Error(t("The current page or block cannot be read."));
+  const roots = childrenOf(tree).filter((node) => !isMetadata(node));
+  const { chapters } = headingOutline(roots);
+  const catalog = { confirmed: true, headings: true, rootUids: roots.map(uidOf), chapters: chapters.map(({ level, ...chapter }) => ({ ...chapter, progress: false })) };
+  const record = { id: `page:${uid}`, pageUid: uid, catalog, title: tree[":node/title"] || plain(textOf(tree)).slice(0, 60) };
+  if (!roots.length && textOf(tree)) {
+    catalog.rootUids = [uid];
+    catalog.chapters = headingLevel(tree) ? [{ uid, title: plain(textOf(tree)).slice(0, 60), parentUid: null, progress: false }] : [];
+  }
+  return { ...readBookContent(record), ordinaryPage: true };
+}
+function safeRootTrees(content) {
+  const all = new Set(content.catalog.rootUids);
+  return content.catalog.rootUids.filter((uid) => {
+    const root = api().data.pull("[:block/uid {:block/parents [:block/uid]}]", [":block/uid", uid]);
+    return root && !(value(root, "parents") || []).some((parent) => all.has(uidOf(parent)));
+  });
+}
+
+// src/roam.js
+var importInProgress = false;
+var importController;
+var importsEnabled = true;
+function enableImports() {
+  importsEnabled = true;
+}
+function cancelImports() {
+  importsEnabled = false;
+  importController?.abort();
+}
+var roam = () => window.roamAlphaAPI;
+function pullUid(value2) {
+  return value2?.[":block/uid"] || value2?.uid || null;
+}
+function findPageUid(title) {
+  return pullUid(roam().data.pull("[:block/uid]", [":node/title", title]));
+}
+function makeUniquePageTitle(title) {
+  const base = (title || "Untitled EPUB").trim();
+  if (!findPageUid(base)) return base;
+  let number = 2;
+  while (findPageUid(`${base} (${number})`)) number += 1;
+  return `${base} (${number})`;
+}
+function createImportJob(book, requestedTitle = book.title) {
+  return {
+    id: `${book.id}-${Date.now()}`,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
+    requestedTitle: (requestedTitle || book.title || "Untitled EPUB").trim(),
+    book,
+    assetEmbeds: {},
+    attachments: [],
+    progress: { stage: "ready", assetIndex: 0, chapterIndex: 0, pageUid: null, pageTitle: null },
+    error: null
+  };
+}
+function extensionFor(mediaType) {
+  return {
+    "image/png": "png",
+    "image/jpeg": "jpg",
+    "image/gif": "gif",
+    "image/webp": "webp",
+    "image/svg+xml": "svg",
+    "image/avif": "avif"
+  }[mediaType] || "bin";
+}
+function safeFilename(asset, mediaType) {
+  const original = asset.path.split("/").pop() || `image.${extensionFor(mediaType)}`;
+  const stem = original.replace(/\.[^.]+$/, "").replace(/[^\p{L}\p{N}._-]+/gu, "-").slice(0, 80) || "image";
+  return `${stem}-${asset.hash?.slice(0, 10) || asset.id}.${extensionFor(mediaType)}`;
+}
+function canvasBlob(canvas) {
+  return new Promise((resolve, reject) => canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error(t("Image conversion failed"))), "image/png"));
+}
+async function rasterizeImage(asset) {
+  const blob = new Blob([asset.bytes], { type: asset.mediaType });
+  let bitmap;
+  if (typeof createImageBitmap === "function") {
+    try {
+      bitmap = await createImageBitmap(blob);
+    } catch {
+    }
+  }
+  let width;
+  let height;
+  let draw;
+  if (bitmap) {
+    width = bitmap.width;
+    height = bitmap.height;
+    draw = (context2) => context2.drawImage(bitmap, 0, 0);
+  } else {
+    const url = URL.createObjectURL(blob);
+    try {
+      const image = await new Promise((resolve, reject) => {
+        const element2 = new Image();
+        element2.onload = () => resolve(element2);
+        element2.onerror = () => reject(new Error(t("Cannot read image: {0}", [asset.path])));
+        element2.src = url;
+      });
+      width = image.naturalWidth;
+      height = image.naturalHeight;
+      draw = (context2) => context2.drawImage(image, 0, 0);
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
+  const scale = Math.min(1, 4096 / Math.max(width, height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.max(1, Math.round(width * scale));
+  canvas.height = Math.max(1, Math.round(height * scale));
+  const context = canvas.getContext("2d");
+  context.fillStyle = "white";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.save();
+  context.scale(scale, scale);
+  draw(context);
+  context.restore();
+  bitmap?.close?.();
+  return new File([await canvasBlob(canvas)], safeFilename(asset, "image/png"), { type: "image/png" });
+}
+async function assetFile(asset) {
+  if (["image/png", "image/jpeg"].includes(asset.mediaType)) {
+    return new File([asset.bytes], safeFilename(asset, asset.mediaType), { type: asset.mediaType });
+  }
+  return rasterizeImage(asset);
+}
+function uploadedUrl(result) {
+  if (typeof result !== "string") return "";
+  const match = result.match(/!\[.*?\]\((.*?)\)/);
+  return match?.[1] || (/^https?:\/\//i.test(result) ? result : "");
+}
+async function uploadAssets(job, extensionAPI, onProgress, signal) {
+  const known = /* @__PURE__ */ new Map();
+  job.attachments.forEach((item) => {
+    if (item.hash && item.url) known.set(item.hash, item.url);
+  });
+  (await getManagedBooks(extensionAPI, signal)).forEach((book) => (book.attachments || []).forEach((item) => {
+    if (item.ownership === "unknown") return;
+    if (item.hash && item.url) known.set(item.hash, item.url);
+  }));
+  job.progress.stage = "images";
+  for (let index = job.progress.assetIndex || 0; index < job.book.assets.length; index += 1) {
+    checkCancelled(signal);
+    const asset = job.book.assets[index];
+    onProgress?.({ stage: "images", current: index + 1, total: job.book.assets.length, message: t("Processing image {0}/{1}", [index + 1, job.book.assets.length]) });
+    if (asset.missing || !asset.bytes) {
+      job.assetEmbeds[asset.id] = `[Missing EPUB image: ${asset.path}]`;
+    } else {
+      let url = known.get(asset.hash);
+      let reused = Boolean(url);
+      if (!url) {
+        const file = await assetFile(asset);
+        checkCancelled(signal);
+        const result = await roam().file.upload({ file, toast: { hide: true } });
+        url = uploadedUrl(result);
+        if (!url) throw new Error(t("Image upload returned no valid URL: {0}", [asset.path]));
+        known.set(asset.hash, url);
+        reused = false;
+      }
+      job.assetEmbeds[asset.id] = `![](${url})`;
+      if (!job.attachments.some((item) => item.hash === asset.hash && item.url === url)) {
+        job.attachments.push({ hash: asset.hash, url, path: asset.path, reused });
+      }
+    }
+    job.progress.assetIndex = index + 1;
+    job.updatedAt = (/* @__PURE__ */ new Date()).toISOString();
+    await saveJob(job);
+  }
+}
+async function ensurePage2(job, signal) {
+  if (!job.progress.pageUid) {
+    job.progress.pageUid = roam().util.generateUID();
+    job.progress.pageTitle = makeUniquePageTitle(job.requestedTitle);
+    await saveJob(job);
+  }
+  if (!roam().data.pull("[:block/uid]", [":block/uid", job.progress.pageUid])) {
+    if (job.progress.blockIndex > 0) throw new Error(t("The imported page was removed. Select the EPUB again to import."));
+    checkCancelled(signal);
+    await roam().data.page.create({ page: { title: job.progress.pageTitle, uid: job.progress.pageUid } });
+  }
+  job.progress.stage = "chapters";
+  await saveJob(job);
+}
+async function runImport(job, extensionAPI, onProgress) {
+  if (!importsEnabled) throw new Error(t("Reading Desk is disabled. Enable it before importing."));
+  if (importInProgress) throw new Error(t("A book is already being imported. Wait for it to finish."));
+  importInProgress = true;
+  importController = new AbortController();
+  const signal = importController.signal;
+  try {
+    if (![3, 4].includes(job.book?.parserVersion)) throw new Error(t("This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import."));
+    job.error = null;
+    await saveJob(job);
+    checkCancelled(signal);
+    await uploadAssets(job, extensionAPI, onProgress, signal);
+    checkCancelled(signal);
+    await ensurePage2(job, signal);
+    prepareBlockPlan(job, () => roam().util.generateUID());
+    await saveJob(job);
+    await writeBlockPlan(job, roam(), { checkpoint: saveJob, onProgress, signal });
+    const record = {
+      id: job.id,
+      fileHash: job.book.fileHash,
+      filename: job.book.filename,
+      title: job.progress.pageTitle,
+      author: job.book.author,
+      pageUid: job.progress.pageUid,
+      importedAt: (/* @__PURE__ */ new Date()).toISOString(),
+      attachments: job.attachments,
+      stats: job.book.stats,
+      catalog: catalogFromPlan(job),
+      status: "complete"
+    };
+    checkCancelled(signal);
+    await saveManagedBook(extensionAPI, record, signal);
+    checkCancelled(signal);
+    job.progress.stage = "complete";
+    onProgress?.({ stage: "complete", current: 1, total: 1, message: t("Import complete") });
+    await removeJob(job.id);
+    checkCancelled(signal);
+    await roam().ui.mainWindow.openPage({ page: { uid: record.pageUid } });
+    return record;
+  } catch (error) {
+    job.error = error?.message || String(error);
+    job.updatedAt = (/* @__PURE__ */ new Date()).toISOString();
+    await saveJob(job);
+    throw error;
+  } finally {
+    importInProgress = false;
+    importController = null;
+  }
+}
+async function prepareBookDeletion(record, extensionAPI) {
+  const library = await getManagedLibrary(extensionAPI);
+  const key3 = record.libraryKey || record.pageUid || record.id;
+  record = library.books.find((book) => (book.libraryKey || book.pageUid || book.id) === key3);
+  if (!record) throw new Error(t("This book's record has changed or was removed. Reopen the book list."));
+  const content = record.status === "cleanup-needed" ? null : readBookContent(record, { allowSuggested: false });
+  const rootUids = content ? safeRootTrees(content) : [];
+  if (rootUids.some((uid) => flatten(pull(uid)).some((node) => textOf(node).trim() === "[[roam/comments]]"))) throw new Error(t("A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first."));
+  const bookUids = new Set(rootUids.flatMap((uid) => flatten(pull(uid)).map(uidOf)));
+  const metadataUids = /* @__PURE__ */ new Set([...library.metadataUids, ...readerMetadataUids()]);
+  const others = library.books.filter((item) => item.id !== record.id || item.pageUid !== record.pageUid);
+  let rows, indexedReferences;
+  try {
+    indexedReferences = bookUids.size ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", [...bookUids]) || [] : [];
+    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
+  } catch (error) {
+    return {
+      record,
+      pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
+      scanFailed: true,
+      rootUids,
+      blockUids: [...bookUids],
+      blockCount: bookUids.size,
+      pages: content ? [...content.pages.values()] : [],
+      externalBlockReferences: 0,
+      error: error?.message || String(error),
+      attachments: (record.attachments || []).map((item) => ({ ...item, safe: false, reason: t("Reference check failed; retained") }))
+    };
+  }
+  const unique = /* @__PURE__ */ new Map();
+  (record.attachments || []).forEach((item) => {
+    if (item.url && !unique.has(item.url)) unique.set(item.url, item);
+  });
+  const attachments = [...unique.values()].map((item) => {
+    const shared = others.some((book) => (book.attachments || []).some((candidate) => candidate.url === item.url || candidate.hash && candidate.hash === item.hash));
+    const outsideReferences = rows.filter(([uid, value2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof value2 === "string" && value2.includes(item.url)).length;
+    const unknownOwnership = item.ownership === "unknown";
+    const safe = !unknownOwnership && !shared && outsideReferences === 0;
+    return { ...item, shared, outsideReferences, safe, reason: unknownOwnership ? t("Original upload ownership is unknown; retained") : shared ? t("Shared with another imported book") : outsideReferences ? t("{0} references outside this book", [outsideReferences]) : t("Used only by this book") };
+  });
+  const externalUids = /* @__PURE__ */ new Set([...indexedReferences.filter(([uid]) => !bookUids.has(uid) && !metadataUids.has(uid)).map(([uid]) => uid), ...rows.filter(([uid, text2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text2 === "string" && [...text2.matchAll(/\(\(([^()\s]+)\)\)/g)].some((match) => bookUids.has(match[1]))).map(([uid]) => uid)]);
+  const textByUid = new Map(rows);
+  const externalReferences = [...externalUids].map((uid) => ({ uid, text: String(textByUid.get(uid) || "").slice(0, 240), page: owningPage(uid) }));
+  return {
+    record,
+    rootUids,
+    blockUids: [...bookUids],
+    blockCount: bookUids.size,
+    pages: content ? [...content.pages.values()] : [],
+    externalBlockReferences: externalUids.size,
+    externalReferences,
+    pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
+    scanFailed: false,
+    attachments
+  };
+}
+async function deleteManagedBook(plan, extensionAPI, onProgress) {
+  const approvedUrls = new Set(plan.attachments.filter((item) => item.safe).map((item) => item.url));
+  const approvedBlocks = new Set(plan.rootUids);
+  const approvedBody = new Set(plan.blockUids);
+  plan = await prepareBookDeletion(plan.record, extensionAPI);
+  if (plan.scanFailed) throw new Error(t("Reference check failed; deletion stopped."));
+  if (plan.externalBlockReferences) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
+  const record = plan.record;
+  plan.attachments = plan.attachments.map((item) => ({ ...item, safe: item.safe && approvedUrls.has(item.url) }));
+  if (plan.rootUids.some((uid) => !approvedBlocks.has(uid))) throw new Error(t("Chapter scope changed. Review the deletion preview again."));
+  if (plan.blockUids.some((uid) => !approvedBody.has(uid))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
+  for (const uid of plan.rootUids) {
+    onProgress?.(t("Deleting book chapters (preserving pages and native comments)\u2026"));
+    const current2 = flatten(pull(uid)).map(uidOf);
+    if (current2.some((id) => !approvedBody.has(id))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
+    const references = current2.length ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", current2) || [] : [];
+    if (references.some(([source]) => !approvedBody.has(source))) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
+    await roam().data.block.delete({ block: { uid } });
+  }
+  const safe = plan.attachments.filter((item) => item.safe);
+  const failures = [];
+  for (let index = 0; index < safe.length; index += 1) {
+    onProgress?.(t("Deleting attachment {0}/{1}\u2026", [index + 1, safe.length]));
+    try {
+      await roam().file.delete({ url: safe[index].url });
+    } catch (error) {
+      failures.push({ ...safe[index], error: error?.message || String(error) });
+    }
+  }
+  const preserved = plan.attachments.filter((item) => !item.safe);
+  if (failures.length) {
+    await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: failures, status: "cleanup-needed", cleanupError: "Some attachments could not be deleted" });
+  } else await forgetManagedBook(extensionAPI, record);
+  return { deletedAttachments: safe.length - failures.length, preservedAttachments: preserved.length, failures };
+}
+var IMAGE_RE = /!\[[^\]]*\]\(([^()\s]+(?:\([^()\s]*\)[^()\s]*)*)\)|\{\{\[?\[?(?:img|image)\]?\]?:\s*([^}\s]+)\s*\}\}/gi;
+var imageUrlsIn = (text2) => [...String(text2 || "").matchAll(IMAGE_RE)].map((match) => match[1] || match[2]);
+var stripImages = (text2) => String(text2 || "").replace(IMAGE_RE, "").replace(/[ \t]{2,}/g, " ").replace(/^[ \t]+|[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n").trim();
+async function prepareImageRemoval(record, extensionAPI) {
+  const library = await getManagedLibrary(extensionAPI);
+  const key3 = record.libraryKey || record.pageUid || record.id;
+  record = library.books.find((book) => (book.libraryKey || book.pageUid || book.id) === key3);
+  if (!record) throw new Error(t("This book's record has changed or was removed. Reopen the book list."));
+  if (record.status === "cleanup-needed") throw new Error(t("This book is waiting for attachment cleanup. Finish that first."));
+  const content = readBookContent(record, { allowSuggested: false });
+  const bookUids = new Set(content.nodes.map((node) => node.uid));
+  const blocks = [];
+  for (const item of content.nodes) {
+    const urls = imageUrlsIn(item.text);
+    if (!urls.length) continue;
+    const after = stripImages(item.text);
+    const children = (item.node?.[":block/children"] || []).length;
+    let referenced = 0;
+    try {
+      referenced = (roam().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", item.uid) || []).filter((row) => row[0] !== item.uid).length;
+    } catch {
+      referenced = 1;
+    }
+    blocks.push({ uid: item.uid, before: item.text, after, urls, remove: !after && !children && !referenced && !content.catalog.chapters.some((chapter) => chapter.uid === item.uid) });
+  }
+  const usedUrls = new Set(blocks.flatMap((block) => block.urls));
+  const metadataUids = /* @__PURE__ */ new Set([...library.metadataUids, ...readerMetadataUids()]);
+  const others = library.books.filter((item) => (item.libraryKey || item.pageUid || item.id) !== key3);
+  let rows = null;
+  try {
+    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
+  } catch {
+    rows = null;
+  }
+  const ledger = new Map((record.attachments || []).filter((item) => item.url).map((item) => [item.url, item]));
+  const files = [.../* @__PURE__ */ new Set([...ledger.keys(), ...usedUrls])].map((url) => {
+    const item = ledger.get(url) || { url, ownership: "unknown" };
+    if (!ledger.has(url)) return { ...item, safe: false, reason: t("Not uploaded by this import; file retained") };
+    if (item.ownership === "unknown") return { ...item, safe: false, reason: t("Original upload ownership is unknown; file retained") };
+    if (!rows) return { ...item, safe: false, reason: t("Reference check failed; file retained") };
+    const shared = others.some((book) => (book.attachments || []).some((candidate) => candidate.url === url || candidate.hash && candidate.hash === item.hash));
+    const outside = rows.filter(([uid, text2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text2 === "string" && text2.includes(url)).length;
+    return { ...item, shared, outsideReferences: outside, safe: !shared && !outside, reason: shared ? t("Shared with another imported book") : outside ? t("{0} references outside this book", [outside]) : t("Used only by this book") };
+  });
+  return { record, blocks, files, bookUids: [...bookUids] };
+}
+async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProgress } = {}) {
+  const approved = new Set(plan.files.filter((item) => item.safe).map((item) => item.url));
+  const result = { updated: 0, deleted: 0, skipped: 0, filesDeleted: 0, failures: [] };
+  for (const [index, block] of plan.blocks.entries()) {
+    onProgress?.(t("Removing images from blocks {0}/{1}\u2026", [index + 1, plan.blocks.length]));
+    const node = roam().data.pull("[:block/string {:block/children [:block/uid]}]", [":block/uid", block.uid]);
+    if (!node || node[":block/string"] !== block.before) {
+      result.skipped++;
+      continue;
+    }
+    if (block.remove && !(node[":block/children"] || []).length) {
+      await roam().data.block.delete({ block: { uid: block.uid } });
+      result.deleted++;
+    } else {
+      await roam().data.block.update({ block: { uid: block.uid, string: block.after } });
+      result.updated++;
+    }
+  }
+  const kept = [];
+  if (deleteFiles) {
+    const files = plan.files.filter((item) => item.safe && approved.has(item.url));
+    for (const [index, file] of files.entries()) {
+      onProgress?.(t("Deleting image file {0}/{1}\u2026", [index + 1, files.length]));
+      try {
+        await roam().file.delete({ url: file.url });
+        result.filesDeleted++;
+      } catch (error) {
+        result.failures.push({ url: file.url, error: error?.message || String(error) });
+        kept.push(file.url);
+      }
+    }
+  }
+  const removed = new Set(deleteFiles ? plan.files.filter((item) => item.safe && !kept.includes(item.url)).map((item) => item.url) : []);
+  const record = plan.record;
+  await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: (record.attachments || []).filter((item) => !removed.has(item.url)), imagesRemovedAt: (/* @__PURE__ */ new Date()).toISOString() });
+  return result;
+}
+
+// src/image-split.js
+function splitImages(text2, tokens = false) {
+  const pattern = tokens ? /⟦EPUBI:[^⟧]+⟧|!\[(?:\\.|[^\]\\])*\]\(/g : /!\[(?:\\.|[^\]\\])*\]\(/g;
+  const parts = [];
+  let end = 0, match;
+  while (match = pattern.exec(text2)) {
+    let stop = pattern.lastIndex;
+    if (!match[0].startsWith("\u27E6EPUBI:")) {
+      let depth = 1;
+      for (; stop < text2.length && depth; stop++) {
+        if (text2[stop] === "\\") {
+          stop++;
+          continue;
+        }
+        if (text2[stop] === "(") depth++;
+        if (text2[stop] === ")") depth--;
+      }
+      if (depth) return [{ text: text2, image: false }];
+      pattern.lastIndex = stop;
+    }
+    parts.push({ text: text2.slice(end, match.index), image: false }, { text: text2.slice(match.index, stop), image: true });
+    end = stop;
+  }
+  parts.push({ text: text2.slice(end), image: false });
+  return parts.filter((part) => part.text.trim());
+}
+
+// src/epub-headings.js
+function styledHeadings(document2, stylesheets = []) {
+  const rules = [];
+  for (const text2 of [...stylesheets, ...[...document2.querySelectorAll("style")].map((node) => node.textContent)]) {
+    for (const match of text2.replace(/\/\*[^]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+      if (match[1].trim().startsWith("@")) continue;
+      const probe = document2.createElement("span");
+      probe.setAttribute("style", match[2]);
+      for (const selector of match[1].split(",")) {
+        const specificity = (selector.match(/#[\w-]+/g) || []).length * 100 + (selector.match(/\.[\w-]+|\[[^\]]+\]|:[\w-]+/g) || []).length * 10 + (selector.match(/(?:^|[\s>+~])[a-z]+/gi) || []).length;
+        rules.push({ selector: selector.trim(), style: probe.style, specificity });
+      }
+    }
+  }
+  rules.sort((a, b) => a.specificity - b.specificity);
+  const cache2 = /* @__PURE__ */ new Map();
+  const typography = (element2) => {
+    if (!element2) return { size: 16, bold: false };
+    if (cache2.has(element2)) return cache2.get(element2);
+    const inherited = typography(element2.parentElement), declarations = /* @__PURE__ */ new Map();
+    const take = (style) => {
+      for (const property of ["font-size", "font-weight"]) {
+        const value2 = style?.getPropertyValue(property);
+        if (!value2) continue;
+        const important = style.getPropertyPriority(property) === "important";
+        if (!declarations.get(property)?.important || important) declarations.set(property, { value: value2, important });
+      }
+    };
+    for (const rule of rules) {
+      try {
+        if (element2.matches(rule.selector)) take(rule.style);
+      } catch {
+      }
+    }
+    take(element2.style);
+    const size = declarations.get("font-size")?.value.match(/^([\d.]+)(px|pt|em|rem|%)$/);
+    let pixels = inherited.size;
+    if (size) pixels = Number(size[1]) * { px: 1, pt: 4 / 3, em: inherited.size, rem: 16, "%": inherited.size / 100 }[size[2]];
+    const weight = declarations.get("font-weight")?.value;
+    const bold = weight ? /^(bold|bolder|[7-9]00)$/.test(weight) : /^(B|STRONG)$/.test(element2.tagName) || inherited.bold;
+    const result2 = { size: pixels, bold };
+    cache2.set(element2, result2);
+    return result2;
+  };
+  const details = [...document2.querySelectorAll("p,div")].filter((element2) => !element2.querySelector("p,div,h1,h2,h3,h4,h5,h6")).map((element2) => {
+    const chunks = [];
+    const walk = (node) => {
+      if (node.nodeType === 3 && node.textContent.trim()) chunks.push({ ...typography(node.parentElement), length: node.textContent.trim().length });
+      else for (const child of node.childNodes || []) walk(child);
+    };
+    walk(element2);
+    return { element: element2, chunks };
+  });
+  const sizes = /* @__PURE__ */ new Map();
+  for (const { chunks } of details) for (const chunk of chunks) if (!chunk.bold) sizes.set(chunk.size, (sizes.get(chunk.size) || 0) + chunk.length);
+  const dominant = [...sizes].sort((a, b) => b[1] - a[1])[0]?.[0];
+  const result = /* @__PURE__ */ new Map();
+  if (!dominant) return result;
+  for (const { element: element2, chunks } of details) {
+    if (!chunks.length || element2.querySelector("img,svg,math") || element2.textContent.trim().length > 180 || element2.closest("aside,nav,figure,blockquote")) continue;
+    if (chunks.every((chunk) => chunk.bold && chunk.size > dominant * 1.03)) result.set(element2, { kind: "heading", rank: 2, headingEvidence: "larger bold EPUB paragraph" });
+  }
+  const sizesByHeading = [...new Set([...result.keys()].map((element2) => typography(element2).size))].sort((a, b) => b - a);
+  for (const [element2, heading] of result) heading.rank = Math.min(6, 2 + sizesByHeading.indexOf(typography(element2).size));
+  return result;
+}
+
 // node_modules/fflate/esm/browser.js
 var ch2 = {};
 var wk = (function(c, id, msg, transfer, cb) {
@@ -1342,10 +5104,10 @@ var createClass = function createClass2(classes) {
 };
 var cssStyleToString = function cssStyleToString2(style) {
   var styles2 = "";
-  for (var key2 of Object.keys(style)) {
-    var value2 = style[key2];
+  for (var key3 of Object.keys(style)) {
+    var value2 = style[key3];
     if (value2 !== void 0) {
-      styles2 += hyphenate(key2) + ":" + value2 + ";";
+      styles2 += hyphenate(key3) + ":" + value2 + ";";
     }
   }
   return styles2;
@@ -3961,8 +7723,8 @@ function getGlobalMetrics(size) {
     var metrics = fontMetricsBySizeIndex[sizeIndex] = {
       cssEmPerMu: sigmasAndXis.quad[sizeIndex] / 18
     };
-    for (var key2 of Object.keys(sigmasAndXis)) {
-      metrics[key2] = sigmasAndXis[key2][sizeIndex];
+    for (var key3 of Object.keys(sigmasAndXis)) {
+      metrics[key3] = sigmasAndXis[key3][sizeIndex];
     }
   }
   return fontMetricsBySizeIndex[sizeIndex];
@@ -5010,8 +8772,8 @@ var canCombine = (prev, next) => {
       return false;
     }
   }
-  for (var key2 of Object.keys(prev.style)) {
-    if (prev.style[key2] !== next.style[key2]) {
+  for (var key3 of Object.keys(prev.style)) {
+    if (prev.style[key3] !== next.style[key3]) {
       return false;
     }
   }
@@ -6262,45 +10024,45 @@ var Options = class _Options {
   }
 };
 Options.BASESIZE = 6;
-var optionsFromSettings = (settings) => new Options({
-  style: settings.displayMode ? Style$1.DISPLAY : Style$1.TEXT,
-  maxSize: settings.maxSize,
-  minRuleThickness: settings.minRuleThickness,
-  strict: settings.strict
+var optionsFromSettings = (settings2) => new Options({
+  style: settings2.displayMode ? Style$1.DISPLAY : Style$1.TEXT,
+  maxSize: settings2.maxSize,
+  minRuleThickness: settings2.minRuleThickness,
+  strict: settings2.strict
 });
-var displayWrap = function displayWrap2(node, settings) {
-  if (settings.displayMode) {
+var displayWrap = function displayWrap2(node, settings2) {
+  if (settings2.displayMode) {
     var classes = ["katex-display"];
-    if (settings.leqno) {
+    if (settings2.leqno) {
       classes.push("leqno");
     }
-    if (settings.fleqn) {
+    if (settings2.fleqn) {
       classes.push("fleqn");
     }
     node = makeSpan(classes, [node]);
   }
   return node;
 };
-var buildTree = function buildTree2(tree, expression, settings) {
-  var options = optionsFromSettings(settings);
+var buildTree = function buildTree2(tree, expression, settings2) {
+  var options = optionsFromSettings(settings2);
   var katexNode;
-  if (settings.output === "mathml") {
-    return buildMathML(tree, expression, options, settings.displayMode, true);
-  } else if (settings.output === "html") {
+  if (settings2.output === "mathml") {
+    return buildMathML(tree, expression, options, settings2.displayMode, true);
+  } else if (settings2.output === "html") {
     var htmlNode = buildHTML(tree, options);
     katexNode = makeSpan(["katex"], [htmlNode]);
   } else {
-    var mathMLNode = buildMathML(tree, expression, options, settings.displayMode, false);
+    var mathMLNode = buildMathML(tree, expression, options, settings2.displayMode, false);
     var _htmlNode = buildHTML(tree, options);
     katexNode = makeSpan(["katex"], [mathMLNode, _htmlNode]);
   }
-  return displayWrap(katexNode, settings);
+  return displayWrap(katexNode, settings2);
 };
-var buildHTMLTree = function buildHTMLTree2(tree, settings) {
-  var options = optionsFromSettings(settings);
+var buildHTMLTree = function buildHTMLTree2(tree, settings2) {
+  var options = optionsFromSettings(settings2);
   var htmlNode = buildHTML(tree, options);
   var katexNode = makeSpan(["katex"], [htmlNode]);
-  return displayWrap(katexNode, settings);
+  return displayWrap(katexNode, settings2);
 };
 var stretchyCodePoint = {
   widehat: "^",
@@ -8721,8 +12483,8 @@ function getHLines(parser) {
   return hlineInfo;
 }
 var validateAmsEnvironmentContext = (context) => {
-  var settings = context.parser.settings;
-  if (!settings.displayMode) {
+  var settings2 = context.parser.settings;
+  if (!settings2.displayMode) {
     throw new ParseError("{" + context.envName + "} can be used only in display mode.");
   }
 };
@@ -10324,9 +14086,9 @@ defineFunction({
           if (firstEquals < 0) {
             throw new ParseError("\\htmlData key/value '" + item + "' missing equals sign");
           }
-          var key2 = item.slice(0, firstEquals);
+          var key3 = item.slice(0, firstEquals);
           var _value = item.slice(firstEquals + 1);
-          attributes["data-" + key2.trim()] = _value;
+          attributes["data-" + key3.trim()] = _value;
         }
         trustContext = {
           command: "\\htmlData",
@@ -12112,13 +15874,13 @@ var tokenRegexString = "(" + spaceRegexString + "+)|" + // whitespace
 ("|" + controlWordWhitespaceRegexString) + // \macroName + spaces
 ("|" + controlSymbolRegexString + ")");
 var Lexer = class {
-  constructor(input, settings) {
+  constructor(input, settings2) {
     this.input = void 0;
     this.settings = void 0;
     this.tokenRegex = void 0;
     this.catcodes = void 0;
     this.input = input;
-    this.settings = settings;
+    this.settings = settings2;
     this.tokenRegex = new RegExp(tokenRegexString, "g");
     this.catcodes = {
       "%": 14,
@@ -12197,11 +15959,11 @@ var Namespace = class {
       throw new ParseError("Unbalanced namespace destruction: attempt to pop global namespace; please report this as a bug");
     }
     var undefs = this.undefStack.pop();
-    for (var key2 of Object.keys(undefs)) {
-      if (undefs[key2] === void 0) {
-        delete this.current[key2];
+    for (var key3 of Object.keys(undefs)) {
+      if (undefs[key3] === void 0) {
+        delete this.current[key3];
       } else {
-        this.current[key2] = undefs[key2];
+        this.current[key3] = undefs[key3];
       }
     }
   }
@@ -12946,17 +16708,17 @@ var implicitCommands = {
   // Parser.js
 };
 var MacroExpander = class {
-  constructor(input, settings, mode) {
+  constructor(input, settings2, mode) {
     this.settings = void 0;
     this.expansionCount = void 0;
     this.lexer = void 0;
     this.macros = void 0;
     this.stack = void 0;
     this.mode = void 0;
-    this.settings = settings;
+    this.settings = settings2;
     this.expansionCount = 0;
     this.feed(input);
-    this.macros = new Namespace(macros, settings.macros);
+    this.macros = new Namespace(macros, settings2.macros);
     this.mode = mode;
     this.stack = [];
   }
@@ -13825,15 +17587,15 @@ var unicodeSymbols = {
   "\u1FFA": "\u03A9\u0300"
 };
 var Parser = class _Parser {
-  constructor(input, settings) {
+  constructor(input, settings2) {
     this.mode = void 0;
     this.gullet = void 0;
     this.settings = void 0;
     this.leftrightDepth = void 0;
     this.nextToken = void 0;
     this.mode = "math";
-    this.gullet = new MacroExpander(input, settings, this.mode);
-    this.settings = settings;
+    this.gullet = new MacroExpander(input, settings2, this.mode);
+    this.settings = settings2;
     this.leftrightDepth = 0;
     this.nextToken = null;
   }
@@ -14679,17 +18441,17 @@ var Parser = class _Parser {
   }
 };
 Parser.endOfExpression = /* @__PURE__ */ new Set(["}", "\\endgroup", "\\end", "\\right", "&"]);
-var parseTree = function parseTree2(toParse, settings) {
+var parseTree = function parseTree2(toParse, settings2) {
   if (!(typeof toParse === "string" || toParse instanceof String)) {
     throw new TypeError("KaTeX can only parse string typed expression");
   }
-  var parser = new Parser(toParse, settings);
+  var parser = new Parser(toParse, settings2);
   delete parser.gullet.macros.current["\\df@tag"];
   var tree = parser.parse();
   delete parser.gullet.macros.current["\\current@color"];
   delete parser.gullet.macros.current["\\color"];
   if (parser.gullet.macros.get("\\df@tag")) {
-    if (!settings.displayMode) {
+    if (!settings2.displayMode) {
       throw new ParseError("\\tag works only in display equations");
     }
     tree = [{
@@ -14719,8 +18481,8 @@ var renderToString = function renderToString2(expression, options) {
   return markup;
 };
 var generateParseTree = function generateParseTree2(expression, options) {
-  var settings = new Settings(options);
-  return parseTree(expression, settings);
+  var settings2 = new Settings(options);
+  return parseTree(expression, settings2);
 };
 var renderError = function renderError2(error, expression, options) {
   if (options.throwOnError || !(error instanceof ParseError)) {
@@ -14732,21 +18494,21 @@ var renderError = function renderError2(error, expression, options) {
   return node;
 };
 var renderToDomTree = function renderToDomTree2(expression, options) {
-  var settings = new Settings(options);
+  var settings2 = new Settings(options);
   try {
-    var tree = parseTree(expression, settings);
-    return buildTree(tree, expression, settings);
+    var tree = parseTree(expression, settings2);
+    return buildTree(tree, expression, settings2);
   } catch (error) {
-    return renderError(error, expression, settings);
+    return renderError(error, expression, settings2);
   }
 };
 var renderToHTMLTree = function renderToHTMLTree2(expression, options) {
-  var settings = new Settings(options);
+  var settings2 = new Settings(options);
   try {
-    var tree = parseTree(expression, settings);
-    return buildHTMLTree(tree, settings);
+    var tree = parseTree(expression, settings2);
+    return buildHTMLTree(tree, settings2);
   } catch (error) {
-    return renderError(error, expression, settings);
+    return renderError(error, expression, settings2);
   }
 };
 var version = "0.19.1";
@@ -15286,2102 +19048,6 @@ function renderFormulaMathML(formula) {
   return katex.renderToString(formula.tex, { ...OPTIONS, displayMode: formula.display });
 }
 
-// src/locales/fr.js
-var fr_default = {
-  "Enter a destination page title.": "Saisissez le titre de la page de destination.",
-  "Select annotations to include first.": "S\xE9lectionnez d\u2019abord les annotations \xE0 inclure.",
-  "Book repair is available for managed books only.": "La r\xE9paration n\u2019est disponible que pour les livres g\xE9r\xE9s.",
-  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "Recoller {0} paragraphe(s) coup\xE9(s) (v\xE9rifi\xE9 avec l\u2019EPUB d\u2019origine)",
-  "Fix {0} block(s) with broken numbered links": "Corriger {0} bloc(s) aux liens num\xE9rot\xE9s cass\xE9s",
-  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": " ; {0} r\xE9f\xE9rence(s) vers d\u2019anciens fragments (commentaires, liens de notes) passent au paragraphe r\xE9par\xE9",
-  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "Supprimer {0} archive(s) EPUB-READER:paragraph-fragments{1}",
-  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "Mettre {0} titre(s) de chapitre en H1/H2/H3 selon la profondeur",
-  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "Supprimer {0} titre(s) qui r\xE9p\xE8tent le titre du chapitre (les paragraphes remontent, ID inchang\xE9s)",
-  "Turn {0} other body heading(s) into bold text": "Transformer {0} autre(s) titre(s) du texte en gras",
-  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "Remettre {0} appel(s) de note \xE0 la fin de leur titre (ex. \xAB 2.3 Titre [3] \xBB) ; les paragraphes sous l\u2019appel passent sous le titre",
-  "Turn {0} footnote marker heading(s) such as [3] into plain text": "Transformer {0} titre(s) d\u2019appel de note comme [3] en texte simple",
-  "Rejoining split paragraphs\u2026": "Recollage des paragraphes coup\xE9s\u2026",
-  "Fixing numbered links\u2026": "Correction des liens num\xE9rot\xE9s\u2026",
-  "Removing paragraph archives\u2026": "Suppression des archives de paragraphes\u2026",
-  "Fixing heading levels\u2026": "Correction des niveaux de titres\u2026",
-  "No book repair record was found.": "Aucun enregistrement de r\xE9paration trouv\xE9.",
-  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "La page d\u2019origine n\u2019existe plus. Ouvrez la page actuelle du livre, s\xE9lectionnez ce livre et reliez ses chapitres. Aucune r\xE9importation n\u2019est n\xE9cessaire.",
-  "Select at least one existing book chapter.": "S\xE9lectionnez au moins un chapitre existant.",
-  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Confirmez d\u2019abord les chapitres de ce livre dans le panneau de lecture. Aucune r\xE9importation ni modification du texte n\u2019est n\xE9cessaire.",
-  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "Le p\xE9rim\xE8tre des chapitres ne peut pas inclure une page enti\xE8re. Confirmez \xE0 nouveau les chapitres ; la page est conserv\xE9e.",
-  "The current page or block cannot be read.": "Impossible de lire la page ou le bloc actuel.",
-  "Could not parse {0}": "Impossible d\u2019analyser {0}",
-  "Invalid EPUB: META-INF/container.xml is missing": "EPUB invalide : META-INF/container.xml est absent",
-  "The EPUB manifest is missing": "Le manifeste de l\u2019EPUB est absent",
-  "No readable chapter content was found in the EPUB": "Aucun contenu de chapitre lisible dans l\u2019EPUB",
-  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Ce bloc n\u2019existe plus. Actualisez la table des mati\xE8res ou les annotations ; le livre ne sera pas recr\xE9\xE9.",
-  "Cannot find the page containing this block.": "Impossible de trouver la page qui contient ce bloc.",
-  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "La page est ouverte, mais ce paragraphe n\u2019est pas encore affich\xE9. D\xE9pliez son chapitre et r\xE9essayez.",
-  "Heading repair is available for managed books only.": "La r\xE9paration des titres n\u2019est disponible que pour les livres g\xE9r\xE9s.",
-  "This Roam version does not expose block.move. No headings were changed.": "Cette version de Roam n\u2019expose pas block.move. Aucun titre n\u2019a \xE9t\xE9 modifi\xE9.",
-  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Utilisez \xAB Annuler la derni\xE8re r\xE9paration \xBB pour restaurer les modifications.",
-  "No heading repair backup was found.": "Aucune sauvegarde de r\xE9paration des titres trouv\xE9e.",
-  "Language": "Langue",
-  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Langue de l\u2019interface (Auto suit votre navigateur). Le panneau de lecture change aussit\xF4t ; cet onglet de r\xE9glages apr\xE8s rechargement de l\u2019extension.",
-  "Import EPUB": "Importer un EPUB",
-  "Choose, preview, and import an EPUB book": "Choisir, pr\xE9visualiser et importer un livre EPUB",
-  "Open Importer": "Ouvrir l\u2019importateur",
-  "Manage Imported Books": "G\xE9rer les livres import\xE9s",
-  "Manage imported books, recover existing pages, and safely clean up attachments": "G\xE9rer les livres import\xE9s, r\xE9cup\xE9rer des pages existantes et nettoyer les pi\xE8ces jointes en toute s\xE9curit\xE9",
-  "Manage Books": "G\xE9rer les livres",
-  "Reading Desk": "Reading Desk",
-  "Open reading tools for books or ordinary pages": "Outils de lecture pour les livres ou les pages ordinaires",
-  "Open Reading Desk": "Ouvrir Reading Desk",
-  "Automatic Browsing Progress": "Progression de lecture automatique",
-  "Estimate foreground browsing per chapter; never infer comprehension": "Estime la lecture au premier plan par chapitre ; n\u2019en d\xE9duit jamais la compr\xE9hension",
-  "Native Comment Side Notes": "Commentaires natifs en marge",
-  "Show native comments in full beside the text throughout the graph": "Afficher les commentaires natifs en entier \xE0 c\xF4t\xE9 du texte dans tout le graphe",
-  "Highlight Colour": "Couleur de surlignage",
-  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Couleur des ^^surlignages^^ natifs (Th\xE8me par d\xE9faut conserve la couleur de votre th\xE8me)",
-  "Question Tags": "Tags de question",
-  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Tags existants, s\xE9par\xE9s par des virgules, pour les questions ouvertes. Le raccourci \xAB Question \xBB ajoute #question.",
-  "Invalid library format. Stopped to protect existing data.": "Format de biblioth\xE8que invalide. Arr\xEAt pour prot\xE9ger les donn\xE9es existantes.",
-  "Cannot read the library. Stopped to protect existing data.": "Impossible de lire la biblioth\xE8que. Arr\xEAt pour prot\xE9ger les donn\xE9es existantes.",
-  "Unsupported library version or structure. Stopped to protect existing data.": "Version ou structure de biblioth\xE8que non prise en charge. Arr\xEAt pour prot\xE9ger les donn\xE9es existantes.",
-  "The attachment ledger is incomplete. Stopped to protect attachments.": "Le registre des pi\xE8ces jointes est incomplet. Arr\xEAt pour prot\xE9ger les pi\xE8ces jointes.",
-  "Attachment ledger validation failed.": "La validation du registre des pi\xE8ces jointes a \xE9chou\xE9.",
-  "The book record has no stable identity.": "La fiche du livre n\u2019a pas d\u2019identit\xE9 stable.",
-  "Enter at least two characters of the page title.": "Saisissez au moins deux caract\xE8res du titre de la page.",
-  "The specified book page could not be found.": "La page du livre indiqu\xE9e est introuvable.",
-  "Native Roam comment": "Commentaire Roam natif",
-  "Open the native comment thread to edit": "Ouvrir le fil de commentaires natif pour le modifier",
-  "Open native comment thread": "Ouvrir le fil de commentaires natif",
-  "Delete this comment": "Supprimer ce commentaire",
-  "Delete comment": "Supprimer le commentaire",
-  "\n\nIts replies are deleted too.": "\n\nSes r\xE9ponses seront aussi supprim\xE9es.",
-  "Delete this comment?\n\n{0}{1}": "Supprimer ce commentaire ?\n\n{0}{1}",
-  "Expand this section": "D\xE9plier cette section",
-  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Utilisez un tag de question non vide, sans crochets, #, accolades ni retours \xE0 la ligne (80 caract\xE8res max.).",
-  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Placez d\u2019abord le curseur dans un paragraphe ou un commentaire natif, puis basculez la question.",
-  "Unmark It": "Retirer la marque",
-  "Mark It": "Marquer",
-  "This Roam version does not expose block.move. No paragraphs were changed.": "Cette version de Roam n\u2019expose pas block.move. Aucun paragraphe n\u2019a \xE9t\xE9 modifi\xE9.",
-  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Les ID des fragments d\u2019origine sont conserv\xE9s. Utilisez \xAB Annuler la derni\xE8re r\xE9paration de paragraphes \xBB pour les modifications interrompues.",
-  "Paragraph repair backup is missing.": "La sauvegarde de r\xE9paration des paragraphes est introuvable.",
-  "Archive cleanup backup is missing.": "La sauvegarde du nettoyage des archives est introuvable.",
-  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "Les m\xE9tadonn\xE9es de lecture sont incompl\xE8tes. Actualisez et r\xE9essayez ; le livre d\u2019origine n\u2019est pas touch\xE9.",
-  "just now": "\xE0 l\u2019instant",
-  "{0} min ago": "il y a {0} min",
-  "{0} h ago": "il y a {0} h",
-  "{0} d ago": "il y a {0} j",
-  "All Books": "Tous les livres",
-  "Selected block: {0}": "Bloc s\xE9lectionn\xE9 : {0}",
-  "Click a paragraph or native comment to select an action target.": "Cliquez sur un paragraphe ou un commentaire natif pour choisir la cible de l\u2019action.",
-  " \xB7 approx. {0}%": " \xB7 env. {0} %",
-  "Read \xB7 click to unmark": "Lu \xB7 cliquer pour annuler",
-  "Mark as read": "Marquer comme lu",
-  "Could not collapse the previous chapter: {0}": "Impossible de replier le chapitre pr\xE9c\xE9dent : {0}",
-  "The page {0} does not exist yet.": "La page {0} n\u2019existe pas encore.",
-  "Open a book or page first.": "Ouvrez d\u2019abord un livre ou une page.",
-  "Remove from All Books": "Retirer de Tous les livres",
-  "Include in All Books": "Inclure dans Tous les livres",
-  "Pages you include appear in the All Books scope with your books": "Les pages incluses apparaissent avec vos livres dans \xAB Tous les livres \xBB",
-  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Confirmez les chapitres existants qui appartiennent \xE0 ce livre. D\xE9cochez vos propres notes. Seuls les ID de blocs sont enregistr\xE9s ; le texte, les commentaires et les surlignages existants sont conserv\xE9s.",
-  "Confirm Book Scope": "Confirmer les chapitres",
-  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Annotations et questions de tous les livres g\xE9r\xE9s et de toutes les pages incluses. Choisissez une source pour l\u2019ouvrir.",
-  "{0} \xB7 {1} annotations": "{0} \xB7 {1} annotations",
-  "Last read \xB7 {0}": "Derni\xE8re lecture \xB7 {0}",
-  "Body": "Texte",
-  "Continue": "Continuer",
-  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "Aucune table des mati\xE8res sur cette page. Elle est construite \xE0 partir des titres H1, H2 et H3.",
-  "No chapters were found.": "Aucun chapitre trouv\xE9.",
-  "Collapse All Chapters": "Replier tous les chapitres",
-  "Collapse Subdirectories": "Replier les sous-sections",
-  "Expand Subdirectories": "D\xE9plier les sous-sections",
-  "Current section: {0}": "Section actuelle : {0}",
-  "Toggle subdirectory: {0}": "Basculer la sous-section : {0}",
-  "Resume": "Reprendre",
-  "Reset": "R\xE9initialiser",
-  "Reset browsing progress for {0}? Text and annotations will be preserved.": "R\xE9initialiser la progression de lecture de {0} ? Le texte et les annotations sont conserv\xE9s.",
-  "Fold": "Replier",
-  "{0} chapter entries are missing. Use the action below to link their current location.": "{0} entr\xE9es de chapitre sont manquantes. Utilisez l\u2019action ci-dessous pour relier leur emplacement actuel.",
-  "Link Current Page to This Book": "Relier la page actuelle \xE0 ce livre",
-  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "La table des mati\xE8res vient des titres H1, H2 et H3. Cliquer sur un titre ne fait que d\xE9filer ; rien n\u2019est repli\xE9 ni modifi\xE9 sur la page.",
-  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "Les chapitres non visit\xE9s ne sont pas des t\xE2ches. La couverture estime les paragraphes affich\xE9s, pas les mots lus ni la compr\xE9hension. Utilisez \u2713 pour marquer vous-m\xEAme un chapitre comme lu.",
-  "Include in notes draft": "Inclure dans le brouillon de notes",
-  "This page": "Cette page",
-  "(Empty annotation)": "(Annotation vide)",
-  "Open Native Comment": "Ouvrir le commentaire natif",
-  "Open in Sidebar": "Ouvrir dans la barre lat\xE9rale",
-  "Search annotations": "Rechercher dans les annotations",
-  "All types": "Tous les types",
-  "Highlights": "Surlignages",
-  "Comments": "Commentaires",
-  "Marks": "Marques",
-  "Questions": "Questions",
-  "All sources": "Toutes les sources",
-  "All chapters": "Tous les chapitres",
-  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} \xE9l\xE9ments \xB7 Cliquez pour situer dans le contexte ; Maj+clic pour la barre lat\xE9rale.",
-  "Load More": "Charger plus",
-  "Question:: \u2026": "Question:: \u2026",
-  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Questions rassemble tout ce qui reste ouvert : TODO natifs, vos tags de question et attributs de question (par exemple {0}). Les \xE9l\xE9ments DONE sont exclus. Alt+Q en bascule une sur le bloc actuel ; choisissez le style tag ou attribut dans R\xE9glages.",
-  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Annotations rassemble surlignages, commentaires natifs, marques et questions. Cochez des \xE9l\xE9ments pour cr\xE9er une page de notes de lecture qui renvoie aux originaux.",
-  "Destination page for notes draft": "Page de destination du brouillon de notes",
-  "Create Notes Draft from Selection": "Cr\xE9er un brouillon de notes \xE0 partir de la s\xE9lection",
-  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "{0} notes r\xE9f\xE9renc\xE9es ajout\xE9es \xE0 {1}, avec un lien vers la page source. Ouvert dans {2}.",
-  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "Pas encore de notes de lecture pour {0}. Dans Annotations, cochez des \xE9l\xE9ments et choisissez \xAB Cr\xE9er un brouillon de notes \xBB ; la page de notes ({1}) s\u2019ouvre dans la barre lat\xE9rale.",
-  "Create Notes Page": "Cr\xE9er la page de notes",
-  "Open the notes page (Shift+click: sidebar)": "Ouvrir la page de notes (Maj+clic : barre lat\xE9rale)",
-  "Sidebar": "Barre lat\xE9rale",
-  "No generated drafts on this page yet. Create one from the Annotations tab.": "Aucun brouillon g\xE9n\xE9r\xE9 sur cette page. Cr\xE9ez-en un depuis l\u2019onglet Annotations.",
-  "Show in the book (Shift+click: sidebar)": "Afficher dans le livre (Maj+clic : barre lat\xE9rale)",
-  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} brouillon(s) \xB7 {3} note(s)",
-  "Open this draft (Shift+click: sidebar)": "Ouvrir ce brouillon (Maj+clic : barre lat\xE9rale)",
-  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "La page de notes contient aussi {0} bloc(s) que vous avez \xE9crits vous-m\xEAme ; ouvrez la page pour les voir.",
-  "Back to Settings": "Retour aux r\xE9glages",
-  "Repair This Book": "R\xE9parer ce livre",
-  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "La r\xE9paration n\u2019est disponible que pour les livres g\xE9r\xE9s. Choisissez un livre dans le menu. Les pages ordinaires ne sont jamais modifi\xE9es automatiquement.",
-  "Nothing to repair in this book.": "Rien \xE0 r\xE9parer dans ce livre.",
-  "This repair will:": "Cette r\xE9paration va :",
-  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} archive(s) restent, car un ancien fragment a ses propres blocs enfants.",
-  "Preview the changes": "Aper\xE7u des modifications",
-  "Nothing to change.": "Rien \xE0 modifier.",
-  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "R\xE9parer {0} ?\n\n{1}\n\nTout est sauvegard\xE9 ; une seule annulation restaure l\u2019ensemble.",
-  "{0} paragraphs": "{0} paragraphes",
-  "{0} link blocks": "{0} blocs de liens",
-  "{0} archives ({1} references moved)": "{0} archives ({1} r\xE9f\xE9rences d\xE9plac\xE9es)",
-  "{0} headings": "{0} titres",
-  "nothing needed": "rien \xE0 faire",
-  " {0} block(s) changed since the preview were skipped; run the repair again.": " {0} bloc(s) modifi\xE9(s) depuis l\u2019aper\xE7u ont \xE9t\xE9 ignor\xE9s ; relancez la r\xE9paration.",
-  "Repaired: {0}.{1} Undo is available.": "R\xE9par\xE9 : {0}.{1} Annulation possible.",
-  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Corrige en une \xE9tape tout ce qui peut l\u2019\xEAtre sans risque : niveaux de titres pour la table des mati\xE8res, appels de note pr\xE9sent\xE9s comme titres, liens num\xE9rot\xE9s cass\xE9s et archives EPUB-READER:paragraph-fragments restantes. Le texte, les commentaires et les surlignages sont conserv\xE9s.",
-  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Facultatif : choisissez l\u2019EPUB d\u2019origine pour aussi recoller les paragraphes coup\xE9s par d\u2019anciens imports (lu localement, rien n\u2019est envoy\xE9)",
-  "Original EPUB for paragraph repair": "EPUB d\u2019origine pour la r\xE9paration des paragraphes",
-  "Checking the original EPUB\u2026": "V\xE9rification de l\u2019EPUB d\u2019origine\u2026",
-  "Undo Last Repair": "Annuler la derni\xE8re r\xE9paration",
-  "Undo the last book repair? Blocks edited since then are left as they are.": "Annuler la derni\xE8re r\xE9paration du livre ? Les blocs modifi\xE9s depuis restent tels quels.",
-  "Restored {0} items; skipped {1} edited items.": "{0} \xE9l\xE9ments restaur\xE9s ; {1} \xE9l\xE9ments modifi\xE9s ignor\xE9s.",
-  "Undo a repair made with an earlier version": "Annuler une r\xE9paration faite avec une version pr\xE9c\xE9dente",
-  "Undo {0}": "Annuler : {0}",
-  "Restored {0} items; skipped {1}.": "{0} \xE9l\xE9ments restaur\xE9s ; {1} ignor\xE9s.",
-  "its shortcut (not set)": "son raccourci (non d\xE9fini)",
-  "Press keys\u2026": "Appuyez sur les touches\u2026",
-  "{0}: shortcut cleared.": "{0} : raccourci effac\xE9.",
-  "{0} is already used by {1}.": "{0} est d\xE9j\xE0 utilis\xE9 par {1}.",
-  "Click, then press the new shortcut": "Cliquez, puis appuyez sur le nouveau raccourci",
-  "Reset to {0}": "Revenir \xE0 {0}",
-  "Library": "Biblioth\xE8que",
-  "Reading": "Lecture",
-  "Collapse the previous chapter when navigating": "Replier le chapitre pr\xE9c\xE9dent lors de la navigation",
-  "Track browsing automatically (estimated, not comprehension)": "Suivre la lecture automatiquement (estimation, pas de compr\xE9hension)",
-  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "La progression automatique ne concerne que les livres g\xE9r\xE9s. Replier les sous-sections du panneau ne modifie pas le livre.",
-  "Text width": "Largeur du texte",
-  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Remplir la ligne : les paragraphes vont jusqu\u2019au bout de leur rang\xE9e, sans bande vide avant le compteur de r\xE9f\xE9rences sur les grands \xE9crans. Les notes en marge se placent hors du texte, comme dans Folio.",
-  "Native Comments": "Commentaires natifs",
-  "Native comment side notes (graph-wide)": "Commentaires natifs en marge (tout le graphe)",
-  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Les notes sont affich\xE9es en entier et empil\xE9es \xE0 c\xF4t\xE9 du texte. Cliquez sur une note ou son paragraphe pour les aligner ; \u2197 ouvre le fil natif pour le modifier.",
-  "Side note style": "Style des notes en marge",
-  "Side note colour": "Couleur des notes en marge",
-  "Side note order": "Ordre des notes en marge",
-  "Highlight colour": "Couleur de surlignage",
-  "Highlight style": "Style de surlignage",
-  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "S\u2019applique partout aux ^^surlignages^^ natifs. Th\xE8me par d\xE9faut conserve la couleur de votre th\xE8me.",
-  "Mark style": "Style de marque",
-  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} ou le menu du bloc bascule #mark ; le tag reste dans le texte et est masqu\xE9 pendant la lecture.",
-  "Recognized question tags (comma-separated)": "Tags de question reconnus (s\xE9par\xE9s par des virgules)",
-  "Recognized question tags": "Tags de question reconnus",
-  "Quick question tag ({0})": "Tag de question rapide ({0})",
-  "Quick question tag": "Tag de question rapide",
-  "Toggle Question inserts": "\xAB Question \xBB ins\xE8re",
-  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Saisissez les noms de tags sans #. Le tag de question rapide est toujours reconnu, y compris dans les commentaires natifs. \xAB Marquer \xBB conserve #mark pour rester compatible avec votre style d\u2019origine.",
-  "Save Question Settings": "Enregistrer les r\xE9glages de questions",
-  "Question settings saved. Toggle Question uses your quick question tag.": "R\xE9glages de questions enregistr\xE9s. \xAB Question \xBB utilise votre tag de question rapide.",
-  "Question settings are active for this session; settings storage could not sync.": "Les r\xE9glages de questions sont actifs pour cette session ; ils n\u2019ont pas pu \xEAtre synchronis\xE9s.",
-  "Keyboard Shortcuts": "Raccourcis clavier",
-  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Cliquez sur un raccourci, puis appuyez sur les nouvelles touches (avec Ctrl, Cmd/\u2318 ou Alt/\u2325). \xC9chap annule, Retour arri\xE8re efface. Reading Desk traite ces touches avant Roam, donc Option+M ne tape plus \xAB \xB5 \xBB. Faites glisser la barre de titre pour d\xE9placer ce panneau. Maj+clic ouvre le contenu dans la barre lat\xE9rale.",
-  "Reading Notes": "Notes de lecture",
-  "Open new reading notes in": "Ouvrir les nouvelles notes de lecture dans",
-  "Maintenance": "Maintenance",
-  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Une \xE9tape pour les livres import\xE9s : niveaux de titres, appels de note en titre, liens cass\xE9s et archives de paragraphes restantes (et, en option, paragraphes coup\xE9s). Montre d\u2019abord ce qui va changer ; une seule annulation restaure le tout.",
-  "Click a paragraph or native comment first, then use this action.": "Cliquez d\u2019abord sur un paragraphe ou un commentaire natif, puis utilisez cette action.",
-  "Open a page or book, then click Refresh.": "Ouvrez une page ou un livre, puis cliquez sur Actualiser.",
-  "Current Page": "Page actuelle",
-  "Books": "Livres",
-  "Included pages": "Pages incluses",
-  "All Books \xB7 {0} sources \xB7 {1} annotations": "Tous les livres \xB7 {0} sources \xB7 {1} annotations",
-  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "Page \xB7 {0} titres \xB7 {1} annotations \xB7 la progression n\u2019est suivie que pour les livres",
-  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} blocs \xB7 {2} annotations \xB7 {3} pages",
-  "Close": "Fermer",
-  "Drag to move Reading Desk": "Faire glisser pour d\xE9placer Reading Desk",
-  "Reading scope": "Port\xE9e de lecture",
-  "Refresh": "Actualiser",
-  "Loading\u2026": "Chargement\u2026",
-  "Text or comments changed. Click Refresh to update without interrupting your work.": "Le texte ou les commentaires ont chang\xE9. Cliquez sur Actualiser pour mettre \xE0 jour sans interrompre votre travail.",
-  "No repair backup was found.": "Aucune sauvegarde de r\xE9paration trouv\xE9e.",
-  "Image conversion failed": "\xC9chec de la conversion de l\u2019image",
-  "Cannot read image: {0}": "Impossible de lire l\u2019image : {0}",
-  "Processing image {0}/{1}": "Traitement de l\u2019image {0}/{1}",
-  "Image upload returned no valid URL: {0}": "L\u2019envoi de l\u2019image n\u2019a renvoy\xE9 aucune URL valide : {0}",
-  "The imported page was removed. Select the EPUB again to import.": "La page import\xE9e a \xE9t\xE9 supprim\xE9e. S\xE9lectionnez \xE0 nouveau l\u2019EPUB pour l\u2019importer.",
-  "A book is already being imported. Wait for it to finish.": "Un livre est d\xE9j\xE0 en cours d\u2019import. Attendez la fin.",
-  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Cette ancienne t\xE2che a des correspondances de chapitres incorrectes. S\xE9lectionnez \xE0 nouveau l\u2019EPUB pour cr\xE9er un nouvel import.",
-  "Import complete": "Import termin\xE9",
-  "This book's record has changed or was removed. Reopen the book list.": "La fiche de ce livre a chang\xE9 ou a \xE9t\xE9 supprim\xE9e. Rouvrez la liste des livres.",
-  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Un stockage de commentaires natifs se trouve dans les chapitres. La suppression est bloqu\xE9e pour pr\xE9server les commentaires. Placez d\u2019abord ce stockage sur la page, hors des chapitres du livre.",
-  "Reference check failed; retained": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences ; conserv\xE9",
-  "Original upload ownership is unknown; retained": "Origine de l\u2019envoi inconnue ; conserv\xE9",
-  "Shared with another imported book": "Partag\xE9 avec un autre livre import\xE9",
-  "{0} references outside this book": "{0} r\xE9f\xE9rences hors de ce livre",
-  "Used only by this book": "Utilis\xE9 uniquement par ce livre",
-  "Chapter scope changed. Review the deletion preview again.": "Les chapitres ont chang\xE9. V\xE9rifiez \xE0 nouveau l\u2019aper\xE7u de suppression.",
-  "New content was added inside the book scope. Deletion stopped; review the preview again.": "Du contenu a \xE9t\xE9 ajout\xE9 dans le livre. Suppression arr\xEAt\xE9e ; v\xE9rifiez \xE0 nouveau l\u2019aper\xE7u.",
-  "Deleting book chapters (preserving pages and native comments)\u2026": "Suppression des chapitres du livre (pages et commentaires natifs conserv\xE9s)\u2026",
-  "Deleting attachment {0}/{1}\u2026": "Suppression de la pi\xE8ce jointe {0}/{1}\u2026",
-  "This book is waiting for attachment cleanup. Finish that first.": "Ce livre attend un nettoyage des pi\xE8ces jointes. Terminez-le d\u2019abord.",
-  "Not uploaded by this import; file retained": "Non envoy\xE9 par cet import ; fichier conserv\xE9",
-  "Original upload ownership is unknown; file retained": "Origine de l\u2019envoi inconnue ; fichier conserv\xE9",
-  "Reference check failed; file retained": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences ; fichier conserv\xE9",
-  "Removing images from blocks {0}/{1}\u2026": "Retrait des images des blocs {0}/{1}\u2026",
-  "Deleting image file {0}/{1}\u2026": "Suppression du fichier image {0}/{1}\u2026",
-  "Not set": "Non d\xE9fini",
-  "Could not save local progress": "Impossible d\u2019enregistrer la progression locale",
-  "Local progress save was aborted": "L\u2019enregistrement local de la progression a \xE9t\xE9 interrompu",
-  "The local EPUB cache is missing. Select the original file again.": "Le cache EPUB local est absent. S\xE9lectionnez \xE0 nouveau le fichier d\u2019origine.",
-  "Preparing\u2026": "Pr\xE9paration\u2026",
-  "Processing\u2026": "Traitement\u2026",
-  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} entr\xE9es de sommaire \xB7 {1} n\u0153uds de premier niveau \xB7 env. {2} blocs \xB7 {3} images \xB7 {4} liens internes",
-  " \xB7 {0} formulas": " \xB7 {0} formules",
-  "Resume importing {0}": "Reprendre l\u2019import de {0}",
-  "Import {0}": "Importer {0}",
-  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Gardez Roam ouvert pendant l\u2019import. La progression est enregistr\xE9e pour pouvoir reprendre un import interrompu.",
-  "Created {0}. Images and links are in their original positions.": "{0} cr\xE9\xE9. Images et liens sont \xE0 leur place d\u2019origine.",
-  "Import paused: {0}. Progress was saved; you can resume later.": "Import en pause : {0}. La progression est enregistr\xE9e ; vous pourrez reprendre plus tard.",
-  "Retry / Resume": "R\xE9essayer / Reprendre",
-  "Book Preview": "Aper\xE7u du livre",
-  "Author: {0}": "Auteur : {0}",
-  "Roam page title": "Titre de la page Roam",
-  "Original EPUB TOC ({0}, full hierarchy)": "Sommaire EPUB d\u2019origine ({0}, hi\xE9rarchie compl\xE8te)",
-  "Outline generated from body headings": "Plan g\xE9n\xE9r\xE9 \xE0 partir des titres du texte",
-  "; {0} need review (source retained)": " ; {0} \xE0 v\xE9rifier (source conserv\xE9e)",
-  "Formulas: {0} converted{1}": "Formules : {0} converties{1}",
-  "Formula {0} \xB7 {1}": "Formule {0} \xB7 {1}",
-  "Preview text and image order": "Aper\xE7u de l\u2019ordre du texte et des images",
-  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Les images sont envoy\xE9es \xE0 leur place d\u2019origine. Les liens externes sont conserv\xE9s ; les liens internes deviennent des r\xE9f\xE9rences de blocs Roam.",
-  "Start Import": "Lancer l\u2019import",
-  "Unfinished Imports": "Imports inachev\xE9s",
-  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Cette t\xE2che utilise un ancien analyseur. S\xE9lectionnez \xE0 nouveau l\u2019EPUB pour cr\xE9er un import corrig\xE9.",
-  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Cette ancienne t\xE2che n\u2019a pas v\xE9rifi\xE9 les formules. S\xE9lectionnez \xE0 nouveau l\u2019EPUB si le livre contient des formules.",
-  "Discard Job": "Abandonner la t\xE2che",
-  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Une page Roam existe d\xE9j\xE0. Utilisez \xAB G\xE9rer les livres import\xE9s \xBB pour retirer cet import.",
-  "EPUB Importer": "Importateur EPUB",
-  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "Choisissez un EPUB. L\u2019analyse reste sur votre appareil ; les images ne sont envoy\xE9es dans le graphe Roam actuel qu\u2019apr\xE8s confirmation de l\u2019import.",
-  "No file selected.": "Aucun fichier s\xE9lectionn\xE9.",
-  "Reading contents, text, images, and links\u2026": "Lecture de la table des mati\xE8res, du texte, des images et des liens\u2026",
-  "Cannot read file: {0}": "Impossible de lire le fichier : {0}",
-  "Cannot read saved jobs: {0}": "Impossible de lire les t\xE2ches enregistr\xE9es : {0}",
-  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Ceci supprime {0} chapitres racines, {1} blocs et {2} pi\xE8ces jointes exclusives. Les pages et les commentaires natifs sont conserv\xE9s.",
-  " {0} shared or unverified attachments will be retained.": " {0} pi\xE8ces jointes partag\xE9es ou non v\xE9rifi\xE9es seront conserv\xE9es.",
-  "Remove images \xB7 {0}": "Retirer les images \xB7 {0}",
-  "Finding images and checking where their files are used\u2026": "Recherche des images et de l\u2019usage de leurs fichiers\u2026",
-  "Check failed: {0}": "\xC9chec de la v\xE9rification : {0}",
-  "Back to Book List": "Retour \xE0 la liste des livres",
-  "This book has no images left in its text.": "Ce livre ne contient plus d\u2019images dans son texte.",
-  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} blocs contiennent des images. Les images en sont retir\xE9es ({1} blocs ne contenant qu\u2019une image sont supprim\xE9s ; les blocs avec du texte, des enfants ou des r\xE9f\xE9rences sont conserv\xE9s). Le livre, son texte, ses titres, commentaires et surlignages restent.",
-  " ({0} shared, outside-referenced or unverified files are kept)": " ({0} fichiers partag\xE9s, r\xE9f\xE9renc\xE9s ailleurs ou non v\xE9rifi\xE9s sont conserv\xE9s)",
-  " Also delete {0} uploaded image files used only by this book{1}.": " Supprimer aussi {0} fichiers image envoy\xE9s et utilis\xE9s uniquement par ce livre{1}.",
-  "Preview the first changes": "Aper\xE7u des premi\xE8res modifications",
-  "This cannot be undone: deleted image files are gone from Roam storage.": "Action irr\xE9versible : les fichiers image supprim\xE9s disparaissent du stockage Roam.",
-  "Cancel": "Annuler",
-  "Remove Images": "Retirer les images",
-  "Remove images from {0}? The book itself is kept.": "Retirer les images de {0} ? Le livre lui-m\xEAme est conserv\xE9.",
-  " {0} blocks changed since the preview and were skipped.": " {0} blocs modifi\xE9s depuis l\u2019aper\xE7u ont \xE9t\xE9 ignor\xE9s.",
-  " {0} files could not be deleted and remain listed.": " {0} fichiers n\u2019ont pas pu \xEAtre supprim\xE9s et restent list\xE9s.",
-  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Images retir\xE9es de {0} blocs ({1} blocs image seule supprim\xE9s) et {2} fichiers supprim\xE9s.{3}{4}",
-  "Image removal failed: {0}": "\xC9chec du retrait des images : {0}",
-  "Delete {0}": "Supprimer {0}",
-  "Checking attachment references in other pages and books\u2026": "V\xE9rification des r\xE9f\xE9rences aux pi\xE8ces jointes dans les autres pages et livres\u2026",
-  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "Pages concern\xE9es : {0}. Seuls les chapitres confirm\xE9s du livre seront supprim\xE9s ; ces pages restent.",
-  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} blocs hors du livre font r\xE9f\xE9rence \xE0 son contenu (y compris peut-\xEAtre des commentaires natifs). Ces r\xE9f\xE9rences peuvent se casser apr\xE8s la suppression ; les commentaires et notes ind\xE9pendantes restent.",
-  "Reference checking failed. Attachments will be retained.": "\xC9chec de la v\xE9rification des r\xE9f\xE9rences. Les pi\xE8ces jointes seront conserv\xE9es.",
-  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Ce livre r\xE9cup\xE9r\xE9 n\u2019a pas de registre d\u2019envoi d\u2019origine. Les chapitres peuvent \xEAtre supprim\xE9s, mais les images d\xE9tect\xE9es seront conserv\xE9es.",
-  "Type the full book title to confirm: {0}": "Saisissez le titre complet du livre pour confirmer : {0}",
-  "Delete Permanently": "Supprimer d\xE9finitivement",
-  " {0} failed deletions are saved for retry.": " {0} suppressions \xE9chou\xE9es sont enregistr\xE9es pour un nouvel essai.",
-  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Chapitres du livre et {0} pi\xE8ces jointes exclusives supprim\xE9s. Pages et commentaires natifs conserv\xE9s. {1} pi\xE8ces jointes partag\xE9es ou non v\xE9rifi\xE9es conserv\xE9es.{2}",
-  "Deletion failed: {0}": "\xC9chec de la suppression : {0}",
-  "Recover Existing Book": "R\xE9cup\xE9rer un livre existant",
-  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Saisissez tout ou partie du titre de la page d\u2019origine du livre. La r\xE9cup\xE9ration enregistre le livre existant sans r\xE9importer, modifier le texte ni envoyer d\u2019images. Les pi\xE8ces jointes sans registre d\u2019envoi sont marqu\xE9es non v\xE9rifi\xE9es et conserv\xE9es lors d\u2019une suppression.",
-  "Page title or book keywords": "Titre de la page ou mots-cl\xE9s du livre",
-  "Find an existing book page": "Trouver une page de livre existante",
-  "Find Pages": "Chercher des pages",
-  "No matching pages. Try a shorter book title.": "Aucune page correspondante. Essayez un titre plus court.",
-  "Register This Book": "Enregistrer ce livre",
-  "Recovery failed: {0}": "\xC9chec de la r\xE9cup\xE9ration : {0}",
-  "Reading the graph's book library\u2026": "Lecture de la biblioth\xE8que du graphe\u2026",
-  "Cannot read the library: {0}. Existing books are unchanged.": "Impossible de lire la biblioth\xE8que : {0}. Les livres existants sont inchang\xE9s.",
-  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "La biblioth\xE8que est vide. Utilisez \xAB R\xE9cup\xE9rer un livre existant \xBB pour les livres absents apr\xE8s une mise \xE0 jour ; aucune r\xE9importation n\u2019est n\xE9cessaire.",
-  "Unknown author": "Auteur inconnu",
-  " \xB7 Cleanup pending": " \xB7 Nettoyage en attente",
-  " \xB7 Recovered (original attachments retained)": " \xB7 R\xE9cup\xE9r\xE9 (pi\xE8ces jointes d\u2019origine conserv\xE9es)",
-  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} pi\xE8ces jointes{2}",
-  "Clean Up Attachments": "Nettoyer les pi\xE8ces jointes",
-  "Delete Book": "Supprimer le livre",
-  "Delete this book's images but keep the book": "Supprimer les images de ce livre mais garder le livre",
-  "Open Reader": "Ouvrir le lecteur",
-  "The chapter structure has not been prepared.": "La structure des chapitres n\u2019a pas \xE9t\xE9 pr\xE9par\xE9e.",
-  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Un bloc import\xE9 a \xE9t\xE9 modifi\xE9 ou d\xE9plac\xE9. Reprise en pause pour pr\xE9server vos modifications. S\xE9lectionnez l\u2019EPUB pour l\u2019importer dans une page s\xE9par\xE9e.",
-  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Import du chapitre {0}/{1} \xB7 bloc {2}/{3}",
-  "Resolving internal link {0}/{1}": "R\xE9solution du lien interne {0}/{1}",
-  "{0} comment": "{0} commentaire",
-  "{0} comments": "{0} commentaires",
-  "{0} highlight": "{0} surlignage",
-  "{0} highlights": "{0} surlignages",
-  "{0} mark": "{0} marque",
-  "{0} marks": "{0} marques",
-  "Read": "Lu",
-  "Unvisited": "Non visit\xE9",
-  "Browsed": "Parcouru",
-  "Browsing": "En cours",
-  "highlight": "surlignage",
-  "comment": "commentaire",
-  "mark": "marque",
-  "question": "question",
-  "sidebar": "la barre lat\xE9rale",
-  "main window": "la fen\xEAtre principale",
-  "Heading repair": "R\xE9paration des titres",
-  "Link repair": "R\xE9paration des liens",
-  "Paragraph repair": "R\xE9paration des paragraphes",
-  "Archive removal": "Suppression des archives",
-  "Toggle Mark": "Marquer / d\xE9marquer",
-  "Toggle Question": "Question / pas question",
-  "Open / close Reading Desk": "Ouvrir / fermer Reading Desk",
-  "Continue reading": "Continuer la lecture",
-  "Open reading notes": "Ouvrir les notes de lecture",
-  "Contents": "Sommaire",
-  "Annotations": "Annotations",
-  "Notes": "Notes",
-  "Settings": "R\xE9glages",
-  "Theme default": "Th\xE8me par d\xE9faut",
-  "Margin dot + bold": "Point en marge + gras",
-  "Bookmark ribbon": "Ruban signet",
-  "Gold highlighter": "Surligneur dor\xE9",
-  "Pull quote": "Citation en exergue",
-  "Sticky note": "Note adh\xE9sive",
-  "Ink emphasis": "Encre appuy\xE9e",
-  "Fill the line": "Remplir la ligne",
-  "Theme line length": "Longueur de ligne du th\xE8me",
-  "Cards": "Cartes",
-  "Minimal": "Minimal",
-  "Coral": "Corail",
-  "Rose": "Rose",
-  "Mint": "Menthe",
-  "Sky": "Ciel",
-  "Lilac": "Lilas",
-  "Gold": "Or",
-  "Gray": "Gris",
-  "Blue": "Bleu",
-  "Green": "Vert",
-  "Purple": "Violet",
-  "Marker": "Surligneur",
-  "Underline": "Soulign\xE9",
-  "Oldest first": "Plus anciennes d\u2019abord",
-  "Newest first": "Plus r\xE9centes d\u2019abord",
-  "A tag at the end (#question)": "Un tag \xE0 la fin (#question)",
-  "An attribute at the start (Question::)": "Un attribut au d\xE9but (Question::)",
-  "The right sidebar": "La barre lat\xE9rale droite",
-  "The main window": "La fen\xEAtre principale",
-  "Auto (browser language)": "Auto (langue du navigateur)",
-  "Page": "Page",
-  "Book": "Livre",
-  "Earlier": "Plus ancien",
-  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "Aucun sommaire EPUB exploitable n\u2019a \xE9t\xE9 trouv\xE9. Le plan utilise les titres du texte ; v\xE9rifiez l\u2019aper\xE7u.",
-  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Cible de sommaire manquante pour {0} : {1}. Le texte non rattach\xE9 est conserv\xE9 \xE0 part.",
-  "TOC file is outside the EPUB reading order: {0}": "Le fichier de sommaire est hors de l\u2019ordre de lecture de l\u2019EPUB : {0}",
-  "Missing EPUB body file: {0}": "Fichier de texte EPUB manquant : {0}",
-  "Missing EPUB image: {0}": "Image EPUB manquante : {0}",
-  "Auto": "Auto",
-  "Interface language": "Langue de l\u2019interface",
-  "Interface language for Reading Desk (Auto follows your browser).": "Langue de l\u2019interface de Reading Desk (Auto suit votre navigateur)."
-};
-
-// src/locales/it.js
-var it_default = {
-  "Enter a destination page title.": "Inserisci il titolo della pagina di destinazione.",
-  "Select annotations to include first.": "Seleziona prima le annotazioni da includere.",
-  "Book repair is available for managed books only.": "La riparazione \xE8 disponibile solo per i libri gestiti.",
-  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "Riunisci {0} paragrafo/i spezzato/i (verificato sull\u2019EPUB originale)",
-  "Fix {0} block(s) with broken numbered links": "Correggi {0} blocco/i con collegamenti numerati rotti",
-  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "; {0} riferimento/i a vecchi frammenti (commenti, link alle note) passano al paragrafo riparato",
-  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "Rimuovi {0} archivio/i EPUB-READER:paragraph-fragments{1}",
-  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "Imposta {0} titolo/i di capitolo come H1/H2/H3 in base alla profondit\xE0",
-  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "Rimuovi {0} titolo/i che ripetono il titolo del capitolo (i paragrafi salgono, ID invariati)",
-  "Turn {0} other body heading(s) into bold text": "Trasforma {0} altro/i titolo/i del testo in grassetto",
-  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "Riporta {0} richiamo/i di nota alla fine del loro titolo (es. \xAB2.3 Titolo [3]\xBB); i paragrafi sotto il richiamo passano sotto il titolo",
-  "Turn {0} footnote marker heading(s) such as [3] into plain text": "Trasforma {0} titolo/i con richiamo di nota come [3] in testo semplice",
-  "Rejoining split paragraphs\u2026": "Riunione dei paragrafi spezzati\u2026",
-  "Fixing numbered links\u2026": "Correzione dei collegamenti numerati\u2026",
-  "Removing paragraph archives\u2026": "Rimozione degli archivi di paragrafi\u2026",
-  "Fixing heading levels\u2026": "Correzione dei livelli dei titoli\u2026",
-  "No book repair record was found.": "Nessun registro di riparazione trovato.",
-  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "La pagina originale non esiste pi\xF9. Apri la pagina attuale del libro, seleziona questo libro e collega i suoi capitoli. Non serve reimportare.",
-  "Select at least one existing book chapter.": "Seleziona almeno un capitolo esistente.",
-  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Conferma prima i capitoli di questo libro nel pannello di lettura. Non servono reimportazioni n\xE9 modifiche al testo.",
-  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "L\u2019ambito dei capitoli non pu\xF2 includere un\u2019intera pagina. Conferma di nuovo i capitoli; la pagina viene mantenuta.",
-  "The current page or block cannot be read.": "Impossibile leggere la pagina o il blocco attuale.",
-  "Could not parse {0}": "Impossibile analizzare {0}",
-  "Invalid EPUB: META-INF/container.xml is missing": "EPUB non valido: manca META-INF/container.xml",
-  "The EPUB manifest is missing": "Manca il manifest dell\u2019EPUB",
-  "No readable chapter content was found in the EPUB": "Nessun contenuto di capitolo leggibile nell\u2019EPUB",
-  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Questo blocco non esiste pi\xF9. Aggiorna l\u2019indice o le annotazioni; il libro non verr\xE0 ricreato.",
-  "Cannot find the page containing this block.": "Impossibile trovare la pagina che contiene questo blocco.",
-  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "La pagina \xE8 aperta, ma questo paragrafo non \xE8 ancora visualizzato. Espandi il suo capitolo e riprova.",
-  "Heading repair is available for managed books only.": "La riparazione dei titoli \xE8 disponibile solo per i libri gestiti.",
-  "This Roam version does not expose block.move. No headings were changed.": "Questa versione di Roam non espone block.move. Nessun titolo \xE8 stato modificato.",
-  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Usa \xABAnnulla l\u2019ultima riparazione\xBB per ripristinare le modifiche.",
-  "No heading repair backup was found.": "Nessun backup della riparazione dei titoli trovato.",
-  "Language": "Lingua",
-  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Lingua dell\u2019interfaccia (Auto segue il browser). Il pannello di lettura cambia subito; questa scheda delle impostazioni dopo aver ricaricato il plugin.",
-  "Import EPUB": "Importa EPUB",
-  "Choose, preview, and import an EPUB book": "Scegli, visualizza in anteprima e importa un libro EPUB",
-  "Open Importer": "Apri l\u2019importatore",
-  "Manage Imported Books": "Gestisci i libri importati",
-  "Manage imported books, recover existing pages, and safely clean up attachments": "Gestisci i libri importati, recupera pagine esistenti e ripulisci gli allegati in sicurezza",
-  "Manage Books": "Gestisci libri",
-  "Reading Desk": "Reading Desk",
-  "Open reading tools for books or ordinary pages": "Strumenti di lettura per libri o pagine normali",
-  "Open Reading Desk": "Apri Reading Desk",
-  "Automatic Browsing Progress": "Avanzamento di lettura automatico",
-  "Estimate foreground browsing per chapter; never infer comprehension": "Stima la lettura in primo piano per capitolo; non deduce mai la comprensione",
-  "Native Comment Side Notes": "Commenti nativi a margine",
-  "Show native comments in full beside the text throughout the graph": "Mostra i commenti nativi per intero accanto al testo in tutto il grafo",
-  "Highlight Colour": "Colore dell\u2019evidenziazione",
-  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Colore delle ^^evidenziazioni^^ native (Predefinito del tema mantiene il colore del tuo tema)",
-  "Question Tags": "Tag delle domande",
-  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Tag esistenti separati da virgole per le domande aperte. La scorciatoia \xABDomanda\xBB aggiunge #question.",
-  "Invalid library format. Stopped to protect existing data.": "Formato della biblioteca non valido. Interrotto per proteggere i dati esistenti.",
-  "Cannot read the library. Stopped to protect existing data.": "Impossibile leggere la biblioteca. Interrotto per proteggere i dati esistenti.",
-  "Unsupported library version or structure. Stopped to protect existing data.": "Versione o struttura della biblioteca non supportata. Interrotto per proteggere i dati esistenti.",
-  "The attachment ledger is incomplete. Stopped to protect attachments.": "Il registro degli allegati \xE8 incompleto. Interrotto per proteggere gli allegati.",
-  "Attachment ledger validation failed.": "Convalida del registro degli allegati non riuscita.",
-  "The book record has no stable identity.": "La scheda del libro non ha un\u2019identit\xE0 stabile.",
-  "Enter at least two characters of the page title.": "Inserisci almeno due caratteri del titolo della pagina.",
-  "The specified book page could not be found.": "La pagina del libro indicata non \xE8 stata trovata.",
-  "Native Roam comment": "Commento nativo di Roam",
-  "Open the native comment thread to edit": "Apri il thread del commento nativo per modificarlo",
-  "Open native comment thread": "Apri il thread del commento nativo",
-  "Delete this comment": "Elimina questo commento",
-  "Delete comment": "Elimina commento",
-  "\n\nIts replies are deleted too.": "\n\nAnche le sue risposte verranno eliminate.",
-  "Delete this comment?\n\n{0}{1}": "Eliminare questo commento?\n\n{0}{1}",
-  "Expand this section": "Espandi questa sezione",
-  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Usa un tag di domanda non vuoto, senza parentesi quadre, #, graffe o a capo (max 80 caratteri).",
-  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Metti prima il cursore in un paragrafo o in un commento nativo, poi attiva la domanda.",
-  "Unmark It": "Togli il segno",
-  "Mark It": "Segna",
-  "This Roam version does not expose block.move. No paragraphs were changed.": "Questa versione di Roam non espone block.move. Nessun paragrafo \xE8 stato modificato.",
-  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Gli ID dei frammenti originali sono mantenuti. Usa \xABAnnulla l\u2019ultima riparazione dei paragrafi\xBB per le modifiche interrotte.",
-  "Paragraph repair backup is missing.": "Backup della riparazione dei paragrafi mancante.",
-  "Archive cleanup backup is missing.": "Backup della pulizia degli archivi mancante.",
-  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "I metadati di lettura sono incompleti. Aggiorna e riprova; il libro originale non \xE8 toccato.",
-  "just now": "proprio ora",
-  "{0} min ago": "{0} min fa",
-  "{0} h ago": "{0} h fa",
-  "{0} d ago": "{0} g fa",
-  "All Books": "Tutti i libri",
-  "Selected block: {0}": "Blocco selezionato: {0}",
-  "Click a paragraph or native comment to select an action target.": "Fai clic su un paragrafo o un commento nativo per scegliere il destinatario dell\u2019azione.",
-  " \xB7 approx. {0}%": " \xB7 circa {0}%",
-  "Read \xB7 click to unmark": "Letto \xB7 clic per annullare",
-  "Mark as read": "Segna come letto",
-  "Could not collapse the previous chapter: {0}": "Impossibile comprimere il capitolo precedente: {0}",
-  "The page {0} does not exist yet.": "La pagina {0} non esiste ancora.",
-  "Open a book or page first.": "Apri prima un libro o una pagina.",
-  "Remove from All Books": "Rimuovi da Tutti i libri",
-  "Include in All Books": "Includi in Tutti i libri",
-  "Pages you include appear in the All Books scope with your books": "Le pagine incluse compaiono con i tuoi libri in \xABTutti i libri\xBB",
-  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Conferma quali capitoli esistenti appartengono a questo libro. Deseleziona le tue note. Vengono registrati solo gli ID dei blocchi; testo, commenti ed evidenziazioni esistenti restano invariati.",
-  "Confirm Book Scope": "Conferma i capitoli",
-  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Annotazioni e domande da tutti i libri gestiti e da tutte le pagine incluse. Scegli una fonte per aprirla.",
-  "{0} \xB7 {1} annotations": "{0} \xB7 {1} annotazioni",
-  "Last read \xB7 {0}": "Ultima lettura \xB7 {0}",
-  "Body": "Testo",
-  "Continue": "Continua",
-  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "Nessun indice in questa pagina. L\u2019indice si basa sui titoli H1, H2 e H3.",
-  "No chapters were found.": "Nessun capitolo trovato.",
-  "Collapse All Chapters": "Comprimi tutti i capitoli",
-  "Collapse Subdirectories": "Comprimi le sottosezioni",
-  "Expand Subdirectories": "Espandi le sottosezioni",
-  "Current section: {0}": "Sezione attuale: {0}",
-  "Toggle subdirectory: {0}": "Mostra/nascondi sottosezione: {0}",
-  "Resume": "Riprendi",
-  "Reset": "Azzera",
-  "Reset browsing progress for {0}? Text and annotations will be preserved.": "Azzerare l\u2019avanzamento di lettura di {0}? Testo e annotazioni restano.",
-  "Fold": "Comprimi",
-  "{0} chapter entries are missing. Use the action below to link their current location.": "Mancano {0} voci di capitolo. Usa l\u2019azione qui sotto per collegare la loro posizione attuale.",
-  "Link Current Page to This Book": "Collega la pagina attuale a questo libro",
-  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "L\u2019indice deriva dai titoli H1, H2 e H3. Fare clic su un titolo scorre soltanto; nulla nella pagina viene compresso o modificato.",
-  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "I capitoli non visitati non sono compiti. La copertura stima i paragrafi visualizzati, non le parole lette n\xE9 la comprensione. Usa \u2713 per segnare tu stesso un capitolo come letto.",
-  "Include in notes draft": "Includi nella bozza di note",
-  "This page": "Questa pagina",
-  "(Empty annotation)": "(Annotazione vuota)",
-  "Open Native Comment": "Apri il commento nativo",
-  "Open in Sidebar": "Apri nella barra laterale",
-  "Search annotations": "Cerca nelle annotazioni",
-  "All types": "Tutti i tipi",
-  "Highlights": "Evidenziazioni",
-  "Comments": "Commenti",
-  "Marks": "Segni",
-  "Questions": "Domande",
-  "All sources": "Tutte le fonti",
-  "All chapters": "Tutti i capitoli",
-  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} elementi \xB7 Fai clic per vederli nel contesto; Maiusc+clic per la barra laterale.",
-  "Load More": "Carica altro",
-  "Question:: \u2026": "Question:: \u2026",
-  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Domande raccoglie tutto ci\xF2 che \xE8 ancora aperto: TODO nativi, i tuoi tag di domanda e gli attributi di domanda (ad esempio {0}). Gli elementi DONE sono esclusi. Alt+Q ne attiva una sul blocco attuale; scegli lo stile tag o attributo nelle Impostazioni.",
-  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Annotazioni raccoglie evidenziazioni, commenti nativi, segni e domande. Spunta gli elementi per creare una pagina di note di lettura che rimanda agli originali.",
-  "Destination page for notes draft": "Pagina di destinazione della bozza di note",
-  "Create Notes Draft from Selection": "Crea una bozza di note dalla selezione",
-  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "Aggiunte {0} note con riferimento a {1}, collegate alla pagina di origine. Aperta in {2}.",
-  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "Ancora nessuna nota di lettura per {0}. In Annotazioni, spunta gli elementi e scegli \xABCrea una bozza di note\xBB; la pagina delle note ({1}) si apre nella barra laterale.",
-  "Create Notes Page": "Crea la pagina delle note",
-  "Open the notes page (Shift+click: sidebar)": "Apri la pagina delle note (Maiusc+clic: barra laterale)",
-  "Sidebar": "Barra laterale",
-  "No generated drafts on this page yet. Create one from the Annotations tab.": "Ancora nessuna bozza generata in questa pagina. Creane una dalla scheda Annotazioni.",
-  "Show in the book (Shift+click: sidebar)": "Mostra nel libro (Maiusc+clic: barra laterale)",
-  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} bozza/e \xB7 {3} nota/e",
-  "Open this draft (Shift+click: sidebar)": "Apri questa bozza (Maiusc+clic: barra laterale)",
-  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "La pagina delle note contiene anche {0} blocco/i scritto/i da te; apri la pagina per vederli.",
-  "Back to Settings": "Torna alle impostazioni",
-  "Repair This Book": "Ripara questo libro",
-  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "La riparazione \xE8 disponibile solo per i libri gestiti. Scegli un libro nel menu. Le pagine normali non vengono mai modificate automaticamente.",
-  "Nothing to repair in this book.": "Niente da riparare in questo libro.",
-  "This repair will:": "Questa riparazione:",
-  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} archivio/i restano perch\xE9 un vecchio frammento ha blocchi figli propri.",
-  "Preview the changes": "Anteprima delle modifiche",
-  "Nothing to change.": "Niente da modificare.",
-  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "Riparare {0}?\n\n{1}\n\nTutto viene salvato; un solo Annulla ripristina tutto.",
-  "{0} paragraphs": "{0} paragrafi",
-  "{0} link blocks": "{0} blocchi di collegamenti",
-  "{0} archives ({1} references moved)": "{0} archivi ({1} riferimenti spostati)",
-  "{0} headings": "{0} titoli",
-  "nothing needed": "niente da fare",
-  " {0} block(s) changed since the preview were skipped; run the repair again.": " {0} blocco/i modificato/i dopo l\u2019anteprima sono stati saltati; esegui di nuovo la riparazione.",
-  "Repaired: {0}.{1} Undo is available.": "Riparato: {0}.{1} \xC8 possibile annullare.",
-  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Corregge in un solo passaggio tutto ci\xF2 che si pu\xF2 correggere in sicurezza: livelli dei titoli per l\u2019indice, richiami di nota mostrati come titoli, collegamenti numerati rotti e archivi EPUB-READER:paragraph-fragments rimasti. Testo, commenti ed evidenziazioni restano.",
-  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Facoltativo: scegli l\u2019EPUB originale per riunire anche i paragrafi spezzati da vecchie importazioni (letto in locale, nulla viene caricato)",
-  "Original EPUB for paragraph repair": "EPUB originale per la riparazione dei paragrafi",
-  "Checking the original EPUB\u2026": "Verifica dell\u2019EPUB originale\u2026",
-  "Undo Last Repair": "Annulla l\u2019ultima riparazione",
-  "Undo the last book repair? Blocks edited since then are left as they are.": "Annullare l\u2019ultima riparazione del libro? I blocchi modificati da allora restano come sono.",
-  "Restored {0} items; skipped {1} edited items.": "Ripristinati {0} elementi; saltati {1} elementi modificati.",
-  "Undo a repair made with an earlier version": "Annulla una riparazione fatta con una versione precedente",
-  "Undo {0}": "Annulla: {0}",
-  "Restored {0} items; skipped {1}.": "Ripristinati {0} elementi; saltati {1}.",
-  "its shortcut (not set)": "la sua scorciatoia (non impostata)",
-  "Press keys\u2026": "Premi i tasti\u2026",
-  "{0}: shortcut cleared.": "{0}: scorciatoia rimossa.",
-  "{0} is already used by {1}.": "{0} \xE8 gi\xE0 usata da {1}.",
-  "Click, then press the new shortcut": "Fai clic, poi premi la nuova scorciatoia",
-  "Reset to {0}": "Ripristina {0}",
-  "Library": "Biblioteca",
-  "Reading": "Lettura",
-  "Collapse the previous chapter when navigating": "Comprimi il capitolo precedente durante la navigazione",
-  "Track browsing automatically (estimated, not comprehension)": "Registra la lettura automaticamente (stima, non comprensione)",
-  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "L\u2019avanzamento automatico riguarda solo i libri gestiti. Comprimere le sottosezioni del pannello non modifica il libro.",
-  "Text width": "Larghezza del testo",
-  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Riempi la riga: i paragrafi arrivano fino alla fine della loro riga, senza fascia vuota prima del conteggio dei riferimenti sugli schermi larghi. Le note a margine stanno fuori dal testo, come in Folio.",
-  "Native Comments": "Commenti nativi",
-  "Native comment side notes (graph-wide)": "Commenti nativi a margine (tutto il grafo)",
-  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Le note sono mostrate per intero e impilate accanto al testo. Fai clic su una nota o sul suo paragrafo per allinearli; \u2197 apre il thread nativo per modificarlo.",
-  "Side note style": "Stile delle note a margine",
-  "Side note colour": "Colore delle note a margine",
-  "Side note order": "Ordine delle note a margine",
-  "Highlight colour": "Colore dell\u2019evidenziazione",
-  "Highlight style": "Stile dell\u2019evidenziazione",
-  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "Vale ovunque per le ^^evidenziazioni^^ native. Predefinito del tema mantiene il colore del tuo tema.",
-  "Mark style": "Stile del segno",
-  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} o il menu del blocco attiva #mark; il tag resta nel testo ed \xE8 nascosto durante la lettura.",
-  "Recognized question tags (comma-separated)": "Tag delle domande riconosciuti (separati da virgole)",
-  "Recognized question tags": "Tag delle domande riconosciuti",
-  "Quick question tag ({0})": "Tag di domanda rapido ({0})",
-  "Quick question tag": "Tag di domanda rapido",
-  "Toggle Question inserts": "\xABDomanda\xBB inserisce",
-  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Inserisci i nomi dei tag senza #. Il tag di domanda rapido \xE8 sempre riconosciuto, anche nei commenti nativi. \xABSegna\xBB mantiene #mark per restare compatibile con il tuo stile originale.",
-  "Save Question Settings": "Salva le impostazioni delle domande",
-  "Question settings saved. Toggle Question uses your quick question tag.": "Impostazioni delle domande salvate. \xABDomanda\xBB usa il tuo tag di domanda rapido.",
-  "Question settings are active for this session; settings storage could not sync.": "Le impostazioni delle domande sono attive per questa sessione; non \xE8 stato possibile sincronizzarle.",
-  "Keyboard Shortcuts": "Scorciatoie da tastiera",
-  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Fai clic su una scorciatoia, poi premi i nuovi tasti (con Ctrl, Cmd/\u2318 o Alt/\u2325). Esc annulla, Backspace cancella. Reading Desk gestisce questi tasti prima di Roam, quindi Option+M non scrive pi\xF9 \xAB\xB5\xBB. Trascina la barra del titolo per spostare il pannello. Maiusc+clic apre il contenuto nella barra laterale.",
-  "Reading Notes": "Note di lettura",
-  "Open new reading notes in": "Apri le nuove note di lettura in",
-  "Maintenance": "Manutenzione",
-  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Un solo passaggio per i libri importati: livelli dei titoli, richiami di nota come titoli, collegamenti rotti e archivi di paragrafi rimasti (e, se vuoi, paragrafi spezzati). Mostra prima cosa cambier\xE0; un solo Annulla ripristina tutto.",
-  "Click a paragraph or native comment first, then use this action.": "Fai prima clic su un paragrafo o un commento nativo, poi usa questa azione.",
-  "Open a page or book, then click Refresh.": "Apri una pagina o un libro, poi fai clic su Aggiorna.",
-  "Current Page": "Pagina attuale",
-  "Books": "Libri",
-  "Included pages": "Pagine incluse",
-  "All Books \xB7 {0} sources \xB7 {1} annotations": "Tutti i libri \xB7 {0} fonti \xB7 {1} annotazioni",
-  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "Pagina \xB7 {0} titoli \xB7 {1} annotazioni \xB7 l\u2019avanzamento \xE8 registrato solo per i libri",
-  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} blocchi \xB7 {2} annotazioni \xB7 {3} pagine",
-  "Close": "Chiudi",
-  "Drag to move Reading Desk": "Trascina per spostare Reading Desk",
-  "Reading scope": "Ambito di lettura",
-  "Refresh": "Aggiorna",
-  "Loading\u2026": "Caricamento\u2026",
-  "Text or comments changed. Click Refresh to update without interrupting your work.": "Testo o commenti sono cambiati. Fai clic su Aggiorna per aggiornare senza interrompere il lavoro.",
-  "No repair backup was found.": "Nessun backup di riparazione trovato.",
-  "Image conversion failed": "Conversione dell\u2019immagine non riuscita",
-  "Cannot read image: {0}": "Impossibile leggere l\u2019immagine: {0}",
-  "Processing image {0}/{1}": "Elaborazione immagine {0}/{1}",
-  "Image upload returned no valid URL: {0}": "Il caricamento dell\u2019immagine non ha restituito un URL valido: {0}",
-  "The imported page was removed. Select the EPUB again to import.": "La pagina importata \xE8 stata rimossa. Seleziona di nuovo l\u2019EPUB per importarlo.",
-  "A book is already being imported. Wait for it to finish.": "\xC8 gi\xE0 in corso l\u2019importazione di un libro. Attendi che finisca.",
-  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Questo vecchio processo ha corrispondenze di capitolo errate. Seleziona di nuovo l\u2019EPUB per creare una nuova importazione.",
-  "Import complete": "Importazione completata",
-  "This book's record has changed or was removed. Reopen the book list.": "La scheda di questo libro \xE8 cambiata o \xE8 stata rimossa. Riapri l\u2019elenco dei libri.",
-  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Un archivio di commenti nativi si trova all\u2019interno dei capitoli. L\u2019eliminazione \xE8 bloccata per preservare i commenti. Sposta prima l\u2019archivio dei commenti nella pagina, fuori dai capitoli del libro.",
-  "Reference check failed; retained": "Verifica dei riferimenti non riuscita; mantenuto",
-  "Original upload ownership is unknown; retained": "Origine del caricamento sconosciuta; mantenuto",
-  "Shared with another imported book": "Condiviso con un altro libro importato",
-  "{0} references outside this book": "{0} riferimenti fuori da questo libro",
-  "Used only by this book": "Usato solo da questo libro",
-  "Chapter scope changed. Review the deletion preview again.": "I capitoli sono cambiati. Controlla di nuovo l\u2019anteprima di eliminazione.",
-  "New content was added inside the book scope. Deletion stopped; review the preview again.": "\xC8 stato aggiunto contenuto nel libro. Eliminazione interrotta; controlla di nuovo l\u2019anteprima.",
-  "Deleting book chapters (preserving pages and native comments)\u2026": "Eliminazione dei capitoli del libro (pagine e commenti nativi mantenuti)\u2026",
-  "Deleting attachment {0}/{1}\u2026": "Eliminazione allegato {0}/{1}\u2026",
-  "This book is waiting for attachment cleanup. Finish that first.": "Questo libro \xE8 in attesa della pulizia degli allegati. Completala prima.",
-  "Not uploaded by this import; file retained": "Non caricato da questa importazione; file mantenuto",
-  "Original upload ownership is unknown; file retained": "Origine del caricamento sconosciuta; file mantenuto",
-  "Reference check failed; file retained": "Verifica dei riferimenti non riuscita; file mantenuto",
-  "Removing images from blocks {0}/{1}\u2026": "Rimozione delle immagini dai blocchi {0}/{1}\u2026",
-  "Deleting image file {0}/{1}\u2026": "Eliminazione file immagine {0}/{1}\u2026",
-  "Not set": "Non impostata",
-  "Could not save local progress": "Impossibile salvare l\u2019avanzamento locale",
-  "Local progress save was aborted": "Il salvataggio locale dell\u2019avanzamento \xE8 stato interrotto",
-  "The local EPUB cache is missing. Select the original file again.": "Manca la cache EPUB locale. Seleziona di nuovo il file originale.",
-  "Preparing\u2026": "Preparazione\u2026",
-  "Processing\u2026": "Elaborazione\u2026",
-  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} voci di indice \xB7 {1} nodi di primo livello \xB7 circa {2} blocchi \xB7 {3} immagini \xB7 {4} collegamenti interni",
-  " \xB7 {0} formulas": " \xB7 {0} formule",
-  "Resume importing {0}": "Riprendi l\u2019importazione di {0}",
-  "Import {0}": "Importa {0}",
-  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Tieni Roam aperto durante l\u2019importazione. L\u2019avanzamento viene salvato, cos\xEC un\u2019importazione interrotta pu\xF2 riprendere.",
-  "Created {0}. Images and links are in their original positions.": "Creato {0}. Immagini e collegamenti sono nelle loro posizioni originali.",
-  "Import paused: {0}. Progress was saved; you can resume later.": "Importazione in pausa: {0}. L\u2019avanzamento \xE8 salvato; puoi riprendere pi\xF9 tardi.",
-  "Retry / Resume": "Riprova / Riprendi",
-  "Book Preview": "Anteprima del libro",
-  "Author: {0}": "Autore: {0}",
-  "Roam page title": "Titolo della pagina Roam",
-  "Original EPUB TOC ({0}, full hierarchy)": "Indice EPUB originale ({0}, gerarchia completa)",
-  "Outline generated from body headings": "Struttura generata dai titoli del testo",
-  "; {0} need review (source retained)": "; {0} da controllare (sorgente mantenuta)",
-  "Formulas: {0} converted{1}": "Formule: {0} convertite{1}",
-  "Formula {0} \xB7 {1}": "Formula {0} \xB7 {1}",
-  "Preview text and image order": "Anteprima dell\u2019ordine di testo e immagini",
-  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Le immagini vengono caricate nelle loro posizioni originali. I collegamenti esterni restano; quelli interni diventano riferimenti a blocchi Roam.",
-  "Start Import": "Avvia importazione",
-  "Unfinished Imports": "Importazioni non completate",
-  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Questo processo usa un vecchio analizzatore. Seleziona di nuovo l\u2019EPUB per creare un\u2019importazione corretta.",
-  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Questo vecchio processo non ha verificato le formule. Seleziona di nuovo l\u2019EPUB se il libro contiene formule.",
-  "Discard Job": "Scarta il processo",
-  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Esiste gi\xE0 una pagina Roam. Usa \xABGestisci i libri importati\xBB per rimuovere questa importazione.",
-  "EPUB Importer": "Importatore EPUB",
-  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "Scegli un EPUB. L\u2019analisi resta sul tuo dispositivo; le immagini vengono caricate nel grafo Roam attuale solo dopo che confermi l\u2019importazione.",
-  "No file selected.": "Nessun file selezionato.",
-  "Reading contents, text, images, and links\u2026": "Lettura di indice, testo, immagini e collegamenti\u2026",
-  "Cannot read file: {0}": "Impossibile leggere il file: {0}",
-  "Cannot read saved jobs: {0}": "Impossibile leggere i processi salvati: {0}",
-  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Verranno eliminati {0} capitoli radice, {1} blocchi e {2} allegati esclusivi. Pagine e commenti nativi restano.",
-  " {0} shared or unverified attachments will be retained.": " {0} allegati condivisi o non verificati verranno mantenuti.",
-  "Remove images \xB7 {0}": "Rimuovi immagini \xB7 {0}",
-  "Finding images and checking where their files are used\u2026": "Ricerca delle immagini e di dove sono usati i loro file\u2026",
-  "Check failed: {0}": "Verifica non riuscita: {0}",
-  "Back to Book List": "Torna all\u2019elenco dei libri",
-  "This book has no images left in its text.": "Questo libro non ha pi\xF9 immagini nel testo.",
-  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} blocchi contengono immagini. Le immagini vengono tolte ({1} blocchi con sola immagine vengono eliminati; quelli con testo, figli o riferimenti restano). Il libro, il testo, i titoli, i commenti e le evidenziazioni restano.",
-  " ({0} shared, outside-referenced or unverified files are kept)": " ({0} file condivisi, citati altrove o non verificati vengono mantenuti)",
-  " Also delete {0} uploaded image files used only by this book{1}.": " Elimina anche {0} file immagine caricati e usati solo da questo libro{1}.",
-  "Preview the first changes": "Anteprima delle prime modifiche",
-  "This cannot be undone: deleted image files are gone from Roam storage.": "Operazione irreversibile: i file immagine eliminati spariscono dall\u2019archivio di Roam.",
-  "Cancel": "Annulla",
-  "Remove Images": "Rimuovi immagini",
-  "Remove images from {0}? The book itself is kept.": "Rimuovere le immagini da {0}? Il libro resta.",
-  " {0} blocks changed since the preview and were skipped.": " {0} blocchi modificati dopo l\u2019anteprima sono stati saltati.",
-  " {0} files could not be deleted and remain listed.": " {0} file non sono stati eliminati e restano nell\u2019elenco.",
-  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Immagini rimosse da {0} blocchi ({1} blocchi con sola immagine eliminati) e {2} file eliminati.{3}{4}",
-  "Image removal failed: {0}": "Rimozione delle immagini non riuscita: {0}",
-  "Delete {0}": "Elimina {0}",
-  "Checking attachment references in other pages and books\u2026": "Verifica dei riferimenti agli allegati in altre pagine e libri\u2026",
-  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "Pagine interessate: {0}. Vengono eliminati solo i capitoli confermati del libro; queste pagine restano.",
-  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} blocchi fuori dal libro fanno riferimento al suo contenuto (forse anche commenti nativi). Questi riferimenti possono rompersi dopo l\u2019eliminazione; commenti e note indipendenti restano.",
-  "Reference checking failed. Attachments will be retained.": "Verifica dei riferimenti non riuscita. Gli allegati verranno mantenuti.",
-  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Questo libro recuperato non ha un registro di caricamento originale. I capitoli possono essere eliminati, ma le immagini rilevate verranno mantenute.",
-  "Type the full book title to confirm: {0}": "Digita il titolo completo del libro per confermare: {0}",
-  "Delete Permanently": "Elimina definitivamente",
-  " {0} failed deletions are saved for retry.": " {0} eliminazioni non riuscite sono salvate per un nuovo tentativo.",
-  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Eliminati i capitoli del libro e {0} allegati esclusivi. Pagine e commenti nativi restano. Mantenuti {1} allegati condivisi o non verificati.{2}",
-  "Deletion failed: {0}": "Eliminazione non riuscita: {0}",
-  "Recover Existing Book": "Recupera un libro esistente",
-  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Inserisci tutto o parte del titolo della pagina originale del libro. Il recupero registra il libro esistente senza reimportare, modificare il testo o caricare immagini. Gli allegati senza registro di caricamento sono segnati come non verificati e mantenuti in caso di eliminazione.",
-  "Page title or book keywords": "Titolo della pagina o parole chiave del libro",
-  "Find an existing book page": "Trova una pagina di libro esistente",
-  "Find Pages": "Cerca pagine",
-  "No matching pages. Try a shorter book title.": "Nessuna pagina corrispondente. Prova con un titolo pi\xF9 breve.",
-  "Register This Book": "Registra questo libro",
-  "Recovery failed: {0}": "Recupero non riuscito: {0}",
-  "Reading the graph's book library\u2026": "Lettura della biblioteca del grafo\u2026",
-  "Cannot read the library: {0}. Existing books are unchanged.": "Impossibile leggere la biblioteca: {0}. I libri esistenti restano invariati.",
-  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "La biblioteca \xE8 vuota. Usa \xABRecupera un libro esistente\xBB per i libri mancanti dopo un aggiornamento; non serve reimportare.",
-  "Unknown author": "Autore sconosciuto",
-  " \xB7 Cleanup pending": " \xB7 Pulizia in sospeso",
-  " \xB7 Recovered (original attachments retained)": " \xB7 Recuperato (allegati originali mantenuti)",
-  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} allegati{2}",
-  "Clean Up Attachments": "Ripulisci gli allegati",
-  "Delete Book": "Elimina libro",
-  "Delete this book's images but keep the book": "Elimina le immagini di questo libro ma mantieni il libro",
-  "Open Reader": "Apri il lettore",
-  "The chapter structure has not been prepared.": "La struttura dei capitoli non \xE8 stata preparata.",
-  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Un blocco importato \xE8 stato modificato o spostato. Ripresa in pausa per preservare le tue modifiche. Seleziona l\u2019EPUB per importarlo in una pagina separata.",
-  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Importazione capitolo {0}/{1} \xB7 blocco {2}/{3}",
-  "Resolving internal link {0}/{1}": "Risoluzione collegamento interno {0}/{1}",
-  "{0} comment": "{0} commento",
-  "{0} comments": "{0} commenti",
-  "{0} highlight": "{0} evidenziazione",
-  "{0} highlights": "{0} evidenziazioni",
-  "{0} mark": "{0} segno",
-  "{0} marks": "{0} segni",
-  "Read": "Letto",
-  "Unvisited": "Non visitato",
-  "Browsed": "Sfogliato",
-  "Browsing": "In lettura",
-  "highlight": "evidenziazione",
-  "comment": "commento",
-  "mark": "segno",
-  "question": "domanda",
-  "sidebar": "la barra laterale",
-  "main window": "la finestra principale",
-  "Heading repair": "Riparazione dei titoli",
-  "Link repair": "Riparazione dei collegamenti",
-  "Paragraph repair": "Riparazione dei paragrafi",
-  "Archive removal": "Rimozione degli archivi",
-  "Toggle Mark": "Segna / togli segno",
-  "Toggle Question": "Domanda / non domanda",
-  "Open / close Reading Desk": "Apri / chiudi Reading Desk",
-  "Continue reading": "Continua a leggere",
-  "Open reading notes": "Apri le note di lettura",
-  "Contents": "Indice",
-  "Annotations": "Annotazioni",
-  "Notes": "Note",
-  "Settings": "Impostazioni",
-  "Theme default": "Predefinito del tema",
-  "Margin dot + bold": "Punto a margine + grassetto",
-  "Bookmark ribbon": "Nastro segnalibro",
-  "Gold highlighter": "Evidenziatore dorato",
-  "Pull quote": "Citazione in evidenza",
-  "Sticky note": "Post-it",
-  "Ink emphasis": "Inchiostro marcato",
-  "Fill the line": "Riempi la riga",
-  "Theme line length": "Lunghezza di riga del tema",
-  "Cards": "Schede",
-  "Minimal": "Minimale",
-  "Coral": "Corallo",
-  "Rose": "Rosa",
-  "Mint": "Menta",
-  "Sky": "Cielo",
-  "Lilac": "Lilla",
-  "Gold": "Oro",
-  "Gray": "Grigio",
-  "Blue": "Blu",
-  "Green": "Verde",
-  "Purple": "Viola",
-  "Marker": "Evidenziatore",
-  "Underline": "Sottolineato",
-  "Oldest first": "Prima le pi\xF9 vecchie",
-  "Newest first": "Prima le pi\xF9 recenti",
-  "A tag at the end (#question)": "Un tag alla fine (#question)",
-  "An attribute at the start (Question::)": "Un attributo all\u2019inizio (Question::)",
-  "The right sidebar": "La barra laterale destra",
-  "The main window": "La finestra principale",
-  "Auto (browser language)": "Auto (lingua del browser)",
-  "Page": "Pagina",
-  "Book": "Libro",
-  "Earlier": "In precedenza",
-  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "Nessun indice EPUB utilizzabile trovato. La struttura usa i titoli del testo; controlla l\u2019anteprima.",
-  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Destinazione dell\u2019indice mancante per {0}: {1}. Il testo non abbinato viene conservato a parte.",
-  "TOC file is outside the EPUB reading order: {0}": "Il file dell\u2019indice \xE8 fuori dall\u2019ordine di lettura dell\u2019EPUB: {0}",
-  "Missing EPUB body file: {0}": "File di testo EPUB mancante: {0}",
-  "Missing EPUB image: {0}": "Immagine EPUB mancante: {0}",
-  "Auto": "Auto",
-  "Interface language": "Lingua dell\u2019interfaccia",
-  "Interface language for Reading Desk (Auto follows your browser).": "Lingua dell\u2019interfaccia di Reading Desk (Auto segue il browser)."
-};
-
-// src/locales/de.js
-var de_default = {
-  "Enter a destination page title.": "Gib den Titel der Zielseite ein.",
-  "Select annotations to include first.": "W\xE4hle zuerst die Anmerkungen aus, die aufgenommen werden sollen.",
-  "Book repair is available for managed books only.": "Die Reparatur ist nur f\xFCr verwaltete B\xFCcher verf\xFCgbar.",
-  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "{0} getrennte(n) Absatz/Abs\xE4tze zusammenf\xFCgen (mit dem Original-EPUB gepr\xFCft)",
-  "Fix {0} block(s) with broken numbered links": "{0} Block/Bl\xF6cke mit defekten nummerierten Links korrigieren",
-  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "; {0} Verweis(e) auf alte Fragmente (Kommentare, Fu\xDFnotenlinks) zeigen auf den reparierten Absatz",
-  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "{0} Archiv(e) EPUB-READER:paragraph-fragments entfernen{1}",
-  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "{0} Kapitel\xFCberschrift(en) je nach Tiefe auf H1/H2/H3 setzen",
-  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "{0} \xDCberschrift(en) entfernen, die den Kapiteltitel wiederholen (Abs\xE4tze r\xFCcken nach oben, IDs bleiben)",
-  "Turn {0} other body heading(s) into bold text": "{0} weitere \xDCberschrift(en) im Text in Fettdruck umwandeln",
-  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "{0} Fu\xDFnotenzeichen wieder ans Ende ihrer \xDCberschrift setzen (z. B. \u201E2.3 Titel [3]\u201C); die Abs\xE4tze unter dem Zeichen wandern unter die \xDCberschrift",
-  "Turn {0} footnote marker heading(s) such as [3] into plain text": "{0} Fu\xDFnotenzeichen-\xDCberschrift(en) wie [3] in normalen Text umwandeln",
-  "Rejoining split paragraphs\u2026": "Getrennte Abs\xE4tze werden zusammengef\xFCgt\u2026",
-  "Fixing numbered links\u2026": "Nummerierte Links werden korrigiert\u2026",
-  "Removing paragraph archives\u2026": "Absatzarchive werden entfernt\u2026",
-  "Fixing heading levels\u2026": "\xDCberschriftenebenen werden korrigiert\u2026",
-  "No book repair record was found.": "Kein Reparaturprotokoll gefunden.",
-  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "Die urspr\xFCngliche Seite existiert nicht mehr. \xD6ffne die aktuelle Seite des Buchs, w\xE4hle dieses Buch aus und verkn\xFCpfe seine Kapitel. Ein erneuter Import ist nicht n\xF6tig.",
-  "Select at least one existing book chapter.": "W\xE4hle mindestens ein vorhandenes Kapitel aus.",
-  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Best\xE4tige zuerst die Kapitel dieses Buchs im Lesepanel. Kein erneuter Import und keine Text\xE4nderungen n\xF6tig.",
-  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "Der Kapitelumfang darf keine ganze Seite enthalten. Best\xE4tige die Kapitel erneut; die Seite bleibt erhalten.",
-  "The current page or block cannot be read.": "Die aktuelle Seite oder der aktuelle Block kann nicht gelesen werden.",
-  "Could not parse {0}": "{0} konnte nicht gelesen werden",
-  "Invalid EPUB: META-INF/container.xml is missing": "Ung\xFCltiges EPUB: META-INF/container.xml fehlt",
-  "The EPUB manifest is missing": "Das EPUB-Manifest fehlt",
-  "No readable chapter content was found in the EPUB": "Im EPUB wurde kein lesbarer Kapitelinhalt gefunden",
-  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Dieser Block existiert nicht mehr. Aktualisiere Inhalt oder Anmerkungen; das Buch wird nicht neu erstellt.",
-  "Cannot find the page containing this block.": "Die Seite mit diesem Block wurde nicht gefunden.",
-  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "Die Seite ist ge\xF6ffnet, aber dieser Absatz wird noch nicht angezeigt. Klappe sein Kapitel auf und versuche es erneut.",
-  "Heading repair is available for managed books only.": "Die \xDCberschriftenreparatur ist nur f\xFCr verwaltete B\xFCcher verf\xFCgbar.",
-  "This Roam version does not expose block.move. No headings were changed.": "Diese Roam-Version stellt block.move nicht bereit. Es wurden keine \xDCberschriften ge\xE4ndert.",
-  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Mit \u201ELetzte Reparatur r\xFCckg\xE4ngig machen\u201C stellst du die \xC4nderungen wieder her.",
-  "No heading repair backup was found.": "Keine Sicherung der \xDCberschriftenreparatur gefunden.",
-  "Language": "Sprache",
-  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Sprache der Oberfl\xE4che (Auto folgt deinem Browser). Das Lesepanel wechselt sofort, dieser Einstellungs-Tab nach dem Neuladen des Plugins.",
-  "Import EPUB": "EPUB importieren",
-  "Choose, preview, and import an EPUB book": "Ein EPUB-Buch ausw\xE4hlen, ansehen und importieren",
-  "Open Importer": "Importer \xF6ffnen",
-  "Manage Imported Books": "Importierte B\xFCcher verwalten",
-  "Manage imported books, recover existing pages, and safely clean up attachments": "Importierte B\xFCcher verwalten, vorhandene Seiten wiederherstellen und Anh\xE4nge sicher aufr\xE4umen",
-  "Manage Books": "B\xFCcher verwalten",
-  "Reading Desk": "Reading Desk",
-  "Open reading tools for books or ordinary pages": "Lesewerkzeuge f\xFCr B\xFCcher oder normale Seiten",
-  "Open Reading Desk": "Reading Desk \xF6ffnen",
-  "Automatic Browsing Progress": "Automatischer Lesefortschritt",
-  "Estimate foreground browsing per chapter; never infer comprehension": "Sch\xE4tzt das Lesen im Vordergrund pro Kapitel; leitet nie Verst\xE4ndnis ab",
-  "Native Comment Side Notes": "Native Kommentare am Rand",
-  "Show native comments in full beside the text throughout the graph": "Native Kommentare im ganzen Graphen vollst\xE4ndig neben dem Text anzeigen",
-  "Highlight Colour": "Hervorhebungsfarbe",
-  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Farbe f\xFCr native ^^Hervorhebungen^^ (Theme-Standard beh\xE4lt die Farbe deines Themes)",
-  "Question Tags": "Frage-Tags",
-  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Vorhandene Tags, durch Kommas getrennt, f\xFCr offene Fragen. Das K\xFCrzel \u201EFrage\u201C f\xFCgt #question hinzu.",
-  "Invalid library format. Stopped to protect existing data.": "Ung\xFCltiges Bibliotheksformat. Abgebrochen, um vorhandene Daten zu sch\xFCtzen.",
-  "Cannot read the library. Stopped to protect existing data.": "Die Bibliothek kann nicht gelesen werden. Abgebrochen, um vorhandene Daten zu sch\xFCtzen.",
-  "Unsupported library version or structure. Stopped to protect existing data.": "Nicht unterst\xFCtzte Bibliotheksversion oder -struktur. Abgebrochen, um vorhandene Daten zu sch\xFCtzen.",
-  "The attachment ledger is incomplete. Stopped to protect attachments.": "Das Anhangsverzeichnis ist unvollst\xE4ndig. Abgebrochen, um Anh\xE4nge zu sch\xFCtzen.",
-  "Attachment ledger validation failed.": "Pr\xFCfung des Anhangsverzeichnisses fehlgeschlagen.",
-  "The book record has no stable identity.": "Der Bucheintrag hat keine stabile Identit\xE4t.",
-  "Enter at least two characters of the page title.": "Gib mindestens zwei Zeichen des Seitentitels ein.",
-  "The specified book page could not be found.": "Die angegebene Buchseite wurde nicht gefunden.",
-  "Native Roam comment": "Nativer Roam-Kommentar",
-  "Open the native comment thread to edit": "Nativen Kommentar-Thread zum Bearbeiten \xF6ffnen",
-  "Open native comment thread": "Nativen Kommentar-Thread \xF6ffnen",
-  "Delete this comment": "Diesen Kommentar l\xF6schen",
-  "Delete comment": "Kommentar l\xF6schen",
-  "\n\nIts replies are deleted too.": "\n\nSeine Antworten werden ebenfalls gel\xF6scht.",
-  "Delete this comment?\n\n{0}{1}": "Diesen Kommentar l\xF6schen?\n\n{0}{1}",
-  "Expand this section": "Diesen Abschnitt aufklappen",
-  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Verwende einen nicht leeren Frage-Tag ohne eckige Klammern, #, geschweifte Klammern oder Zeilenumbr\xFCche (h\xF6chstens 80 Zeichen).",
-  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Setze zuerst den Cursor in einen Absatz oder nativen Kommentar und schalte dann die Frage um.",
-  "Unmark It": "Markierung entfernen",
-  "Mark It": "Markieren",
-  "This Roam version does not expose block.move. No paragraphs were changed.": "Diese Roam-Version stellt block.move nicht bereit. Es wurden keine Abs\xE4tze ge\xE4ndert.",
-  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Die IDs der Originalfragmente bleiben erhalten. F\xFCr unterbrochene \xC4nderungen \u201ELetzte Absatzreparatur r\xFCckg\xE4ngig machen\u201C verwenden.",
-  "Paragraph repair backup is missing.": "Sicherung der Absatzreparatur fehlt.",
-  "Archive cleanup backup is missing.": "Sicherung der Archivbereinigung fehlt.",
-  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "Lesemetadaten sind unvollst\xE4ndig. Aktualisiere und versuche es erneut; das Originalbuch ist nicht betroffen.",
-  "just now": "gerade eben",
-  "{0} min ago": "vor {0} Min.",
-  "{0} h ago": "vor {0} Std.",
-  "{0} d ago": "vor {0} T.",
-  "All Books": "Alle B\xFCcher",
-  "Selected block: {0}": "Ausgew\xE4hlter Block: {0}",
-  "Click a paragraph or native comment to select an action target.": "Klicke auf einen Absatz oder nativen Kommentar, um das Ziel der Aktion zu w\xE4hlen.",
-  " \xB7 approx. {0}%": " \xB7 ca. {0} %",
-  "Read \xB7 click to unmark": "Gelesen \xB7 klicken zum Zur\xFCcksetzen",
-  "Mark as read": "Als gelesen markieren",
-  "Could not collapse the previous chapter: {0}": "Das vorherige Kapitel konnte nicht eingeklappt werden: {0}",
-  "The page {0} does not exist yet.": "Die Seite {0} existiert noch nicht.",
-  "Open a book or page first.": "\xD6ffne zuerst ein Buch oder eine Seite.",
-  "Remove from All Books": "Aus \u201EAlle B\xFCcher\u201C entfernen",
-  "Include in All Books": "In \u201EAlle B\xFCcher\u201C aufnehmen",
-  "Pages you include appear in the All Books scope with your books": "Aufgenommene Seiten erscheinen zusammen mit deinen B\xFCchern unter \u201EAlle B\xFCcher\u201C",
-  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Best\xE4tige, welche vorhandenen Kapitel zu diesem Buch geh\xF6ren. Entferne den Haken bei deinen eigenen Notizen. Es werden nur Block-IDs gespeichert; vorhandener Text, Kommentare und Hervorhebungen bleiben erhalten.",
-  "Confirm Book Scope": "Kapitel best\xE4tigen",
-  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Anmerkungen und Fragen aus allen verwalteten B\xFCchern und allen aufgenommenen Seiten. W\xE4hle eine Quelle, um sie zu \xF6ffnen.",
-  "{0} \xB7 {1} annotations": "{0} \xB7 {1} Anmerkungen",
-  "Last read \xB7 {0}": "Zuletzt gelesen \xB7 {0}",
-  "Body": "Text",
-  "Continue": "Weiter",
-  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "Kein Inhaltsverzeichnis auf dieser Seite. Es wird aus H1-, H2- und H3-\xDCberschriften erstellt.",
-  "No chapters were found.": "Keine Kapitel gefunden.",
-  "Collapse All Chapters": "Alle Kapitel einklappen",
-  "Collapse Subdirectories": "Unterabschnitte einklappen",
-  "Expand Subdirectories": "Unterabschnitte aufklappen",
-  "Current section: {0}": "Aktueller Abschnitt: {0}",
-  "Toggle subdirectory: {0}": "Unterabschnitt umschalten: {0}",
-  "Resume": "Fortsetzen",
-  "Reset": "Zur\xFCcksetzen",
-  "Reset browsing progress for {0}? Text and annotations will be preserved.": "Lesefortschritt f\xFCr {0} zur\xFCcksetzen? Text und Anmerkungen bleiben erhalten.",
-  "Fold": "Einklappen",
-  "{0} chapter entries are missing. Use the action below to link their current location.": "{0} Kapiteleintr\xE4ge fehlen. Verkn\xFCpfe ihren aktuellen Ort mit der Aktion unten.",
-  "Link Current Page to This Book": "Aktuelle Seite mit diesem Buch verkn\xFCpfen",
-  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "Das Inhaltsverzeichnis stammt aus H1-, H2- und H3-\xDCberschriften. Ein Klick auf eine \xDCberschrift scrollt nur; auf der Seite wird nichts eingeklappt oder ge\xE4ndert.",
-  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "Nicht besuchte Kapitel sind keine Aufgaben. Die Abdeckung sch\xE4tzt angezeigte Abs\xE4tze, nicht gelesene W\xF6rter oder Verst\xE4ndnis. Mit \u2713 markierst du ein Kapitel selbst als gelesen.",
-  "Include in notes draft": "In den Notizentwurf aufnehmen",
-  "This page": "Diese Seite",
-  "(Empty annotation)": "(Leere Anmerkung)",
-  "Open Native Comment": "Nativen Kommentar \xF6ffnen",
-  "Open in Sidebar": "In der Seitenleiste \xF6ffnen",
-  "Search annotations": "Anmerkungen durchsuchen",
-  "All types": "Alle Typen",
-  "Highlights": "Hervorhebungen",
-  "Comments": "Kommentare",
-  "Marks": "Markierungen",
-  "Questions": "Fragen",
-  "All sources": "Alle Quellen",
-  "All chapters": "Alle Kapitel",
-  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} Eintr\xE4ge \xB7 Klicken, um im Kontext zu zeigen; Umschalt+Klick f\xFCr die Seitenleiste.",
-  "Load More": "Mehr laden",
-  "Question:: \u2026": "Question:: \u2026",
-  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Fragen sammelt alles, was noch offen ist: native TODOs, deine Frage-Tags und Frage-Attribute (zum Beispiel {0}). DONE-Eintr\xE4ge sind ausgeschlossen. Alt+Q schaltet eine Frage im aktuellen Block um; Tag- oder Attributstil in den Einstellungen w\xE4hlen.",
-  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Anmerkungen sammelt Hervorhebungen, native Kommentare, Markierungen und Fragen. Hake Eintr\xE4ge an, um eine Lesenotizen-Seite zu erstellen, die auf die Originale verweist.",
-  "Destination page for notes draft": "Zielseite f\xFCr den Notizentwurf",
-  "Create Notes Draft from Selection": "Notizentwurf aus Auswahl erstellen",
-  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "{0} verkn\xFCpfte Notizen an {1} angeh\xE4ngt, mit Link zur Quellseite. Ge\xF6ffnet in {2}.",
-  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "Noch keine Lesenotizen f\xFCr {0}. Hake unter Anmerkungen Eintr\xE4ge an und w\xE4hle \u201ENotizentwurf erstellen\u201C; die Notizenseite ({1}) \xF6ffnet sich in der Seitenleiste.",
-  "Create Notes Page": "Notizenseite erstellen",
-  "Open the notes page (Shift+click: sidebar)": "Notizenseite \xF6ffnen (Umschalt+Klick: Seitenleiste)",
-  "Sidebar": "Seitenleiste",
-  "No generated drafts on this page yet. Create one from the Annotations tab.": "Auf dieser Seite gibt es noch keine erzeugten Entw\xFCrfe. Erstelle einen im Tab Anmerkungen.",
-  "Show in the book (Shift+click: sidebar)": "Im Buch zeigen (Umschalt+Klick: Seitenleiste)",
-  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} Entwurf/Entw\xFCrfe \xB7 {3} Notiz(en)",
-  "Open this draft (Shift+click: sidebar)": "Diesen Entwurf \xF6ffnen (Umschalt+Klick: Seitenleiste)",
-  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "Die Notizenseite enth\xE4lt au\xDFerdem {0} selbst geschriebene(n) Block/Bl\xF6cke; \xF6ffne die Seite, um sie zu sehen.",
-  "Back to Settings": "Zur\xFCck zu den Einstellungen",
-  "Repair This Book": "Dieses Buch reparieren",
-  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "Die Reparatur ist nur f\xFCr verwaltete B\xFCcher verf\xFCgbar. W\xE4hle im Men\xFC ein Buch. Normale Seiten werden nie automatisch ge\xE4ndert.",
-  "Nothing to repair in this book.": "In diesem Buch gibt es nichts zu reparieren.",
-  "This repair will:": "Diese Reparatur wird:",
-  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} Archiv(e) bleiben, weil ein altes Fragment eigene Unterbl\xF6cke hat.",
-  "Preview the changes": "Vorschau der \xC4nderungen",
-  "Nothing to change.": "Nichts zu \xE4ndern.",
-  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "{0} reparieren?\n\n{1}\n\nAlles wird gesichert; ein einziges R\xFCckg\xE4ngig stellt alles wieder her.",
-  "{0} paragraphs": "{0} Abs\xE4tze",
-  "{0} link blocks": "{0} Linkbl\xF6cke",
-  "{0} archives ({1} references moved)": "{0} Archive ({1} Verweise verschoben)",
-  "{0} headings": "{0} \xDCberschriften",
-  "nothing needed": "nichts n\xF6tig",
-  " {0} block(s) changed since the preview were skipped; run the repair again.": " {0} seit der Vorschau ge\xE4nderte(r) Block/Bl\xF6cke wurde(n) \xFCbersprungen; starte die Reparatur erneut.",
-  "Repaired: {0}.{1} Undo is available.": "Repariert: {0}.{1} R\xFCckg\xE4ngig ist m\xF6glich.",
-  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Behebt in einem Schritt alles, was sich sicher beheben l\xE4sst: \xDCberschriftenebenen f\xFCr das Inhaltsverzeichnis, als \xDCberschriften dargestellte Fu\xDFnotenzeichen, defekte nummerierte Links und \xFCbrig gebliebene Archive EPUB-READER:paragraph-fragments. Text, Kommentare und Hervorhebungen bleiben erhalten.",
-  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Optional: W\xE4hle das Original-EPUB, um auch Abs\xE4tze zusammenzuf\xFCgen, die alte Importe getrennt haben (wird lokal gelesen, nichts wird hochgeladen)",
-  "Original EPUB for paragraph repair": "Original-EPUB f\xFCr die Absatzreparatur",
-  "Checking the original EPUB\u2026": "Original-EPUB wird gepr\xFCft\u2026",
-  "Undo Last Repair": "Letzte Reparatur r\xFCckg\xE4ngig machen",
-  "Undo the last book repair? Blocks edited since then are left as they are.": "Letzte Buchreparatur r\xFCckg\xE4ngig machen? Seitdem bearbeitete Bl\xF6cke bleiben, wie sie sind.",
-  "Restored {0} items; skipped {1} edited items.": "{0} Eintr\xE4ge wiederhergestellt; {1} bearbeitete Eintr\xE4ge \xFCbersprungen.",
-  "Undo a repair made with an earlier version": "Eine Reparatur aus einer fr\xFCheren Version r\xFCckg\xE4ngig machen",
-  "Undo {0}": "R\xFCckg\xE4ngig: {0}",
-  "Restored {0} items; skipped {1}.": "{0} Eintr\xE4ge wiederhergestellt; {1} \xFCbersprungen.",
-  "its shortcut (not set)": "sein Tastenk\xFCrzel (nicht festgelegt)",
-  "Press keys\u2026": "Tasten dr\xFCcken\u2026",
-  "{0}: shortcut cleared.": "{0}: Tastenk\xFCrzel entfernt.",
-  "{0} is already used by {1}.": "{0} wird bereits von {1} verwendet.",
-  "Click, then press the new shortcut": "Klicken, dann das neue Tastenk\xFCrzel dr\xFCcken",
-  "Reset to {0}": "Zur\xFCcksetzen auf {0}",
-  "Library": "Bibliothek",
-  "Reading": "Lesen",
-  "Collapse the previous chapter when navigating": "Beim Navigieren das vorherige Kapitel einklappen",
-  "Track browsing automatically (estimated, not comprehension)": "Lesen automatisch erfassen (Sch\xE4tzung, kein Verst\xE4ndnis)",
-  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "Der automatische Fortschritt gilt nur f\xFCr verwaltete B\xFCcher. Das Einklappen von Unterabschnitten im Panel \xE4ndert das Buch nicht.",
-  "Text width": "Textbreite",
-  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Zeile f\xFCllen: Abs\xE4tze laufen bis zum Ende ihrer Zeile, sodass auf breiten Bildschirmen kein leerer Streifen vor dem Verweisz\xE4hler bleibt. Randnotizen stehen au\xDFerhalb des Textes, wie in Folio.",
-  "Native Comments": "Native Kommentare",
-  "Native comment side notes (graph-wide)": "Native Kommentare am Rand (ganzer Graph)",
-  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Notizen werden vollst\xE4ndig angezeigt und neben dem Text gestapelt. Klicke auf eine Notiz oder ihren Absatz, um beide auszurichten; \u2197 \xF6ffnet den nativen Thread zum Bearbeiten.",
-  "Side note style": "Stil der Randnotizen",
-  "Side note colour": "Farbe der Randnotizen",
-  "Side note order": "Reihenfolge der Randnotizen",
-  "Highlight colour": "Hervorhebungsfarbe",
-  "Highlight style": "Hervorhebungsstil",
-  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "Gilt \xFCberall f\xFCr native ^^Hervorhebungen^^. Theme-Standard beh\xE4lt die Farbe deines Themes.",
-  "Mark style": "Markierungsstil",
-  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} oder das Blockmen\xFC schaltet #mark um; der Tag bleibt im Text und wird beim Lesen ausgeblendet.",
-  "Recognized question tags (comma-separated)": "Erkannte Frage-Tags (durch Kommas getrennt)",
-  "Recognized question tags": "Erkannte Frage-Tags",
-  "Quick question tag ({0})": "Schneller Frage-Tag ({0})",
-  "Quick question tag": "Schneller Frage-Tag",
-  "Toggle Question inserts": "\u201EFrage\u201C f\xFCgt ein",
-  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Tag-Namen ohne # eingeben. Der schnelle Frage-Tag wird immer erkannt, auch in nativen Kommentaren. \u201EMarkieren\u201C beh\xE4lt #mark, um mit deinem urspr\xFCnglichen Stil kompatibel zu bleiben.",
-  "Save Question Settings": "Frage-Einstellungen speichern",
-  "Question settings saved. Toggle Question uses your quick question tag.": "Frage-Einstellungen gespeichert. \u201EFrage\u201C verwendet deinen schnellen Frage-Tag.",
-  "Question settings are active for this session; settings storage could not sync.": "Die Frage-Einstellungen gelten f\xFCr diese Sitzung; sie konnten nicht synchronisiert werden.",
-  "Keyboard Shortcuts": "Tastenk\xFCrzel",
-  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Klicke auf ein K\xFCrzel und dr\xFCcke dann die neuen Tasten (mit Strg, Cmd/\u2318 oder Alt/\u2325). Esc bricht ab, R\xFCcktaste l\xF6scht. Reading Desk verarbeitet diese Tasten vor Roam, daher tippt Option+M kein \u201E\xB5\u201C mehr. Ziehe die Titelleiste, um dieses Panel zu verschieben. Umschalt+Klick \xF6ffnet Inhalte in der Seitenleiste.",
-  "Reading Notes": "Lesenotizen",
-  "Open new reading notes in": "Neue Lesenotizen \xF6ffnen in",
-  "Maintenance": "Wartung",
-  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Ein Schritt f\xFCr importierte B\xFCcher: \xDCberschriftenebenen, Fu\xDFnotenzeichen als \xDCberschriften, defekte Links und \xFCbrig gebliebene Absatzarchive (optional getrennte Abs\xE4tze). Zeigt zuerst, was sich \xE4ndert; ein einziges R\xFCckg\xE4ngig stellt alles wieder her.",
-  "Click a paragraph or native comment first, then use this action.": "Klicke zuerst auf einen Absatz oder nativen Kommentar und verwende dann diese Aktion.",
-  "Open a page or book, then click Refresh.": "\xD6ffne eine Seite oder ein Buch und klicke dann auf Aktualisieren.",
-  "Current Page": "Aktuelle Seite",
-  "Books": "B\xFCcher",
-  "Included pages": "Aufgenommene Seiten",
-  "All Books \xB7 {0} sources \xB7 {1} annotations": "Alle B\xFCcher \xB7 {0} Quellen \xB7 {1} Anmerkungen",
-  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "Seite \xB7 {0} \xDCberschriften \xB7 {1} Anmerkungen \xB7 Fortschritt wird nur f\xFCr B\xFCcher erfasst",
-  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} Bl\xF6cke \xB7 {2} Anmerkungen \xB7 {3} Seiten",
-  "Close": "Schlie\xDFen",
-  "Drag to move Reading Desk": "Ziehen, um Reading Desk zu verschieben",
-  "Reading scope": "Lesebereich",
-  "Refresh": "Aktualisieren",
-  "Loading\u2026": "Wird geladen\u2026",
-  "Text or comments changed. Click Refresh to update without interrupting your work.": "Text oder Kommentare haben sich ge\xE4ndert. Klicke auf Aktualisieren, um ohne Unterbrechung zu aktualisieren.",
-  "No repair backup was found.": "Keine Reparatursicherung gefunden.",
-  "Image conversion failed": "Bildkonvertierung fehlgeschlagen",
-  "Cannot read image: {0}": "Bild kann nicht gelesen werden: {0}",
-  "Processing image {0}/{1}": "Bild {0}/{1} wird verarbeitet",
-  "Image upload returned no valid URL: {0}": "Der Bild-Upload lieferte keine g\xFCltige URL: {0}",
-  "The imported page was removed. Select the EPUB again to import.": "Die importierte Seite wurde entfernt. W\xE4hle das EPUB erneut aus, um es zu importieren.",
-  "A book is already being imported. Wait for it to finish.": "Es wird bereits ein Buch importiert. Warte, bis der Import abgeschlossen ist.",
-  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Dieser alte Auftrag hat falsche Kapitelzuordnungen. W\xE4hle das EPUB erneut aus, um einen neuen Import zu erstellen.",
-  "Import complete": "Import abgeschlossen",
-  "This book's record has changed or was removed. Reopen the book list.": "Der Eintrag dieses Buchs wurde ge\xE4ndert oder entfernt. \xD6ffne die B\xFCcherliste erneut.",
-  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Ein Speicher f\xFCr native Kommentare liegt innerhalb der Kapitel. Das L\xF6schen ist gesperrt, um Kommentare zu sch\xFCtzen. Verschiebe den Kommentarspeicher zuerst auf die Seite, au\xDFerhalb der Buchkapitel.",
-  "Reference check failed; retained": "Verweispr\xFCfung fehlgeschlagen; behalten",
-  "Original upload ownership is unknown; retained": "Herkunft des Uploads unbekannt; behalten",
-  "Shared with another imported book": "Mit einem anderen importierten Buch geteilt",
-  "{0} references outside this book": "{0} Verweise au\xDFerhalb dieses Buchs",
-  "Used only by this book": "Nur von diesem Buch verwendet",
-  "Chapter scope changed. Review the deletion preview again.": "Die Kapitel haben sich ge\xE4ndert. Pr\xFCfe die L\xF6schvorschau erneut.",
-  "New content was added inside the book scope. Deletion stopped; review the preview again.": "Im Buch wurde neuer Inhalt hinzugef\xFCgt. L\xF6schen abgebrochen; pr\xFCfe die Vorschau erneut.",
-  "Deleting book chapters (preserving pages and native comments)\u2026": "Buchkapitel werden gel\xF6scht (Seiten und native Kommentare bleiben)\u2026",
-  "Deleting attachment {0}/{1}\u2026": "Anhang {0}/{1} wird gel\xF6scht\u2026",
-  "This book is waiting for attachment cleanup. Finish that first.": "Dieses Buch wartet auf die Bereinigung der Anh\xE4nge. Schlie\xDFe diese zuerst ab.",
-  "Not uploaded by this import; file retained": "Nicht von diesem Import hochgeladen; Datei behalten",
-  "Original upload ownership is unknown; file retained": "Herkunft des Uploads unbekannt; Datei behalten",
-  "Reference check failed; file retained": "Verweispr\xFCfung fehlgeschlagen; Datei behalten",
-  "Removing images from blocks {0}/{1}\u2026": "Bilder werden aus Bl\xF6cken entfernt {0}/{1}\u2026",
-  "Deleting image file {0}/{1}\u2026": "Bilddatei {0}/{1} wird gel\xF6scht\u2026",
-  "Not set": "Nicht festgelegt",
-  "Could not save local progress": "Lokaler Fortschritt konnte nicht gespeichert werden",
-  "Local progress save was aborted": "Das lokale Speichern des Fortschritts wurde abgebrochen",
-  "The local EPUB cache is missing. Select the original file again.": "Der lokale EPUB-Cache fehlt. W\xE4hle die Originaldatei erneut aus.",
-  "Preparing\u2026": "Wird vorbereitet\u2026",
-  "Processing\u2026": "Wird verarbeitet\u2026",
-  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} Inhaltsverzeichniseintr\xE4ge \xB7 {1} Knoten der obersten Ebene \xB7 ca. {2} Bl\xF6cke \xB7 {3} Bilder \xB7 {4} interne Links",
-  " \xB7 {0} formulas": " \xB7 {0} Formeln",
-  "Resume importing {0}": "Import von {0} fortsetzen",
-  "Import {0}": "{0} importieren",
-  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Lass Roam w\xE4hrend des Imports ge\xF6ffnet. Der Fortschritt wird gespeichert, damit ein unterbrochener Import fortgesetzt werden kann.",
-  "Created {0}. Images and links are in their original positions.": "{0} erstellt. Bilder und Links stehen an ihrer urspr\xFCnglichen Stelle.",
-  "Import paused: {0}. Progress was saved; you can resume later.": "Import pausiert: {0}. Der Fortschritt wurde gespeichert; du kannst sp\xE4ter fortfahren.",
-  "Retry / Resume": "Erneut versuchen / Fortsetzen",
-  "Book Preview": "Buchvorschau",
-  "Author: {0}": "Autor: {0}",
-  "Roam page title": "Titel der Roam-Seite",
-  "Original EPUB TOC ({0}, full hierarchy)": "Original-Inhaltsverzeichnis des EPUB ({0}, vollst\xE4ndige Hierarchie)",
-  "Outline generated from body headings": "Gliederung aus den \xDCberschriften im Text erzeugt",
-  "; {0} need review (source retained)": "; {0} zu pr\xFCfen (Quelle bleibt erhalten)",
-  "Formulas: {0} converted{1}": "Formeln: {0} konvertiert{1}",
-  "Formula {0} \xB7 {1}": "Formel {0} \xB7 {1}",
-  "Preview text and image order": "Vorschau der Reihenfolge von Text und Bildern",
-  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Bilder werden an ihrer urspr\xFCnglichen Stelle hochgeladen. Externe Links bleiben erhalten; interne Links werden zu Roam-Blockverweisen.",
-  "Start Import": "Import starten",
-  "Unfinished Imports": "Unvollst\xE4ndige Importe",
-  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Dieser Auftrag verwendet einen veralteten Parser. W\xE4hle das EPUB erneut aus, um einen korrigierten Import zu erstellen.",
-  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Dieser alte Auftrag hat keine Formeln gepr\xFCft. W\xE4hle das EPUB erneut aus, wenn das Buch Formeln enth\xE4lt.",
-  "Discard Job": "Auftrag verwerfen",
-  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Es existiert bereits eine Roam-Seite. Entferne diesen Import \xFCber \u201EImportierte B\xFCcher verwalten\u201C.",
-  "EPUB Importer": "EPUB-Importer",
-  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "W\xE4hle ein EPUB. Das Einlesen bleibt auf deinem Ger\xE4t; Bilder werden erst nach deiner Best\xE4tigung in den aktuellen Roam-Graphen hochgeladen.",
-  "No file selected.": "Keine Datei ausgew\xE4hlt.",
-  "Reading contents, text, images, and links\u2026": "Inhaltsverzeichnis, Text, Bilder und Links werden gelesen\u2026",
-  "Cannot read file: {0}": "Datei kann nicht gelesen werden: {0}",
-  "Cannot read saved jobs: {0}": "Gespeicherte Auftr\xE4ge k\xF6nnen nicht gelesen werden: {0}",
-  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Dabei werden {0} Kapitelwurzeln, {1} Bl\xF6cke und {2} exklusive Anh\xE4nge gel\xF6scht. Seiten und native Kommentare bleiben erhalten.",
-  " {0} shared or unverified attachments will be retained.": " {0} geteilte oder nicht gepr\xFCfte Anh\xE4nge bleiben erhalten.",
-  "Remove images \xB7 {0}": "Bilder entfernen \xB7 {0}",
-  "Finding images and checking where their files are used\u2026": "Bilder werden gesucht und ihre Verwendung gepr\xFCft\u2026",
-  "Check failed: {0}": "Pr\xFCfung fehlgeschlagen: {0}",
-  "Back to Book List": "Zur\xFCck zur B\xFCcherliste",
-  "This book has no images left in its text.": "Dieses Buch enth\xE4lt keine Bilder mehr im Text.",
-  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} Bl\xF6cke enthalten Bilder. Die Bilder werden daraus entfernt ({1} Bl\xF6cke nur mit Bild werden gel\xF6scht; Bl\xF6cke mit Text, Unterbl\xF6cken oder Verweisen bleiben). Das Buch, sein Text, die \xDCberschriften, Kommentare und Hervorhebungen bleiben.",
-  " ({0} shared, outside-referenced or unverified files are kept)": " ({0} geteilte, anderweitig verwendete oder nicht gepr\xFCfte Dateien bleiben erhalten)",
-  " Also delete {0} uploaded image files used only by this book{1}.": " Auch {0} hochgeladene Bilddateien l\xF6schen, die nur dieses Buch verwendet{1}.",
-  "Preview the first changes": "Vorschau der ersten \xC4nderungen",
-  "This cannot be undone: deleted image files are gone from Roam storage.": "Nicht umkehrbar: Gel\xF6schte Bilddateien verschwinden aus dem Roam-Speicher.",
-  "Cancel": "Abbrechen",
-  "Remove Images": "Bilder entfernen",
-  "Remove images from {0}? The book itself is kept.": "Bilder aus {0} entfernen? Das Buch selbst bleibt erhalten.",
-  " {0} blocks changed since the preview and were skipped.": " {0} seit der Vorschau ge\xE4nderte Bl\xF6cke wurden \xFCbersprungen.",
-  " {0} files could not be deleted and remain listed.": " {0} Dateien konnten nicht gel\xF6scht werden und bleiben aufgef\xFChrt.",
-  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Bilder aus {0} Bl\xF6cken entfernt ({1} Bl\xF6cke nur mit Bild gel\xF6scht) und {2} Dateien gel\xF6scht.{3}{4}",
-  "Image removal failed: {0}": "Entfernen der Bilder fehlgeschlagen: {0}",
-  "Delete {0}": "{0} l\xF6schen",
-  "Checking attachment references in other pages and books\u2026": "Verweise auf Anh\xE4nge in anderen Seiten und B\xFCchern werden gepr\xFCft\u2026",
-  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "Betroffene Seiten: {0}. Nur best\xE4tigte Buchkapitel werden gel\xF6scht; diese Seiten bleiben.",
-  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} Bl\xF6cke au\xDFerhalb des Buchs verweisen auf seinen Inhalt (m\xF6glicherweise auch native Kommentare). Diese Verweise k\xF6nnen nach dem L\xF6schen ins Leere gehen; Kommentare und eigenst\xE4ndige Notizen bleiben.",
-  "Reference checking failed. Attachments will be retained.": "Verweispr\xFCfung fehlgeschlagen. Anh\xE4nge bleiben erhalten.",
-  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Dieses wiederhergestellte Buch hat kein urspr\xFCngliches Upload-Verzeichnis. Kapitel k\xF6nnen gel\xF6scht werden, erkannte Bilder bleiben aber erhalten.",
-  "Type the full book title to confirm: {0}": "Gib zur Best\xE4tigung den vollst\xE4ndigen Buchtitel ein: {0}",
-  "Delete Permanently": "Endg\xFCltig l\xF6schen",
-  " {0} failed deletions are saved for retry.": " {0} fehlgeschlagene L\xF6schvorg\xE4nge sind f\xFCr einen neuen Versuch gespeichert.",
-  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Buchkapitel und {0} exklusive Anh\xE4nge gel\xF6scht. Seiten und native Kommentare bleiben. {1} geteilte oder nicht gepr\xFCfte Anh\xE4nge behalten.{2}",
-  "Deletion failed: {0}": "L\xF6schen fehlgeschlagen: {0}",
-  "Recover Existing Book": "Vorhandenes Buch wiederherstellen",
-  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Gib den ganzen oder einen Teil des urspr\xFCnglichen Seitentitels des Buchs ein. Die Wiederherstellung registriert das vorhandene Buch, ohne neu zu importieren, Text zu \xE4ndern oder Bilder hochzuladen. Anh\xE4nge ohne Upload-Verzeichnis werden als nicht gepr\xFCft markiert und beim L\xF6schen behalten.",
-  "Page title or book keywords": "Seitentitel oder Stichw\xF6rter zum Buch",
-  "Find an existing book page": "Vorhandene Buchseite finden",
-  "Find Pages": "Seiten suchen",
-  "No matching pages. Try a shorter book title.": "Keine passenden Seiten. Versuche einen k\xFCrzeren Titel.",
-  "Register This Book": "Dieses Buch registrieren",
-  "Recovery failed: {0}": "Wiederherstellung fehlgeschlagen: {0}",
-  "Reading the graph's book library\u2026": "Die Buchbibliothek des Graphen wird gelesen\u2026",
-  "Cannot read the library: {0}. Existing books are unchanged.": "Die Bibliothek kann nicht gelesen werden: {0}. Vorhandene B\xFCcher bleiben unver\xE4ndert.",
-  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "Die Bibliothek ist leer. Nutze \u201EVorhandenes Buch wiederherstellen\u201C f\xFCr B\xFCcher, die nach einem Update fehlen; ein erneuter Import ist nicht n\xF6tig.",
-  "Unknown author": "Unbekannter Autor",
-  " \xB7 Cleanup pending": " \xB7 Bereinigung ausstehend",
-  " \xB7 Recovered (original attachments retained)": " \xB7 Wiederhergestellt (Originalanh\xE4nge behalten)",
-  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} Anh\xE4nge{2}",
-  "Clean Up Attachments": "Anh\xE4nge bereinigen",
-  "Delete Book": "Buch l\xF6schen",
-  "Delete this book's images but keep the book": "Die Bilder dieses Buchs l\xF6schen, das Buch aber behalten",
-  "Open Reader": "Leser \xF6ffnen",
-  "The chapter structure has not been prepared.": "Die Kapitelstruktur wurde nicht vorbereitet.",
-  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Ein importierter Block wurde bearbeitet oder verschoben. Fortsetzen pausiert, um deine \xC4nderungen zu sch\xFCtzen. W\xE4hle das EPUB, um es in eine separate Seite zu importieren.",
-  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Kapitel {0}/{1} wird importiert \xB7 Block {2}/{3}",
-  "Resolving internal link {0}/{1}": "Interner Link {0}/{1} wird aufgel\xF6st",
-  "{0} comment": "{0} Kommentar",
-  "{0} comments": "{0} Kommentare",
-  "{0} highlight": "{0} Hervorhebung",
-  "{0} highlights": "{0} Hervorhebungen",
-  "{0} mark": "{0} Markierung",
-  "{0} marks": "{0} Markierungen",
-  "Read": "Gelesen",
-  "Unvisited": "Nicht besucht",
-  "Browsed": "Durchgesehen",
-  "Browsing": "Am Lesen",
-  "highlight": "Hervorhebung",
-  "comment": "Kommentar",
-  "mark": "Markierung",
-  "question": "Frage",
-  "sidebar": "der Seitenleiste",
-  "main window": "dem Hauptfenster",
-  "Heading repair": "\xDCberschriftenreparatur",
-  "Link repair": "Linkreparatur",
-  "Paragraph repair": "Absatzreparatur",
-  "Archive removal": "Archiventfernung",
-  "Toggle Mark": "Markieren / Markierung entfernen",
-  "Toggle Question": "Frage / keine Frage",
-  "Open / close Reading Desk": "Reading Desk \xF6ffnen / schlie\xDFen",
-  "Continue reading": "Weiterlesen",
-  "Open reading notes": "Lesenotizen \xF6ffnen",
-  "Contents": "Inhalt",
-  "Annotations": "Anmerkungen",
-  "Notes": "Notizen",
-  "Settings": "Einstellungen",
-  "Theme default": "Theme-Standard",
-  "Margin dot + bold": "Randpunkt + fett",
-  "Bookmark ribbon": "Lesezeichenband",
-  "Gold highlighter": "Goldener Textmarker",
-  "Pull quote": "Herausgestelltes Zitat",
-  "Sticky note": "Haftnotiz",
-  "Ink emphasis": "Kr\xE4ftige Tinte",
-  "Fill the line": "Zeile f\xFCllen",
-  "Theme line length": "Zeilenl\xE4nge des Themes",
-  "Cards": "Karten",
-  "Minimal": "Minimal",
-  "Coral": "Koralle",
-  "Rose": "Rosa",
-  "Mint": "Minze",
-  "Sky": "Himmel",
-  "Lilac": "Flieder",
-  "Gold": "Gold",
-  "Gray": "Grau",
-  "Blue": "Blau",
-  "Green": "Gr\xFCn",
-  "Purple": "Lila",
-  "Marker": "Textmarker",
-  "Underline": "Unterstrichen",
-  "Oldest first": "\xC4lteste zuerst",
-  "Newest first": "Neueste zuerst",
-  "A tag at the end (#question)": "Ein Tag am Ende (#question)",
-  "An attribute at the start (Question::)": "Ein Attribut am Anfang (Question::)",
-  "The right sidebar": "Die rechte Seitenleiste",
-  "The main window": "Das Hauptfenster",
-  "Auto (browser language)": "Auto (Browsersprache)",
-  "Page": "Seite",
-  "Book": "Buch",
-  "Earlier": "Fr\xFCher",
-  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "Kein verwendbares EPUB-Inhaltsverzeichnis gefunden. Die Gliederung nutzt die \xDCberschriften im Text; pr\xFCfe die Vorschau.",
-  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Fehlendes Inhaltsverzeichnisziel f\xFCr {0}: {1}. Nicht zugeordneter Text wird separat behalten.",
-  "TOC file is outside the EPUB reading order: {0}": "Die Inhaltsverzeichnisdatei liegt au\xDFerhalb der EPUB-Lesereihenfolge: {0}",
-  "Missing EPUB body file: {0}": "Fehlende EPUB-Textdatei: {0}",
-  "Missing EPUB image: {0}": "Fehlendes EPUB-Bild: {0}",
-  "Auto": "Auto",
-  "Interface language": "Sprache der Oberfl\xE4che",
-  "Interface language for Reading Desk (Auto follows your browser).": "Sprache der Oberfl\xE4che von Reading Desk (Auto folgt deinem Browser)."
-};
-
-// src/locales/es.js
-var es_default = {
-  "Enter a destination page title.": "Escribe el t\xEDtulo de la p\xE1gina de destino.",
-  "Select annotations to include first.": "Selecciona primero las anotaciones que quieres incluir.",
-  "Book repair is available for managed books only.": "La reparaci\xF3n solo est\xE1 disponible para libros gestionados.",
-  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "Unir {0} p\xE1rrafo(s) cortado(s) (comprobado con el EPUB original)",
-  "Fix {0} block(s) with broken numbered links": "Corregir {0} bloque(s) con enlaces numerados rotos",
-  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "; {0} referencia(s) a fragmentos antiguos (comentarios, enlaces de notas) pasan al p\xE1rrafo reparado",
-  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "Eliminar {0} archivo(s) EPUB-READER:paragraph-fragments{1}",
-  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "Poner {0} t\xEDtulo(s) de cap\xEDtulo en H1/H2/H3 seg\xFAn la profundidad",
-  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "Eliminar {0} t\xEDtulo(s) que repiten el t\xEDtulo del cap\xEDtulo (los p\xE1rrafos suben, los ID no cambian)",
-  "Turn {0} other body heading(s) into bold text": "Convertir {0} t\xEDtulo(s) m\xE1s del texto en negrita",
-  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "Devolver {0} llamada(s) de nota al final de su t\xEDtulo (p. ej. \xAB2.3 T\xEDtulo [3]\xBB); los p\xE1rrafos bajo la llamada pasan bajo el t\xEDtulo",
-  "Turn {0} footnote marker heading(s) such as [3] into plain text": "Convertir {0} t\xEDtulo(s) de llamada de nota como [3] en texto normal",
-  "Rejoining split paragraphs\u2026": "Uniendo p\xE1rrafos cortados\u2026",
-  "Fixing numbered links\u2026": "Corrigiendo enlaces numerados\u2026",
-  "Removing paragraph archives\u2026": "Eliminando archivos de p\xE1rrafos\u2026",
-  "Fixing heading levels\u2026": "Corrigiendo niveles de t\xEDtulos\u2026",
-  "No book repair record was found.": "No se encontr\xF3 ning\xFAn registro de reparaci\xF3n.",
-  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "La p\xE1gina original ya no existe. Abre la p\xE1gina actual del libro, selecciona este libro y enlaza sus cap\xEDtulos. No hace falta volver a importar.",
-  "Select at least one existing book chapter.": "Selecciona al menos un cap\xEDtulo existente.",
-  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "Confirma primero los cap\xEDtulos de este libro en el panel de lectura. No hace falta volver a importar ni cambiar el texto.",
-  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "El alcance de cap\xEDtulos no puede incluir una p\xE1gina entera. Vuelve a confirmar los cap\xEDtulos; la p\xE1gina se conserva.",
-  "The current page or block cannot be read.": "No se puede leer la p\xE1gina o el bloque actual.",
-  "Could not parse {0}": "No se pudo analizar {0}",
-  "Invalid EPUB: META-INF/container.xml is missing": "EPUB no v\xE1lido: falta META-INF/container.xml",
-  "The EPUB manifest is missing": "Falta el manifiesto del EPUB",
-  "No readable chapter content was found in the EPUB": "No se encontr\xF3 contenido de cap\xEDtulos legible en el EPUB",
-  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "Este bloque ya no existe. Actualiza el \xEDndice o las anotaciones; el libro no se volver\xE1 a crear.",
-  "Cannot find the page containing this block.": "No se encuentra la p\xE1gina que contiene este bloque.",
-  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "La p\xE1gina se abri\xF3, pero este p\xE1rrafo a\xFAn no se muestra. Despliega su cap\xEDtulo y vuelve a intentarlo.",
-  "Heading repair is available for managed books only.": "La reparaci\xF3n de t\xEDtulos solo est\xE1 disponible para libros gestionados.",
-  "This Roam version does not expose block.move. No headings were changed.": "Esta versi\xF3n de Roam no ofrece block.move. No se cambi\xF3 ning\xFAn t\xEDtulo.",
-  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} Usa \xABDeshacer la \xFAltima reparaci\xF3n\xBB para restaurar los cambios.",
-  "No heading repair backup was found.": "No se encontr\xF3 ninguna copia de seguridad de la reparaci\xF3n de t\xEDtulos.",
-  "Language": "Idioma",
-  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "Idioma de la interfaz (Auto sigue al navegador). El panel de lectura cambia al instante; esta pesta\xF1a de ajustes, tras recargar el plugin.",
-  "Import EPUB": "Importar EPUB",
-  "Choose, preview, and import an EPUB book": "Elegir, previsualizar e importar un libro EPUB",
-  "Open Importer": "Abrir el importador",
-  "Manage Imported Books": "Gestionar libros importados",
-  "Manage imported books, recover existing pages, and safely clean up attachments": "Gestionar libros importados, recuperar p\xE1ginas existentes y limpiar adjuntos con seguridad",
-  "Manage Books": "Gestionar libros",
-  "Reading Desk": "Reading Desk",
-  "Open reading tools for books or ordinary pages": "Herramientas de lectura para libros o p\xE1ginas normales",
-  "Open Reading Desk": "Abrir Reading Desk",
-  "Automatic Browsing Progress": "Progreso de lectura autom\xE1tico",
-  "Estimate foreground browsing per chapter; never infer comprehension": "Estima la lectura en primer plano por cap\xEDtulo; nunca deduce la comprensi\xF3n",
-  "Native Comment Side Notes": "Comentarios nativos al margen",
-  "Show native comments in full beside the text throughout the graph": "Mostrar los comentarios nativos completos junto al texto en todo el grafo",
-  "Highlight Colour": "Color de resaltado",
-  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "Color de los ^^resaltados^^ nativos (Predeterminado del tema mantiene el color de tu tema)",
-  "Question Tags": "Etiquetas de pregunta",
-  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "Etiquetas existentes, separadas por comas, para preguntas abiertas. El atajo \xABPregunta\xBB a\xF1ade #question.",
-  "Invalid library format. Stopped to protect existing data.": "Formato de biblioteca no v\xE1lido. Se detuvo para proteger los datos existentes.",
-  "Cannot read the library. Stopped to protect existing data.": "No se puede leer la biblioteca. Se detuvo para proteger los datos existentes.",
-  "Unsupported library version or structure. Stopped to protect existing data.": "Versi\xF3n o estructura de biblioteca no compatible. Se detuvo para proteger los datos existentes.",
-  "The attachment ledger is incomplete. Stopped to protect attachments.": "El registro de adjuntos est\xE1 incompleto. Se detuvo para proteger los adjuntos.",
-  "Attachment ledger validation failed.": "Fall\xF3 la validaci\xF3n del registro de adjuntos.",
-  "The book record has no stable identity.": "La ficha del libro no tiene una identidad estable.",
-  "Enter at least two characters of the page title.": "Escribe al menos dos caracteres del t\xEDtulo de la p\xE1gina.",
-  "The specified book page could not be found.": "No se encontr\xF3 la p\xE1gina del libro indicada.",
-  "Native Roam comment": "Comentario nativo de Roam",
-  "Open the native comment thread to edit": "Abrir el hilo del comentario nativo para editarlo",
-  "Open native comment thread": "Abrir el hilo del comentario nativo",
-  "Delete this comment": "Eliminar este comentario",
-  "Delete comment": "Eliminar comentario",
-  "\n\nIts replies are deleted too.": "\n\nTambi\xE9n se eliminar\xE1n sus respuestas.",
-  "Delete this comment?\n\n{0}{1}": "\xBFEliminar este comentario?\n\n{0}{1}",
-  "Expand this section": "Desplegar esta secci\xF3n",
-  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "Usa una etiqueta de pregunta no vac\xEDa, sin corchetes, #, llaves ni saltos de l\xEDnea (m\xE1x. 80 caracteres).",
-  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "Coloca primero el cursor en un p\xE1rrafo o en un comentario nativo y luego activa la pregunta.",
-  "Unmark It": "Quitar marca",
-  "Mark It": "Marcar",
-  "This Roam version does not expose block.move. No paragraphs were changed.": "Esta versi\xF3n de Roam no ofrece block.move. No se cambi\xF3 ning\xFAn p\xE1rrafo.",
-  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} Se conservan los ID de los fragmentos originales. Usa \xABDeshacer la \xFAltima reparaci\xF3n de p\xE1rrafos\xBB para los cambios interrumpidos.",
-  "Paragraph repair backup is missing.": "Falta la copia de seguridad de la reparaci\xF3n de p\xE1rrafos.",
-  "Archive cleanup backup is missing.": "Falta la copia de seguridad de la limpieza de archivos.",
-  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "Los metadatos de lectura est\xE1n incompletos. Actualiza y vuelve a intentarlo; el libro original no se ve afectado.",
-  "just now": "ahora mismo",
-  "{0} min ago": "hace {0} min",
-  "{0} h ago": "hace {0} h",
-  "{0} d ago": "hace {0} d",
-  "All Books": "Todos los libros",
-  "Selected block: {0}": "Bloque seleccionado: {0}",
-  "Click a paragraph or native comment to select an action target.": "Haz clic en un p\xE1rrafo o en un comentario nativo para elegir el destino de la acci\xF3n.",
-  " \xB7 approx. {0}%": " \xB7 aprox. {0} %",
-  "Read \xB7 click to unmark": "Le\xEDdo \xB7 clic para desmarcar",
-  "Mark as read": "Marcar como le\xEDdo",
-  "Could not collapse the previous chapter: {0}": "No se pudo plegar el cap\xEDtulo anterior: {0}",
-  "The page {0} does not exist yet.": "La p\xE1gina {0} a\xFAn no existe.",
-  "Open a book or page first.": "Abre primero un libro o una p\xE1gina.",
-  "Remove from All Books": "Quitar de Todos los libros",
-  "Include in All Books": "Incluir en Todos los libros",
-  "Pages you include appear in the All Books scope with your books": "Las p\xE1ginas incluidas aparecen junto a tus libros en \xABTodos los libros\xBB",
-  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "Confirma qu\xE9 cap\xEDtulos existentes pertenecen a este libro. Desmarca tus propias notas. Solo se registran los ID de bloque; el texto, los comentarios y los resaltados existentes se conservan.",
-  "Confirm Book Scope": "Confirmar cap\xEDtulos",
-  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "Anotaciones y preguntas de todos los libros gestionados y de todas las p\xE1ginas incluidas. Elige una fuente para abrirla.",
-  "{0} \xB7 {1} annotations": "{0} \xB7 {1} anotaciones",
-  "Last read \xB7 {0}": "\xDAltima lectura \xB7 {0}",
-  "Body": "Texto",
-  "Continue": "Continuar",
-  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "No hay \xEDndice en esta p\xE1gina. El \xEDndice se construye con los t\xEDtulos H1, H2 y H3.",
-  "No chapters were found.": "No se encontraron cap\xEDtulos.",
-  "Collapse All Chapters": "Plegar todos los cap\xEDtulos",
-  "Collapse Subdirectories": "Plegar subsecciones",
-  "Expand Subdirectories": "Desplegar subsecciones",
-  "Current section: {0}": "Secci\xF3n actual: {0}",
-  "Toggle subdirectory: {0}": "Mostrar/ocultar subsecci\xF3n: {0}",
-  "Resume": "Reanudar",
-  "Reset": "Restablecer",
-  "Reset browsing progress for {0}? Text and annotations will be preserved.": "\xBFRestablecer el progreso de lectura de {0}? El texto y las anotaciones se conservan.",
-  "Fold": "Plegar",
-  "{0} chapter entries are missing. Use the action below to link their current location.": "Faltan {0} entradas de cap\xEDtulo. Usa la acci\xF3n de abajo para enlazar su ubicaci\xF3n actual.",
-  "Link Current Page to This Book": "Enlazar la p\xE1gina actual con este libro",
-  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "El \xEDndice viene de los t\xEDtulos H1, H2 y H3. Al hacer clic en un t\xEDtulo solo se desplaza; nada en la p\xE1gina se pliega ni se cambia.",
-  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "Los cap\xEDtulos no visitados no son tareas. La cobertura estima los p\xE1rrafos mostrados, no las palabras le\xEDdas ni la comprensi\xF3n. Usa \u2713 para marcar t\xFA mismo un cap\xEDtulo como le\xEDdo.",
-  "Include in notes draft": "Incluir en el borrador de notas",
-  "This page": "Esta p\xE1gina",
-  "(Empty annotation)": "(Anotaci\xF3n vac\xEDa)",
-  "Open Native Comment": "Abrir el comentario nativo",
-  "Open in Sidebar": "Abrir en la barra lateral",
-  "Search annotations": "Buscar en las anotaciones",
-  "All types": "Todos los tipos",
-  "Highlights": "Resaltados",
-  "Comments": "Comentarios",
-  "Marks": "Marcas",
-  "Questions": "Preguntas",
-  "All sources": "Todas las fuentes",
-  "All chapters": "Todos los cap\xEDtulos",
-  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} elementos \xB7 Haz clic para verlos en contexto; May\xFAs+clic para la barra lateral.",
-  "Load More": "Cargar m\xE1s",
-  "Question:: \u2026": "Question:: \u2026",
-  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "Preguntas re\xFAne todo lo que sigue abierto: TODO nativos, tus etiquetas de pregunta y atributos de pregunta (por ejemplo {0}). Los elementos DONE se excluyen. Alt+Q activa una en el bloque actual; elige el estilo de etiqueta o atributo en Ajustes.",
-  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "Anotaciones re\xFAne resaltados, comentarios nativos, marcas y preguntas. Marca elementos para crear una p\xE1gina de notas de lectura que remita a los originales.",
-  "Destination page for notes draft": "P\xE1gina de destino del borrador de notas",
-  "Create Notes Draft from Selection": "Crear borrador de notas con la selecci\xF3n",
-  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "Se a\xF1adieron {0} notas con referencia a {1}, enlazadas a la p\xE1gina de origen. Abierto en {2}.",
-  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "A\xFAn no hay notas de lectura para {0}. En Anotaciones, marca elementos y elige \xABCrear borrador de notas\xBB; la p\xE1gina de notas ({1}) se abre en la barra lateral.",
-  "Create Notes Page": "Crear p\xE1gina de notas",
-  "Open the notes page (Shift+click: sidebar)": "Abrir la p\xE1gina de notas (May\xFAs+clic: barra lateral)",
-  "Sidebar": "Barra lateral",
-  "No generated drafts on this page yet. Create one from the Annotations tab.": "A\xFAn no hay borradores generados en esta p\xE1gina. Crea uno desde la pesta\xF1a Anotaciones.",
-  "Show in the book (Shift+click: sidebar)": "Mostrar en el libro (May\xFAs+clic: barra lateral)",
-  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} borrador(es) \xB7 {3} nota(s)",
-  "Open this draft (Shift+click: sidebar)": "Abrir este borrador (May\xFAs+clic: barra lateral)",
-  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "La p\xE1gina de notas tambi\xE9n tiene {0} bloque(s) escrito(s) por ti; abre la p\xE1gina para verlos.",
-  "Back to Settings": "Volver a Ajustes",
-  "Repair This Book": "Reparar este libro",
-  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "La reparaci\xF3n solo est\xE1 disponible para libros gestionados. Elige un libro en el men\xFA. Las p\xE1ginas normales nunca se cambian autom\xE1ticamente.",
-  "Nothing to repair in this book.": "No hay nada que reparar en este libro.",
-  "This repair will:": "Esta reparaci\xF3n:",
-  "{0} archive(s) stay because an old fragment has its own child blocks.": "{0} archivo(s) se quedan porque un fragmento antiguo tiene sus propios bloques hijos.",
-  "Preview the changes": "Vista previa de los cambios",
-  "Nothing to change.": "Nada que cambiar.",
-  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "\xBFReparar {0}?\n\n{1}\n\nTodo queda respaldado; un solo Deshacer lo restaura todo.",
-  "{0} paragraphs": "{0} p\xE1rrafos",
-  "{0} link blocks": "{0} bloques de enlaces",
-  "{0} archives ({1} references moved)": "{0} archivos ({1} referencias movidas)",
-  "{0} headings": "{0} t\xEDtulos",
-  "nothing needed": "nada que hacer",
-  " {0} block(s) changed since the preview were skipped; run the repair again.": " Se omitieron {0} bloque(s) cambiado(s) desde la vista previa; vuelve a ejecutar la reparaci\xF3n.",
-  "Repaired: {0}.{1} Undo is available.": "Reparado: {0}.{1} Se puede deshacer.",
-  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "Corrige en un solo paso todo lo que se puede corregir con seguridad: niveles de t\xEDtulos para el \xEDndice, llamadas de nota mostradas como t\xEDtulos, enlaces numerados rotos y archivos EPUB-READER:paragraph-fragments sobrantes. El texto, los comentarios y los resaltados se conservan.",
-  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "Opcional: elige el EPUB original para unir tambi\xE9n los p\xE1rrafos cortados por importaciones antiguas (se lee en local, no se sube nada)",
-  "Original EPUB for paragraph repair": "EPUB original para la reparaci\xF3n de p\xE1rrafos",
-  "Checking the original EPUB\u2026": "Comprobando el EPUB original\u2026",
-  "Undo Last Repair": "Deshacer la \xFAltima reparaci\xF3n",
-  "Undo the last book repair? Blocks edited since then are left as they are.": "\xBFDeshacer la \xFAltima reparaci\xF3n del libro? Los bloques editados desde entonces se quedan como est\xE1n.",
-  "Restored {0} items; skipped {1} edited items.": "Se restauraron {0} elementos; se omitieron {1} elementos editados.",
-  "Undo a repair made with an earlier version": "Deshacer una reparaci\xF3n hecha con una versi\xF3n anterior",
-  "Undo {0}": "Deshacer: {0}",
-  "Restored {0} items; skipped {1}.": "Se restauraron {0} elementos; se omitieron {1}.",
-  "its shortcut (not set)": "su atajo (sin definir)",
-  "Press keys\u2026": "Pulsa las teclas\u2026",
-  "{0}: shortcut cleared.": "{0}: atajo borrado.",
-  "{0} is already used by {1}.": "{0} ya lo usa {1}.",
-  "Click, then press the new shortcut": "Haz clic y luego pulsa el nuevo atajo",
-  "Reset to {0}": "Restablecer a {0}",
-  "Library": "Biblioteca",
-  "Reading": "Lectura",
-  "Collapse the previous chapter when navigating": "Plegar el cap\xEDtulo anterior al navegar",
-  "Track browsing automatically (estimated, not comprehension)": "Registrar la lectura autom\xE1ticamente (estimaci\xF3n, no comprensi\xF3n)",
-  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "El progreso autom\xE1tico solo se aplica a libros gestionados. Plegar subsecciones en el panel no cambia el libro.",
-  "Text width": "Ancho del texto",
-  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "Llenar la l\xEDnea: los p\xE1rrafos llegan hasta el final de su fila, as\xED que en pantallas anchas no queda una franja vac\xEDa antes del contador de referencias. Las notas al margen quedan fuera del texto, como en Folio.",
-  "Native Comments": "Comentarios nativos",
-  "Native comment side notes (graph-wide)": "Comentarios nativos al margen (todo el grafo)",
-  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "Las notas se muestran completas y apiladas junto al texto. Haz clic en una nota o en su p\xE1rrafo para alinearlos; \u2197 abre el hilo nativo para editarlo.",
-  "Side note style": "Estilo de las notas al margen",
-  "Side note colour": "Color de las notas al margen",
-  "Side note order": "Orden de las notas al margen",
-  "Highlight colour": "Color de resaltado",
-  "Highlight style": "Estilo de resaltado",
-  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "Se aplica a todos los ^^resaltados^^ nativos. Predeterminado del tema mantiene el color de tu tema.",
-  "Mark style": "Estilo de marca",
-  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} o el men\xFA del bloque activa #mark; la etiqueta queda en el texto y se oculta al leer.",
-  "Recognized question tags (comma-separated)": "Etiquetas de pregunta reconocidas (separadas por comas)",
-  "Recognized question tags": "Etiquetas de pregunta reconocidas",
-  "Quick question tag ({0})": "Etiqueta de pregunta r\xE1pida ({0})",
-  "Quick question tag": "Etiqueta de pregunta r\xE1pida",
-  "Toggle Question inserts": "\xABPregunta\xBB inserta",
-  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "Escribe los nombres de las etiquetas sin #. La etiqueta de pregunta r\xE1pida siempre se reconoce, tambi\xE9n en comentarios nativos. \xABMarcar\xBB conserva #mark para seguir siendo compatible con tu estilo original.",
-  "Save Question Settings": "Guardar ajustes de preguntas",
-  "Question settings saved. Toggle Question uses your quick question tag.": "Ajustes de preguntas guardados. \xABPregunta\xBB usa tu etiqueta de pregunta r\xE1pida.",
-  "Question settings are active for this session; settings storage could not sync.": "Los ajustes de preguntas est\xE1n activos en esta sesi\xF3n; no se pudieron sincronizar.",
-  "Keyboard Shortcuts": "Atajos de teclado",
-  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "Haz clic en un atajo y pulsa las nuevas teclas (con Ctrl, Cmd/\u2318 o Alt/\u2325). Esc cancela, Retroceso borra. Reading Desk procesa estas teclas antes que Roam, as\xED que Opci\xF3n+M ya no escribe \xAB\xB5\xBB. Arrastra la barra de t\xEDtulo para mover este panel. May\xFAs+clic abre el contenido en la barra lateral.",
-  "Reading Notes": "Notas de lectura",
-  "Open new reading notes in": "Abrir las nuevas notas de lectura en",
-  "Maintenance": "Mantenimiento",
-  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "Un solo paso para libros importados: niveles de t\xEDtulos, llamadas de nota como t\xEDtulos, enlaces rotos y archivos de p\xE1rrafos sobrantes (y, si quieres, p\xE1rrafos cortados). Muestra primero qu\xE9 cambiar\xE1; un solo Deshacer lo restaura todo.",
-  "Click a paragraph or native comment first, then use this action.": "Haz clic primero en un p\xE1rrafo o en un comentario nativo y luego usa esta acci\xF3n.",
-  "Open a page or book, then click Refresh.": "Abre una p\xE1gina o un libro y luego haz clic en Actualizar.",
-  "Current Page": "P\xE1gina actual",
-  "Books": "Libros",
-  "Included pages": "P\xE1ginas incluidas",
-  "All Books \xB7 {0} sources \xB7 {1} annotations": "Todos los libros \xB7 {0} fuentes \xB7 {1} anotaciones",
-  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "P\xE1gina \xB7 {0} t\xEDtulos \xB7 {1} anotaciones \xB7 el progreso solo se registra para libros",
-  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} bloques \xB7 {2} anotaciones \xB7 {3} p\xE1ginas",
-  "Close": "Cerrar",
-  "Drag to move Reading Desk": "Arrastra para mover Reading Desk",
-  "Reading scope": "Alcance de lectura",
-  "Refresh": "Actualizar",
-  "Loading\u2026": "Cargando\u2026",
-  "Text or comments changed. Click Refresh to update without interrupting your work.": "El texto o los comentarios cambiaron. Haz clic en Actualizar para actualizar sin interrumpir tu trabajo.",
-  "No repair backup was found.": "No se encontr\xF3 ninguna copia de seguridad de reparaci\xF3n.",
-  "Image conversion failed": "Fall\xF3 la conversi\xF3n de la imagen",
-  "Cannot read image: {0}": "No se puede leer la imagen: {0}",
-  "Processing image {0}/{1}": "Procesando imagen {0}/{1}",
-  "Image upload returned no valid URL: {0}": "La subida de la imagen no devolvi\xF3 una URL v\xE1lida: {0}",
-  "The imported page was removed. Select the EPUB again to import.": "La p\xE1gina importada se elimin\xF3. Vuelve a seleccionar el EPUB para importarlo.",
-  "A book is already being imported. Wait for it to finish.": "Ya se est\xE1 importando un libro. Espera a que termine.",
-  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "Esta tarea antigua tiene asignaciones de cap\xEDtulos incorrectas. Vuelve a seleccionar el EPUB para crear una nueva importaci\xF3n.",
-  "Import complete": "Importaci\xF3n completada",
-  "This book's record has changed or was removed. Reopen the book list.": "La ficha de este libro cambi\xF3 o se elimin\xF3. Vuelve a abrir la lista de libros.",
-  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "Hay un almac\xE9n de comentarios nativos dentro de los cap\xEDtulos. La eliminaci\xF3n est\xE1 bloqueada para conservar los comentarios. Mueve primero el almac\xE9n de comentarios a la p\xE1gina, fuera de los cap\xEDtulos del libro.",
-  "Reference check failed; retained": "Fall\xF3 la comprobaci\xF3n de referencias; se conserva",
-  "Original upload ownership is unknown; retained": "Origen de la subida desconocido; se conserva",
-  "Shared with another imported book": "Compartido con otro libro importado",
-  "{0} references outside this book": "{0} referencias fuera de este libro",
-  "Used only by this book": "Usado solo por este libro",
-  "Chapter scope changed. Review the deletion preview again.": "Los cap\xEDtulos cambiaron. Revisa de nuevo la vista previa de eliminaci\xF3n.",
-  "New content was added inside the book scope. Deletion stopped; review the preview again.": "Se a\xF1adi\xF3 contenido dentro del libro. Eliminaci\xF3n detenida; revisa de nuevo la vista previa.",
-  "Deleting book chapters (preserving pages and native comments)\u2026": "Eliminando cap\xEDtulos del libro (se conservan p\xE1ginas y comentarios nativos)\u2026",
-  "Deleting attachment {0}/{1}\u2026": "Eliminando adjunto {0}/{1}\u2026",
-  "This book is waiting for attachment cleanup. Finish that first.": "Este libro est\xE1 pendiente de la limpieza de adjuntos. Term\xEDnala primero.",
-  "Not uploaded by this import; file retained": "No subido por esta importaci\xF3n; archivo conservado",
-  "Original upload ownership is unknown; file retained": "Origen de la subida desconocido; archivo conservado",
-  "Reference check failed; file retained": "Fall\xF3 la comprobaci\xF3n de referencias; archivo conservado",
-  "Removing images from blocks {0}/{1}\u2026": "Quitando im\xE1genes de los bloques {0}/{1}\u2026",
-  "Deleting image file {0}/{1}\u2026": "Eliminando archivo de imagen {0}/{1}\u2026",
-  "Not set": "Sin definir",
-  "Could not save local progress": "No se pudo guardar el progreso local",
-  "Local progress save was aborted": "Se interrumpi\xF3 el guardado local del progreso",
-  "The local EPUB cache is missing. Select the original file again.": "Falta la cach\xE9 local del EPUB. Vuelve a seleccionar el archivo original.",
-  "Preparing\u2026": "Preparando\u2026",
-  "Processing\u2026": "Procesando\u2026",
-  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} entradas de \xEDndice \xB7 {1} nodos de primer nivel \xB7 aprox. {2} bloques \xB7 {3} im\xE1genes \xB7 {4} enlaces internos",
-  " \xB7 {0} formulas": " \xB7 {0} f\xF3rmulas",
-  "Resume importing {0}": "Reanudar la importaci\xF3n de {0}",
-  "Import {0}": "Importar {0}",
-  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "Mant\xE9n Roam abierto durante la importaci\xF3n. El progreso se guarda para poder reanudar una importaci\xF3n interrumpida.",
-  "Created {0}. Images and links are in their original positions.": "Se cre\xF3 {0}. Las im\xE1genes y los enlaces est\xE1n en su posici\xF3n original.",
-  "Import paused: {0}. Progress was saved; you can resume later.": "Importaci\xF3n en pausa: {0}. El progreso se guard\xF3; puedes reanudarla m\xE1s tarde.",
-  "Retry / Resume": "Reintentar / Reanudar",
-  "Book Preview": "Vista previa del libro",
-  "Author: {0}": "Autor: {0}",
-  "Roam page title": "T\xEDtulo de la p\xE1gina de Roam",
-  "Original EPUB TOC ({0}, full hierarchy)": "\xCDndice EPUB original ({0}, jerarqu\xEDa completa)",
-  "Outline generated from body headings": "Esquema generado a partir de los t\xEDtulos del texto",
-  "; {0} need review (source retained)": "; {0} por revisar (se conserva la fuente)",
-  "Formulas: {0} converted{1}": "F\xF3rmulas: {0} convertidas{1}",
-  "Formula {0} \xB7 {1}": "F\xF3rmula {0} \xB7 {1}",
-  "Preview text and image order": "Vista previa del orden del texto y las im\xE1genes",
-  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "Las im\xE1genes se suben en su posici\xF3n original. Los enlaces externos se conservan; los internos se convierten en referencias de bloque de Roam.",
-  "Start Import": "Iniciar importaci\xF3n",
-  "Unfinished Imports": "Importaciones sin terminar",
-  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "Esta tarea usa un analizador antiguo. Vuelve a seleccionar el EPUB para crear una importaci\xF3n corregida.",
-  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "Esta tarea antigua no comprob\xF3 las f\xF3rmulas. Vuelve a seleccionar el EPUB si el libro contiene f\xF3rmulas.",
-  "Discard Job": "Descartar tarea",
-  "A Roam page already exists. Use Manage Imported Books to remove this import.": "Ya existe una p\xE1gina de Roam. Usa \xABGestionar libros importados\xBB para quitar esta importaci\xF3n.",
-  "EPUB Importer": "Importador de EPUB",
-  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "Elige un EPUB. El an\xE1lisis se hace en tu dispositivo; las im\xE1genes solo se suben al grafo de Roam actual despu\xE9s de que confirmes la importaci\xF3n.",
-  "No file selected.": "Ning\xFAn archivo seleccionado.",
-  "Reading contents, text, images, and links\u2026": "Leyendo \xEDndice, texto, im\xE1genes y enlaces\u2026",
-  "Cannot read file: {0}": "No se puede leer el archivo: {0}",
-  "Cannot read saved jobs: {0}": "No se pueden leer las tareas guardadas: {0}",
-  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "Esto elimina {0} cap\xEDtulos ra\xEDz, {1} bloques y {2} adjuntos exclusivos. Las p\xE1ginas y los comentarios nativos se conservan.",
-  " {0} shared or unverified attachments will be retained.": " Se conservar\xE1n {0} adjuntos compartidos o no verificados.",
-  "Remove images \xB7 {0}": "Quitar im\xE1genes \xB7 {0}",
-  "Finding images and checking where their files are used\u2026": "Buscando im\xE1genes y comprobando d\xF3nde se usan sus archivos\u2026",
-  "Check failed: {0}": "Fall\xF3 la comprobaci\xF3n: {0}",
-  "Back to Book List": "Volver a la lista de libros",
-  "This book has no images left in its text.": "Este libro ya no tiene im\xE1genes en el texto.",
-  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} bloques contienen im\xE1genes. Se quitan las im\xE1genes ({1} bloques que solo tienen una imagen se eliminan; los bloques con texto, hijos o referencias se conservan). El libro, su texto, t\xEDtulos, comentarios y resaltados se quedan.",
-  " ({0} shared, outside-referenced or unverified files are kept)": " (se conservan {0} archivos compartidos, referenciados en otro lugar o no verificados)",
-  " Also delete {0} uploaded image files used only by this book{1}.": " Eliminar tambi\xE9n {0} archivos de imagen subidos que solo usa este libro{1}.",
-  "Preview the first changes": "Vista previa de los primeros cambios",
-  "This cannot be undone: deleted image files are gone from Roam storage.": "No se puede deshacer: los archivos de imagen eliminados desaparecen del almacenamiento de Roam.",
-  "Cancel": "Cancelar",
-  "Remove Images": "Quitar im\xE1genes",
-  "Remove images from {0}? The book itself is kept.": "\xBFQuitar las im\xE1genes de {0}? El libro se conserva.",
-  " {0} blocks changed since the preview and were skipped.": " Se omitieron {0} bloques cambiados desde la vista previa.",
-  " {0} files could not be deleted and remain listed.": " {0} archivos no se pudieron eliminar y siguen en la lista.",
-  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "Im\xE1genes quitadas de {0} bloques ({1} bloques de solo imagen eliminados) y {2} archivos eliminados.{3}{4}",
-  "Image removal failed: {0}": "Fall\xF3 la eliminaci\xF3n de im\xE1genes: {0}",
-  "Delete {0}": "Eliminar {0}",
-  "Checking attachment references in other pages and books\u2026": "Comprobando referencias a adjuntos en otras p\xE1ginas y libros\u2026",
-  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "P\xE1ginas afectadas: {0}. Solo se eliminan los cap\xEDtulos confirmados del libro; estas p\xE1ginas se quedan.",
-  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "{0} bloques fuera del libro hacen referencia a su contenido (quiz\xE1 tambi\xE9n comentarios nativos). Esas referencias pueden romperse tras la eliminaci\xF3n; los comentarios y las notas independientes se quedan.",
-  "Reference checking failed. Attachments will be retained.": "Fall\xF3 la comprobaci\xF3n de referencias. Los adjuntos se conservar\xE1n.",
-  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "Este libro recuperado no tiene registro de subida original. Los cap\xEDtulos se pueden eliminar, pero las im\xE1genes detectadas se conservar\xE1n.",
-  "Type the full book title to confirm: {0}": "Escribe el t\xEDtulo completo del libro para confirmar: {0}",
-  "Delete Permanently": "Eliminar definitivamente",
-  " {0} failed deletions are saved for retry.": " Se guardaron {0} eliminaciones fallidas para reintentarlas.",
-  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "Se eliminaron los cap\xEDtulos del libro y {0} adjuntos exclusivos. Las p\xE1ginas y los comentarios nativos se quedan. Se conservaron {1} adjuntos compartidos o no verificados.{2}",
-  "Deletion failed: {0}": "Fall\xF3 la eliminaci\xF3n: {0}",
-  "Recover Existing Book": "Recuperar un libro existente",
-  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "Escribe todo o parte del t\xEDtulo de la p\xE1gina original del libro. La recuperaci\xF3n registra el libro existente sin volver a importar, editar el texto ni subir im\xE1genes. Los adjuntos sin registro de subida se marcan como no verificados y se conservan al eliminar.",
-  "Page title or book keywords": "T\xEDtulo de la p\xE1gina o palabras clave del libro",
-  "Find an existing book page": "Buscar una p\xE1gina de libro existente",
-  "Find Pages": "Buscar p\xE1ginas",
-  "No matching pages. Try a shorter book title.": "No hay p\xE1ginas coincidentes. Prueba con un t\xEDtulo m\xE1s corto.",
-  "Register This Book": "Registrar este libro",
-  "Recovery failed: {0}": "Fall\xF3 la recuperaci\xF3n: {0}",
-  "Reading the graph's book library\u2026": "Leyendo la biblioteca de libros del grafo\u2026",
-  "Cannot read the library: {0}. Existing books are unchanged.": "No se puede leer la biblioteca: {0}. Los libros existentes no cambian.",
-  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "La biblioteca est\xE1 vac\xEDa. Usa \xABRecuperar un libro existente\xBB para libros que falten tras una actualizaci\xF3n; no hace falta volver a importar.",
-  "Unknown author": "Autor desconocido",
-  " \xB7 Cleanup pending": " \xB7 Limpieza pendiente",
-  " \xB7 Recovered (original attachments retained)": " \xB7 Recuperado (se conservan los adjuntos originales)",
-  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} adjuntos{2}",
-  "Clean Up Attachments": "Limpiar adjuntos",
-  "Delete Book": "Eliminar libro",
-  "Delete this book's images but keep the book": "Eliminar las im\xE1genes de este libro pero conservar el libro",
-  "Open Reader": "Abrir el lector",
-  "The chapter structure has not been prepared.": "La estructura de cap\xEDtulos no se ha preparado.",
-  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "Se edit\xF3 o movi\xF3 un bloque importado. Reanudaci\xF3n en pausa para conservar tus cambios. Selecciona el EPUB para importarlo en una p\xE1gina aparte.",
-  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "Importando cap\xEDtulo {0}/{1} \xB7 bloque {2}/{3}",
-  "Resolving internal link {0}/{1}": "Resolviendo enlace interno {0}/{1}",
-  "{0} comment": "{0} comentario",
-  "{0} comments": "{0} comentarios",
-  "{0} highlight": "{0} resaltado",
-  "{0} highlights": "{0} resaltados",
-  "{0} mark": "{0} marca",
-  "{0} marks": "{0} marcas",
-  "Read": "Le\xEDdo",
-  "Unvisited": "Sin visitar",
-  "Browsed": "Hojeado",
-  "Browsing": "Leyendo",
-  "highlight": "resaltado",
-  "comment": "comentario",
-  "mark": "marca",
-  "question": "pregunta",
-  "sidebar": "la barra lateral",
-  "main window": "la ventana principal",
-  "Heading repair": "Reparaci\xF3n de t\xEDtulos",
-  "Link repair": "Reparaci\xF3n de enlaces",
-  "Paragraph repair": "Reparaci\xF3n de p\xE1rrafos",
-  "Archive removal": "Eliminaci\xF3n de archivos",
-  "Toggle Mark": "Marcar / desmarcar",
-  "Toggle Question": "Pregunta / quitar pregunta",
-  "Open / close Reading Desk": "Abrir / cerrar Reading Desk",
-  "Continue reading": "Seguir leyendo",
-  "Open reading notes": "Abrir las notas de lectura",
-  "Contents": "\xCDndice",
-  "Annotations": "Anotaciones",
-  "Notes": "Notas",
-  "Settings": "Ajustes",
-  "Theme default": "Predeterminado del tema",
-  "Margin dot + bold": "Punto al margen + negrita",
-  "Bookmark ribbon": "Cinta marcap\xE1ginas",
-  "Gold highlighter": "Rotulador dorado",
-  "Pull quote": "Cita destacada",
-  "Sticky note": "Nota adhesiva",
-  "Ink emphasis": "Tinta intensa",
-  "Fill the line": "Llenar la l\xEDnea",
-  "Theme line length": "Longitud de l\xEDnea del tema",
-  "Cards": "Tarjetas",
-  "Minimal": "M\xEDnimo",
-  "Coral": "Coral",
-  "Rose": "Rosa",
-  "Mint": "Menta",
-  "Sky": "Cielo",
-  "Lilac": "Lila",
-  "Gold": "Oro",
-  "Gray": "Gris",
-  "Blue": "Azul",
-  "Green": "Verde",
-  "Purple": "Morado",
-  "Marker": "Rotulador",
-  "Underline": "Subrayado",
-  "Oldest first": "Las m\xE1s antiguas primero",
-  "Newest first": "Las m\xE1s recientes primero",
-  "A tag at the end (#question)": "Una etiqueta al final (#question)",
-  "An attribute at the start (Question::)": "Un atributo al principio (Question::)",
-  "The right sidebar": "La barra lateral derecha",
-  "The main window": "La ventana principal",
-  "Auto (browser language)": "Auto (idioma del navegador)",
-  "Page": "P\xE1gina",
-  "Book": "Libro",
-  "Earlier": "Anteriores",
-  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "No se encontr\xF3 un \xEDndice EPUB utilizable. El esquema usa los t\xEDtulos del texto; revisa la vista previa.",
-  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "Falta el destino del \xEDndice para {0}: {1}. El texto sin asignar se conserva aparte.",
-  "TOC file is outside the EPUB reading order: {0}": "El archivo del \xEDndice est\xE1 fuera del orden de lectura del EPUB: {0}",
-  "Missing EPUB body file: {0}": "Falta un archivo de texto del EPUB: {0}",
-  "Missing EPUB image: {0}": "Falta una imagen del EPUB: {0}",
-  "Auto": "Auto",
-  "Interface language": "Idioma de la interfaz",
-  "Interface language for Reading Desk (Auto follows your browser).": "Idioma de la interfaz de Reading Desk (Auto sigue al navegador)."
-};
-
-// src/locales/zh.js
-var zh_default = {
-  "Enter a destination page title.": "\u8BF7\u8F93\u5165\u76EE\u6807\u9875\u9762\u6807\u9898\u3002",
-  "Select annotations to include first.": "\u8BF7\u5148\u9009\u62E9\u8981\u52A0\u5165\u7684\u6279\u6CE8\u3002",
-  "Book repair is available for managed books only.": "\u4E66\u7C4D\u4FEE\u590D\u4EC5\u9002\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002",
-  "Rejoin {0} split paragraph(s) (checked against the original EPUB)": "\u62FC\u56DE {0} \u4E2A\u88AB\u62C6\u5F00\u7684\u6BB5\u843D\uFF08\u5DF2\u4E0E\u539F EPUB \u6838\u5BF9\uFF09",
-  "Fix {0} block(s) with broken numbered links": "\u4FEE\u590D {0} \u4E2A\u542B\u574F\u7F16\u53F7\u94FE\u63A5\u7684\u5757",
-  "; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph": "\uFF1B{0} \u5904\u6307\u5411\u65E7\u7247\u6BB5\u7684\u5F15\u7528\uFF08\u8BC4\u8BBA\u3001\u811A\u6CE8\u94FE\u63A5\uFF09\u6539\u6307\u5411\u4FEE\u590D\u540E\u7684\u6BB5\u843D",
-  "Remove {0} EPUB-READER:paragraph-fragments archive(s){1}": "\u5220\u9664 {0} \u4E2A EPUB-READER:paragraph-fragments \u5B58\u6863{1}",
-  "Set {0} chapter heading(s) to H1/H2/H3 by depth": "\u6309\u5C42\u7EA7\u628A {0} \u4E2A\u7AE0\u8282\u6807\u9898\u8BBE\u4E3A H1/H2/H3",
-  "Remove {0} heading(s) that repeat their chapter title (paragraphs move up, IDs unchanged)": "\u5220\u9664 {0} \u4E2A\u91CD\u590D\u7AE0\u8282\u540D\u7684\u6807\u9898\uFF08\u6BB5\u843D\u4E0A\u79FB\uFF0C\u5757 ID \u4E0D\u53D8\uFF09",
-  "Turn {0} other body heading(s) into bold text": "\u628A {0} \u4E2A\u5176\u4ED6\u6B63\u6587\u6807\u9898\u6539\u4E3A\u52A0\u7C97",
-  'Put {0} footnote marker(s) back at the end of their heading (e.g. "2.3 Title [3]"); the paragraphs under a marker move into the heading': "\u628A {0} \u4E2A\u811A\u6CE8\u6807\u8BB0\u63A5\u56DE\u6240\u5C5E\u6807\u9898\u672B\u5C3E\uFF08\u5982\u201C2.3 \u6807\u9898 [3]\u201D\uFF09\uFF1B\u6807\u8BB0\u4E0B\u7684\u6BB5\u843D\u79FB\u5230\u6807\u9898\u4E0B",
-  "Turn {0} footnote marker heading(s) such as [3] into plain text": "\u628A {0} \u4E2A\u50CF [3] \u8FD9\u6837\u7684\u811A\u6CE8\u6807\u8BB0\u6807\u9898\u6539\u4E3A\u666E\u901A\u6587\u5B57",
-  "Rejoining split paragraphs\u2026": "\u6B63\u5728\u62FC\u56DE\u88AB\u62C6\u5F00\u7684\u6BB5\u843D\u2026",
-  "Fixing numbered links\u2026": "\u6B63\u5728\u4FEE\u590D\u7F16\u53F7\u94FE\u63A5\u2026",
-  "Removing paragraph archives\u2026": "\u6B63\u5728\u5220\u9664\u6BB5\u843D\u5B58\u6863\u2026",
-  "Fixing heading levels\u2026": "\u6B63\u5728\u4FEE\u590D\u6807\u9898\u5C42\u7EA7\u2026",
-  "No book repair record was found.": "\u672A\u627E\u5230\u4FEE\u590D\u8BB0\u5F55\u3002",
-  "The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed.": "\u539F\u9875\u9762\u5DF2\u4E0D\u5B58\u5728\u3002\u8BF7\u6253\u5F00\u8FD9\u672C\u4E66\u73B0\u5728\u6240\u5728\u7684\u9875\u9762\uFF0C\u9009\u4E2D\u8FD9\u672C\u4E66\u5E76\u5173\u8054\u5B83\u7684\u7AE0\u8282\u3002\u65E0\u9700\u91CD\u65B0\u5BFC\u5165\u3002",
-  "Select at least one existing book chapter.": "\u8BF7\u81F3\u5C11\u9009\u62E9\u4E00\u4E2A\u73B0\u6709\u7AE0\u8282\u3002",
-  "Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required.": "\u8BF7\u5148\u5728\u9605\u8BFB\u9762\u677F\u4E2D\u786E\u8BA4\u8FD9\u672C\u4E66\u7684\u7AE0\u8282\u8303\u56F4\u3002\u65E0\u9700\u91CD\u65B0\u5BFC\u5165\u6216\u4FEE\u6539\u6587\u5B57\u3002",
-  "Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained.": "\u7AE0\u8282\u8303\u56F4\u4E0D\u80FD\u5305\u542B\u6574\u4E2A\u9875\u9762\u3002\u8BF7\u91CD\u65B0\u786E\u8BA4\u4E66\u7C4D\u7AE0\u8282\uFF1B\u9875\u9762\u4F1A\u4FDD\u7559\u3002",
-  "The current page or block cannot be read.": "\u65E0\u6CD5\u8BFB\u53D6\u5F53\u524D\u9875\u9762\u6216\u5757\u3002",
-  "Could not parse {0}": "\u65E0\u6CD5\u89E3\u6790 {0}",
-  "Invalid EPUB: META-INF/container.xml is missing": "\u65E0\u6548\u7684 EPUB\uFF1A\u7F3A\u5C11 META-INF/container.xml",
-  "The EPUB manifest is missing": "\u7F3A\u5C11 EPUB \u6E05\u5355\u6587\u4EF6",
-  "No readable chapter content was found in the EPUB": "EPUB \u4E2D\u6CA1\u6709\u627E\u5230\u53EF\u8BFB\u7684\u7AE0\u8282\u5185\u5BB9",
-  "This block no longer exists. Refresh the contents or annotations; the book will not be recreated.": "\u8FD9\u4E2A\u5757\u5DF2\u4E0D\u5B58\u5728\u3002\u8BF7\u5237\u65B0\u76EE\u5F55\u6216\u6279\u6CE8\uFF1B\u4E66\u4E0D\u4F1A\u88AB\u91CD\u65B0\u521B\u5EFA\u3002",
-  "Cannot find the page containing this block.": "\u627E\u4E0D\u5230\u5305\u542B\u8FD9\u4E2A\u5757\u7684\u9875\u9762\u3002",
-  "The page opened, but this paragraph has not rendered. Expand its chapter and try again.": "\u9875\u9762\u5DF2\u6253\u5F00\uFF0C\u4F46\u8FD9\u4E2A\u6BB5\u843D\u8FD8\u6CA1\u6709\u663E\u793A\u3002\u8BF7\u5C55\u5F00\u5B83\u6240\u5728\u7684\u7AE0\u8282\u540E\u91CD\u8BD5\u3002",
-  "Heading repair is available for managed books only.": "\u6807\u9898\u4FEE\u590D\u4EC5\u9002\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002",
-  "This Roam version does not expose block.move. No headings were changed.": "\u5F53\u524D Roam \u7248\u672C\u4E0D\u652F\u6301 block.move\uFF0C\u672A\u4FEE\u6539\u4EFB\u4F55\u6807\u9898\u3002",
-  "{0} Use Undo Last Heading Repair to restore what was changed.": "{0} \u53EF\u7528\u201C\u64A4\u9500\u4E0A\u6B21\u4FEE\u590D\u201D\u6062\u590D\u5DF2\u505A\u7684\u4FEE\u6539\u3002",
-  "No heading repair backup was found.": "\u672A\u627E\u5230\u6807\u9898\u4FEE\u590D\u7684\u5907\u4EFD\u3002",
-  "Language": "\u8BED\u8A00",
-  "Interface language (Auto follows your browser). The reading panel switches at once; this settings tab after reloading the plugin.": "\u754C\u9762\u8BED\u8A00\uFF08Auto \u8DDF\u968F\u6D4F\u89C8\u5668\uFF09\u3002\u9605\u8BFB\u9762\u677F\u4F1A\u7ACB\u5373\u5207\u6362\uFF1B\u8FD9\u4E2A\u8BBE\u7F6E\u9875\u9700\u91CD\u65B0\u52A0\u8F7D\u63D2\u4EF6\u540E\u751F\u6548\u3002",
-  "Import EPUB": "\u5BFC\u5165 EPUB",
-  "Choose, preview, and import an EPUB book": "\u9009\u62E9\u3001\u9884\u89C8\u5E76\u5BFC\u5165\u4E00\u672C EPUB \u4E66",
-  "Open Importer": "\u6253\u5F00\u5BFC\u5165\u5668",
-  "Manage Imported Books": "\u7BA1\u7406\u5DF2\u5BFC\u5165\u7684\u4E66",
-  "Manage imported books, recover existing pages, and safely clean up attachments": "\u7BA1\u7406\u5DF2\u5BFC\u5165\u7684\u4E66\u3001\u627E\u56DE\u5DF2\u6709\u9875\u9762\uFF0C\u5E76\u5B89\u5168\u6E05\u7406\u9644\u4EF6",
-  "Manage Books": "\u7BA1\u7406\u4E66\u7C4D",
-  "Reading Desk": "Reading Desk",
-  "Open reading tools for books or ordinary pages": "\u7528\u4E8E\u4E66\u7C4D\u6216\u666E\u901A\u9875\u9762\u7684\u9605\u8BFB\u5DE5\u5177",
-  "Open Reading Desk": "\u6253\u5F00 Reading Desk",
-  "Automatic Browsing Progress": "\u81EA\u52A8\u6D4F\u89C8\u8FDB\u5EA6",
-  "Estimate foreground browsing per chapter; never infer comprehension": "\u6309\u7AE0\u8282\u4F30\u7B97\u524D\u53F0\u6D4F\u89C8\u60C5\u51B5\uFF1B\u4ECE\u4E0D\u636E\u6B64\u63A8\u65AD\u7406\u89E3\u7A0B\u5EA6",
-  "Native Comment Side Notes": "\u539F\u751F\u8BC4\u8BBA\u65C1\u6CE8",
-  "Show native comments in full beside the text throughout the graph": "\u5728\u6574\u4E2A\u56FE\u8C31\u4E2D\u628A\u539F\u751F\u8BC4\u8BBA\u5B8C\u6574\u663E\u793A\u5728\u6B63\u6587\u65C1\u8FB9",
-  "Highlight Colour": "\u9AD8\u4EAE\u989C\u8272",
-  "Colour for native ^^highlights^^ (Theme default keeps your theme's colour)": "\u539F\u751F ^^\u9AD8\u4EAE^^ \u7684\u989C\u8272\uFF08\u201C\u4E3B\u9898\u9ED8\u8BA4\u201D\u4FDD\u7559\u4E3B\u9898\u539F\u672C\u7684\u989C\u8272\uFF09",
-  "Question Tags": "\u7591\u95EE\u6807\u7B7E",
-  "Comma-separated existing tags used for unresolved questions. The Toggle Question shortcut adds #question.": "\u7528\u4E8E\u672A\u89E3\u51B3\u95EE\u9898\u7684\u73B0\u6709\u6807\u7B7E\uFF0C\u7528\u9017\u53F7\u5206\u9694\u3002\u201C\u5207\u6362\u7591\u95EE\u201D\u5FEB\u6377\u952E\u4F1A\u52A0\u4E0A #question\u3002",
-  "Invalid library format. Stopped to protect existing data.": "\u4E66\u5E93\u683C\u5F0F\u65E0\u6548\u3002\u4E3A\u4FDD\u62A4\u73B0\u6709\u6570\u636E\u5DF2\u505C\u6B62\u3002",
-  "Cannot read the library. Stopped to protect existing data.": "\u65E0\u6CD5\u8BFB\u53D6\u4E66\u5E93\u3002\u4E3A\u4FDD\u62A4\u73B0\u6709\u6570\u636E\u5DF2\u505C\u6B62\u3002",
-  "Unsupported library version or structure. Stopped to protect existing data.": "\u4E0D\u652F\u6301\u7684\u4E66\u5E93\u7248\u672C\u6216\u7ED3\u6784\u3002\u4E3A\u4FDD\u62A4\u73B0\u6709\u6570\u636E\u5DF2\u505C\u6B62\u3002",
-  "The attachment ledger is incomplete. Stopped to protect attachments.": "\u9644\u4EF6\u6E05\u5355\u4E0D\u5B8C\u6574\u3002\u4E3A\u4FDD\u62A4\u9644\u4EF6\u5DF2\u505C\u6B62\u3002",
-  "Attachment ledger validation failed.": "\u9644\u4EF6\u6E05\u5355\u6821\u9A8C\u5931\u8D25\u3002",
-  "The book record has no stable identity.": "\u8FD9\u672C\u4E66\u7684\u8BB0\u5F55\u6CA1\u6709\u7A33\u5B9A\u7684\u6807\u8BC6\u3002",
-  "Enter at least two characters of the page title.": "\u8BF7\u81F3\u5C11\u8F93\u5165\u9875\u9762\u6807\u9898\u4E2D\u7684\u4E24\u4E2A\u5B57\u3002",
-  "The specified book page could not be found.": "\u627E\u4E0D\u5230\u6307\u5B9A\u7684\u4E66\u7C4D\u9875\u9762\u3002",
-  "Native Roam comment": "Roam \u539F\u751F\u8BC4\u8BBA",
-  "Open the native comment thread to edit": "\u6253\u5F00\u539F\u751F\u8BC4\u8BBA\u7EBF\u7A0B\u8FDB\u884C\u7F16\u8F91",
-  "Open native comment thread": "\u6253\u5F00\u539F\u751F\u8BC4\u8BBA\u7EBF\u7A0B",
-  "Delete this comment": "\u5220\u9664\u8FD9\u6761\u8BC4\u8BBA",
-  "Delete comment": "\u5220\u9664\u8BC4\u8BBA",
-  "\n\nIts replies are deleted too.": "\n\n\u5B83\u7684\u56DE\u590D\u4E5F\u4F1A\u4E00\u5E76\u5220\u9664\u3002",
-  "Delete this comment?\n\n{0}{1}": "\u5220\u9664\u8FD9\u6761\u8BC4\u8BBA\uFF1F\n\n{0}{1}",
-  "Expand this section": "\u5C55\u5F00\u8FD9\u4E00\u8282",
-  "Use a nonempty question tag without brackets, #, braces, or line breaks (up to 80 characters).": "\u8BF7\u4F7F\u7528\u975E\u7A7A\u7684\u7591\u95EE\u6807\u7B7E\uFF0C\u4E0D\u542B\u65B9\u62EC\u53F7\u3001#\u3001\u82B1\u62EC\u53F7\u6216\u6362\u884C\uFF08\u6700\u591A 80 \u4E2A\u5B57\u7B26\uFF09\u3002",
-  "Place the cursor inside a paragraph or native comment first, then toggle the question.": "\u8BF7\u5148\u628A\u5149\u6807\u653E\u5728\u6BB5\u843D\u6216\u539F\u751F\u8BC4\u8BBA\u91CC\uFF0C\u518D\u5207\u6362\u7591\u95EE\u3002",
-  "Unmark It": "\u53D6\u6D88 Mark It",
-  "Mark It": "Mark It",
-  "This Roam version does not expose block.move. No paragraphs were changed.": "\u5F53\u524D Roam \u7248\u672C\u4E0D\u652F\u6301 block.move\uFF0C\u672A\u4FEE\u6539\u4EFB\u4F55\u6BB5\u843D\u3002",
-  "{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.": "{0} \u539F\u7247\u6BB5 ID \u5DF2\u4FDD\u7559\u3002\u4E2D\u65AD\u7684\u4FEE\u6539\u8BF7\u7528\u201C\u64A4\u9500\u4E0A\u6B21\u6BB5\u843D\u4FEE\u590D\u201D\u3002",
-  "Paragraph repair backup is missing.": "\u6BB5\u843D\u4FEE\u590D\u7684\u5907\u4EFD\u4E0D\u5B58\u5728\u3002",
-  "Archive cleanup backup is missing.": "\u5B58\u6863\u6E05\u7406\u7684\u5907\u4EFD\u4E0D\u5B58\u5728\u3002",
-  "Reading metadata is incomplete. Refresh and retry; the original book is unaffected.": "\u9605\u8BFB\u5143\u6570\u636E\u4E0D\u5B8C\u6574\u3002\u8BF7\u5237\u65B0\u540E\u91CD\u8BD5\uFF1B\u539F\u4E66\u4E0D\u53D7\u5F71\u54CD\u3002",
-  "just now": "\u521A\u521A",
-  "{0} min ago": "{0} \u5206\u949F\u524D",
-  "{0} h ago": "{0} \u5C0F\u65F6\u524D",
-  "{0} d ago": "{0} \u5929\u524D",
-  "All Books": "\u5168\u90E8\u4E66\u7C4D",
-  "Selected block: {0}": "\u5DF2\u9009\u5757\uFF1A{0}",
-  "Click a paragraph or native comment to select an action target.": "\u70B9\u51FB\u4E00\u4E2A\u6BB5\u843D\u6216\u539F\u751F\u8BC4\u8BBA\uFF0C\u4F5C\u4E3A\u64CD\u4F5C\u5BF9\u8C61\u3002",
-  " \xB7 approx. {0}%": " \xB7 \u7EA6 {0}%",
-  "Read \xB7 click to unmark": "\u5DF2\u8BFB \xB7 \u70B9\u51FB\u53D6\u6D88",
-  "Mark as read": "\u6807\u8BB0\u4E3A\u5DF2\u8BFB",
-  "Could not collapse the previous chapter: {0}": "\u65E0\u6CD5\u6298\u53E0\u4E0A\u4E00\u7AE0\uFF1A{0}",
-  "The page {0} does not exist yet.": "\u9875\u9762 {0} \u8FD8\u4E0D\u5B58\u5728\u3002",
-  "Open a book or page first.": "\u8BF7\u5148\u6253\u5F00\u4E00\u672C\u4E66\u6216\u4E00\u4E2A\u9875\u9762\u3002",
-  "Remove from All Books": "\u4ECE\u201C\u5168\u90E8\u4E66\u7C4D\u201D\u79FB\u9664",
-  "Include in All Books": "\u52A0\u5165\u201C\u5168\u90E8\u4E66\u7C4D\u201D",
-  "Pages you include appear in the All Books scope with your books": "\u52A0\u5165\u7684\u9875\u9762\u4F1A\u548C\u4F60\u7684\u4E66\u4E00\u8D77\u51FA\u73B0\u5728\u201C\u5168\u90E8\u4E66\u7C4D\u201D\u4E2D",
-  "Confirm which existing chapters belong to this book. Uncheck your own notes. This records block IDs only; existing text, comments, and highlights are preserved.": "\u786E\u8BA4\u54EA\u4E9B\u73B0\u6709\u7AE0\u8282\u5C5E\u4E8E\u8FD9\u672C\u4E66\uFF0C\u53D6\u6D88\u52FE\u9009\u4F60\u81EA\u5DF1\u7684\u7B14\u8BB0\u3002\u8FD9\u91CC\u53EA\u8BB0\u5F55\u5757 ID\uFF1B\u5DF2\u6709\u6587\u5B57\u3001\u8BC4\u8BBA\u548C\u9AD8\u4EAE\u90FD\u4F1A\u4FDD\u7559\u3002",
-  "Confirm Book Scope": "\u786E\u8BA4\u7AE0\u8282\u8303\u56F4",
-  "Annotations and questions from every managed book and every page you included. Choose a source to open it.": "\u6765\u81EA\u6240\u6709\u5DF2\u7BA1\u7406\u4E66\u7C4D\u548C\u6240\u6709\u5DF2\u52A0\u5165\u9875\u9762\u7684\u6279\u6CE8\u4E0E\u7591\u95EE\u3002\u9009\u62E9\u4E00\u4E2A\u6765\u6E90\u5373\u53EF\u6253\u5F00\u3002",
-  "{0} \xB7 {1} annotations": "{0} \xB7 {1} \u6761\u6279\u6CE8",
-  "Last read \xB7 {0}": "\u4E0A\u6B21\u9605\u8BFB \xB7 {0}",
-  "Body": "\u6B63\u6587",
-  "Continue": "\u7EE7\u7EED",
-  "No contents on this page. Contents are built from H1, H2 and H3 headings.": "\u6B64\u9875\u6CA1\u6709\u76EE\u5F55\u3002\u76EE\u5F55\u7531 H1\u3001H2\u3001H3 \u6807\u9898\u751F\u6210\u3002",
-  "No chapters were found.": "\u6CA1\u6709\u627E\u5230\u7AE0\u8282\u3002",
-  "Collapse All Chapters": "\u6298\u53E0\u5168\u90E8\u7AE0\u8282",
-  "Collapse Subdirectories": "\u6298\u53E0\u5B50\u76EE\u5F55",
-  "Expand Subdirectories": "\u5C55\u5F00\u5B50\u76EE\u5F55",
-  "Current section: {0}": "\u5F53\u524D\u5C0F\u8282\uFF1A{0}",
-  "Toggle subdirectory: {0}": "\u5C55\u5F00/\u6298\u53E0\u5B50\u76EE\u5F55\uFF1A{0}",
-  "Resume": "\u7EE7\u7EED\u9605\u8BFB",
-  "Reset": "\u91CD\u7F6E",
-  "Reset browsing progress for {0}? Text and annotations will be preserved.": "\u91CD\u7F6E {0} \u7684\u6D4F\u89C8\u8FDB\u5EA6\uFF1F\u6587\u5B57\u548C\u6279\u6CE8\u90FD\u4F1A\u4FDD\u7559\u3002",
-  "Fold": "\u6298\u53E0",
-  "{0} chapter entries are missing. Use the action below to link their current location.": "\u7F3A\u5C11 {0} \u4E2A\u7AE0\u8282\u6761\u76EE\u3002\u8BF7\u7528\u4E0B\u9762\u7684\u64CD\u4F5C\u5173\u8054\u5B83\u4EEC\u73B0\u5728\u7684\u4F4D\u7F6E\u3002",
-  "Link Current Page to This Book": "\u628A\u5F53\u524D\u9875\u9762\u5173\u8054\u5230\u8FD9\u672C\u4E66",
-  "Contents come from H1, H2 and H3 headings. Clicking a heading only scrolls; nothing on the page is folded or changed.": "\u76EE\u5F55\u6765\u81EA H1\u3001H2\u3001H3 \u6807\u9898\u3002\u70B9\u51FB\u6807\u9898\u53EA\u4F1A\u6EDA\u52A8\uFF0C\u4E0D\u4F1A\u6298\u53E0\u6216\u4FEE\u6539\u9875\u9762\u4E0A\u7684\u4EFB\u4F55\u5185\u5BB9\u3002",
-  "Unvisited chapters are not tasks. Coverage estimates paragraphs viewed, not words read or comprehension. Use \u2713 to mark a chapter as read yourself.": "\u672A\u8BBF\u95EE\u7684\u7AE0\u8282\u4E0D\u662F\u4EFB\u52A1\u3002\u8986\u76D6\u7387\u4F30\u7B97\u7684\u662F\u663E\u793A\u8FC7\u7684\u6BB5\u843D\uFF0C\u4E0D\u662F\u8BFB\u8FC7\u7684\u5B57\u6570\u6216\u7406\u89E3\u7A0B\u5EA6\u3002\u7528 \u2713 \u81EA\u5DF1\u628A\u7AE0\u8282\u6807\u4E3A\u5DF2\u8BFB\u3002",
-  "Include in notes draft": "\u52A0\u5165\u7B14\u8BB0\u8349\u7A3F",
-  "This page": "\u672C\u9875",
-  "(Empty annotation)": "\uFF08\u7A7A\u6279\u6CE8\uFF09",
-  "Open Native Comment": "\u6253\u5F00\u539F\u751F\u8BC4\u8BBA",
-  "Open in Sidebar": "\u5728\u4FA7\u8FB9\u680F\u6253\u5F00",
-  "Search annotations": "\u641C\u7D22\u6279\u6CE8",
-  "All types": "\u5168\u90E8\u7C7B\u578B",
-  "Highlights": "\u9AD8\u4EAE",
-  "Comments": "\u8BC4\u8BBA",
-  "Marks": "\u6807\u8BB0",
-  "Questions": "\u7591\u95EE",
-  "All sources": "\u5168\u90E8\u6765\u6E90",
-  "All chapters": "\u5168\u90E8\u7AE0\u8282",
-  "{0} items \xB7 Click to locate in context; Shift+click for sidebar.": "{0} \u9879 \xB7 \u70B9\u51FB\u5728\u4E0A\u4E0B\u6587\u4E2D\u5B9A\u4F4D\uFF1BShift+\u70B9\u51FB\u5728\u4FA7\u8FB9\u680F\u6253\u5F00\u3002",
-  "Load More": "\u52A0\u8F7D\u66F4\u591A",
-  "Question:: \u2026": "Question:: \u2026",
-  "Questions collects everything still open: native TODO, your question tags, and question attributes (for example {0}). DONE items are excluded. Alt+Q toggles one on the current block; choose tag or attribute style in Settings.": "\u7591\u95EE\u6C47\u603B\u6240\u6709\u4ECD\u672A\u89E3\u51B3\u7684\u5185\u5BB9\uFF1A\u539F\u751F TODO\u3001\u4F60\u7684\u7591\u95EE\u6807\u7B7E\u548C\u7591\u95EE\u5C5E\u6027\uFF08\u4F8B\u5982 {0}\uFF09\u3002DONE \u4E0D\u8BA1\u5165\u3002Alt+Q \u53EF\u5728\u5F53\u524D\u5757\u4E0A\u5207\u6362\uFF1B\u5728\u8BBE\u7F6E\u4E2D\u9009\u62E9\u6807\u7B7E\u6216\u5C5E\u6027\u6837\u5F0F\u3002",
-  "Annotations collects highlights, native comments, marks and questions. Tick items to build a reading-notes page that references the originals.": "\u6279\u6CE8\u6C47\u603B\u9AD8\u4EAE\u3001\u539F\u751F\u8BC4\u8BBA\u3001Mark It \u548C\u7591\u95EE\u3002\u52FE\u9009\u6761\u76EE\u5373\u53EF\u751F\u6210\u5F15\u7528\u539F\u6587\u7684\u8BFB\u4E66\u7B14\u8BB0\u9875\u9762\u3002",
-  "Destination page for notes draft": "\u7B14\u8BB0\u8349\u7A3F\u7684\u76EE\u6807\u9875\u9762",
-  "Create Notes Draft from Selection": "\u7528\u6240\u9009\u5185\u5BB9\u751F\u6210\u7B14\u8BB0\u8349\u7A3F",
-  "Appended {0} referenced notes to {1}, linked to the source page. Opened in the {2}.": "\u5DF2\u5411 {1} \u8FFD\u52A0 {0} \u6761\u5F15\u7528\u7B14\u8BB0\uFF0C\u5E76\u94FE\u63A5\u56DE\u539F\u4E66\u9875\u9762\u3002\u5DF2\u5728{2}\u4E2D\u6253\u5F00\u3002",
-  "No reading notes yet for {0}. In Annotations, tick items and choose Create Notes Draft; the notes page ({1}) opens in the sidebar.": "{0} \u8FD8\u6CA1\u6709\u8BFB\u4E66\u7B14\u8BB0\u3002\u5728\u201C\u6279\u6CE8\u201D\u4E2D\u52FE\u9009\u6761\u76EE\u5E76\u70B9\u201C\u7528\u6240\u9009\u5185\u5BB9\u751F\u6210\u7B14\u8BB0\u8349\u7A3F\u201D\uFF1B\u7B14\u8BB0\u9875\u9762\uFF08{1}\uFF09\u4F1A\u5728\u4FA7\u8FB9\u680F\u6253\u5F00\u3002",
-  "Create Notes Page": "\u521B\u5EFA\u7B14\u8BB0\u9875\u9762",
-  "Open the notes page (Shift+click: sidebar)": "\u6253\u5F00\u7B14\u8BB0\u9875\u9762\uFF08Shift+\u70B9\u51FB\uFF1A\u4FA7\u8FB9\u680F\uFF09",
-  "Sidebar": "\u4FA7\u8FB9\u680F",
-  "No generated drafts on this page yet. Create one from the Annotations tab.": "\u6B64\u9875\u8FD8\u6CA1\u6709\u751F\u6210\u7684\u7B14\u8BB0\u3002\u53EF\u5728\u201C\u6279\u6CE8\u201D\u6807\u7B7E\u4E2D\u751F\u6210\u3002",
-  "Show in the book (Shift+click: sidebar)": "\u5728\u4E66\u4E2D\u663E\u793A\uFF08Shift+\u70B9\u51FB\uFF1A\u4FA7\u8FB9\u680F\uFF09",
-  "{0} \xB7 {1} draft{2} \xB7 {3} note{4}": "{0} \xB7 {1} \u4EFD\u7B14\u8BB0 \xB7 {3} \u6761",
-  "Open this draft (Shift+click: sidebar)": "\u6253\u5F00\u8FD9\u4EFD\u7B14\u8BB0\uFF08Shift+\u70B9\u51FB\uFF1A\u4FA7\u8FB9\u680F\uFF09",
-  "The notes page also has {0} block(s) you wrote yourself; open the page to see them.": "\u7B14\u8BB0\u9875\u9762\u91CC\u8FD8\u6709 {0} \u4E2A\u4F60\u81EA\u5DF1\u5199\u7684\u5757\uFF0C\u6253\u5F00\u9875\u9762\u5373\u53EF\u67E5\u770B\u3002",
-  "Back to Settings": "\u8FD4\u56DE\u8BBE\u7F6E",
-  "Repair This Book": "\u4FEE\u590D\u8FD9\u672C\u4E66",
-  "Book repair is available for managed books only. Select a book in the scope menu. Ordinary pages are never changed automatically.": "\u4E66\u7C4D\u4FEE\u590D\u4EC5\u9002\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002\u8BF7\u5728\u8303\u56F4\u83DC\u5355\u4E2D\u9009\u62E9\u4E00\u672C\u4E66\u3002\u666E\u901A\u9875\u9762\u6C38\u8FDC\u4E0D\u4F1A\u88AB\u81EA\u52A8\u4FEE\u6539\u3002",
-  "Nothing to repair in this book.": "\u8FD9\u672C\u4E66\u6CA1\u6709\u9700\u8981\u4FEE\u590D\u7684\u5730\u65B9\u3002",
-  "This repair will:": "\u672C\u6B21\u4FEE\u590D\u5C06\uFF1A",
-  "{0} archive(s) stay because an old fragment has its own child blocks.": "\u6709 {0} \u4E2A\u5B58\u6863\u4FDD\u7559\uFF0C\u56E0\u4E3A\u5176\u4E2D\u7684\u65E7\u7247\u6BB5\u6709\u81EA\u5DF1\u7684\u5B50\u5757\u3002",
-  "Preview the changes": "\u9884\u89C8\u4FEE\u6539",
-  "Nothing to change.": "\u6CA1\u6709\u9700\u8981\u4FEE\u6539\u7684\u5185\u5BB9\u3002",
-  "Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.": "\u4FEE\u590D\u300A{0}\u300B\uFF1F\n\n{1}\n\n\u6240\u6709\u5185\u5BB9\u90FD\u4F1A\u5907\u4EFD\uFF1B\u4E00\u6B21\u64A4\u9500\u5373\u53EF\u5168\u90E8\u6062\u590D\u3002",
-  "{0} paragraphs": "{0} \u4E2A\u6BB5\u843D",
-  "{0} link blocks": "{0} \u4E2A\u94FE\u63A5\u5757",
-  "{0} archives ({1} references moved)": "{0} \u4E2A\u5B58\u6863\uFF08\u79FB\u52A8\u4E86 {1} \u5904\u5F15\u7528\uFF09",
-  "{0} headings": "{0} \u4E2A\u6807\u9898",
-  "nothing needed": "\u65E0\u9700\u4FEE\u590D",
-  " {0} block(s) changed since the preview were skipped; run the repair again.": " \u9884\u89C8\u540E\u53C8\u88AB\u4FEE\u6539\u7684 {0} \u4E2A\u5757\u5DF2\u8DF3\u8FC7\uFF0C\u8BF7\u518D\u8FD0\u884C\u4E00\u6B21\u4FEE\u590D\u3002",
-  "Repaired: {0}.{1} Undo is available.": "\u5DF2\u4FEE\u590D\uFF1A{0}\u3002{1} \u53EF\u4EE5\u64A4\u9500\u3002",
-  "Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept.": "\u4E00\u6B65\u4FEE\u597D\u6240\u6709\u80FD\u5B89\u5168\u4FEE\u590D\u7684\u95EE\u9898\uFF1A\u76EE\u5F55\u6240\u9700\u7684\u6807\u9898\u5C42\u7EA7\u3001\u88AB\u505A\u6210\u6807\u9898\u7684\u811A\u6CE8\u6807\u8BB0\u3001\u574F\u6389\u7684\u7F16\u53F7\u94FE\u63A5\uFF0C\u4EE5\u53CA\u6B8B\u7559\u7684 EPUB-READER:paragraph-fragments \u5B58\u6863\u3002\u6587\u5B57\u3001\u8BC4\u8BBA\u548C\u9AD8\u4EAE\u90FD\u4F1A\u4FDD\u7559\u3002",
-  "Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)": "\u53EF\u9009\uFF1A\u9009\u62E9\u539F EPUB\uFF0C\u540C\u65F6\u62FC\u56DE\u65E7\u7248\u5BFC\u5165\u62C6\u5F00\u7684\u6BB5\u843D\uFF08\u53EA\u5728\u672C\u5730\u8BFB\u53D6\uFF0C\u4E0D\u4F1A\u4E0A\u4F20\uFF09",
-  "Original EPUB for paragraph repair": "\u7528\u4E8E\u6BB5\u843D\u4FEE\u590D\u7684\u539F EPUB",
-  "Checking the original EPUB\u2026": "\u6B63\u5728\u6838\u5BF9\u539F EPUB\u2026",
-  "Undo Last Repair": "\u64A4\u9500\u4E0A\u6B21\u4FEE\u590D",
-  "Undo the last book repair? Blocks edited since then are left as they are.": "\u64A4\u9500\u4E0A\u6B21\u4E66\u7C4D\u4FEE\u590D\uFF1F\u4E4B\u540E\u88AB\u7F16\u8F91\u8FC7\u7684\u5757\u4F1A\u4FDD\u6301\u539F\u6837\u3002",
-  "Restored {0} items; skipped {1} edited items.": "\u5DF2\u6062\u590D {0} \u9879\uFF1B\u8DF3\u8FC7 {1} \u9879\u5DF2\u7F16\u8F91\u5185\u5BB9\u3002",
-  "Undo a repair made with an earlier version": "\u64A4\u9500\u65E7\u7248\u672C\u505A\u8FC7\u7684\u4FEE\u590D",
-  "Undo {0}": "\u64A4\u9500\uFF1A{0}",
-  "Restored {0} items; skipped {1}.": "\u5DF2\u6062\u590D {0} \u9879\uFF1B\u8DF3\u8FC7 {1} \u9879\u3002",
-  "its shortcut (not set)": "\u5B83\u7684\u5FEB\u6377\u952E\uFF08\u672A\u8BBE\u7F6E\uFF09",
-  "Press keys\u2026": "\u8BF7\u6309\u4E0B\u6309\u952E\u2026",
-  "{0}: shortcut cleared.": "{0}\uFF1A\u5FEB\u6377\u952E\u5DF2\u6E05\u9664\u3002",
-  "{0} is already used by {1}.": "{0} \u5DF2\u88AB\u201C{1}\u201D\u4F7F\u7528\u3002",
-  "Click, then press the new shortcut": "\u70B9\u51FB\u540E\u6309\u4E0B\u65B0\u7684\u5FEB\u6377\u952E",
-  "Reset to {0}": "\u6062\u590D\u4E3A {0}",
-  "Library": "\u4E66\u5E93",
-  "Reading": "\u9605\u8BFB",
-  "Collapse the previous chapter when navigating": "\u8DF3\u8F6C\u65F6\u6298\u53E0\u4E0A\u4E00\u7AE0",
-  "Track browsing automatically (estimated, not comprehension)": "\u81EA\u52A8\u8BB0\u5F55\u6D4F\u89C8\uFF08\u4F30\u7B97\uFF0C\u4E0D\u4EE3\u8868\u7406\u89E3\uFF09",
-  "Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself.": "\u81EA\u52A8\u8FDB\u5EA6\u53EA\u7528\u4E8E\u5DF2\u7BA1\u7406\u7684\u4E66\u7C4D\u3002\u5728\u9762\u677F\u4E2D\u6298\u53E0\u5B50\u76EE\u5F55\u4E0D\u4F1A\u6539\u52A8\u4E66\u672C\u8EAB\u3002",
-  "Text width": "\u6B63\u6587\u5BBD\u5EA6",
-  "Fill the line: paragraphs run to the end of their row, so wide windows have no empty strip before the reference count. Side notes go in the margin outside the text, as in Folio.": "\u94FA\u6EE1\u6574\u884C\uFF1A\u6BB5\u843D\u4E00\u76F4\u6392\u5230\u884C\u5C3E\uFF0C\u5BBD\u5C4F\u65F6\u6B63\u6587\u548C\u5F15\u7528\u6570\u4E4B\u95F4\u4E0D\u4F1A\u7559\u51FA\u7A7A\u767D\u3002\u65C1\u6CE8\u653E\u5728\u6B63\u6587\u5916\u7684\u7559\u767D\u91CC\uFF0C\u4E0E Folio \u76F8\u540C\u3002",
-  "Native Comments": "\u539F\u751F\u8BC4\u8BBA",
-  "Native comment side notes (graph-wide)": "\u539F\u751F\u8BC4\u8BBA\u65C1\u6CE8\uFF08\u6574\u4E2A\u56FE\u8C31\uFF09",
-  "Notes are shown in full and stacked beside the text. Click a note or its paragraph to line them up; \u2197 opens the native thread for editing.": "\u65C1\u6CE8\u5B8C\u6574\u663E\u793A\u5E76\u5728\u6B63\u6587\u65C1\u4F9D\u6B21\u6392\u5217\u3002\u70B9\u51FB\u65C1\u6CE8\u6216\u5BF9\u5E94\u6BB5\u843D\u5373\u53EF\u5BF9\u9F50\uFF1B\u2197 \u6253\u5F00\u539F\u751F\u8BC4\u8BBA\u7EBF\u7A0B\u8FDB\u884C\u7F16\u8F91\u3002",
-  "Side note style": "\u65C1\u6CE8\u6837\u5F0F",
-  "Side note colour": "\u65C1\u6CE8\u989C\u8272",
-  "Side note order": "\u65C1\u6CE8\u987A\u5E8F",
-  "Highlight colour": "\u9AD8\u4EAE\u989C\u8272",
-  "Highlight style": "\u9AD8\u4EAE\u6837\u5F0F",
-  "Applies to native ^^highlights^^ everywhere. Theme default keeps your theme colour.": "\u5E94\u7528\u4E8E\u6240\u6709\u539F\u751F ^^\u9AD8\u4EAE^^\u3002\u201C\u4E3B\u9898\u9ED8\u8BA4\u201D\u4FDD\u7559\u4E3B\u9898\u539F\u672C\u7684\u989C\u8272\u3002",
-  "Mark style": "Mark It \u6837\u5F0F",
-  "{0} or the block menu toggles #mark; the tag stays in the text and is hidden while reading.": "{0} \u6216\u5757\u83DC\u5355\u53EF\u5207\u6362 #mark\uFF1B\u6807\u7B7E\u7559\u5728\u6587\u5B57\u91CC\uFF0C\u9605\u8BFB\u65F6\u9690\u85CF\u3002",
-  "Recognized question tags (comma-separated)": "\u8BC6\u522B\u7684\u7591\u95EE\u6807\u7B7E\uFF08\u7528\u9017\u53F7\u5206\u9694\uFF09",
-  "Recognized question tags": "\u8BC6\u522B\u7684\u7591\u95EE\u6807\u7B7E",
-  "Quick question tag ({0})": "\u5FEB\u6377\u7591\u95EE\u6807\u7B7E\uFF08{0}\uFF09",
-  "Quick question tag": "\u5FEB\u6377\u7591\u95EE\u6807\u7B7E",
-  "Toggle Question inserts": "\u201C\u5207\u6362\u7591\u95EE\u201D\u63D2\u5165",
-  "Enter tag names without #. The quick question tag is always recognized, including in native comments. Mark It retains #mark for compatibility with your original style.": "\u8F93\u5165\u6807\u7B7E\u540D\u65F6\u4E0D\u8981\u5E26 #\u3002\u5FEB\u6377\u7591\u95EE\u6807\u7B7E\u59CB\u7EC8\u4F1A\u88AB\u8BC6\u522B\uFF0C\u5305\u62EC\u5728\u539F\u751F\u8BC4\u8BBA\u4E2D\u3002Mark It \u4FDD\u7559 #mark\uFF0C\u4EE5\u517C\u5BB9\u4F60\u539F\u6765\u7684\u6837\u5F0F\u3002",
-  "Save Question Settings": "\u4FDD\u5B58\u7591\u95EE\u8BBE\u7F6E",
-  "Question settings saved. Toggle Question uses your quick question tag.": "\u7591\u95EE\u8BBE\u7F6E\u5DF2\u4FDD\u5B58\u3002\u201C\u5207\u6362\u7591\u95EE\u201D\u4F1A\u4F7F\u7528\u4F60\u7684\u5FEB\u6377\u7591\u95EE\u6807\u7B7E\u3002",
-  "Question settings are active for this session; settings storage could not sync.": "\u7591\u95EE\u8BBE\u7F6E\u5728\u672C\u6B21\u4F1A\u8BDD\u4E2D\u751F\u6548\uFF1B\u8BBE\u7F6E\u672A\u80FD\u540C\u6B65\u4FDD\u5B58\u3002",
-  "Keyboard Shortcuts": "\u952E\u76D8\u5FEB\u6377\u952E",
-  "Click a shortcut, then press the new keys (with Ctrl, Cmd/\u2318 or Alt/\u2325). Esc cancels, Backspace clears. Reading Desk handles these keys before Roam, so Option+M no longer types \u201C\xB5\u201D. Drag the title bar to move this panel. Shift+click opens content in the sidebar.": "\u70B9\u51FB\u4E00\u4E2A\u5FEB\u6377\u952E\uFF0C\u518D\u6309\u4E0B\u65B0\u7684\u7EC4\u5408\u952E\uFF08\u9700\u542B Ctrl\u3001Cmd/\u2318 \u6216 Alt/\u2325\uFF09\u3002Esc \u53D6\u6D88\uFF0CBackspace \u6E05\u9664\u3002Reading Desk \u4F1A\u5148\u4E8E Roam \u5904\u7406\u8FD9\u4E9B\u6309\u952E\uFF0C\u6240\u4EE5 Option+M \u4E0D\u4F1A\u518D\u8F93\u5165\u201C\xB5\u201D\u3002\u62D6\u52A8\u6807\u9898\u680F\u53EF\u79FB\u52A8\u9762\u677F\u3002Shift+\u70B9\u51FB\u4F1A\u5728\u4FA7\u8FB9\u680F\u6253\u5F00\u5185\u5BB9\u3002",
-  "Reading Notes": "\u8BFB\u4E66\u7B14\u8BB0",
-  "Open new reading notes in": "\u65B0\u7684\u8BFB\u4E66\u7B14\u8BB0\u6253\u5F00\u5728",
-  "Maintenance": "\u7EF4\u62A4",
-  "One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it.": "\u5BFC\u5165\u4E66\u7C4D\u7684\u4E00\u6B65\u4FEE\u590D\uFF1A\u6807\u9898\u5C42\u7EA7\u3001\u88AB\u505A\u6210\u6807\u9898\u7684\u811A\u6CE8\u3001\u574F\u94FE\u63A5\u548C\u6B8B\u7559\u7684\u6BB5\u843D\u5B58\u6863\uFF08\u4E5F\u53EF\u62FC\u56DE\u62C6\u5F00\u7684\u6BB5\u843D\uFF09\u3002\u5148\u663E\u793A\u5C06\u4FEE\u6539\u7684\u5185\u5BB9\uFF1B\u4E00\u6B21\u64A4\u9500\u5373\u53EF\u5168\u90E8\u6062\u590D\u3002",
-  "Click a paragraph or native comment first, then use this action.": "\u8BF7\u5148\u70B9\u51FB\u4E00\u4E2A\u6BB5\u843D\u6216\u539F\u751F\u8BC4\u8BBA\uFF0C\u518D\u4F7F\u7528\u8FD9\u4E2A\u64CD\u4F5C\u3002",
-  "Open a page or book, then click Refresh.": "\u6253\u5F00\u4E00\u4E2A\u9875\u9762\u6216\u4E00\u672C\u4E66\uFF0C\u7136\u540E\u70B9\u51FB\u201C\u5237\u65B0\u201D\u3002",
-  "Current Page": "\u5F53\u524D\u9875\u9762",
-  "Books": "\u4E66\u7C4D",
-  "Included pages": "\u5DF2\u52A0\u5165\u7684\u9875\u9762",
-  "All Books \xB7 {0} sources \xB7 {1} annotations": "\u5168\u90E8\u4E66\u7C4D \xB7 {0} \u4E2A\u6765\u6E90 \xB7 {1} \u6761\u6279\u6CE8",
-  "Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only": "\u9875\u9762 \xB7 {0} \u4E2A\u6807\u9898 \xB7 {1} \u6761\u6279\u6CE8 \xB7 \u4EC5\u4E66\u7C4D\u4F1A\u8BB0\u5F55\u8FDB\u5EA6",
-  "{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages": "{0} \xB7 {1} \u4E2A\u5757 \xB7 {2} \u6761\u6279\u6CE8 \xB7 {3} \u4E2A\u9875\u9762",
-  "Close": "\u5173\u95ED",
-  "Drag to move Reading Desk": "\u62D6\u52A8\u4EE5\u79FB\u52A8 Reading Desk",
-  "Reading scope": "\u9605\u8BFB\u8303\u56F4",
-  "Refresh": "\u5237\u65B0",
-  "Loading\u2026": "\u52A0\u8F7D\u4E2D\u2026",
-  "Text or comments changed. Click Refresh to update without interrupting your work.": "\u6587\u5B57\u6216\u8BC4\u8BBA\u6709\u53D8\u5316\u3002\u70B9\u51FB\u201C\u5237\u65B0\u201D\u5373\u53EF\u66F4\u65B0\uFF0C\u4E0D\u4F1A\u6253\u65AD\u4F60\u7684\u5DE5\u4F5C\u3002",
-  "No repair backup was found.": "\u672A\u627E\u5230\u4FEE\u590D\u5907\u4EFD\u3002",
-  "Image conversion failed": "\u56FE\u7247\u8F6C\u6362\u5931\u8D25",
-  "Cannot read image: {0}": "\u65E0\u6CD5\u8BFB\u53D6\u56FE\u7247\uFF1A{0}",
-  "Processing image {0}/{1}": "\u6B63\u5728\u5904\u7406\u56FE\u7247 {0}/{1}",
-  "Image upload returned no valid URL: {0}": "\u56FE\u7247\u4E0A\u4F20\u672A\u8FD4\u56DE\u6709\u6548\u7F51\u5740\uFF1A{0}",
-  "The imported page was removed. Select the EPUB again to import.": "\u5BFC\u5165\u7684\u9875\u9762\u5DF2\u88AB\u5220\u9664\u3002\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB \u5BFC\u5165\u3002",
-  "A book is already being imported. Wait for it to finish.": "\u5DF2\u6709\u4E00\u672C\u4E66\u6B63\u5728\u5BFC\u5165\uFF0C\u8BF7\u7B49\u5B83\u5B8C\u6210\u3002",
-  "This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import.": "\u8FD9\u4E2A\u65E7\u4EFB\u52A1\u7684\u7AE0\u8282\u5BF9\u5E94\u5173\u7CFB\u6709\u8BEF\u3002\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB \u521B\u5EFA\u65B0\u7684\u5BFC\u5165\u3002",
-  "Import complete": "\u5BFC\u5165\u5B8C\u6210",
-  "This book's record has changed or was removed. Reopen the book list.": "\u8FD9\u672C\u4E66\u7684\u8BB0\u5F55\u5DF2\u53D8\u66F4\u6216\u88AB\u5220\u9664\u3002\u8BF7\u91CD\u65B0\u6253\u5F00\u4E66\u7C4D\u5217\u8868\u3002",
-  "A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first.": "\u7AE0\u8282\u8303\u56F4\u5185\u6709\u539F\u751F\u8BC4\u8BBA\u5B58\u50A8\u3002\u4E3A\u4FDD\u62A4\u8BC4\u8BBA\uFF0C\u5DF2\u963B\u6B62\u5220\u9664\u3002\u8BF7\u5148\u628A\u8BC4\u8BBA\u5B58\u50A8\u653E\u5230\u9875\u9762\u4E0A\u3001\u4E66\u7C4D\u7AE0\u8282\u4E4B\u5916\u3002",
-  "Reference check failed; retained": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\uFF1B\u5DF2\u4FDD\u7559",
-  "Original upload ownership is unknown; retained": "\u539F\u59CB\u4E0A\u4F20\u5F52\u5C5E\u672A\u77E5\uFF1B\u5DF2\u4FDD\u7559",
-  "Shared with another imported book": "\u4E0E\u53E6\u4E00\u672C\u5DF2\u5BFC\u5165\u7684\u4E66\u5171\u7528",
-  "{0} references outside this book": "\u672C\u4E66\u4E4B\u5916\u6709 {0} \u5904\u5F15\u7528",
-  "Used only by this book": "\u4EC5\u672C\u4E66\u4F7F\u7528",
-  "Chapter scope changed. Review the deletion preview again.": "\u7AE0\u8282\u8303\u56F4\u5DF2\u53D8\u5316\u3002\u8BF7\u91CD\u65B0\u67E5\u770B\u5220\u9664\u9884\u89C8\u3002",
-  "New content was added inside the book scope. Deletion stopped; review the preview again.": "\u4E66\u7C4D\u8303\u56F4\u5185\u65B0\u589E\u4E86\u5185\u5BB9\u3002\u5DF2\u505C\u6B62\u5220\u9664\uFF0C\u8BF7\u91CD\u65B0\u67E5\u770B\u9884\u89C8\u3002",
-  "Deleting book chapters (preserving pages and native comments)\u2026": "\u6B63\u5728\u5220\u9664\u4E66\u7C4D\u7AE0\u8282\uFF08\u4FDD\u7559\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\uFF09\u2026",
-  "Deleting attachment {0}/{1}\u2026": "\u6B63\u5728\u5220\u9664\u9644\u4EF6 {0}/{1}\u2026",
-  "This book is waiting for attachment cleanup. Finish that first.": "\u8FD9\u672C\u4E66\u6B63\u5728\u7B49\u5F85\u6E05\u7406\u9644\u4EF6\uFF0C\u8BF7\u5148\u5B8C\u6210\u6E05\u7406\u3002",
-  "Not uploaded by this import; file retained": "\u4E0D\u662F\u672C\u6B21\u5BFC\u5165\u4E0A\u4F20\u7684\uFF1B\u6587\u4EF6\u5DF2\u4FDD\u7559",
-  "Original upload ownership is unknown; file retained": "\u539F\u59CB\u4E0A\u4F20\u5F52\u5C5E\u672A\u77E5\uFF1B\u6587\u4EF6\u5DF2\u4FDD\u7559",
-  "Reference check failed; file retained": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\uFF1B\u6587\u4EF6\u5DF2\u4FDD\u7559",
-  "Removing images from blocks {0}/{1}\u2026": "\u6B63\u5728\u4ECE\u5757\u4E2D\u79FB\u9664\u56FE\u7247 {0}/{1}\u2026",
-  "Deleting image file {0}/{1}\u2026": "\u6B63\u5728\u5220\u9664\u56FE\u7247\u6587\u4EF6 {0}/{1}\u2026",
-  "Not set": "\u672A\u8BBE\u7F6E",
-  "Could not save local progress": "\u65E0\u6CD5\u4FDD\u5B58\u672C\u5730\u8FDB\u5EA6",
-  "Local progress save was aborted": "\u672C\u5730\u8FDB\u5EA6\u4FDD\u5B58\u88AB\u4E2D\u65AD",
-  "The local EPUB cache is missing. Select the original file again.": "\u672C\u5730 EPUB \u7F13\u5B58\u4E0D\u5B58\u5728\u3002\u8BF7\u91CD\u65B0\u9009\u62E9\u539F\u6587\u4EF6\u3002",
-  "Preparing\u2026": "\u51C6\u5907\u4E2D\u2026",
-  "Processing\u2026": "\u5904\u7406\u4E2D\u2026",
-  "{0} TOC entries \xB7 {1} top-level nodes \xB7 approx. {2} blocks \xB7 {3} images \xB7 {4} internal links": "{0} \u4E2A\u76EE\u5F55\u6761\u76EE \xB7 {1} \u4E2A\u9876\u5C42\u8282\u70B9 \xB7 \u7EA6 {2} \u4E2A\u5757 \xB7 {3} \u5F20\u56FE\u7247 \xB7 {4} \u4E2A\u5185\u90E8\u94FE\u63A5",
-  " \xB7 {0} formulas": " \xB7 {0} \u4E2A\u516C\u5F0F",
-  "Resume importing {0}": "\u7EE7\u7EED\u5BFC\u5165 {0}",
-  "Import {0}": "\u5BFC\u5165 {0}",
-  "Keep Roam open during import. Progress is saved so interrupted imports can resume.": "\u5BFC\u5165\u671F\u95F4\u8BF7\u4FDD\u6301 Roam \u6253\u5F00\u3002\u8FDB\u5EA6\u4F1A\u88AB\u4FDD\u5B58\uFF0C\u4E2D\u65AD\u7684\u5BFC\u5165\u53EF\u4EE5\u7EE7\u7EED\u3002",
-  "Created {0}. Images and links are in their original positions.": "\u5DF2\u521B\u5EFA {0}\u3002\u56FE\u7247\u548C\u94FE\u63A5\u90FD\u5728\u539F\u6765\u7684\u4F4D\u7F6E\u3002",
-  "Import paused: {0}. Progress was saved; you can resume later.": "\u5BFC\u5165\u5DF2\u6682\u505C\uFF1A{0}\u3002\u8FDB\u5EA6\u5DF2\u4FDD\u5B58\uFF0C\u4E4B\u540E\u53EF\u4EE5\u7EE7\u7EED\u3002",
-  "Retry / Resume": "\u91CD\u8BD5 / \u7EE7\u7EED",
-  "Book Preview": "\u4E66\u7C4D\u9884\u89C8",
-  "Author: {0}": "\u4F5C\u8005\uFF1A{0}",
-  "Roam page title": "Roam \u9875\u9762\u6807\u9898",
-  "Original EPUB TOC ({0}, full hierarchy)": "\u539F EPUB \u76EE\u5F55\uFF08{0}\uFF0C\u5B8C\u6574\u5C42\u7EA7\uFF09",
-  "Outline generated from body headings": "\u7531\u6B63\u6587\u6807\u9898\u751F\u6210\u7684\u5927\u7EB2",
-  "; {0} need review (source retained)": "\uFF1B{0} \u4E2A\u9700\u8981\u68C0\u67E5\uFF08\u4FDD\u7559\u539F\u6587\uFF09",
-  "Formulas: {0} converted{1}": "\u516C\u5F0F\uFF1A\u5DF2\u8F6C\u6362 {0} \u4E2A{1}",
-  "Formula {0} \xB7 {1}": "\u516C\u5F0F {0} \xB7 {1}",
-  "Preview text and image order": "\u9884\u89C8\u6587\u5B57\u4E0E\u56FE\u7247\u987A\u5E8F",
-  "Images are uploaded into their original positions. External links are preserved; internal links become Roam block references.": "\u56FE\u7247\u4F1A\u4E0A\u4F20\u5230\u539F\u6765\u7684\u4F4D\u7F6E\u3002\u5916\u90E8\u94FE\u63A5\u4FDD\u7559\uFF1B\u5185\u90E8\u94FE\u63A5\u53D8\u4E3A Roam \u5757\u5F15\u7528\u3002",
-  "Start Import": "\u5F00\u59CB\u5BFC\u5165",
-  "Unfinished Imports": "\u672A\u5B8C\u6210\u7684\u5BFC\u5165",
-  "This job uses an outdated parser. Select the EPUB again to create a corrected import.": "\u8FD9\u4E2A\u4EFB\u52A1\u4F7F\u7528\u4E86\u65E7\u7684\u89E3\u6790\u5668\u3002\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB \u521B\u5EFA\u4FEE\u6B63\u540E\u7684\u5BFC\u5165\u3002",
-  "This legacy job did not check formulas. Select the EPUB again if the book contains formulas.": "\u8FD9\u4E2A\u65E7\u4EFB\u52A1\u6CA1\u6709\u68C0\u67E5\u516C\u5F0F\u3002\u5982\u679C\u4E66\u4E2D\u6709\u516C\u5F0F\uFF0C\u8BF7\u91CD\u65B0\u9009\u62E9 EPUB\u3002",
-  "Discard Job": "\u653E\u5F03\u4EFB\u52A1",
-  "A Roam page already exists. Use Manage Imported Books to remove this import.": "\u5DF2\u5B58\u5728 Roam \u9875\u9762\u3002\u8BF7\u7528\u201C\u7BA1\u7406\u5DF2\u5BFC\u5165\u7684\u4E66\u201D\u79FB\u9664\u8FD9\u6B21\u5BFC\u5165\u3002",
-  "EPUB Importer": "EPUB \u5BFC\u5165\u5668",
-  "Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.": "\u9009\u62E9\u4E00\u4E2A EPUB\u3002\u89E3\u6790\u53EA\u5728\u4F60\u7684\u8BBE\u5907\u4E0A\u8FDB\u884C\uFF1B\u786E\u8BA4\u5BFC\u5165\u540E\uFF0C\u4E66\u4E2D\u56FE\u7247\u624D\u4F1A\u4E0A\u4F20\u5230\u5F53\u524D Roam \u56FE\u8C31\u3002",
-  "No file selected.": "\u672A\u9009\u62E9\u6587\u4EF6\u3002",
-  "Reading contents, text, images, and links\u2026": "\u6B63\u5728\u8BFB\u53D6\u76EE\u5F55\u3001\u6B63\u6587\u3001\u56FE\u7247\u548C\u94FE\u63A5\u2026",
-  "Cannot read file: {0}": "\u65E0\u6CD5\u8BFB\u53D6\u6587\u4EF6\uFF1A{0}",
-  "Cannot read saved jobs: {0}": "\u65E0\u6CD5\u8BFB\u53D6\u5DF2\u4FDD\u5B58\u7684\u4EFB\u52A1\uFF1A{0}",
-  "This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.": "\u5C06\u5220\u9664 {0} \u4E2A\u7AE0\u8282\u6839\u5757\u3001\u8303\u56F4\u5185 {1} \u4E2A\u5757\uFF0C\u4EE5\u53CA {2} \u4E2A\u72EC\u5360\u9644\u4EF6\u3002\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\u4F1A\u4FDD\u7559\u3002",
-  " {0} shared or unverified attachments will be retained.": " {0} \u4E2A\u5171\u7528\u6216\u672A\u9A8C\u8BC1\u7684\u9644\u4EF6\u4F1A\u4FDD\u7559\u3002",
-  "Remove images \xB7 {0}": "\u79FB\u9664\u56FE\u7247 \xB7 {0}",
-  "Finding images and checking where their files are used\u2026": "\u6B63\u5728\u67E5\u627E\u56FE\u7247\u5E76\u68C0\u67E5\u6587\u4EF6\u7684\u4F7F\u7528\u60C5\u51B5\u2026",
-  "Check failed: {0}": "\u68C0\u67E5\u5931\u8D25\uFF1A{0}",
-  "Back to Book List": "\u8FD4\u56DE\u4E66\u7C4D\u5217\u8868",
-  "This book has no images left in its text.": "\u8FD9\u672C\u4E66\u7684\u6B63\u6587\u91CC\u5DF2\u7ECF\u6CA1\u6709\u56FE\u7247\u4E86\u3002",
-  "{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.": "{0} \u4E2A\u5757\u542B\u6709\u56FE\u7247\u3002\u5C06\u4ECE\u4E2D\u79FB\u9664\u56FE\u7247\uFF08{1} \u4E2A\u53EA\u6709\u56FE\u7247\u7684\u5757\u4F1A\u88AB\u5220\u9664\uFF1B\u542B\u6587\u5B57\u3001\u5B50\u5757\u6216\u88AB\u5F15\u7528\u7684\u5757\u4FDD\u7559\uFF09\u3002\u4E66\u672C\u8EAB\u53CA\u5176\u6587\u5B57\u3001\u6807\u9898\u3001\u8BC4\u8BBA\u548C\u9AD8\u4EAE\u90FD\u4F1A\u4FDD\u7559\u3002",
-  " ({0} shared, outside-referenced or unverified files are kept)": " \uFF08{0} \u4E2A\u5171\u7528\u3001\u88AB\u5176\u4ED6\u5730\u65B9\u5F15\u7528\u6216\u672A\u9A8C\u8BC1\u7684\u6587\u4EF6\u4F1A\u4FDD\u7559\uFF09",
-  " Also delete {0} uploaded image files used only by this book{1}.": " \u540C\u65F6\u5220\u9664\u4EC5\u672C\u4E66\u4F7F\u7528\u7684 {0} \u4E2A\u5DF2\u4E0A\u4F20\u56FE\u7247\u6587\u4EF6{1}\u3002",
-  "Preview the first changes": "\u9884\u89C8\u524D\u51E0\u5904\u4FEE\u6539",
-  "This cannot be undone: deleted image files are gone from Roam storage.": "\u6B64\u64CD\u4F5C\u65E0\u6CD5\u64A4\u9500\uFF1A\u5220\u9664\u7684\u56FE\u7247\u6587\u4EF6\u4F1A\u4ECE Roam \u5B58\u50A8\u4E2D\u6D88\u5931\u3002",
-  "Cancel": "\u53D6\u6D88",
-  "Remove Images": "\u79FB\u9664\u56FE\u7247",
-  "Remove images from {0}? The book itself is kept.": "\u4ECE\u300A{0}\u300B\u4E2D\u79FB\u9664\u56FE\u7247\uFF1F\u4E66\u672C\u8EAB\u4F1A\u4FDD\u7559\u3002",
-  " {0} blocks changed since the preview and were skipped.": " \u9884\u89C8\u540E\u53C8\u88AB\u4FEE\u6539\u7684 {0} \u4E2A\u5757\u5DF2\u8DF3\u8FC7\u3002",
-  " {0} files could not be deleted and remain listed.": " {0} \u4E2A\u6587\u4EF6\u65E0\u6CD5\u5220\u9664\uFF0C\u4ECD\u4FDD\u7559\u5728\u5217\u8868\u4E2D\u3002",
-  "Removed images from {0} blocks ({1} image-only blocks deleted) and deleted {2} files.{3}{4}": "\u5DF2\u4ECE {0} \u4E2A\u5757\u4E2D\u79FB\u9664\u56FE\u7247\uFF08\u5220\u9664\u4E86 {1} \u4E2A\u53EA\u6709\u56FE\u7247\u7684\u5757\uFF09\uFF0C\u5E76\u5220\u9664\u4E86 {2} \u4E2A\u6587\u4EF6\u3002{3}{4}",
-  "Image removal failed: {0}": "\u79FB\u9664\u56FE\u7247\u5931\u8D25\uFF1A{0}",
-  "Delete {0}": "\u5220\u9664\u300A{0}\u300B",
-  "Checking attachment references in other pages and books\u2026": "\u6B63\u5728\u68C0\u67E5\u5176\u4ED6\u9875\u9762\u548C\u4E66\u7C4D\u5BF9\u9644\u4EF6\u7684\u5F15\u7528\u2026",
-  "Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.": "\u53D7\u5F71\u54CD\u7684\u9875\u9762\uFF1A{0}\u3002\u53EA\u4F1A\u5220\u9664\u5DF2\u786E\u8BA4\u7684\u4E66\u7C4D\u7AE0\u8282\uFF0C\u8FD9\u4E9B\u9875\u9762\u4F1A\u4FDD\u7559\u3002",
-  "{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.": "\u4E66\u5916\u6709 {0} \u4E2A\u5757\u5F15\u7528\u4E86\u4E66\u4E2D\u5185\u5BB9\uFF08\u53EF\u80FD\u5305\u62EC\u539F\u751F\u8BC4\u8BBA\uFF09\u3002\u5220\u9664\u540E\u8FD9\u4E9B\u5F15\u7528\u53EF\u80FD\u5931\u6548\uFF1B\u8BC4\u8BBA\u548C\u72EC\u7ACB\u7B14\u8BB0\u4F1A\u4FDD\u7559\u3002",
-  "Reference checking failed. Attachments will be retained.": "\u5F15\u7528\u68C0\u67E5\u5931\u8D25\u3002\u9644\u4EF6\u4F1A\u4FDD\u7559\u3002",
-  "This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained.": "\u8FD9\u672C\u627E\u56DE\u7684\u4E66\u6CA1\u6709\u539F\u59CB\u4E0A\u4F20\u6E05\u5355\u3002\u53EF\u4EE5\u5220\u9664\u7AE0\u8282\uFF0C\u4F46\u68C0\u6D4B\u5230\u7684\u56FE\u7247\u4F1A\u4FDD\u7559\u3002",
-  "Type the full book title to confirm: {0}": "\u8F93\u5165\u5B8C\u6574\u4E66\u540D\u4EE5\u786E\u8BA4\uFF1A{0}",
-  "Delete Permanently": "\u6C38\u4E45\u5220\u9664",
-  " {0} failed deletions are saved for retry.": " {0} \u4E2A\u5220\u9664\u5931\u8D25\u7684\u9879\u76EE\u5DF2\u4FDD\u5B58\uFF0C\u53EF\u7A0D\u540E\u91CD\u8BD5\u3002",
-  "Deleted book chapters and {0} exclusive attachments. Pages and native comments remain. Retained {1} shared or unverified attachments.{2}": "\u5DF2\u5220\u9664\u4E66\u7C4D\u7AE0\u8282\u548C {0} \u4E2A\u72EC\u5360\u9644\u4EF6\u3002\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\u4FDD\u7559\u3002\u4FDD\u7559\u4E86 {1} \u4E2A\u5171\u7528\u6216\u672A\u9A8C\u8BC1\u7684\u9644\u4EF6\u3002{2}",
-  "Deletion failed: {0}": "\u5220\u9664\u5931\u8D25\uFF1A{0}",
-  "Recover Existing Book": "\u627E\u56DE\u5DF2\u6709\u4E66\u7C4D",
-  "Enter all or part of the original book page title. Recovery registers the existing book without reimporting, editing text, or uploading images. Attachments without an original upload ledger are marked unverified and retained during deletion.": "\u8F93\u5165\u539F\u4E66\u9875\u9762\u6807\u9898\u7684\u5168\u90E8\u6216\u4E00\u90E8\u5206\u3002\u627E\u56DE\u4F1A\u767B\u8BB0\u5DF2\u6709\u7684\u4E66\uFF0C\u4E0D\u4F1A\u91CD\u65B0\u5BFC\u5165\u3001\u4FEE\u6539\u6587\u5B57\u6216\u4E0A\u4F20\u56FE\u7247\u3002\u6CA1\u6709\u539F\u59CB\u4E0A\u4F20\u6E05\u5355\u7684\u9644\u4EF6\u4F1A\u6807\u8BB0\u4E3A\u672A\u9A8C\u8BC1\uFF0C\u5220\u9664\u65F6\u4FDD\u7559\u3002",
-  "Page title or book keywords": "\u9875\u9762\u6807\u9898\u6216\u4E66\u540D\u5173\u952E\u8BCD",
-  "Find an existing book page": "\u67E5\u627E\u5DF2\u6709\u7684\u4E66\u7C4D\u9875\u9762",
-  "Find Pages": "\u67E5\u627E\u9875\u9762",
-  "No matching pages. Try a shorter book title.": "\u6CA1\u6709\u5339\u914D\u7684\u9875\u9762\u3002\u8BD5\u8BD5\u66F4\u77ED\u7684\u4E66\u540D\u3002",
-  "Register This Book": "\u767B\u8BB0\u8FD9\u672C\u4E66",
-  "Recovery failed: {0}": "\u627E\u56DE\u5931\u8D25\uFF1A{0}",
-  "Reading the graph's book library\u2026": "\u6B63\u5728\u8BFB\u53D6\u56FE\u8C31\u4E2D\u7684\u4E66\u5E93\u2026",
-  "Cannot read the library: {0}. Existing books are unchanged.": "\u65E0\u6CD5\u8BFB\u53D6\u4E66\u5E93\uFF1A{0}\u3002\u5DF2\u6709\u4E66\u7C4D\u672A\u53D7\u5F71\u54CD\u3002",
-  "The library is empty. Use Recover Existing Book for books missing after an update; no reimport is needed.": "\u4E66\u5E93\u662F\u7A7A\u7684\u3002\u66F4\u65B0\u540E\u627E\u4E0D\u5230\u7684\u4E66\u53EF\u7528\u201C\u627E\u56DE\u5DF2\u6709\u4E66\u7C4D\u201D\u6062\u590D\uFF0C\u65E0\u9700\u91CD\u65B0\u5BFC\u5165\u3002",
-  "Unknown author": "\u672A\u77E5\u4F5C\u8005",
-  " \xB7 Cleanup pending": " \xB7 \u5F85\u6E05\u7406",
-  " \xB7 Recovered (original attachments retained)": " \xB7 \u5DF2\u627E\u56DE\uFF08\u4FDD\u7559\u539F\u9644\u4EF6\uFF09",
-  "{0} \xB7 {1} attachments{2}": "{0} \xB7 {1} \u4E2A\u9644\u4EF6{2}",
-  "Clean Up Attachments": "\u6E05\u7406\u9644\u4EF6",
-  "Delete Book": "\u5220\u9664\u4E66\u7C4D",
-  "Delete this book's images but keep the book": "\u5220\u9664\u8FD9\u672C\u4E66\u7684\u56FE\u7247\uFF0C\u4F46\u4FDD\u7559\u8FD9\u672C\u4E66",
-  "Open Reader": "\u6253\u5F00\u9605\u8BFB\u5668",
-  "The chapter structure has not been prepared.": "\u7AE0\u8282\u7ED3\u6784\u5C1A\u672A\u51C6\u5907\u597D\u3002",
-  "An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page.": "\u6709\u5BFC\u5165\u7684\u5757\u88AB\u7F16\u8F91\u6216\u79FB\u52A8\u4E86\u3002\u4E3A\u4FDD\u62A4\u4F60\u7684\u4FEE\u6539\u5DF2\u6682\u505C\u7EE7\u7EED\u5BFC\u5165\u3002\u8BF7\u9009\u62E9 EPUB\uFF0C\u5BFC\u5165\u5230\u5355\u72EC\u7684\u9875\u9762\u3002",
-  "Importing chapter {0}/{1} \xB7 block {2}/{3}": "\u6B63\u5728\u5BFC\u5165\u7B2C {0}/{1} \u7AE0 \xB7 \u5757 {2}/{3}",
-  "Resolving internal link {0}/{1}": "\u6B63\u5728\u89E3\u6790\u5185\u90E8\u94FE\u63A5 {0}/{1}",
-  "{0} comment": "{0} \u6761\u8BC4\u8BBA",
-  "{0} comments": "{0} \u6761\u8BC4\u8BBA",
-  "{0} highlight": "{0} \u5904\u9AD8\u4EAE",
-  "{0} highlights": "{0} \u5904\u9AD8\u4EAE",
-  "{0} mark": "{0} \u4E2A\u6807\u8BB0",
-  "{0} marks": "{0} \u4E2A\u6807\u8BB0",
-  "Read": "\u5DF2\u8BFB",
-  "Unvisited": "\u672A\u8BBF\u95EE",
-  "Browsed": "\u5DF2\u6D4F\u89C8",
-  "Browsing": "\u6D4F\u89C8\u4E2D",
-  "highlight": "\u9AD8\u4EAE",
-  "comment": "\u8BC4\u8BBA",
-  "mark": "\u6807\u8BB0",
-  "question": "\u7591\u95EE",
-  "sidebar": "\u4FA7\u8FB9\u680F",
-  "main window": "\u4E3B\u7A97\u53E3",
-  "Heading repair": "\u6807\u9898\u4FEE\u590D",
-  "Link repair": "\u94FE\u63A5\u4FEE\u590D",
-  "Paragraph repair": "\u6BB5\u843D\u4FEE\u590D",
-  "Archive removal": "\u5B58\u6863\u5220\u9664",
-  "Toggle Mark": "\u5207\u6362 Mark It",
-  "Toggle Question": "\u5207\u6362\u7591\u95EE",
-  "Open / close Reading Desk": "\u6253\u5F00 / \u5173\u95ED Reading Desk",
-  "Continue reading": "\u7EE7\u7EED\u9605\u8BFB",
-  "Open reading notes": "\u6253\u5F00\u8BFB\u4E66\u7B14\u8BB0",
-  "Contents": "\u76EE\u5F55",
-  "Annotations": "\u6279\u6CE8",
-  "Notes": "\u7B14\u8BB0",
-  "Settings": "\u8BBE\u7F6E",
-  "Theme default": "\u4E3B\u9898\u9ED8\u8BA4",
-  "Margin dot + bold": "\u9875\u8FB9\u91D1\u70B9 + \u52A0\u7C97",
-  "Bookmark ribbon": "\u4E66\u7B7E\u4E1D\u5E26",
-  "Gold highlighter": "\u91D1\u8272\u8367\u5149\u7B14",
-  "Pull quote": "\u5F15\u6587",
-  "Sticky note": "\u4FBF\u7B7E",
-  "Ink emphasis": "\u6DF1\u58A8\u5F3A\u8C03",
-  "Fill the line": "\u94FA\u6EE1\u6574\u884C",
-  "Theme line length": "\u4E3B\u9898\u884C\u5BBD",
-  "Cards": "\u5361\u7247",
-  "Minimal": "\u7B80\u6D01",
-  "Coral": "\u73CA\u745A",
-  "Rose": "\u73AB\u7470",
-  "Mint": "\u8584\u8377",
-  "Sky": "\u5929\u7A7A",
-  "Lilac": "\u6DE1\u7D2B",
-  "Gold": "\u91D1\u8272",
-  "Gray": "\u7070\u8272",
-  "Blue": "\u84DD\u8272",
-  "Green": "\u7EFF\u8272",
-  "Purple": "\u7D2B\u8272",
-  "Marker": "\u9A6C\u514B\u7B14",
-  "Underline": "\u4E0B\u5212\u7EBF",
-  "Oldest first": "\u65E7\u7684\u5728\u524D",
-  "Newest first": "\u65B0\u7684\u5728\u524D",
-  "A tag at the end (#question)": "\u672B\u5C3E\u52A0\u6807\u7B7E\uFF08#question\uFF09",
-  "An attribute at the start (Question::)": "\u5F00\u5934\u52A0\u5C5E\u6027\uFF08Question::\uFF09",
-  "The right sidebar": "\u53F3\u4FA7\u8FB9\u680F",
-  "The main window": "\u4E3B\u7A97\u53E3",
-  "Auto (browser language)": "\u81EA\u52A8\uFF08\u8DDF\u968F\u6D4F\u89C8\u5668\u8BED\u8A00\uFF09",
-  "Page": "\u9875\u9762",
-  "Book": "\u4E66\u7C4D",
-  "Earlier": "\u66F4\u65E9",
-  "No usable EPUB TOC was found. The outline uses body headings; review the preview.": "\u6CA1\u6709\u627E\u5230\u53EF\u7528\u7684 EPUB \u76EE\u5F55\u3002\u5927\u7EB2\u6539\u7528\u6B63\u6587\u6807\u9898\u751F\u6210\uFF0C\u8BF7\u68C0\u67E5\u9884\u89C8\u3002",
-  "Missing TOC target for {0}: {1}. Unmatched text is kept separately.": "\u76EE\u5F55\u6761\u76EE {0} \u627E\u4E0D\u5230\u5BF9\u5E94\u4F4D\u7F6E\uFF1A{1}\u3002\u672A\u5339\u914D\u7684\u6B63\u6587\u4F1A\u5355\u72EC\u4FDD\u7559\u3002",
-  "TOC file is outside the EPUB reading order: {0}": "\u76EE\u5F55\u6587\u4EF6\u4E0D\u5728 EPUB \u7684\u9605\u8BFB\u987A\u5E8F\u4E2D\uFF1A{0}",
-  "Missing EPUB body file: {0}": "\u7F3A\u5C11 EPUB \u6B63\u6587\u6587\u4EF6\uFF1A{0}",
-  "Missing EPUB image: {0}": "\u7F3A\u5C11 EPUB \u56FE\u7247\uFF1A{0}",
-  "Auto": "\u81EA\u52A8",
-  "Interface language": "\u754C\u9762\u8BED\u8A00",
-  "Interface language for Reading Desk (Auto follows your browser).": "Reading Desk \u7684\u754C\u9762\u8BED\u8A00\uFF08\u81EA\u52A8\uFF1A\u8DDF\u968F\u6D4F\u89C8\u5668\uFF09\u3002"
-};
-
-// src/i18n.js
-var DICTIONARIES = { fr: fr_default, it: it_default, de: de_default, es: es_default, zh: zh_default };
-var LANGUAGES = [["Auto", "Auto (browser language)"], ["English", "English"], ["Fran\xE7ais", "Fran\xE7ais"], ["Italiano", "Italiano"], ["Deutsch", "Deutsch"], ["Espa\xF1ol", "Espa\xF1ol"], ["\u4E2D\u6587", "\u4E2D\u6587"]];
-var CODES = { auto: "auto", english: "en", "fran\xE7ais": "fr", italiano: "it", deutsch: "de", "espa\xF1ol": "es", "\u4E2D\u6587": "zh", en: "en", fr: "fr", it: "it", de: "de", es: "es", zh: "zh" };
-var languageName = (value2) => {
-  const code = CODES[String(value2 || "auto").toLowerCase()] || "auto";
-  return code === "auto" ? "Auto" : LANGUAGES.find(([name]) => CODES[name.toLowerCase()] === code)[0];
-};
-var current = "en";
-function resolveLanguage(preference = "auto") {
-  const code = CODES[String(preference || "auto").toLowerCase()] || "en";
-  if (code !== "auto") return code;
-  const tags = [...globalThis.navigator?.languages || [], globalThis.navigator?.language].filter(Boolean);
-  for (const tag of tags) {
-    const code2 = String(tag).toLowerCase().slice(0, 2);
-    if (code2 === "en") return "en";
-    if (DICTIONARIES[code2]) return code2;
-  }
-  return "en";
-}
-function setLanguage(preference) {
-  current = resolveLanguage(preference);
-  globalThis.document?.documentElement?.setAttribute?.("data-rd-lang", current);
-  return current;
-}
-var language = () => current;
-function t(text2, values = []) {
-  const template = current !== "en" && DICTIONARIES[current]?.[text2] || text2;
-  return values.length ? template.replace(/\{(\d+)\}/g, (match, index) => values[index] ?? "") : template;
-}
-
 // src/epub.js
 var FLOW_BLOCKS = /* @__PURE__ */ new Set(["p", "div", "section", "article", "aside", "header", "footer", "main", "body", "blockquote", "pre", "li", "ul", "ol", "figure", "figcaption", "table", "tr", "dl", "dt", "dd", "h1", "h2", "h3", "h4", "h5", "h6"]);
 var OMIT = /* @__PURE__ */ new Set(["script", "style", "head", "noscript", "template"]);
@@ -17475,13 +19141,29 @@ function htmlToFlow(bytes, sourcePath, context) {
   }
   const mathContext = { ...context, sourcePath };
   prepareMathDocument(document2, mathContext);
+  const css = [], seenCss = /* @__PURE__ */ new Set();
+  const addCss = (path2) => {
+    if (seenCss.has(path2)) return;
+    seenCss.add(path2);
+    const text2 = context.cssFiles?.get(path2);
+    if (!text2) return;
+    for (const match of text2.matchAll(/@import\s+(?:url\(\s*)?["']?([^"'\s);]+)["']?\s*\)?[^;]*;/g)) addCss(resolvePath(path2, match[1]));
+    css.push(text2);
+  };
+  document2.querySelectorAll('link[rel="stylesheet"]').forEach((link) => addCss(resolvePath(sourcePath, link.getAttribute("href") || "")));
+  const visualHeadings = styledHeadings(document2, css);
+  context.styledHeadingCount = (context.styledHeadingCount || 0) + visualHeadings.size;
   const blocks = [];
   const anchors = /* @__PURE__ */ new Map([[sourcePath, 0]]);
   let buffer = "";
   let mode = { kind: "paragraph" };
   const flush = () => {
     const text2 = cleanText(mode.literal ? buffer : convertDelimitedMath(buffer, mathContext));
-    if (text2) blocks.push({ text: text2, ...mode, sourcePath, targetKeys: [], children: [] });
+    if (text2) {
+      const parts = mode.literal ? [{ text: text2, image: false }] : splitImages(text2, true);
+      const balanced = parts.filter((p) => !p.image).every((p) => ["**", "__", "`"].every((mark) => p.text.split(mark).length % 2 === 1));
+      for (const part of balanced ? parts : [{ text: text2, image: false }]) blocks.push({ ...mode, text: part.text.trim(), ...part.image ? { kind: "image", rank: void 0 } : {}, sourcePath, targetKeys: [], children: [] });
+    }
     buffer = "";
   };
   const addAnchor = (element2) => {
@@ -17525,11 +19207,14 @@ function htmlToFlow(bytes, sourcePath, context) {
     if (node.nodeType !== 1) return;
     const tag = tagOf2(node);
     if (OMIT.has(tag) || node.hasAttribute("hidden")) return;
-    const block = FLOW_BLOCKS.has(tag);
+    const ariaHeading = node.getAttribute("role") === "heading" && /^[1-6]$/.test(node.getAttribute("aria-level") || "");
+    const block = FLOW_BLOCKS.has(tag) || ariaHeading;
     if (block) flush();
     addAnchor(node);
     const previousMode = mode;
     if (/^h[1-6]$/.test(tag)) mode = { kind: "heading", rank: Number(tag.slice(1)) };
+    else if (ariaHeading) mode = { kind: "heading", rank: Number(node.getAttribute("aria-level")), headingEvidence: "ARIA heading" };
+    else if (visualHeadings.has(node) && context.includeStyledHeadings) mode = visualHeadings.get(node);
     else if (block) mode = { kind: tag === "figure" ? "image" : "paragraph", ...tag === "pre" ? { literal: true } : {} };
     if (["a", "strong", "b", "em", "i", "code"].includes(tag) && !node.querySelector("[id],a[name],p,div")) {
       buffer += inline(node);
@@ -17553,10 +19238,10 @@ function htmlToFlow(bytes, sourcePath, context) {
   }
   walk(document2.body);
   flush();
-  anchors.forEach((offset, key2) => {
-    if (blocks.length) blocks[Math.min(offset, blocks.length - 1)].targetKeys.push(key2);
+  anchors.forEach((offset, key3) => {
+    if (blocks.length) blocks[Math.min(offset, blocks.length - 1)].targetKeys.push(key3);
   });
-  return { blocks, anchors: new Map([...anchors].map(([key2, offset]) => [key2, Math.min(offset, Math.max(0, blocks.length - 1))])) };
+  return { blocks, anchors: new Map([...anchors].map(([key3, offset]) => [key3, Math.min(offset, Math.max(0, blocks.length - 1))])) };
 }
 function parseNav(bytes, navPath) {
   const document2 = new DOMParser().parseFromString(decodeBytes(bytes), "text/html");
@@ -17586,7 +19271,7 @@ function parseNcx(bytes, ncxPath) {
   }
   return [...navMap?.children || []].filter((child) => child.localName === "navPoint").map(readPoint);
 }
-var titleKey = (text2) => cleanText(text2).replace(/[\s\u3000·•:：.。,，、\-—–_|]/g, "").toLowerCase();
+var titleKey = (text2) => cleanText(text2).replace(/\*\*|__/g, "").replace(/[\s\u3000·•:：.。,，、\-—–_|]/g, "").toLowerCase();
 function headingTree(blocks) {
   const root = { children: [], rank: 0 };
   const stack = [root];
@@ -17603,12 +19288,16 @@ function assembleChapters(toc, documents, warnings, { directoryPaths = /* @__PUR
   const flow = [];
   const offsets = /* @__PURE__ */ new Map();
   documents.forEach((document2, path2) => {
-    document2.anchors.forEach((offset, key2) => offsets.set(key2, flow.length + offset));
+    document2.anchors.forEach((offset, key3) => offsets.set(key3, flow.length + offset));
     flow.push(...document2.blocks);
   });
   if (!toc.length) {
     warnings.push(t("No usable EPUB TOC was found. The outline uses body headings; review the preview."));
-    return headingTree(flow);
+    const tree = headingTree(flow);
+    const firstHeading = tree.findIndex((node) => node.kind === "heading");
+    if (firstHeading === 0) return tree;
+    const leading = firstHeading < 0 ? tree : tree.slice(0, firstHeading);
+    return [{ text: firstHeading < 0 ? "Body" : "Before contents", kind: "supplement", children: leading, targetKeys: [] }, ...firstHeading < 0 ? [] : tree.slice(firstHeading)];
   }
   const entries = [];
   const copy = (items) => items.map((item) => {
@@ -17699,8 +19388,8 @@ function finalizeTargets(book) {
     if (node.targetKeys?.length) {
       node.targetKeys = [...new Set(node.targetKeys)];
       node.targetMarker = `T${shortHash(node.targetKeys.slice().sort().join("|"))}_${sequence++}`;
-      node.targetKeys.forEach((key2) => {
-        targetMarkers[key2] || (targetMarkers[key2] = node.targetMarker);
+      node.targetKeys.forEach((key3) => {
+        targetMarkers[key3] || (targetMarkers[key3] = node.targetMarker);
       });
     }
     walk(node.children || []);
@@ -17715,7 +19404,7 @@ function finalizeTargets(book) {
 function countNodes(nodes) {
   return nodes.reduce((total, node) => total + 1 + countNodes(node.children || []), 0);
 }
-async function parseEpub(arrayBuffer, filename = "book.epub") {
+async function parseEpub(arrayBuffer, filename = "book.epub", { includeStyledHeadings = false } = {}) {
   const rawFiles = await new Promise((resolve, reject) => unzip(new Uint8Array(arrayBuffer), (error, result) => error ? reject(error) : resolve(result)));
   const files = new Map(Object.entries(rawFiles).map(([path2, bytes]) => [normalizePath(path2), bytes]));
   const get = (path2) => files.get(normalizePath(path2));
@@ -17755,7 +19444,7 @@ async function parseEpub(arrayBuffer, filename = "book.epub") {
     collectTargets(item.children);
   });
   collectTargets(toc);
-  const context = { links, images: imageRefs, formulas, warnings, tocTargets };
+  const context = { links, images: imageRefs, formulas, warnings, tocTargets, includeStyledHeadings, cssFiles: new Map([...files].filter(([path2]) => /\.css$/i.test(path2)).map(([path2, bytes]) => [path2, decodeBytes(bytes)])) };
   const documents = /* @__PURE__ */ new Map();
   const contentItems = [...spine];
   const addTocDocuments = (items) => items.forEach((item) => {
@@ -17777,6 +19466,7 @@ async function parseEpub(arrayBuffer, filename = "book.epub") {
     }
     if (/xhtml|html/i.test(item.type)) documents.set(item.path, htmlToFlow(get(item.path), item.path, context));
   });
+  if (context.styledHeadingCount) warnings.push(t("{0} possible subheadings use typography rather than heading tags. Enable typography-based headings only after reviewing the preview.", [context.styledHeadingCount]));
   const guides = [...opf.getElementsByTagNameNS("*", "reference")];
   const directoryPaths = new Set(guides.filter((item) => item.getAttribute("type") === "toc").map((item) => resolvePath(opfPath, item.getAttribute("href") || "")));
   const coverPaths = new Set(guides.filter((item) => item.getAttribute("type") === "cover").map((item) => resolvePath(opfPath, item.getAttribute("href") || "")));
@@ -17805,6 +19495,7 @@ async function parseEpub(arrayBuffer, filename = "book.epub") {
   const fileHash = await sha256Hex(new Uint8Array(arrayBuffer));
   const book = finalizeMath({
     parserVersion: 4,
+    includeStyledHeadings,
     id: `epub-${fileHash.slice(0, 16)}`,
     fileHash,
     filename,
@@ -17832,1284 +19523,73 @@ async function parseEpub(arrayBuffer, filename = "book.epub") {
   return finalizeTargets(book);
 }
 
-// src/storage.js
-var DB_NAME = "roam-epub-importer";
-var DB_VERSION = 2;
-var STORE = "jobs";
-var BOOKS = "books";
-var persistedBooks = /* @__PURE__ */ new Set();
-function openDatabase() {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, DB_VERSION);
-    request.onupgradeneeded = () => {
-      const db = request.result;
-      if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "id" });
-      if (!db.objectStoreNames.contains(BOOKS)) db.createObjectStore(BOOKS, { keyPath: "id" });
-    };
-    request.onsuccess = () => resolve(request.result);
-    request.onerror = () => reject(request.error);
-  });
-}
-async function transact(stores, mode, action) {
-  const db = await openDatabase();
+// src/rich-text.js
+var REF = /\(\(([^()\s]+)\)\)/g;
+var blockString = (uid) => {
   try {
-    return await new Promise((resolve, reject) => {
-      const transaction = db.transaction(stores, mode);
-      const result = action(transaction);
-      transaction.oncomplete = () => resolve(typeof result === "function" ? result() : result);
-      transaction.onerror = () => reject(transaction.error || new Error(t("Could not save local progress")));
-      transaction.onabort = () => reject(transaction.error || new Error(t("Local progress save was aborted")));
-    });
-  } finally {
-    db.close();
+    return api().data.pull("[:block/string]", [":block/uid", uid])?.[":block/string"] ?? null;
+  } catch {
+    return null;
   }
-}
-async function saveJob(job) {
-  const { book, ...state } = job;
-  const needsBook = !persistedBooks.has(job.id);
-  await transact([STORE, BOOKS], "readwrite", (transaction) => {
-    if (needsBook) transaction.objectStore(BOOKS).put({ id: job.id, book });
-    transaction.objectStore(STORE).put({ ...state, bookKey: job.id });
-  });
-  persistedBooks.add(job.id);
-}
-async function hydrate(state) {
-  if (!state || state.book) return state;
-  const stored = await transact([BOOKS], "readonly", (transaction) => {
-    const request = transaction.objectStore(BOOKS).get(state.bookKey);
-    return () => request.result;
-  });
-  if (!stored?.book) throw new Error(t("The local EPUB cache is missing. Select the original file again."));
-  persistedBooks.add(state.id);
-  return { ...state, book: stored.book };
-}
-async function getJob(id) {
-  const state = await transact([STORE], "readonly", (transaction) => {
-    const request = transaction.objectStore(STORE).get(id);
-    return () => request.result;
-  });
-  return hydrate(state);
-}
-async function removeJob(id) {
-  await transact([STORE, BOOKS], "readwrite", (transaction) => {
-    transaction.objectStore(STORE).delete(id);
-    transaction.objectStore(BOOKS).delete(id);
-  });
-  persistedBooks.delete(id);
-}
-async function listJobs() {
-  const states = await transact([STORE], "readonly", (transaction) => {
-    const request = transaction.objectStore(STORE).getAll();
-    return () => request.result;
-  });
-  return Promise.all(states.map(hydrate));
-}
-
-// src/link-format.js
-function aliasLabel(label) {
-  const raw = label.replace(/\\([\[\]\\])/g, "$1").trim();
-  const numeric = raw.match(/^\[\s*(\d+)\s*\]$/);
-  return numeric ? numeric[1] : raw.replace(/\[/g, "\uFF3B").replace(/\]/g, "\uFF3D");
-}
-var blockAlias = (label, uid) => `[${aliasLabel(label)}](((${uid})))`;
-
-// src/writer.js
-var IMAGE_PATTERN = /⟦EPUBI:(i\d+)⟧/g;
-var LINK_PATTERN = /⟦EPUBL:(l\d+)⟧/g;
-function valueOf(record, key2) {
-  return record?.[`:block/${key2}`] ?? record?.[key2];
-}
-var chapterNodeKind = (node, parent, book) => node.kind === "toc" || node.kind === "supplement" || !parent || book?.tocSource === "headings" && node.kind === "heading";
-var boldable = (text2) => text2 && !/\*\*|⟦EPUBI:|\$\$|^\s*```/.test(text2);
-function prepareBlockPlan(job, generateUID) {
-  var _a2, _b2;
-  if (job.blockPlan) return job.blockPlan;
-  const blocks = [];
-  const targets = /* @__PURE__ */ new Map();
-  function visit(nodes, parentUid, chapterIndex, depth, parentNode, chapterDepth) {
-    nodes.forEach((node, order) => {
-      const uid = generateUID();
-      if (node.targetMarker) targets.set(node.targetMarker, uid);
-      const chapter = chapterNodeKind(node, parentNode, job.book);
-      const heading = chapter && chapterDepth < 3 ? chapterDepth + 1 : 0;
-      const bold = boldable(node.text) && (chapter ? chapterDepth === 3 : node.kind === "heading");
-      blocks.push({ uid, parentUid, order, chapterIndex, depth, node, heading, bold });
-      visit(node.children || [], uid, chapterIndex, depth + 1, node, chapterDepth + (chapter ? 1 : 0));
-    });
-  }
-  job.book.chapters.forEach((node, chapterIndex) => visit([node], job.progress.pageUid, chapterIndex, 0, null, 0));
-  const links = new Map(job.book.links.map((link) => [link.id, link]));
-  job.blockPlan = blocks.map(({ node, bold, ...record }) => {
-    const source = node.text || "(Empty paragraph)";
-    const text2 = (bold ? `**${source.trim()}**` : source).replace(IMAGE_PATTERN, (_, id) => job.assetEmbeds[id] || `[Missing image: ${id}]`);
-    const pendingLinks = /⟦EPUBL:/.test(text2);
-    const resolveLinks = (final) => text2.replace(LINK_PATTERN, (_, id) => {
-      const link = links.get(id);
-      if (!link) return "[Unrecognized internal link]";
-      const uid = targets.get(link.targetMarker);
-      return final && uid ? blockAlias(link.label, uid) : link.label;
-    });
-    return {
-      ...record,
-      // Literal block strings preserve numeric paragraphs, image positions and
-      // source nesting without a second Markdown parse changing the tree.
-      string: resolveLinks(false),
-      ...pendingLinks ? { finalString: resolveLinks(true) } : {},
-      open: record.depth !== 0
-    };
-  });
-  (_a2 = job.progress).blockIndex || (_a2.blockIndex = 0);
-  (_b2 = job.progress).linkIndex || (_b2.linkIndex = 0);
-  return job.blockPlan;
-}
-async function writeBlockPlan(job, api3, { checkpoint, onProgress, wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)), intervalMs = 65 } = {}) {
-  if (!job.blockPlan) throw new Error(t("The chapter structure has not been prepared."));
-  const plan = job.blockPlan;
-  job.progress.stage = "chapters";
-  for (let index = job.progress.blockIndex || 0; index < plan.length; index += 1) {
-    const item = plan[index];
-    const existing = api3.data.pull("[:block/uid :block/string {:block/parents [:block/uid]}]", [":block/uid", item.uid]);
-    if (!valueOf(existing, "uid")) {
-      await api3.data.block.create({
-        location: { "parent-uid": item.parentUid, order: item.depth === 0 ? item.chapterIndex : item.order },
-        block: { uid: item.uid, string: item.string, open: item.open, ...item.heading ? { heading: item.heading } : {} }
-      });
-      await wait(intervalMs);
-    } else {
-      const expected = new Set([item.string, item.finalString].filter((value2) => value2 != null));
-      const parents = valueOf(existing, "parents");
-      if (!expected.has(valueOf(existing, "string")) || !Array.isArray(parents) || !parents.some((parent) => valueOf(parent, "uid") === item.parentUid)) {
-        throw new Error(t("An imported block was edited or moved. Resume paused to preserve your changes. Select the EPUB to import into a separate page."));
-      }
-    }
-    job.progress.blockIndex = index + 1;
-    job.progress.chapterIndex = index + 1 === plan.length || plan[index + 1].chapterIndex !== item.chapterIndex ? item.chapterIndex + 1 : item.chapterIndex;
-    if ((index + 1) % 20 === 0 || index + 1 === plan.length) await checkpoint?.(job);
-    onProgress?.({ stage: "chapters", current: index + 1, total: plan.length, message: t("Importing chapter {0}/{1} \xB7 block {2}/{3}", [item.chapterIndex + 1, job.book.chapters.length, index + 1, plan.length]) });
-  }
-  const linked = plan.filter((item) => item.finalString != null);
-  job.progress.stage = "links";
-  await checkpoint?.(job);
-  for (let index = job.progress.linkIndex || 0; index < linked.length; index += 1) {
-    const item = linked[index];
-    await api3.data.block.update({ block: { uid: item.uid, string: item.finalString } });
-    await wait(intervalMs);
-    job.progress.linkIndex = index + 1;
-    if ((index + 1) % 20 === 0 || index + 1 === linked.length) await checkpoint?.(job);
-    onProgress?.({ stage: "links", current: index + 1, total: linked.length, message: t("Resolving internal link {0}/{1}", [index + 1, linked.length]) });
-  }
-}
-
-// src/graph.js
-var api = () => window.roamAlphaAPI;
-var value = (node, field) => node?.[`:block/${field}`] ?? node?.[field];
-var uidOf = (node) => value(node, "uid");
-var textOf = (node) => value(node, "string") || "";
-var titleOf = (node) => node?.[":node/title"] ?? node?.title;
-var childrenOf = (node) => [...value(node, "children") || []].sort((a, b) => (value(a, "order") || 0) - (value(b, "order") || 0));
-var bookKey = (book) => book.libraryKey || book.pageUid || book.id;
-var pull = (uid) => api().data.pull("[:block/uid :node/title :block/string :block/order :block/open :block/heading {:block/children ...}]", [":block/uid", uid]);
-var flatten = (node) => node ? [node, ...childrenOf(node).flatMap(flatten)] : [];
-var updateBlock = (block) => api().data?.block?.update ? api().data.block.update({ block }) : api().updateBlock({ block });
-var createBlock = (parentUid, string, order = "last") => {
-  const uid = api().util.generateUID();
-  return api().data.block.create({ location: { "parent-uid": parentUid, order }, block: { uid, string } }).then(() => uid);
 };
-async function ensurePage(title) {
-  const existing = api().data.pull("[:block/uid]", [":node/title", title]);
-  if (uidOf(existing)) return uidOf(existing);
-  const uid = api().util.generateUID();
-  await api().data.page.create({ page: { uid, title } });
-  return uid;
+function resolveRefs(text2, depth = 0, seen = /* @__PURE__ */ new Set()) {
+  let value2 = String(text2 || "");
+  value2 = value2.replace(/\[([^\]]+)\]\(\(\(([^()\s]+)\)\)\)/g, "$1");
+  value2 = value2.replace(/\{\{\s*(?:\[\[)?embed(?:-path|-children)?(?:\]\])?\s*:\s*\(\(([^()\s]+)\)\)\s*\}\}/gi, "(($1))");
+  return value2.replace(REF, (match, uid) => {
+    if (depth >= 3 || seen.has(uid)) return "\u2026";
+    const target = blockString(uid);
+    if (target == null) return "(missing block)";
+    return resolveRefs(target, depth + 1, /* @__PURE__ */ new Set([...seen, uid]));
+  });
 }
-function owningPage(uid) {
-  const node = api().data.pull("[:block/uid :node/title {:block/page [:block/uid :node/title]} {:block/parents [:block/uid :node/title]}]", [":block/uid", uid]);
-  if (titleOf(node)) return { uid, title: titleOf(node) };
-  const page = value(node, "page") || (value(node, "parents") || []).find(titleOf);
-  if (page) return { uid: uidOf(page), title: titleOf(page) };
-  const rows = api().data.q("[:find ?puid ?title :in $ ?uid :where [?e :block/uid ?uid] [?e :block/parents ?p] [?p :node/title ?title] [?p :block/uid ?puid]]", uid) || [];
-  return rows[0] ? { uid: rows[0][0], title: rows[0][1] } : null;
+function plainText(text2) {
+  return resolveRefs(text2).replace(/\{\{\[\[TODO\]\]\}\}/g, "\u2610 ").replace(/\{\{\[\[DONE\]\]\}\}/g, "\u2611 ").replace(/!\[[^\]]*\]\([^)]*\)/g, "[image]").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/#?\[\[([^\]]+)\]\]/g, "$1").replace(/\*\*|__|\^\^|~~|`/g, "").replace(/\s+/g, " ").trim();
 }
-async function currentUid() {
-  const open2 = await api().ui?.mainWindow?.getOpenPageOrBlockUid?.();
-  if (open2) return open2;
-  const hash = decodeURIComponent(window.location?.hash.match(/\/page\/([^/?]+)/)?.[1] || "");
-  if (hash) return hash;
-  const explicit = document.querySelector(".roam-main [data-page-uid]")?.getAttribute("data-page-uid");
-  if (explicit) return explicit;
-  const blockUid = document.querySelector(".roam-main .rm-block[data-block-uid]")?.getAttribute("data-block-uid");
-  return blockUid ? owningPage(blockUid)?.uid || blockUid : "";
-}
-var navigationTicket = 0;
-function renderedBlock(uid) {
-  return [...document.querySelectorAll(".roam-main [data-block-uid],.roam-main .rm-block-text[id],.roam-main textarea.rm-block-input[id]")].find((node) => node.getAttribute("data-block-uid") === uid || node.id?.endsWith(`-${uid}`));
-}
-function waitForBlock(uid, ticket) {
-  return new Promise((resolve) => {
-    let observer, timer;
-    const finish = (node) => {
-      observer?.disconnect();
-      clearTimeout(timer);
-      resolve(node);
+var TOKEN = /(\*\*([^]+?)\*\*)|(__([^]+?)__)|(\^\^([^]+?)\^\^)|(~~([^]+?)~~)|(`([^`]+)`)|(!\[[^\]]*\]\([^)]*\))|(\[([^\]]+)\]\(([^)]+)\))|(#?\[\[([^\]]+)\]\])|((?:^|(?<=\s))#([\p{L}\p{N}_\-/.]+))|(\{\{\[\[(TODO|DONE)\]\]\}\})/gu;
+function appendInline(parent, text2, doc) {
+  let last = 0;
+  for (const match of text2.matchAll(TOKEN)) {
+    if (match.index > last) parent.append(doc.createTextNode(text2.slice(last, match.index)));
+    last = match.index + match[0].length;
+    const wrap = (tag, cls, inner2) => {
+      const node = doc.createElement(tag);
+      if (cls) node.className = cls;
+      appendInline(node, inner2, doc);
+      parent.append(node);
     };
-    const check = () => {
-      const node = renderedBlock(uid);
-      if (ticket !== navigationTicket || node) finish(ticket === navigationTicket ? node : null);
-    };
-    observer = new window.MutationObserver(check);
-    observer.observe(document.body, { childList: true, subtree: true });
-    timer = setTimeout(() => finish(null), 4e3);
-    check();
-  });
-}
-async function openAt(uid, sidebar = false) {
-  if (!uid || !api().data.pull("[:block/uid]", [":block/uid", uid])) throw new Error(t("This block no longer exists. Refresh the contents or annotations; the book will not be recreated."));
-  if (sidebar) {
-    await api().ui.rightSidebar.open();
-    await api().ui.rightSidebar.addWindow({ window: { type: "block", "block-uid": uid } });
-    return;
+    if (match[1]) wrap("strong", "", match[2]);
+    else if (match[3]) wrap("em", "", match[4]);
+    else if (match[5]) wrap("mark", "rd-rich-highlight", match[6]);
+    else if (match[7]) wrap("s", "", match[8]);
+    else if (match[9]) {
+      const code = doc.createElement("code");
+      code.textContent = match[10];
+      parent.append(code);
+    } else if (match[11]) {
+      const image = doc.createElement("span");
+      image.className = "rd-rich-muted";
+      image.textContent = "[image]";
+      parent.append(image);
+    } else if (match[12]) wrap("span", "rd-rich-link", match[13]);
+    else if (match[15]) {
+      const page = doc.createElement("span");
+      page.className = "rd-rich-page";
+      page.textContent = match[16];
+      parent.append(page);
+    } else if (match[17]) {
+      const tag = doc.createElement("span");
+      tag.className = "rd-rich-tag";
+      tag.textContent = `#${match[18]}`;
+      parent.append(tag);
+    } else if (match[19]) parent.append(doc.createTextNode(match[20] === "DONE" ? "\u2611 " : "\u2610 "));
   }
-  const ticket = ++navigationTicket;
-  const page = owningPage(uid);
-  if (!page) throw new Error(t("Cannot find the page containing this block."));
-  if (await currentUid() !== page.uid) await api().ui.mainWindow.openPage({ page: { uid: page.uid } });
-  const parents = api().data.pull("[{:block/parents [:block/uid :node/title :block/open]}]", [":block/uid", uid]);
-  for (const parent of value(parents, "parents") || []) {
-    if (ticket !== navigationTicket) return;
-    if (!titleOf(parent) && value(parent, "open") === false) await updateBlock({ uid: uidOf(parent), open: true });
-  }
-  const node = await waitForBlock(uid, ticket);
-  if (ticket !== navigationTicket) return;
-  if (!node) throw new Error(t("The page opened, but this paragraph has not rendered. Expand its chapter and try again."));
-  const target = node.closest(".rm-block-main") || node.querySelector(".rm-block-main") || node;
-  let userMoved = false;
-  const stop = () => {
-    userMoved = true;
-  };
-  const events = ["wheel", "touchstart", "keydown", "pointerdown"];
-  events.forEach((name) => window.addEventListener(name, stop, { capture: true, passive: true, once: true }));
-  const heading = Number(value(api().data.pull("[:block/heading]", [":block/uid", uid]), "heading")) > 0;
-  const previousMargin = target.style?.scrollMarginTop;
-  if (heading && target.style) target.style.scrollMarginTop = "72px";
-  const align = () => target.scrollIntoView?.({ behavior: "auto", block: heading ? "start" : "center", inline: "nearest" });
-  align();
-  const anchorTop = target.getBoundingClientRect?.().top;
-  target.animate?.([{ backgroundColor: "rgba(222,190,76,.35)" }, { backgroundColor: "transparent" }], { duration: 1800 });
-  for (let pass = 0; pass < 3; pass++) {
-    await new Promise((resolve) => setTimeout(resolve, pass ? 300 : 350));
-    if (userMoved || ticket !== navigationTicket || !target.isConnected || anchorTop == null) break;
-    if (Math.abs(target.getBoundingClientRect().top - anchorTop) > 24) align();
-  }
-  events.forEach((name) => window.removeEventListener(name, stop, true));
-  if (target.style) target.style.scrollMarginTop = previousMargin || "";
+  if (last < text2.length) parent.append(doc.createTextNode(text2.slice(last)));
 }
-var plain = (text2) => String(text2 || "").replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/#?\[\[([^\]]+)\]\]/g, "$1").replace(/[\^*_`]/g, "").trim();
-
-// src/metadata-page.js
-var pagesByApi = /* @__PURE__ */ new WeakMap();
-function metadataPageUids(prefixes) {
-  const pages = /* @__PURE__ */ new Set();
-  for (const prefix of prefixes) {
-    const rows = api().data.q("[:find ?uid ?s :in $ ?prefix :where [?page :node/title ?page-title] [?page :block/children ?e] [?e :block/uid ?uid] [?e :block/string ?s] [(clojure.string/starts-with? ?s ?prefix)]]", prefix) || [];
-    rows.forEach(([uid]) => {
-      const page = owningPage(uid);
-      if (page) pages.add(page.uid);
-    });
-  }
-  return pages;
-}
-async function ensureMetadataPage(title, prefixes) {
-  let cache = pagesByApi.get(api());
-  if (!cache) {
-    cache = /* @__PURE__ */ new Map();
-    pagesByApi.set(api(), cache);
-  }
-  const previous = cache.get(title);
-  if (previous && titleOf(api().data.pull("[:node/title]", [":block/uid", previous])) != null) return previous;
-  const uid = [...metadataPageUids(prefixes)][0] || await ensurePage(title);
-  cache.set(title, uid);
-  return uid;
-}
-
-// src/reader-store.js
-var PREFIX = "EPUB-READER:DOC:1 ";
-var CHUNK = "EPUB-READER:CHUNK:1 ";
-var PAGE = "roam/epub-importer/reader";
-var queues = /* @__PURE__ */ new Map();
-var parse = (text2) => JSON.parse(text2.slice(PREFIX.length));
-function documentHeaders(type) {
-  return (api().data.q("[:find ?uid ?s :in $ ?prefix :where [?page :node/title ?page-title] [?page :block/children ?e] [?e :block/uid ?uid] [?e :block/string ?s] [(clojure.string/starts-with? ?s ?prefix)]]", PREFIX) || []).map(([uid, text2]) => ({ uid, ...parse(text2) })).filter((header) => !type || header.type === type);
-}
-function readDocument(type, key2, headerHint) {
-  const header = headerHint !== void 0 ? headerHint : documentHeaders(type).filter((item) => item.key === key2).sort((a, b) => b.revision - a.revision)[0];
-  if (!header) return null;
-  const chunks = childrenOf(pull(header.uid)).filter((node) => textOf(node).startsWith(CHUNK)).map((node) => JSON.parse(textOf(node).slice(CHUNK.length))).filter((chunk) => chunk.bank === header.bank && chunk.index < header.count).sort((a, b) => a.index - b.index);
-  if (chunks.length !== header.count || chunks.some((chunk, index) => chunk.index !== index)) throw new Error(t("Reading metadata is incomplete. Refresh and retry; the original book is unaffected."));
-  const joined = chunks.map((chunk) => chunk.text).join("");
-  const json = header.encoding === "base64-utf8" ? new TextDecoder().decode(Uint8Array.from(atob(joined), (character) => character.charCodeAt(0))) : joined;
-  return JSON.parse(json);
-}
-function putDocument(type, key2, data) {
-  const queueKey = `${type}:${key2}`;
-  const previous = queues.get(queueKey) || Promise.resolve();
-  const json = JSON.stringify(data);
-  const snapshot = btoa([...new TextEncoder().encode(json)].map((byte) => String.fromCharCode(byte)).join(""));
-  const task = previous.catch(() => {
-  }).then(async () => {
-    const prior = documentHeaders(type).filter((item) => item.key === key2).sort((a, b) => b.revision - a.revision)[0];
-    const parent = prior?.uid || await createBlock(await ensureMetadataPage(PAGE, [PREFIX, "EPUB-READER:PENDING:1 "]), `EPUB-READER:PENDING:1 ${queueKey}`);
-    const bank = prior ? 1 - prior.bank : 0;
-    const oldChunks = childrenOf(pull(parent)).filter((node) => textOf(node).startsWith(CHUNK)).map((node) => ({ uid: uidOf(node), ...JSON.parse(textOf(node).slice(CHUNK.length)) }));
-    const count = Math.max(1, Math.ceil(snapshot.length / 2e3));
-    for (let index = 0; index < count; index++) {
-      const string = CHUNK + JSON.stringify({ bank, index, text: snapshot.slice(index * 2e3, (index + 1) * 2e3) });
-      const old = oldChunks.find((chunk) => chunk.bank === bank && chunk.index === index);
-      if (old) await updateBlock({ uid: old.uid, string });
-      else await createBlock(parent, string);
-    }
-    await updateBlock({ uid: parent, string: PREFIX + JSON.stringify({ type, key: key2, bank, count, encoding: "base64-utf8", revision: (prior?.revision || 0) + 1, updatedAt: Date.now() }), open: false });
-    return parent;
-  });
-  queues.set(queueKey, task);
-  task.finally(() => {
-    if (queues.get(queueKey) === task) queues.delete(queueKey);
-  }).catch(() => {
-  });
-  return task;
-}
-function readerMetadataUids() {
-  const result = /* @__PURE__ */ new Set();
-  documentHeaders().forEach((header) => {
-    result.add(header.uid);
-    childrenOf(pull(header.uid)).forEach((child) => {
-      if (textOf(child).startsWith(CHUNK)) result.add(uidOf(child));
-    });
-  });
-  return result;
-}
-
-// src/library.js
-var settingsCache = /* @__PURE__ */ new WeakMap();
-var SETTINGS_KEY = "managed-books-v1";
-var LIBRARY_TITLE = "roam/epub-importer/library";
-var RECORD_PREFIX = "EPUB-IMPORTER:BOOK:1 ";
-var CHUNK_PREFIX = "EPUB-IMPORTER:ASSETS:1 ";
-var PENDING_PREFIX = "EPUB-IMPORTER:PENDING:1 ";
-var CHUNK_SIZE = 12;
-var api2 = () => window.roamAlphaAPI;
-var uidOf2 = (node) => node?.[":block/uid"] || node?.uid;
-var stringOf = (node) => node?.[":block/string"] ?? node?.string ?? "";
-var childrenOf2 = (node) => node?.[":block/children"] || node?.children || [];
-var titleOf2 = (node) => node?.[":node/title"] ?? node?.title;
-var keyOf = (record) => record.libraryKey || record.pageUid || record.id;
-function parseJson(text2, prefix) {
-  if (!text2.startsWith(prefix)) throw new Error(t("Invalid library format. Stopped to protect existing data."));
-  try {
-    return JSON.parse(text2.slice(prefix.length));
-  } catch {
-    throw new Error(t("Cannot read the library. Stopped to protect existing data."));
-  }
-}
-async function cacheSettings(extensionAPI, books) {
-  if (extensionAPI.settings?.canSet === false) return;
-  const fingerprint = JSON.stringify(books);
-  if (settingsCache.get(extensionAPI) === fingerprint) return;
-  try {
-    await extensionAPI.settings?.set?.(SETTINGS_KEY, books);
-    settingsCache.set(extensionAPI, fingerprint);
-  } catch {
-  }
-}
-function readGraphLibrary() {
-  const rows = api2().data.q("[:find ?uid ?s :in $ ?prefix :where [?e :block/uid ?uid] [?e :block/string ?s] [(clojure.string/starts-with? ?s ?prefix)]]", RECORD_PREFIX) || [];
-  const latest = /* @__PURE__ */ new Map();
-  const metadataUids = /* @__PURE__ */ new Set();
-  for (const [uid, text2] of rows) {
-    const metadata = parseJson(text2, RECORD_PREFIX);
-    if (metadata.schema !== 1 || !metadata.key || !Number.isInteger(metadata.sequence) || !["active", "deleted"].includes(metadata.state)) {
-      throw new Error(t("Unsupported library version or structure. Stopped to protect existing data."));
-    }
-    metadataUids.add(uid);
-    const tree = api2().data.pull("[:block/uid :block/string {:block/children ...}]", [":block/uid", uid]);
-    for (const child of childrenOf2(tree)) {
-      if (stringOf(child).startsWith(CHUNK_PREFIX)) metadataUids.add(uidOf2(child));
-    }
-    const prior = latest.get(metadata.key);
-    if (!prior || metadata.sequence > prior.metadata.sequence || metadata.sequence === prior.metadata.sequence && `${metadata.updatedAt}:${uid}` > `${prior.metadata.updatedAt}:${prior.uid}`) {
-      latest.set(metadata.key, { uid, metadata, tree });
-    }
-  }
-  const books = [];
-  for (const { metadata, tree } of latest.values()) {
-    if (metadata.state === "deleted") continue;
-    const chunks = childrenOf2(tree).filter((child) => stringOf(child).startsWith(CHUNK_PREFIX)).map((child) => parseJson(stringOf(child), CHUNK_PREFIX)).sort((a, b) => a.index - b.index);
-    if (chunks.length !== metadata.chunkCount || chunks.some((chunk, index) => chunk.index !== index || !Array.isArray(chunk.attachments))) {
-      throw new Error(t("The attachment ledger is incomplete. Stopped to protect attachments."));
-    }
-    const attachments = chunks.flatMap((chunk) => chunk.attachments);
-    if (attachments.length !== metadata.attachmentCount || !metadata.record?.id) throw new Error(t("Attachment ledger validation failed."));
-    const record = { ...metadata.record, libraryKey: metadata.key, attachments };
-    if (record.catalogKey) record.catalog = readDocument("book-catalog", record.catalogKey);
-    if (record.pageUid && (!record.catalog?.confirmed || record.catalog.rootUids.some((uid) => owningPage(uid)?.uid === record.pageUid))) {
-      const current2 = api2().data.pull("[:node/title]", [":block/uid", record.pageUid]);
-      if (titleOf2(current2)) record.title = titleOf2(current2);
-    }
-    books.push(record);
-  }
-  return { books, metadataUids, latest };
-}
-async function ensureLibraryPage() {
-  return ensureMetadataPage(LIBRARY_TITLE, [RECORD_PREFIX, PENDING_PREFIX]);
-}
-async function writeSnapshot(record, state, library) {
-  const key2 = keyOf(record);
-  if (!key2) throw new Error(t("The book record has no stable identity."));
-  const parentUid = await ensureLibraryPage();
-  const uid = api2().util.generateUID();
-  const attachments = state === "deleted" ? [] : record.attachments || [];
-  const { attachments: ignored, ...summary } = record;
-  const metadata = {
-    schema: 1,
-    key: key2,
-    state,
-    sequence: (library.latest.get(key2)?.metadata.sequence || 0) + 1,
-    updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
-    record: { ...summary, libraryKey: key2 },
-    chunkCount: Math.ceil(attachments.length / CHUNK_SIZE),
-    attachmentCount: attachments.length
-  };
-  await api2().data.block.create({ location: { "parent-uid": parentUid, order: "last" }, block: { uid, string: `${PENDING_PREFIX}${key2}`, open: false } });
-  for (let index = 0; index < metadata.chunkCount; index++) {
-    await api2().data.block.create({
-      location: { "parent-uid": uid, order: index },
-      block: { uid: api2().util.generateUID(), string: CHUNK_PREFIX + JSON.stringify({ index, attachments: attachments.slice(index * CHUNK_SIZE, (index + 1) * CHUNK_SIZE) }), open: false }
-    });
-  }
-  await api2().data.block.update({ block: { uid, string: RECORD_PREFIX + JSON.stringify(metadata), open: false } });
-}
-async function getManagedLibrary(extensionAPI) {
-  let library = readGraphLibrary();
-  const cached = extensionAPI.settings?.get?.(SETTINGS_KEY);
-  for (const record of Array.isArray(cached) ? cached : []) {
-    if (!record?.id || !keyOf(record) || library.latest.has(keyOf(record))) continue;
-    await writeSnapshot(record, "active", library);
-    library = readGraphLibrary();
-  }
-  await cacheSettings(extensionAPI, library.books);
-  return library;
-}
-async function getManagedBooks(extensionAPI) {
-  return (await getManagedLibrary(extensionAPI)).books;
-}
-async function saveManagedBook(extensionAPI, record) {
-  const library = await getManagedLibrary(extensionAPI);
-  const { catalog, ...summary } = record;
-  if (catalog) {
-    await putDocument("book-catalog", keyOf(record), catalog);
-    summary.catalogKey = keyOf(record);
-  }
-  await writeSnapshot(summary, "active", library);
-  await cacheSettings(extensionAPI, readGraphLibrary().books);
-}
-async function forgetManagedBook(extensionAPI, record) {
-  const library = await getManagedLibrary(extensionAPI);
-  await writeSnapshot(record, "deleted", library);
-  await cacheSettings(extensionAPI, readGraphLibrary().books);
-}
-var normalizeTitle = (title) => title.normalize("NFKC").replace(/[\p{P}\p{S}\s]/gu, "").toLowerCase();
-function findRecoveryPages(search) {
-  const input = search.trim();
-  if (input.length < 2) throw new Error(t("Enter at least two characters of the page title."));
-  const needle = normalizeTitle(input);
-  const rows = api2().data.q("[:find ?uid ?title :where [?e :node/title ?title] [?e :block/uid ?uid]]") || [];
-  const internal = metadataPageUids([RECORD_PREFIX, PENDING_PREFIX, "EPUB-READER:DOC:1 ", "EPUB-READER:PENDING:1 "]);
-  return rows.filter(([uid, title]) => !internal.has(uid) && title !== LIBRARY_TITLE && title !== "roam/epub-importer/reader" && normalizeTitle(title).includes(needle)).map(([pageUid, title]) => ({ pageUid, title })).slice(0, 30);
-}
-async function recoverExistingBook(pageUid, extensionAPI) {
-  const library = await getManagedLibrary(extensionAPI);
-  const existing = library.books.find((record2) => record2.pageUid === pageUid || record2.catalog?.rootUids.some((uid) => {
-    const root = api2().data.pull("[{:block/parents [:block/uid]}]", [":block/uid", uid]);
-    return (root?.[":block/parents"] || []).some((parent) => uidOf2(parent) === pageUid);
-  }));
-  if (existing) return existing;
-  const tree = api2().data.pull("[:block/uid :node/title :block/string {:block/children ...}]", [":block/uid", pageUid]);
-  if (!titleOf2(tree) || [LIBRARY_TITLE, "roam/epub-importer/reader"].includes(titleOf2(tree)) || metadataPageUids([RECORD_PREFIX, PENDING_PREFIX, "EPUB-READER:DOC:1 ", "EPUB-READER:PENDING:1 "]).has(pageUid)) throw new Error(t("The specified book page could not be found."));
-  const urls = /* @__PURE__ */ new Set();
-  let blocks = 0;
-  const visit = (node) => {
-    blocks++;
-    for (const match of stringOf(node).matchAll(/!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g)) urls.add(match[1]);
-    childrenOf2(node).forEach(visit);
-  };
-  childrenOf2(tree).forEach(visit);
-  const record = {
-    id: `recovered-${pageUid}`,
-    libraryKey: pageUid,
-    pageUid,
-    title: titleOf2(tree),
-    recoveredAt: (/* @__PURE__ */ new Date()).toISOString(),
-    status: "recovered",
-    stats: { blocks },
-    // Seeing a URL in a page does NOT prove that this plugin uploaded it.
-    attachments: [...urls].map((url) => ({ url, ownership: "unknown" }))
-  };
-  await saveManagedBook(extensionAPI, record);
-  return record;
-}
-
-// src/paragraph-repair.js
-var FRAGMENT_ARCHIVE = "EPUB-READER:paragraph-fragments";
-var move = (uid, parentUid, order) => api().data.block.move({ block: { uid }, location: { "parent-uid": parentUid, order } });
-var isChild = (uid, parentUid) => childrenOf(pull(parentUid)).some((node) => uidOf(node) === uid);
-var clean = (text2) => text2.replace(/\[\\\[\s*(\d+)\s*\\\]\]\(\(\([^()]+\)\)\)/g, "$1").replace(/\[([^\]]+)\]\(\(\([^()]+\)\)\)/g, "$1").replace(/\[\s*(\d+)\s*\]/g, "$1").replace(/\^\^|\*\*|__/g, "").replace(/\s+/g, " ").trim();
-var compact = (text2) => clean(text2).replace(/\s/g, "");
-var startsNote = (text2) => /^\s*(?:\[\d+\]\(\(\([^()]+\)\)\)|\[\\\[\s*\d+\s*\\\]\]\(\(\([^()]+\)\)\))/.test(text2.trimStart().replace(/^(?:\^\^|\*\*|__)+/, ""));
-function previewParagraphRepair(content, book) {
-  const links = new Map(book.links.map((link) => [link.id, link.label]));
-  const source = [];
-  const walk = (nodes) => nodes.forEach((node) => {
-    if (node.kind !== "toc" && !/⟦EPUBI:/.test(node.text)) source.push(clean(node.text.replace(/⟦EPUBL:([^⟧]+)⟧/g, (_, id) => links.get(id) || "")));
-    walk(node.children || []);
-  });
-  walk(book.chapters);
-  const paragraphs = /* @__PURE__ */ new Map();
-  source.forEach((text2) => {
-    const key2 = compact(text2);
-    paragraphs.set(key2, (paragraphs.get(key2) || []).concat(text2));
-  });
-  const chapterUids = new Set(content.chapters.map((chapter) => chapter.uid));
-  const groups = /* @__PURE__ */ new Map();
-  content.nodes.forEach((node) => {
-    if (node.parentUid) {
-      if (!groups.has(node.parentUid)) groups.set(node.parentUid, []);
-      groups.get(node.parentUid).push(node);
-    }
-  });
-  const changes = [];
-  for (const siblings of groups.values()) {
-    siblings.sort((a, b) => (value(a.node, "order") || 0) - (value(b.node, "order") || 0));
-    for (let i = 0; i < siblings.length - 1; i++) {
-      const first = siblings[i];
-      if (chapterUids.has(first.uid) || value(first.node, "heading") || childrenOf(first.node).length || !first.text.trim() || /```|!\[|\$\$/.test(first.text)) continue;
-      const parts = [first];
-      let joined = first.text;
-      for (let j = i + 1; j < siblings.length && j < i + 8; j++) {
-        const next = siblings[j];
-        if (chapterUids.has(next.uid) || value(next.node, "heading") || childrenOf(next.node).length || next.chapterUid !== first.chapterUid || !startsNote(next.text) || /```|!\[|\$\$/.test(next.text)) break;
-        parts.push(next);
-        joined += next.text;
-        const matches = paragraphs.get(compact(joined));
-        if (matches?.length === 1) {
-          const original = matches[0];
-          let after = first.text.trimEnd();
-          let prefix = clean(first.text);
-          for (const part of parts.slice(1)) {
-            const start = original.replace(/\s/g, "").indexOf(compact(prefix));
-            let consumed = 0, at = 0;
-            while (at < original.length && consumed < compact(prefix).length + Math.max(start, 0)) {
-              if (!/\s/.test(original[at])) consumed++;
-              at++;
-            }
-            after += (/\s/.test(original[at] || "") ? " " : "") + part.text.trimStart();
-            prefix += part.text;
-          }
-          changes.push({
-            uid: first.uid,
-            parentUid: first.parentUid,
-            before: first.text,
-            after,
-            open: value(first.node, "open") ?? true,
-            fragments: parts.slice(1).map((part) => ({ uid: part.uid, text: part.text, order: value(part.node, "order") || 0 })),
-            source: original
-          });
-          i = j;
-          break;
-        }
-      }
-    }
-  }
-  return { bookKey: content.key, title: content.record.title, sourceTitle: book.title, changes };
-}
-function unchanged(change) {
-  const siblings = childrenOf(pull(change.parentUid));
-  const index = siblings.findIndex((node) => uidOf(node) === change.uid);
-  return index >= 0 && textOf(siblings[index]) === change.before && !childrenOf(siblings[index]).length && change.fragments.every((fragment, i) => uidOf(siblings[index + i + 1]) === fragment.uid && textOf(siblings[index + i + 1]) === fragment.text && !childrenOf(siblings[index + i + 1]).length);
-}
-async function applyParagraphRepair(plan) {
-  if (!api().data.block.move) throw new Error(t("This Roam version does not expose block.move. No paragraphs were changed."));
-  const key2 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
-  const backup = { ...plan, changes: plan.changes.map((change) => ({ ...change, fragments: change.fragments.map((fragment) => ({ ...fragment })), archiveUid: api().util.generateUID() })), key: key2, createdAt: Date.now(), applied: [], skipped: [] };
-  await putDocument("paragraph-repair", key2, backup);
-  try {
-    for (const change of backup.changes) {
-      if (!unchanged(change)) {
-        backup.skipped.push(change.uid);
-        continue;
-      }
-      await api().data.block.create({ location: { "parent-uid": change.uid, order: "last" }, block: { uid: change.archiveUid, string: FRAGMENT_ARCHIVE, open: false } });
-      for (const fragment of change.fragments) await move(fragment.uid, change.archiveUid, "last");
-      await updateBlock({ uid: change.uid, string: change.after, open: false });
-      backup.applied.push(change.uid);
-    }
-  } catch (error) {
-    backup.error = error.message;
-    await putDocument("paragraph-repair", key2, backup);
-    throw new Error(t("{0} Original fragment IDs are retained. Use Undo Last Paragraph Repair for interrupted changes.", [error.message]));
-  }
-  await putDocument("paragraph-repair", key2, backup);
-  return backup;
-}
-function latestParagraphRepair(content) {
-  const headers = documentHeaders("paragraph-repair").filter((header) => header.key.startsWith(`${content.key}:`)).sort((a, b) => b.updatedAt - a.updatedAt);
-  return headers[0] ? readDocument("paragraph-repair", headers[0].key) : null;
-}
-async function undoParagraphRepair(key2) {
-  const backup = readDocument("paragraph-repair", key2);
-  if (!backup) throw new Error(t("Paragraph repair backup is missing."));
-  const result = { restored: [], skipped: [] };
-  for (const change of backup.changes) {
-    if (!change.archiveUid || !pull(change.archiveUid)) continue;
-    const current2 = pull(change.uid), archive = pull(change.archiveUid);
-    const valid = current2 && [change.before, change.after].includes(textOf(current2)) && isChild(change.uid, change.parentUid) && childrenOf(current2).every((child) => uidOf(child) === change.archiveUid) && textOf(archive) === FRAGMENT_ARCHIVE && isChild(change.archiveUid, change.uid) && childrenOf(archive).every((child) => change.fragments.some((fragment) => fragment.uid === uidOf(child))) && change.fragments.every((fragment) => {
-      const node = pull(fragment.uid);
-      return node && textOf(node) === fragment.text && !childrenOf(node).length && (isChild(fragment.uid, change.archiveUid) || isChild(fragment.uid, change.parentUid));
-    });
-    if (!valid) {
-      result.skipped.push(change.uid);
-      continue;
-    }
-    const order = childrenOf(pull(change.parentUid)).findIndex((node) => uidOf(node) === change.uid);
-    for (const [index, fragment] of change.fragments.entries()) await move(fragment.uid, change.parentUid, order + index + 1);
-    await updateBlock({ uid: change.uid, string: change.before, open: change.open });
-    await api().data.block.delete({ block: { uid: change.archiveUid } });
-    result.restored.push(change.uid);
-  }
-  await putDocument("paragraph-repair", key2, { ...backup, ...result.skipped.length ? {} : { undoneAt: Date.now() }, undo: result });
-  return result;
-}
-var fragmentRefs = (uid) => (api().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", uid) || []).map((row) => row[0]).filter((other) => other !== uid);
-var retargetText = (text2, from, to) => String(text2 || "").split(`((${from}))`).join(`((${to}))`);
-function previewArchiveCleanup(content) {
-  const archives = [], seen = /* @__PURE__ */ new Set();
-  const consider = (child, parentUid, repaired) => {
-    const uid = uidOf(child);
-    if (seen.has(uid)) return;
-    seen.add(uid);
-    const fragments = childrenOf(child).map((fragment) => ({ uid: uidOf(fragment), text: textOf(fragment), children: childrenOf(fragment).length, refs: fragmentRefs(uidOf(fragment)) }));
-    const blocked = fragments.filter((fragment) => fragment.children || !repaired && fragment.refs.length);
-    const references = fragments.reduce((sum, fragment) => sum + fragment.refs.length, 0);
-    archives.push({ uid, parentUid, repaired, order: value(child, "order") ?? 0, fragments, references, safe: !blocked.length, reason: blocked.length ? `${blocked.length} fragment(s) have child blocks${repaired ? "" : " or references"}` : "" });
-  };
-  for (const item of content.nodes) for (const child of childrenOf(item.node)) if (textOf(child) === FRAGMENT_ARCHIVE) consider(child, item.uid, true);
-  for (const pageUid of content.pages?.keys?.() || []) for (const child of childrenOf(pull(pageUid))) if (textOf(child) === FRAGMENT_ARCHIVE) consider(child, pageUid, false);
-  return { bookKey: content.key, archives, removable: archives.filter((archive) => archive.safe), references: archives.filter((archive) => archive.safe).reduce((sum, archive) => sum + archive.references, 0) };
-}
-async function applyArchiveCleanup(plan) {
-  const key2 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
-  const backup = { bookKey: plan.bookKey, archives: plan.removable, key: key2, createdAt: Date.now(), removed: [], skipped: [], retargeted: [] };
-  await putDocument("archive-cleanup", key2, backup);
-  for (const archive of plan.removable) {
-    const node = pull(archive.uid);
-    const current2 = node && childrenOf(node).map((fragment) => uidOf(fragment));
-    if (!node || textOf(node) !== FRAGMENT_ARCHIVE || current2.join() !== archive.fragments.map((fragment) => fragment.uid).join() || childrenOf(node).some((fragment) => childrenOf(fragment).length)) {
-      backup.skipped.push(archive.uid);
-      continue;
-    }
-    const refs = archive.fragments.flatMap((fragment) => fragmentRefs(fragment.uid).map((uid) => [uid, fragment.uid]));
-    if (refs.length && !archive.repaired) {
-      backup.skipped.push(archive.uid);
-      continue;
-    }
-    for (const [uid, fragmentUid] of refs) {
-      const before = textOf(pull(uid)), after = retargetText(before, fragmentUid, archive.parentUid);
-      if (after === before) continue;
-      await updateBlock({ uid, string: after });
-      backup.retargeted.push({ uid, before, after });
-      await putDocument("archive-cleanup", key2, backup);
-    }
-    await api().data.block.delete({ block: { uid: archive.uid } });
-    backup.removed.push(archive.uid);
-  }
-  await putDocument("archive-cleanup", key2, backup);
-  return backup;
-}
-function latestArchiveCleanup(content) {
-  const headers = documentHeaders("archive-cleanup").filter((header) => header.key.startsWith(`${content.key}:`)).sort((a, b) => b.updatedAt - a.updatedAt);
-  return headers[0] ? readDocument("archive-cleanup", headers[0].key) : null;
-}
-async function undoArchiveCleanup(key2) {
-  const backup = readDocument("archive-cleanup", key2);
-  if (!backup) throw new Error(t("Archive cleanup backup is missing."));
-  const result = { restored: [], skipped: [] };
-  for (const archive of backup.archives) {
-    if (!backup.removed.includes(archive.uid) || pull(archive.uid) || !pull(archive.parentUid)) {
-      result.skipped.push(archive.uid);
-      continue;
-    }
-    await api().data.block.create({ location: { "parent-uid": archive.parentUid, order: "last" }, block: { uid: archive.uid, string: FRAGMENT_ARCHIVE, open: false } });
-    for (const fragment of archive.fragments) await api().data.block.create({ location: { "parent-uid": archive.uid, order: "last" }, block: { uid: fragment.uid, string: fragment.text } });
-    result.restored.push(archive.uid);
-  }
-  for (const change of [...backup.retargeted || []].reverse()) {
-    const node = pull(change.uid);
-    if (node && textOf(node) === change.after) {
-      await updateBlock({ uid: change.uid, string: change.before });
-      result.restored.push(change.uid);
-    } else result.skipped.push(change.uid);
-  }
-  await putDocument("archive-cleanup", key2, { ...backup, undoneAt: Date.now(), undo: result });
-  return result;
-}
-
-// src/catalog.js
-var isCommentRoot = (node) => textOf(node).trim() === "[[roam/comments]]";
-var chapterTitle = (text2) => plain(text2).replace(/\s+/g, "");
-var isMetadata = (node) => isCommentRoot(node) || /^#?\[\[Book\]\]$|^#Book\s*$/i.test(textOf(node).trim()) || /^EPUB-(?:IMPORTER|READER):/.test(textOf(node));
-function isFootnoteHeading(text2) {
-  const bare = String(text2 || "").replace(/\\([\[\]])/g, "$1").replace(/\[\[([^\]]*)\]\]\(/g, "[$1](").replace(/\[([^\]]*)\]\((?:\(\([^()]*\)\)|[^()]*)\)/g, "$1").replace(/\(\([^()]*\)\)/g, "").replace(/<\/?su[pb]>|\^\^|\*\*|__|~~/g, "").replace(/[\s\u00a0]/g, "");
-  if (!/^[\[\(（【〔]?(?:\u6ce8|\u8a3b|note|fn)?[\[\(（【〔]?(?:\d{1,4}|[ivxlc]{1,6}|[*†‡§]{1,3}|[①-⑳])[\]\)）】〕.、:：]*$/i.test(bare)) return false;
-  return /\]\(|\(\(/.test(String(text2)) || /^[\[\(（【〔]|^(?:\u6ce8|\u8a3b|note|fn)|^[*†‡§①-⑳]/i.test(bare);
-}
-var headingLevel = (node) => {
-  const level = Number(value(node, "heading")) || 0;
-  return level >= 1 && level <= 3 && !isFootnoteHeading(textOf(node)) ? level : 0;
-};
-var isHeading = (node) => headingLevel(node) > 0;
-var SKIP_PROGRESS = /^(?:封面|目录|版权页|前置图文|扉页|Cover|Contents|Copyright|Front matter|Title page|Before contents)$/i;
-function headingOutline(roots, { rootsAreChapters = false, progress = false } = {}) {
-  const chapters = [], chapterOf = /* @__PURE__ */ new Map(), aliases = /* @__PURE__ */ new Map();
-  const stack = [], path2 = /* @__PURE__ */ new Set(["#root"]);
-  for (const root of roots) {
-    const visit = (node, parentUid) => {
-      if (!node || isMetadata(node) || textOf(node) === FRAGMENT_ARCHIVE) return;
-      const uid = uidOf(node);
-      while (stack.length && !path2.has(stack.at(-1).scope)) stack.pop();
-      const level = node === root && rootsAreChapters ? 0 : headingLevel(node);
-      if (node === root && rootsAreChapters) {
-        const title = plain(textOf(node)).slice(0, 150) || "(Untitled)";
-        chapters.push({ uid, title, parentUid: null, level: 0, progress: progress && !SKIP_PROGRESS.test(textOf(node)) });
-        stack.push({ uid, level: 0, scope: "#root", title });
-      } else if (level) {
-        while (stack.length && stack.at(-1).level >= level) stack.pop();
-        const parent = stack.at(-1), title = plain(textOf(node)).slice(0, 150) || "(Untitled)";
-        if (parent && chapterTitle(title) === chapterTitle(parent.title)) aliases.set(uid, parent.uid);
-        else {
-          chapters.push({ uid, title, parentUid: parent?.uid ?? null, level, progress: progress && !SKIP_PROGRESS.test(title) });
-          stack.push({ uid, level, scope: parentUid ?? "#root", title });
-        }
-      }
-      chapterOf.set(uid, stack.at(-1)?.uid ?? null);
-      path2.add(uid);
-      childrenOf(node).forEach((child) => visit(child, uid));
-      path2.delete(uid);
-    };
-    visit(root, null);
-  }
-  return { chapters, chapterOf, aliases };
-}
-function catalogFromPlan(job) {
-  const byNode = /* @__PURE__ */ new Map();
-  let index = 0;
-  const walk = (nodes) => nodes.forEach((node) => {
-    byNode.set(node, job.blockPlan[index++].uid);
-    walk(node.children || []);
-  });
-  walk(job.book.chapters);
-  const chapters = [];
-  const visit = (nodes, parent = null, level = 0) => nodes.forEach((node) => {
-    const uid = byNode.get(node);
-    const chapter = chapterNodeKind(node, parent, job.book) && level < 3;
-    if (chapter) chapters.push({ uid, title: plain(node.text) || node.text, parentUid: parent, progress: !SKIP_PROGRESS.test(node.text) });
-    visit(node.children || [], chapter ? uid : parent, chapter ? level + 1 : level);
-  });
-  visit(job.book.chapters);
-  return { version: 1, confirmed: true, source: "import", headings: true, rootUids: job.book.chapters.map((node) => byNode.get(node)), chapters };
-}
-function suggestCatalog(record, pageUid = record.pageUid) {
-  const page = pull(pageUid);
-  if (!page) throw new Error(t("The original page no longer exists. Open the book's current page, select this book, and link its chapters. No reimport is needed."));
-  const roots = childrenOf(page).filter((node) => !isMetadata(node));
-  const { chapters } = headingOutline(roots, { rootsAreChapters: true, progress: true });
-  return { version: 1, confirmed: false, source: "legacy", rootUids: roots.map(uidOf), chapters: chapters.map(({ level, ...chapter }) => chapter) };
-}
-async function confirmCatalog(record, proposed, selectedRootUids, extensionAPI) {
-  const selected = new Set(selectedRootUids);
-  const allowed = new Set(proposed.rootUids);
-  if (!selected.size || [...selected].some((uid) => !allowed.has(uid) || !pull(uid))) throw new Error(t("Select at least one existing book chapter."));
-  const keep = /* @__PURE__ */ new Set();
-  proposed.chapters.forEach((chapter) => {
-    if (!chapter.parentUid && selected.has(chapter.uid) || keep.has(chapter.parentUid)) keep.add(chapter.uid);
-  });
-  const catalog = { ...proposed, confirmed: true, rootUids: [...selected], chapters: proposed.chapters.filter((chapter) => keep.has(chapter.uid)) };
-  const updated = { ...record, catalog };
-  await saveManagedBook(extensionAPI, updated);
-  return updated;
-}
-function readBookContent(record, { allowSuggested = true } = {}) {
-  let catalog = record.catalog?.confirmed ? record.catalog : allowSuggested ? suggestCatalog(record) : null;
-  if (!catalog) throw new Error(t("Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required."));
-  const chapterByUid = new Map(catalog.chapters.map((chapter) => [chapter.uid, chapter]));
-  const nodes = [];
-  const byUid = /* @__PURE__ */ new Map();
-  const parentByUid = /* @__PURE__ */ new Map();
-  const pages = /* @__PURE__ */ new Map();
-  const missing = [];
-  const fragmentAliases = /* @__PURE__ */ new Map();
-  const levels = /* @__PURE__ */ new Map();
-  const levelOf = (uid) => {
-    if (levels.has(uid)) return levels.get(uid);
-    let level = 1, parent = chapterByUid.get(uid)?.parentUid;
-    const seen = /* @__PURE__ */ new Set();
-    while (parent && chapterByUid.has(parent) && !seen.has(parent)) {
-      seen.add(parent);
-      level++;
-      parent = chapterByUid.get(parent).parentUid;
-    }
-    levels.set(uid, level);
-    return level;
-  };
-  const stack = [], path2 = /* @__PURE__ */ new Set(["#root"]);
-  const visit = (node, parentUid) => {
-    if (!node || isCommentRoot(node)) return;
-    if (textOf(node) === FRAGMENT_ARCHIVE) {
-      childrenOf(node).forEach((fragment) => fragmentAliases.set(uidOf(fragment), parentUid));
-      return;
-    }
-    const uid = uidOf(node);
-    if (byUid.has(uid)) return;
-    while (stack.length && !path2.has(stack.at(-1).scope)) stack.pop();
-    if (chapterByUid.has(uid)) {
-      const level = levelOf(uid);
-      while (stack.length && stack.at(-1).level >= level) stack.pop();
-      stack.push({ uid, level, scope: parentUid ?? "#root" });
-    }
-    const chapterUid = stack.at(-1)?.uid ?? null;
-    const item = { uid, text: textOf(node), chapterUid, parentUid, node };
-    nodes.push(item);
-    byUid.set(uid, item);
-    parentByUid.set(uid, parentUid);
-    path2.add(uid);
-    childrenOf(node).forEach((child) => visit(child, uid));
-    path2.delete(uid);
-  };
-  for (const uid of catalog.rootUids) {
-    const root = pull(uid);
-    if (!root) {
-      missing.push(uid);
-      continue;
-    }
-    if (titleOf(root)) throw new Error(t("Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained."));
-    const page = owningPage(uid);
-    if (page) pages.set(page.uid, page.title);
-    visit(root, null);
-  }
-  const chapterAliases = /* @__PURE__ */ new Map(), visibleChapters = [], seenChapters = /* @__PURE__ */ new Set();
-  const resolve = (uid) => {
-    const visited = /* @__PURE__ */ new Set();
-    while (chapterAliases.has(uid) && !visited.has(uid)) {
-      visited.add(uid);
-      uid = chapterAliases.get(uid);
-    }
-    return uid;
-  };
-  for (const chapter of catalog.chapters) {
-    if (seenChapters.has(chapter.uid) || !byUid.has(chapter.uid)) continue;
-    seenChapters.add(chapter.uid);
-    const parentUid = resolve(chapter.parentUid);
-    const parent = visibleChapters.find((candidate) => candidate.uid === parentUid);
-    let depth = 0, ancestor = parent;
-    const chain = /* @__PURE__ */ new Set();
-    while (ancestor && !chain.has(ancestor.uid)) {
-      chain.add(ancestor.uid);
-      depth++;
-      ancestor = visibleChapters.find((candidate) => candidate.uid === ancestor.parentUid);
-    }
-    if (isFootnoteHeading(byUid.get(chapter.uid).text)) chapterAliases.set(chapter.uid, parent?.uid ?? null);
-    else if (depth >= 3 && parent) chapterAliases.set(chapter.uid, parent.uid);
-    else if (catalog.source !== "import" && parent && isHeading(byUid.get(chapter.uid).node) && chapterTitle(chapter.title) === chapterTitle(parent.title)) chapterAliases.set(chapter.uid, parent.uid);
-    else visibleChapters.push({ ...chapter, parentUid });
-  }
-  nodes.forEach((node) => {
-    node.chapterUid = resolve(node.chapterUid);
-  });
-  catalog = { ...catalog, chapters: visibleChapters };
-  return { key: bookKey(record), record, catalog, nodes, byUid, parentByUid, pages, missing, chapterAliases, fragmentAliases, chapters: visibleChapters };
-}
-function contentForPage(uid) {
-  const tree = pull(uid);
-  if (!tree) throw new Error(t("The current page or block cannot be read."));
-  const roots = childrenOf(tree).filter((node) => !isMetadata(node));
-  const { chapters } = headingOutline(roots);
-  const catalog = { confirmed: true, headings: true, rootUids: roots.map(uidOf), chapters: chapters.map(({ level, ...chapter }) => ({ ...chapter, progress: false })) };
-  const record = { id: `page:${uid}`, pageUid: uid, catalog, title: tree[":node/title"] || plain(textOf(tree)).slice(0, 60) };
-  if (!roots.length && textOf(tree)) {
-    catalog.rootUids = [uid];
-    catalog.chapters = headingLevel(tree) ? [{ uid, title: plain(textOf(tree)).slice(0, 60), parentUid: null, progress: false }] : [];
-  }
-  return { ...readBookContent(record), ordinaryPage: true };
-}
-function safeRootTrees(content) {
-  const all = new Set(content.catalog.rootUids);
-  return content.catalog.rootUids.filter((uid) => {
-    const root = api().data.pull("[:block/uid {:block/parents [:block/uid]}]", [":block/uid", uid]);
-    return root && !(value(root, "parents") || []).some((parent) => all.has(uidOf(parent)));
-  });
-}
-
-// src/roam.js
-var importInProgress = false;
-var roam = () => window.roamAlphaAPI;
-function pullUid(value2) {
-  return value2?.[":block/uid"] || value2?.uid || null;
-}
-function findPageUid(title) {
-  return pullUid(roam().data.pull("[:block/uid]", [":node/title", title]));
-}
-function makeUniquePageTitle(title) {
-  const base = (title || "Untitled EPUB").trim();
-  if (!findPageUid(base)) return base;
-  let number = 2;
-  while (findPageUid(`${base} (${number})`)) number += 1;
-  return `${base} (${number})`;
-}
-function createImportJob(book, requestedTitle = book.title) {
-  return {
-    id: `${book.id}-${Date.now()}`,
-    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-    updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
-    requestedTitle: (requestedTitle || book.title || "Untitled EPUB").trim(),
-    book,
-    assetEmbeds: {},
-    attachments: [],
-    progress: { stage: "ready", assetIndex: 0, chapterIndex: 0, pageUid: null, pageTitle: null },
-    error: null
-  };
-}
-function extensionFor(mediaType) {
-  return {
-    "image/png": "png",
-    "image/jpeg": "jpg",
-    "image/gif": "gif",
-    "image/webp": "webp",
-    "image/svg+xml": "svg",
-    "image/avif": "avif"
-  }[mediaType] || "bin";
-}
-function safeFilename(asset, mediaType) {
-  const original = asset.path.split("/").pop() || `image.${extensionFor(mediaType)}`;
-  const stem = original.replace(/\.[^.]+$/, "").replace(/[^\p{L}\p{N}._-]+/gu, "-").slice(0, 80) || "image";
-  return `${stem}-${asset.hash?.slice(0, 10) || asset.id}.${extensionFor(mediaType)}`;
-}
-function canvasBlob(canvas) {
-  return new Promise((resolve, reject) => canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error(t("Image conversion failed"))), "image/png"));
-}
-async function rasterizeImage(asset) {
-  const blob = new Blob([asset.bytes], { type: asset.mediaType });
-  let bitmap;
-  if (typeof createImageBitmap === "function") {
-    try {
-      bitmap = await createImageBitmap(blob);
-    } catch {
-    }
-  }
-  let width;
-  let height;
-  let draw;
-  if (bitmap) {
-    width = bitmap.width;
-    height = bitmap.height;
-    draw = (context2) => context2.drawImage(bitmap, 0, 0);
-  } else {
-    const url = URL.createObjectURL(blob);
-    try {
-      const image = await new Promise((resolve, reject) => {
-        const element2 = new Image();
-        element2.onload = () => resolve(element2);
-        element2.onerror = () => reject(new Error(t("Cannot read image: {0}", [asset.path])));
-        element2.src = url;
-      });
-      width = image.naturalWidth;
-      height = image.naturalHeight;
-      draw = (context2) => context2.drawImage(image, 0, 0);
-    } finally {
-      URL.revokeObjectURL(url);
-    }
-  }
-  const scale = Math.min(1, 4096 / Math.max(width, height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.max(1, Math.round(width * scale));
-  canvas.height = Math.max(1, Math.round(height * scale));
-  const context = canvas.getContext("2d");
-  context.fillStyle = "white";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  context.save();
-  context.scale(scale, scale);
-  draw(context);
-  context.restore();
-  bitmap?.close?.();
-  return new File([await canvasBlob(canvas)], safeFilename(asset, "image/png"), { type: "image/png" });
-}
-async function assetFile(asset) {
-  if (["image/png", "image/jpeg"].includes(asset.mediaType)) {
-    return new File([asset.bytes], safeFilename(asset, asset.mediaType), { type: asset.mediaType });
-  }
-  return rasterizeImage(asset);
-}
-function uploadedUrl(result) {
-  if (typeof result !== "string") return "";
-  const match = result.match(/!\[.*?\]\((.*?)\)/);
-  return match?.[1] || (/^https?:\/\//i.test(result) ? result : "");
-}
-async function uploadAssets(job, extensionAPI, onProgress) {
-  const known = /* @__PURE__ */ new Map();
-  job.attachments.forEach((item) => {
-    if (item.hash && item.url) known.set(item.hash, item.url);
-  });
-  (await getManagedBooks(extensionAPI)).forEach((book) => (book.attachments || []).forEach((item) => {
-    if (item.ownership === "unknown") return;
-    if (item.hash && item.url) known.set(item.hash, item.url);
-  }));
-  job.progress.stage = "images";
-  for (let index = job.progress.assetIndex || 0; index < job.book.assets.length; index += 1) {
-    const asset = job.book.assets[index];
-    onProgress?.({ stage: "images", current: index + 1, total: job.book.assets.length, message: t("Processing image {0}/{1}", [index + 1, job.book.assets.length]) });
-    if (asset.missing || !asset.bytes) {
-      job.assetEmbeds[asset.id] = `[Missing EPUB image: ${asset.path}]`;
-    } else {
-      let url = known.get(asset.hash);
-      let reused = Boolean(url);
-      if (!url) {
-        const result = await roam().file.upload({ file: await assetFile(asset), toast: { hide: true } });
-        url = uploadedUrl(result);
-        if (!url) throw new Error(t("Image upload returned no valid URL: {0}", [asset.path]));
-        known.set(asset.hash, url);
-        reused = false;
-      }
-      job.assetEmbeds[asset.id] = `![](${url})`;
-      if (!job.attachments.some((item) => item.hash === asset.hash && item.url === url)) {
-        job.attachments.push({ hash: asset.hash, url, path: asset.path, reused });
-      }
-    }
-    job.progress.assetIndex = index + 1;
-    job.updatedAt = (/* @__PURE__ */ new Date()).toISOString();
-    await saveJob(job);
-  }
-}
-async function ensurePage2(job) {
-  if (!job.progress.pageUid) {
-    job.progress.pageUid = roam().util.generateUID();
-    job.progress.pageTitle = makeUniquePageTitle(job.requestedTitle);
-    await saveJob(job);
-  }
-  if (!roam().data.pull("[:block/uid]", [":block/uid", job.progress.pageUid])) {
-    if (job.progress.blockIndex > 0) throw new Error(t("The imported page was removed. Select the EPUB again to import."));
-    await roam().data.page.create({ page: { title: job.progress.pageTitle, uid: job.progress.pageUid } });
-  }
-  job.progress.stage = "chapters";
-  await saveJob(job);
-}
-async function runImport(job, extensionAPI, onProgress) {
-  if (importInProgress) throw new Error(t("A book is already being imported. Wait for it to finish."));
-  importInProgress = true;
-  try {
-    if (![3, 4].includes(job.book?.parserVersion)) throw new Error(t("This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import."));
-    job.error = null;
-    await saveJob(job);
-    await uploadAssets(job, extensionAPI, onProgress);
-    await ensurePage2(job);
-    prepareBlockPlan(job, () => roam().util.generateUID());
-    await saveJob(job);
-    await writeBlockPlan(job, roam(), { checkpoint: saveJob, onProgress });
-    const record = {
-      id: job.id,
-      fileHash: job.book.fileHash,
-      filename: job.book.filename,
-      title: job.progress.pageTitle,
-      author: job.book.author,
-      pageUid: job.progress.pageUid,
-      importedAt: (/* @__PURE__ */ new Date()).toISOString(),
-      attachments: job.attachments,
-      stats: job.book.stats,
-      catalog: catalogFromPlan(job),
-      status: "complete"
-    };
-    await saveManagedBook(extensionAPI, record);
-    job.progress.stage = "complete";
-    onProgress?.({ stage: "complete", current: 1, total: 1, message: t("Import complete") });
-    await removeJob(job.id);
-    await roam().ui.mainWindow.openPage({ page: { uid: record.pageUid } });
-    return record;
-  } catch (error) {
-    job.error = error?.message || String(error);
-    job.updatedAt = (/* @__PURE__ */ new Date()).toISOString();
-    await saveJob(job);
-    throw error;
-  } finally {
-    importInProgress = false;
-  }
-}
-async function prepareBookDeletion(record, extensionAPI) {
-  const library = await getManagedLibrary(extensionAPI);
-  const key2 = record.libraryKey || record.pageUid || record.id;
-  record = library.books.find((book) => (book.libraryKey || book.pageUid || book.id) === key2);
-  if (!record) throw new Error(t("This book's record has changed or was removed. Reopen the book list."));
-  const content = record.status === "cleanup-needed" ? null : readBookContent(record, { allowSuggested: false });
-  const rootUids = content ? safeRootTrees(content) : [];
-  if (rootUids.some((uid) => flatten(pull(uid)).some((node) => textOf(node).trim() === "[[roam/comments]]"))) throw new Error(t("A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first."));
-  const bookUids = new Set(content?.nodes.map((node) => node.uid) || []);
-  const metadataUids = /* @__PURE__ */ new Set([...library.metadataUids, ...readerMetadataUids()]);
-  const others = library.books.filter((item) => item.id !== record.id || item.pageUid !== record.pageUid);
-  let rows;
-  try {
-    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
-  } catch (error) {
-    return {
-      record,
-      pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
-      scanFailed: true,
-      rootUids,
-      blockUids: [...bookUids],
-      blockCount: bookUids.size,
-      pages: content ? [...content.pages.values()] : [],
-      externalBlockReferences: 0,
-      error: error?.message || String(error),
-      attachments: (record.attachments || []).map((item) => ({ ...item, safe: false, reason: t("Reference check failed; retained") }))
-    };
-  }
-  const unique = /* @__PURE__ */ new Map();
-  (record.attachments || []).forEach((item) => {
-    if (item.url && !unique.has(item.url)) unique.set(item.url, item);
-  });
-  const attachments = [...unique.values()].map((item) => {
-    const shared = others.some((book) => (book.attachments || []).some((candidate) => candidate.url === item.url || candidate.hash && candidate.hash === item.hash));
-    const outsideReferences = rows.filter(([uid, value2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof value2 === "string" && value2.includes(item.url)).length;
-    const unknownOwnership = item.ownership === "unknown";
-    const safe = !unknownOwnership && !shared && outsideReferences === 0;
-    return { ...item, shared, outsideReferences, safe, reason: unknownOwnership ? t("Original upload ownership is unknown; retained") : shared ? t("Shared with another imported book") : outsideReferences ? t("{0} references outside this book", [outsideReferences]) : t("Used only by this book") };
-  });
-  return {
-    record,
-    rootUids,
-    blockUids: [...bookUids],
-    blockCount: bookUids.size,
-    pages: content ? [...content.pages.values()] : [],
-    externalBlockReferences: rows.filter(([uid, text2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text2 === "string" && [...text2.matchAll(/\(\(([^()\s]+)\)\)/g)].some((match) => bookUids.has(match[1]))).length,
-    pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
-    scanFailed: false,
-    attachments
-  };
-}
-async function deleteManagedBook(plan, extensionAPI, onProgress) {
-  const approvedUrls = new Set(plan.attachments.filter((item) => item.safe).map((item) => item.url));
-  const approvedBlocks = new Set(plan.rootUids);
-  const approvedBody = new Set(plan.blockUids);
-  plan = await prepareBookDeletion(plan.record, extensionAPI);
-  const record = plan.record;
-  plan.attachments = plan.attachments.map((item) => ({ ...item, safe: item.safe && approvedUrls.has(item.url) }));
-  if (plan.rootUids.some((uid) => !approvedBlocks.has(uid))) throw new Error(t("Chapter scope changed. Review the deletion preview again."));
-  if (plan.blockUids.some((uid) => !approvedBody.has(uid))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
-  for (const uid of plan.rootUids) {
-    onProgress?.(t("Deleting book chapters (preserving pages and native comments)\u2026"));
-    await roam().data.block.delete({ block: { uid } });
-  }
-  const safe = plan.attachments.filter((item) => item.safe);
-  const failures = [];
-  for (let index = 0; index < safe.length; index += 1) {
-    onProgress?.(t("Deleting attachment {0}/{1}\u2026", [index + 1, safe.length]));
-    try {
-      await roam().file.delete({ url: safe[index].url });
-    } catch (error) {
-      failures.push({ ...safe[index], error: error?.message || String(error) });
-    }
-  }
-  const preserved = plan.attachments.filter((item) => !item.safe);
-  if (failures.length) {
-    await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: failures, status: "cleanup-needed", cleanupError: "Some attachments could not be deleted" });
-  } else await forgetManagedBook(extensionAPI, record);
-  return { deletedAttachments: safe.length - failures.length, preservedAttachments: preserved.length, failures };
-}
-var IMAGE_RE = /!\[[^\]]*\]\(([^()\s]+(?:\([^()\s]*\)[^()\s]*)*)\)|\{\{\[?\[?(?:img|image)\]?\]?:\s*([^}\s]+)\s*\}\}/gi;
-var imageUrlsIn = (text2) => [...String(text2 || "").matchAll(IMAGE_RE)].map((match) => match[1] || match[2]);
-var stripImages = (text2) => String(text2 || "").replace(IMAGE_RE, "").replace(/[ \t]{2,}/g, " ").replace(/^[ \t]+|[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n").trim();
-async function prepareImageRemoval(record, extensionAPI) {
-  const library = await getManagedLibrary(extensionAPI);
-  const key2 = record.libraryKey || record.pageUid || record.id;
-  record = library.books.find((book) => (book.libraryKey || book.pageUid || book.id) === key2);
-  if (!record) throw new Error(t("This book's record has changed or was removed. Reopen the book list."));
-  if (record.status === "cleanup-needed") throw new Error(t("This book is waiting for attachment cleanup. Finish that first."));
-  const content = readBookContent(record, { allowSuggested: false });
-  const bookUids = new Set(content.nodes.map((node) => node.uid));
-  const blocks = [];
-  for (const item of content.nodes) {
-    const urls = imageUrlsIn(item.text);
-    if (!urls.length) continue;
-    const after = stripImages(item.text);
-    const children = (item.node?.[":block/children"] || []).length;
-    let referenced = 0;
-    try {
-      referenced = (roam().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", item.uid) || []).filter((row) => row[0] !== item.uid).length;
-    } catch {
-      referenced = 1;
-    }
-    blocks.push({ uid: item.uid, before: item.text, after, urls, remove: !after && !children && !referenced && !content.catalog.chapters.some((chapter) => chapter.uid === item.uid) });
-  }
-  const usedUrls = new Set(blocks.flatMap((block) => block.urls));
-  const metadataUids = /* @__PURE__ */ new Set([...library.metadataUids, ...readerMetadataUids()]);
-  const others = library.books.filter((item) => (item.libraryKey || item.pageUid || item.id) !== key2);
-  let rows = null;
-  try {
-    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
-  } catch {
-    rows = null;
-  }
-  const ledger = new Map((record.attachments || []).filter((item) => item.url).map((item) => [item.url, item]));
-  const files = [.../* @__PURE__ */ new Set([...ledger.keys(), ...usedUrls])].map((url) => {
-    const item = ledger.get(url) || { url, ownership: "unknown" };
-    if (!ledger.has(url)) return { ...item, safe: false, reason: t("Not uploaded by this import; file retained") };
-    if (item.ownership === "unknown") return { ...item, safe: false, reason: t("Original upload ownership is unknown; file retained") };
-    if (!rows) return { ...item, safe: false, reason: t("Reference check failed; file retained") };
-    const shared = others.some((book) => (book.attachments || []).some((candidate) => candidate.url === url || candidate.hash && candidate.hash === item.hash));
-    const outside = rows.filter(([uid, text2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text2 === "string" && text2.includes(url)).length;
-    return { ...item, shared, outsideReferences: outside, safe: !shared && !outside, reason: shared ? t("Shared with another imported book") : outside ? t("{0} references outside this book", [outside]) : t("Used only by this book") };
-  });
-  return { record, blocks, files, bookUids: [...bookUids] };
-}
-async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProgress } = {}) {
-  const approved = new Set(plan.files.filter((item) => item.safe).map((item) => item.url));
-  const result = { updated: 0, deleted: 0, skipped: 0, filesDeleted: 0, failures: [] };
-  for (const [index, block] of plan.blocks.entries()) {
-    onProgress?.(t("Removing images from blocks {0}/{1}\u2026", [index + 1, plan.blocks.length]));
-    const node = roam().data.pull("[:block/string {:block/children [:block/uid]}]", [":block/uid", block.uid]);
-    if (!node || node[":block/string"] !== block.before) {
-      result.skipped++;
-      continue;
-    }
-    if (block.remove && !(node[":block/children"] || []).length) {
-      await roam().data.block.delete({ block: { uid: block.uid } });
-      result.deleted++;
-    } else {
-      await roam().data.block.update({ block: { uid: block.uid, string: block.after } });
-      result.updated++;
-    }
-  }
-  const kept = [];
-  if (deleteFiles) {
-    const files = plan.files.filter((item) => item.safe && approved.has(item.url));
-    for (const [index, file] of files.entries()) {
-      onProgress?.(t("Deleting image file {0}/{1}\u2026", [index + 1, files.length]));
-      try {
-        await roam().file.delete({ url: file.url });
-        result.filesDeleted++;
-      } catch (error) {
-        result.failures.push({ url: file.url, error: error?.message || String(error) });
-        kept.push(file.url);
-      }
-    }
-  }
-  const removed = new Set(deleteFiles ? plan.files.filter((item) => item.safe && !kept.includes(item.url)).map((item) => item.url) : []);
-  const record = plan.record;
-  await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: (record.attachments || []).filter((item) => !removed.has(item.url)), imagesRemovedAt: (/* @__PURE__ */ new Date()).toISOString() });
-  return result;
+function renderRich(text2, doc = document) {
+  const fragment = doc.createDocumentFragment();
+  appendInline(fragment, resolveRefs(text2).replace(/\s+\n/g, "\n"), doc);
+  return fragment;
 }
 
 // src/ui.js
@@ -19164,7 +19644,7 @@ function progressView(body) {
   const progress = element("progress", "rei-progress");
   progress.max = 1;
   progress.value = 0;
-  wrap.append(label, progress);
+  wrap.append(label, progress, element("p", "rei-muted", t("For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.")));
   body.append(wrap);
   return (update) => {
     label.textContent = update.message || t("Processing\u2026");
@@ -19206,7 +19686,7 @@ async function startJob(job, extensionAPI, body) {
     body.append(retry);
   }
 }
-function renderPreview(body, book, extensionAPI) {
+function renderPreview(body, book, extensionAPI, sourceFile) {
   body.replaceChildren();
   const card = element("div", "rei-preview");
   card.append(element("div", "rei-kicker", t("Book Preview")));
@@ -19220,11 +19700,47 @@ function renderPreview(body, book, extensionAPI) {
   titleInput.value = book.title;
   label.append(titleInput);
   body.append(label);
+  if (sourceFile) {
+    const row = element("label", "rei-field");
+    const toggle = element("input");
+    toggle.type = "checkbox";
+    toggle.checked = Boolean(book.includeStyledHeadings);
+    row.append(toggle, element("span", "", t("Include typography-based subheadings (larger bold paragraphs; review before importing)")));
+    toggle.onchange = async () => {
+      toggle.disabled = true;
+      start.disabled = true;
+      try {
+        const next = await parseEpub(await sourceFile.arrayBuffer(), sourceFile.name, { includeStyledHeadings: toggle.checked });
+        next.title = titleInput.value;
+        renderPreview(body, next, extensionAPI, sourceFile);
+      } catch (error) {
+        notice(body, error.message, "rei-error");
+        toggle.disabled = false;
+        start.disabled = false;
+      }
+    };
+    body.append(row);
+  }
   const toc = element("details", "rei-toc");
   toc.open = true;
   toc.append(element("summary", "", book.toc?.length ? t("Original EPUB TOC ({0}, full hierarchy)", [book.tocSource === "ncx" ? "NCX" : "NAV"]) : t("Outline generated from body headings")));
   toc.append(directoryList(book.toc?.length ? book.toc : book.chapters));
   body.append(toc);
+  const outline = element("details", "rei-toc");
+  outline.append(element("summary", "", t("Heading levels to import (H1\u2013H3)")));
+  const headings = element("ul", "rei-directory");
+  const showHeadings = (nodes, parent = null, depth = 0) => nodes.forEach((node) => {
+    const heading = chapterNodeKind(node, parent, book);
+    if (heading) {
+      const row = element("li", "", `${depth < 3 ? `H${depth + 1}` : depth === 3 ? "Bold" : "Text"} \xB7 ${node.text}${node.headingEvidence ? " [" + node.headingEvidence + "]" : ""}`);
+      row.style.marginLeft = `${Math.min(depth, 6) * 12}px`;
+      headings.append(row);
+    }
+    showHeadings(node.children || [], node, depth + (heading ? 1 : 0));
+  });
+  showHeadings(book.chapters);
+  outline.append(headings);
+  body.append(outline);
   (book.warnings || []).forEach((warning) => notice(body, warning, "rei-error"));
   if (book.formulas?.length) {
     const math2 = element("details", "rei-toc");
@@ -19252,7 +19768,7 @@ function renderPreview(body, book, extensionAPI) {
     const list = element("ul", "rei-directory");
     nodes.forEach((node) => {
       const row = element("li", "");
-      row.append(element("span", "", node.text.replace(/⟦EPUBI:(i\d+)⟧/g, (_, id) => `[Image: ${images.get(id)?.path || id}]`).replace(/⟦EPUBL:(l\d+)⟧/g, (_, id) => book.links.find((link) => link.id === id)?.label || "Internal link")));
+      row.append(element("span", "", (node.kind === "heading" || node.kind === "toc" || node.kind === "supplement" ? "[Heading] " : "") + node.text.replace(/⟦EPUBI:(i\d+)⟧/g, (_, id) => `[Image: ${images.get(id)?.path || id}]`).replace(/⟦EPUBL:(l\d+)⟧/g, (_, id) => book.links.find((link) => link.id === id)?.label || "Internal link")));
       if (node.children?.length) row.append(previewNodes(node.children));
       list.append(row);
     });
@@ -19304,6 +19820,7 @@ function resumeSection(body, jobs, extensionAPI) {
 }
 async function openImporter(extensionAPI) {
   const body = modal(t("EPUB Importer"));
+  body.append(element("p", "rei-muted", t("For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.")));
   body.append(element("p", "", t("Choose an EPUB. Parsing stays on your device; book images are uploaded to the current Roam graph only after you confirm the import.")));
   const picker = element("input", "rei-file");
   picker.type = "file";
@@ -19317,7 +19834,7 @@ async function openImporter(extensionAPI) {
     picker.disabled = true;
     try {
       const book = await parseEpub(await file.arrayBuffer(), file.name);
-      renderPreview(body, book, extensionAPI);
+      renderPreview(body, book, extensionAPI, file);
     } catch (error) {
       status.textContent = t("Cannot read file: {0}", [error?.message || error]);
       status.className = "rei-notice rei-error";
@@ -19415,9 +19932,20 @@ async function confirmDeletion(body, record, extensionAPI) {
   }
   status.textContent = attachmentSummary(plan);
   if (plan.pages.length) notice(body, t("Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.", [plan.pages.join("; ")]), "rei-muted");
-  if (plan.externalBlockReferences) notice(body, t("{0} blocks outside the book reference its content (possibly including native comments). Their references may break after deletion; comments and independent notes will remain.", [plan.externalBlockReferences]), "rei-error");
+  if (plan.externalBlockReferences) notice(body, t("{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.", [plan.externalBlockReferences]), "rei-error");
+  for (const ref of plan.externalReferences || []) {
+    const item = element("div", "rei-notice");
+    const link = button(ref.page?.title || ref.uid);
+    link.onclick = async () => {
+      closeModal();
+      await window.roamAlphaAPI.ui.mainWindow.openBlock({ block: { uid: ref.uid } });
+    };
+    const preview = plainText(ref.text);
+    item.append(link, element("p", "rei-muted", preview.length > 240 ? `${preview.slice(0, 240)}\u2026` : preview));
+    body.append(item);
+  }
   if (plan.scanFailed) {
-    notice(body, t("Reference checking failed. Attachments will be retained."), "rei-error");
+    notice(body, t("Reference checking failed. Deletion is blocked."), "rei-error");
   }
   if (record.status === "recovered") notice(body, t("This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained."), "rei-muted");
   const label = element("label", "rei-field");
@@ -19431,7 +19959,7 @@ async function confirmDeletion(body, record, extensionAPI) {
   const remove = button(t("Delete Permanently"), "rei-danger");
   remove.disabled = true;
   input.oninput = () => {
-    remove.disabled = input.value !== record.title;
+    remove.disabled = Boolean(plan.scanFailed || plan.externalBlockReferences || input.value !== record.title);
   };
   remove.onclick = async () => {
     remove.disabled = true;
@@ -19449,7 +19977,7 @@ async function confirmDeletion(body, record, extensionAPI) {
       status.textContent = t("Deletion failed: {0}", [error?.message || error]);
       status.className = "rei-notice rei-error";
       input.disabled = false;
-      remove.disabled = input.value !== record.title;
+      remove.disabled = Boolean(plan.scanFailed || plan.externalBlockReferences || input.value !== record.title);
     }
   };
   actions.append(cancel, remove);
@@ -19543,6 +20071,47 @@ function buttonWithReader(record) {
 }
 function unloadUi() {
   closeModal();
+}
+
+// src/book-images.js
+function optimizeBookImages(content) {
+  const main2 = document.querySelector(".roam-main");
+  if (!main2 || !content || content.ordinaryPage || content.aggregate) return () => {
+  };
+  const changed = /* @__PURE__ */ new Map();
+  const apply = (image) => {
+    if (changed.has(image)) return;
+    const uid = image.closest(".rm-block[data-block-uid]")?.getAttribute("data-block-uid");
+    if (!content.byUid.has(uid)) return;
+    const attributes = {};
+    for (const [name, hint] of [["loading", "lazy"], ["decoding", "async"]]) {
+      if (image.hasAttribute(name)) continue;
+      attributes[name] = hint;
+      image.setAttribute(name, hint);
+    }
+    if (Object.keys(attributes).length) changed.set(image, attributes);
+  };
+  const scan = (node) => {
+    if (node.nodeType !== 1) return;
+    if (node.matches("img")) apply(node);
+    node.querySelectorAll("img").forEach(apply);
+  };
+  scan(main2);
+  const observer = new window.MutationObserver((mutations) => {
+    const containsImage = (node) => node.nodeType === 1 && (node.matches("img") || node.querySelector("img"));
+    if (!mutations.some((mutation) => [...mutation.addedNodes, ...mutation.removedNodes].some(containsImage))) return;
+    for (const [image, attributes] of changed) if (!image.isConnected) {
+      for (const [name, hint] of Object.entries(attributes)) if (image.getAttribute(name) === hint) image.removeAttribute(name);
+      changed.delete(image);
+    }
+    for (const mutation of mutations) mutation.addedNodes.forEach(scan);
+  });
+  observer.observe(main2, { childList: true, subtree: true });
+  return () => {
+    observer.disconnect();
+    for (const [image, attributes] of changed) for (const [name, hint] of Object.entries(attributes)) if (image.getAttribute(name) === hint) image.removeAttribute(name);
+    changed.clear();
+  };
 }
 
 // src/annotations.js
@@ -19660,124 +20229,24 @@ async function createNotesDraft(content, selected, requestedTitle, { sourceTitle
   const unique = [...new Map(selected.map((annotation) => [annotation.uid, annotation])).values()];
   for (const annotation of unique) {
     const chapter = content.chapters.find((chapter2) => chapter2.uid === annotation.chapterUid);
-    const key2 = chapter?.uid || "other";
-    if (!groups.has(key2)) groups.set(key2, await createBlock(root, chapter?.title || "Annotations"));
-    const ref = await createBlock(groups.get(key2), `((${annotation.uid}))`);
+    const key3 = chapter?.uid || "other";
+    if (!groups.has(key3)) groups.set(key3, await createBlock(root, chapter?.title || "Annotations"));
+    const ref = await createBlock(groups.get(key3), `((${annotation.uid}))`);
     if (annotation.type === "comment") await createBlock(ref, `Source: ((${annotation.targetUid}))`);
   }
   return { pageUid: page, rootUid: root, title, count: unique.length };
 }
 
-// src/rich-text.js
-var REF = /\(\(([^()\s]+)\)\)/g;
-var blockString = (uid) => {
-  try {
-    return api().data.pull("[:block/string]", [":block/uid", uid])?.[":block/string"] ?? null;
-  } catch {
-    return null;
-  }
-};
-function resolveRefs(text2, depth = 0, seen = /* @__PURE__ */ new Set()) {
-  let value2 = String(text2 || "");
-  value2 = value2.replace(/\[([^\]]+)\]\(\(\(([^()\s]+)\)\)\)/g, "$1");
-  value2 = value2.replace(/\{\{\s*(?:\[\[)?embed(?:-path|-children)?(?:\]\])?\s*:\s*\(\(([^()\s]+)\)\)\s*\}\}/gi, "(($1))");
-  return value2.replace(REF, (match, uid) => {
-    if (depth >= 3 || seen.has(uid)) return "\u2026";
-    const target = blockString(uid);
-    if (target == null) return "(missing block)";
-    return resolveRefs(target, depth + 1, /* @__PURE__ */ new Set([...seen, uid]));
-  });
-}
-function plainText(text2) {
-  return resolveRefs(text2).replace(/\{\{\[\[TODO\]\]\}\}/g, "\u2610 ").replace(/\{\{\[\[DONE\]\]\}\}/g, "\u2611 ").replace(/!\[[^\]]*\]\([^)]*\)/g, "[image]").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/#?\[\[([^\]]+)\]\]/g, "$1").replace(/\*\*|__|\^\^|~~|`/g, "").replace(/\s+/g, " ").trim();
-}
-var TOKEN = /(\*\*([^]+?)\*\*)|(__([^]+?)__)|(\^\^([^]+?)\^\^)|(~~([^]+?)~~)|(`([^`]+)`)|(!\[[^\]]*\]\([^)]*\))|(\[([^\]]+)\]\(([^)]+)\))|(#?\[\[([^\]]+)\]\])|((?:^|(?<=\s))#([\p{L}\p{N}_\-/.]+))|(\{\{\[\[(TODO|DONE)\]\]\}\})/gu;
-function appendInline(parent, text2, doc) {
-  let last = 0;
-  for (const match of text2.matchAll(TOKEN)) {
-    if (match.index > last) parent.append(doc.createTextNode(text2.slice(last, match.index)));
-    last = match.index + match[0].length;
-    const wrap = (tag, cls, inner2) => {
-      const node = doc.createElement(tag);
-      if (cls) node.className = cls;
-      appendInline(node, inner2, doc);
-      parent.append(node);
-    };
-    if (match[1]) wrap("strong", "", match[2]);
-    else if (match[3]) wrap("em", "", match[4]);
-    else if (match[5]) wrap("mark", "rd-rich-highlight", match[6]);
-    else if (match[7]) wrap("s", "", match[8]);
-    else if (match[9]) {
-      const code = doc.createElement("code");
-      code.textContent = match[10];
-      parent.append(code);
-    } else if (match[11]) {
-      const image = doc.createElement("span");
-      image.className = "rd-rich-muted";
-      image.textContent = "[image]";
-      parent.append(image);
-    } else if (match[12]) wrap("span", "rd-rich-link", match[13]);
-    else if (match[15]) {
-      const page = doc.createElement("span");
-      page.className = "rd-rich-page";
-      page.textContent = match[16];
-      parent.append(page);
-    } else if (match[17]) {
-      const tag = doc.createElement("span");
-      tag.className = "rd-rich-tag";
-      tag.textContent = `#${match[18]}`;
-      parent.append(tag);
-    } else if (match[19]) parent.append(doc.createTextNode(match[20] === "DONE" ? "\u2611 " : "\u2610 "));
-  }
-  if (last < text2.length) parent.append(doc.createTextNode(text2.slice(last)));
-}
-function renderRich(text2, doc = document) {
-  const fragment = doc.createDocumentFragment();
-  appendInline(fragment, resolveRefs(text2).replace(/\s+\n/g, "\n"), doc);
-  return fragment;
-}
-
 // src/heading-repair.js
-var key = (text2) => plain(text2).replace(/[\s　·•:：.。,，、\-—–_|]/g, "").toLowerCase();
-var boldable2 = (text2) => text2 && !/\*\*|!\[|\$\$|^\s*```/.test(text2);
+var key2 = (text2) => plain(text2).replace(/[\s　·•:：.。,，、\-—–_|]/g, "").toLowerCase();
 var move2 = (uid, parentUid, order) => api().data.block.move({ block: { uid }, location: { "parent-uid": parentUid, order } });
 var referencedBy = (uid) => (api().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", uid) || []).map((row) => row[0]).filter((other) => other !== uid);
 var indexIn = (parentUid, uid) => childrenOf(pull(parentUid)).findIndex((node) => uidOf(node) === uid);
-function previewHeadingRepair(content) {
+function previewHeadingRepair(content, sourceBook = null) {
   if (content.ordinaryPage) throw new Error(t("Heading repair is available for managed books only."));
-  const chapters = new Map(content.chapters.map((chapter) => [chapter.uid, chapter]));
-  const depth = (uid) => {
-    let level = 0, parent = chapters.get(uid)?.parentUid;
-    const seen = /* @__PURE__ */ new Set();
-    while (parent && chapters.has(parent) && !seen.has(parent)) {
-      seen.add(parent);
-      level++;
-      parent = chapters.get(parent).parentUid;
-    }
-    return level;
-  };
+  const knownChapters = content.record.catalog?.chapters || [];
+  const chapters = new Map(knownChapters.map((chapter) => [chapter.uid, chapter]));
   const changes = [];
-  for (const chapter of content.chapters) {
-    const node = content.byUid.get(chapter.uid)?.node;
-    if (!node) continue;
-    const before = Number(value(node, "heading")) || 0, after = Math.min(3, depth(chapter.uid) + 1);
-    if (before !== after) changes.push({ type: "chapter", uid: chapter.uid, text: textOf(node), before: { heading: before }, after: { heading: after } });
-  }
-  for (const [uid, target] of content.chapterAliases || []) {
-    const item = content.byUid.get(uid);
-    if (!item || chapters.has(uid) || isFootnoteHeading(item.text)) continue;
-    let level = depth(target) + 2, parent = content.record.catalog?.chapters?.find((chapter) => chapter.uid === uid)?.parentUid;
-    const seen = /* @__PURE__ */ new Set();
-    while (parent && !chapters.has(parent) && !seen.has(parent)) {
-      seen.add(parent);
-      level++;
-      parent = content.record.catalog?.chapters?.find((chapter) => chapter.uid === parent)?.parentUid;
-    }
-    if (level < 4) continue;
-    const heading = Number(value(item.node, "heading")) || 0;
-    const string = level === 4 && boldable2(item.text) && !/^\s*\*\*[^]*\*\*\s*$/.test(item.text) ? `**${item.text.trim()}**` : item.text;
-    if (heading || string !== item.text) changes.push({ type: "demote", uid, text: item.text, before: { heading, string: item.text }, after: { heading: 0, string }, deepEntry: true });
-  }
   const allChapters = /* @__PURE__ */ new Set([...(content.record.catalog?.chapters || []).map((chapter) => chapter.uid), ...chapters.keys()]);
   const isTitle = (uid) => {
     const item = content.byUid.get(uid);
@@ -19799,7 +20268,7 @@ function previewHeadingRepair(content) {
     const heading = Number(value(item.node, "heading")) || 0;
     if (!heading) continue;
     const chapter = chapters.get(content.chapterAliases?.get(item.uid) || item.chapterUid);
-    const duplicate = chapter && key(item.text) === key(chapter.title);
+    const duplicate = chapter && key2(item.text) === key2(chapter.title);
     if (duplicate && item.parentUid) {
       const blockers = referencedBy(item.uid);
       if (!blockers.length && !/\^\^|#mark|\[\[mark\]\]/.test(item.text)) {
@@ -19807,10 +20276,29 @@ function previewHeadingRepair(content) {
         continue;
       }
     }
-    const footnote = isFootnoteHeading(item.text);
-    const string = !footnote && boldable2(item.text) ? `**${item.text.trim()}**` : item.text;
-    changes.push({ type: "demote", uid: item.uid, text: item.text, before: { heading, string: item.text }, after: { heading: 0, string }, duplicateKept: Boolean(duplicate), footnote });
   }
+  if (sourceBook) {
+    const restored = sourceHeadingChanges(content, sourceBook);
+    const matched = new Set(restored.map((change) => change.uid));
+    for (let i = changes.length - 1; i >= 0; i--) if (matched.has(changes[i].uid)) changes.splice(i, 1);
+    changes.push(...restored.filter((change) => change.before.heading !== change.after.heading));
+    const titleKey2 = (text2) => plain(text2).replace(/\s+/g, "");
+    for (const { node: source, item: outer, level } of matchSourceHeadings(content, sourceBook, { navigationOnly: true })) {
+      const children = childrenOf(outer.node);
+      if (children.length !== 1) continue;
+      const duplicate = children[0], uid = uidOf(duplicate), text2 = textOf(duplicate);
+      if (!Number(value(duplicate, "heading")) || titleKey2(text2) !== titleKey2(outer.text) || /\^\^|#mark|\[\[mark\]\]/.test(text2)) continue;
+      if ((source.children || []).some((child) => titleKey2(child.text) === titleKey2(source.text))) continue;
+      const expected = (source.children || []).filter((child) => child.text && !/⟦EPUB[IL]:/.test(child.text)).slice(0, 2);
+      const body = childrenOf(duplicate).filter((child) => !/!\[[^\]]*\]\(/.test(textOf(child)));
+      if (!expected.length || !expected.every((child, index) => titleKey2(child.text) === titleKey2(textOf(body[index]))) || referencedBy(uid).length) continue;
+      if (changes.some((change) => change.uid === uid)) continue;
+      const before = Number(value(outer.node, "heading")) || 0;
+      if (level <= 3 && before !== level && !changes.some((change) => change.uid === outer.uid)) changes.push({ type: "chapter", uid: outer.uid, text: outer.text, before: { heading: before }, after: { heading: level }, source: "EPUB outline" });
+      changes.push({ type: "duplicate", uid, text: text2, parentUid: outer.uid, heading: Number(value(duplicate, "heading")), open: value(duplicate, "open") !== false, childUids: childrenOf(duplicate).map(uidOf), chapterTitle: outer.text });
+    }
+  }
+  for (const change of changes) if (change.type === "footnote") change.referenceChanges = referenceSnapshot(change.uid, change.targetUid);
   return { bookKey: content.key, title: content.record.title, changes, counts: { chapters: changes.filter((change) => change.type === "chapter").length, duplicates: changes.filter((change) => change.type === "duplicate").length, demoted: changes.filter((change) => change.type === "demote").length, footnotes: changes.filter((change) => change.type === "footnote").length } };
 }
 async function applyHeadingRepair(plan, types = ["chapter", "duplicate", "demote", "footnote"]) {
@@ -19823,7 +20311,7 @@ async function applyHeadingRepair(plan, types = ["chapter", "duplicate", "demote
   try {
     for (const change of changes) {
       const node = pull(change.uid);
-      if (!node || textOf(node) !== change.text) {
+      if (!node || textOf(node) !== change.text || (Number(value(node, "heading")) || 0) !== (change.before?.heading ?? change.heading ?? 0)) {
         backup.skipped.push(change.uid);
         continue;
       }
@@ -19831,18 +20319,15 @@ async function applyHeadingRepair(plan, types = ["chapter", "duplicate", "demote
       else if (change.type === "demote") await updateBlock({ uid: change.uid, heading: 0, string: change.after.string });
       else if (change.type === "footnote") {
         const target = pull(change.targetUid), children = childrenOf(node).map(uidOf);
-        if (!target || textOf(target) !== change.targetText || children.join() !== change.childUids.join()) {
+        if (!target || textOf(target) !== change.targetText || children.join() !== change.childUids.join() || indexIn(change.parentUid, change.uid) !== change.order || !referencesUnchanged(change.uid, change.referenceChanges || [])) {
           backup.skipped.push(change.uid);
           continue;
         }
         await updateBlock({ uid: change.targetUid, string: change.targetAfter });
         change.retargeted = [];
-        for (const uid of referencedBy(change.uid)) {
-          const before = textOf(pull(uid)), after = before.split(`((${change.uid}))`).join(`((${change.targetUid}))`);
-          if (after !== before) {
-            await updateBlock({ uid, string: after });
-            change.retargeted.push({ uid, before, after });
-          }
+        for (const item of change.referenceChanges || []) {
+          await updateBlock({ uid: item.uid, string: item.after });
+          change.retargeted.push({ ...item });
         }
         const at = change.intoParent ? indexIn(change.parentUid, change.uid) : childrenOf(target).length;
         for (const [index, child] of children.entries()) await move2(child, change.intoParent ? change.parentUid : change.targetUid, at + index);
@@ -19984,24 +20469,24 @@ var ReadingProgress = class {
   load() {
     const headers = new Map(documentHeaders("chapter-progress").map((header) => [header.key, header]));
     for (const uid of this.states.keys()) {
-      const key2 = this.key(uid);
-      const stored = readDocument("chapter-progress", key2, headers.get(key2) || null);
+      const key3 = this.key(uid);
+      const stored = readDocument("chapter-progress", key3, headers.get(key3) || null);
       if (stored) {
         const resolve = (block) => this.content.fragmentAliases?.get(block) || block;
         this.states.set(uid, { ...stored, lastBlockUid: resolve(stored.lastBlockUid), seen: [...new Set((stored.seen || []).map(resolve))].filter((block) => this.eligible.get(uid).has(block)) });
       }
     }
     for (const [alias, uid] of this.content.chapterAliases || []) {
-      const state = this.states.get(uid);
-      if (!state || state.mergedAliases?.includes(alias)) continue;
-      const key2 = this.key(alias), prior = readDocument("chapter-progress", key2, headers.get(key2) || null);
+      const state2 = this.states.get(uid);
+      if (!state2 || state2.mergedAliases?.includes(alias)) continue;
+      const key3 = this.key(alias), prior = readDocument("chapter-progress", key3, headers.get(key3) || null);
       if (!prior) continue;
-      state.seen = [.../* @__PURE__ */ new Set([...state.seen, ...prior.seen || []])].filter((block) => this.eligible.get(uid).has(block));
-      if (prior.updatedAt > state.updatedAt && this.eligible.get(uid).has(prior.lastBlockUid)) {
-        state.updatedAt = prior.updatedAt;
-        state.lastBlockUid = prior.lastBlockUid;
+      state2.seen = [.../* @__PURE__ */ new Set([...state2.seen, ...prior.seen || []])].filter((block) => this.eligible.get(uid).has(block));
+      if (prior.updatedAt > state2.updatedAt && this.eligible.get(uid).has(prior.lastBlockUid)) {
+        state2.updatedAt = prior.updatedAt;
+        state2.lastBlockUid = prior.lastBlockUid;
       }
-      state.mergedAliases = [...state.mergedAliases || [], alias];
+      state2.mergedAliases = [...state2.mergedAliases || [], alias];
       this.dirty.add(uid);
     }
     return this;
@@ -20009,32 +20494,32 @@ var ReadingProgress = class {
   record(uid, now = Date.now()) {
     const node = this.content.byUid.get(uid);
     if (!node || !this.eligible.get(node.chapterUid)?.has(uid)) return false;
-    const state = this.states.get(node.chapterUid);
-    const isNew = !state.seen.includes(uid);
-    if (isNew) state.seen.push(uid);
-    if (isNew || state.lastBlockUid !== uid) {
-      state.lastBlockUid = uid;
-      state.updatedAt = now;
+    const state2 = this.states.get(node.chapterUid);
+    const isNew = !state2.seen.includes(uid);
+    if (isNew) state2.seen.push(uid);
+    if (isNew || state2.lastBlockUid !== uid) {
+      state2.lastBlockUid = uid;
+      state2.updatedAt = now;
       this.dirty.add(node.chapterUid);
       return true;
     }
     return false;
   }
   summary(uid) {
-    const state = this.states.get(uid);
+    const state2 = this.states.get(uid);
     const total = this.eligible.get(uid)?.size || 0;
-    const seen = state?.seen.length || 0;
-    return { ...state, total, seenCount: seen, read: Boolean(state?.readAt), percent: total ? Math.round(seen / total * 100) : 0, status: state?.readAt ? "Read" : !seen ? "Unvisited" : seen >= total ? "Browsed" : "Browsing" };
+    const seen = state2?.seen.length || 0;
+    return { ...state2, total, seenCount: seen, read: Boolean(state2?.readAt), percent: total ? Math.round(seen / total * 100) : 0, status: state2?.readAt ? "Read" : !seen ? "Unvisited" : seen >= total ? "Browsed" : "Browsing" };
   }
   latest() {
-    return [...this.states.entries()].filter(([, state]) => state.lastBlockUid).sort((a, b) => b[1].updatedAt - a[1].updatedAt)[0];
+    return [...this.states.entries()].filter(([, state2]) => state2.lastBlockUid).sort((a, b) => b[1].updatedAt - a[1].updatedAt)[0];
   }
   // A reader's explicit "Mark as Read", separate from estimated browsing.
   async markRead(uid, read = true) {
-    const state = this.states.get(uid);
-    if (!state) return false;
-    if (read) state.readAt = Date.now();
-    else delete state.readAt;
+    const state2 = this.states.get(uid);
+    if (!state2) return false;
+    if (read) state2.readAt = Date.now();
+    else delete state2.readAt;
     this.dirty.add(uid);
     await this.flush();
     return true;
@@ -20097,6 +20582,11 @@ var DwellMeter = class {
   }
 };
 
+// src/dom-changes.js
+function blockTreeChanged(mutations) {
+  return mutations.some((mutation) => [...mutation.addedNodes, ...mutation.removedNodes].some((node) => node.nodeType === 1 && (node.matches?.(".rm-block[data-block-uid]") || node.querySelector?.(".rm-block[data-block-uid]"))));
+}
+
 // src/tracker.js
 function startTracker(progress, { onChange = () => {
 }, onError = () => {
@@ -20143,7 +20633,8 @@ function startTracker(progress, { onChange = () => {
       }
     });
   };
-  const mutation = new window.MutationObserver(() => {
+  const mutation = new window.MutationObserver((mutations) => {
+    if (!blockTreeChanged(mutations)) return;
     clearTimeout(bindTimer);
     bindTimer = setTimeout(bind, 400);
   });
@@ -20201,9 +20692,9 @@ function previewLinkRepair(content) {
   return { bookKey: content.key, title: content.record.title, changes, unresolved };
 }
 async function applyLinkRepair(plan) {
-  const key2 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
-  const backup = { ...plan, key: key2, createdAt: Date.now(), applied: [], skipped: [] };
-  await putDocument("link-repair", key2, backup);
+  const key3 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
+  const backup = { ...plan, key: key3, createdAt: Date.now(), applied: [], skipped: [] };
+  await putDocument("link-repair", key3, backup);
   for (const change of plan.changes) {
     if (textOf(pull(change.uid)) !== change.before) {
       backup.skipped.push(change.uid);
@@ -20212,15 +20703,15 @@ async function applyLinkRepair(plan) {
     await updateBlock({ uid: change.uid, string: change.after });
     backup.applied.push(change.uid);
   }
-  await putDocument("link-repair", key2, backup);
+  await putDocument("link-repair", key3, backup);
   return backup;
 }
 function latestRepair(content) {
   const headers = documentHeaders("link-repair").filter((header) => header.key.startsWith(`${content.key}:`)).sort((a, b) => b.updatedAt - a.updatedAt);
   return headers[0] ? readDocument("link-repair", headers[0].key) : null;
 }
-async function undoLinkRepair(key2) {
-  const backup = readDocument("link-repair", key2);
+async function undoLinkRepair(key3) {
+  const backup = readDocument("link-repair", key3);
   if (!backup) throw new Error(t("No repair backup was found."));
   const result = { restored: [], skipped: [] };
   for (const change of backup.changes) {
@@ -20229,7 +20720,7 @@ async function undoLinkRepair(key2) {
       result.restored.push(change.uid);
     } else result.skipped.push(change.uid);
   }
-  await putDocument("link-repair", key2, { ...backup, undoneAt: Date.now(), undo: result });
+  await putDocument("link-repair", key3, { ...backup, undoneAt: Date.now(), undo: result });
   return result;
 }
 
@@ -20257,6 +20748,12 @@ nav button[aria-selected=true] { background:#e9dfbc; border-color:#b49b4e; }
 .rei-reader-actions { display:flex; align-items:center; gap:5px; flex-wrap:wrap; padding:7px 0; }
 .rei-reader-toggle,.rei-reader-scope { display:flex; align-items:flex-start; gap:7px; margin:8px 0; font-size:12px; font-weight:400; line-height:1.6; }
 .rei-setting { display:block; margin:10px 0; }.rei-setting>span { display:block; margin-bottom:4px; }
+.rei-setting.rei-checkbox-setting { display:flex; align-items:flex-start; gap:8px; cursor:pointer; }
+.rei-setting.rei-checkbox-setting>span { flex:1; min-width:0; margin:0; overflow-wrap:anywhere; }
+.rei-resize-handle { position:absolute; right:3px; bottom:3px; width:24px; height:24px; min-height:24px; padding:0; border:0; border-radius:6px; background:transparent; color:var(--mag-gold,#9b843a); opacity:.55; cursor:nwse-resize; touch-action:none; user-select:none; transition:opacity .15s ease,background-color .15s ease; }
+.rei-resize-handle::before { content:""; width:14px; height:14px; background:currentColor; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 13L13 4M9 13L13 9' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 13L13 4M9 13L13 9' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat; pointer-events:none; }
+.rei-resize-handle:hover,.rei-resize-handle:focus-visible { opacity:1; background:var(--mag-paper,#fefcf6); }
+.rei-resize-handle:active { opacity:1; background:#b79a371a; }
 input[type=checkbox] { flex:0 0 14px; width:14px; height:14px; margin:3px 0 0; accent-color:#9b843a; }
 .rei-reader-links { grid-column:1/-1; display:flex; flex-wrap:wrap; gap:5px; }
 .rei-chip { min-height:24px; padding:2px 9px; border-radius:999px; font-size:11.5px; background:transparent; }
@@ -20302,14 +20799,87 @@ p { margin:8px 0; } h4 { font-size:13px; margin:14px 0 6px; } pre { font:11px/1.
 @media(max-width:480px) { .rei-reader { height:calc(100dvh - 72px); max-height:calc(100dvh - 72px); } }
 `;
 
+// src/image-repair.js
+var state = (uid) => {
+  const raw = fingerprint(uid);
+  return raw == null ? raw : JSON.stringify(JSON.parse(raw, (key3, value2) => key3 === ":block/order" || key3 === "order" ? void 0 : value2));
+};
+function previewImageRepair(content) {
+  const changes = [], skipped = [];
+  for (const item of content.nodes) {
+    const parts = splitImages(item.text);
+    if (!parts.some((p) => p.image) || !parts.some((p) => !p.image)) continue;
+    const texts = parts.filter((p) => !p.image);
+    if (!item.parentUid || !content.byUid.has(item.parentUid) || texts.length !== 1 || /`|\^\^|{{/.test(item.text) || /^(?:\*\*|__)$/.test(texts[0].text.trim())) {
+      skipped.push(item.uid);
+      continue;
+    }
+    if (["**", "__"].some((mark) => texts[0].text.split(mark).length % 2 === 0)) {
+      skipped.push(item.uid);
+      continue;
+    }
+    changes.push({ uid: item.uid, parentUid: item.parentUid, before: item.text, after: texts[0].text.trim(), parts, expected: state(item.uid) });
+  }
+  return { changes, skipped };
+}
+async function applyImageRepair(plan, record, save) {
+  record.steps.images = [];
+  record.results.images = 0;
+  for (const change of plan.changes) {
+    if (state(change.uid) !== change.expected) {
+      record.results.skipped++;
+      continue;
+    }
+    const entry = { ...change, created: [], originalAfter: null };
+    record.steps.images.push(entry);
+    await save();
+    const textIndex = change.parts.findIndex((p) => !p.image);
+    for (let i = 0; i < change.parts.length; i++) {
+      if (!change.parts[i].image) continue;
+      const uid = api().util.generateUID(), string = change.parts[i].text;
+      const order = value(pull(change.uid), "order") + (i < textIndex ? 0 : 1 + entry.created.filter((x) => x.after).length);
+      entry.created.push({ uid, string, after: i > textIndex });
+      await save();
+      await api().data.block.create({ location: { "parent-uid": change.parentUid, order }, block: { uid, string, heading: 0 } });
+    }
+    await updateBlock({ uid: change.uid, string: change.after });
+    entry.originalAfter = state(change.uid);
+    entry.created.forEach((item) => item.expected = state(item.uid));
+    record.results.images++;
+    await save();
+  }
+}
+async function undoImageRepair(record, save) {
+  const result = { restored: 0, skipped: 0 };
+  for (const entry of [...record.steps.images || []].reverse()) {
+    if (entry.undone) continue;
+    const original = pull(entry.uid), existing = entry.created.filter((item) => pull(item.uid));
+    const unsafe = !original || (entry.originalAfter ? state(entry.uid) !== entry.originalAfter : ![entry.before, entry.after].includes(textOf(original))) || existing.some((item) => referencesTo(item.uid).length || !childrenOf(pull(entry.parentUid)).some((n) => uidOf(n) === item.uid) || childrenOf(pull(item.uid)).length || (item.expected ? state(item.uid) !== item.expected : textOf(pull(item.uid)) !== item.string)) || !childrenOf(pull(entry.parentUid)).some((n) => uidOf(n) === entry.uid);
+    if (unsafe) {
+      result.skipped++;
+      continue;
+    }
+    await updateBlock({ uid: entry.uid, string: entry.before });
+    for (const item of existing.reverse()) await api().data.block.delete({ block: { uid: item.uid } });
+    entry.undone = true;
+    result.restored++;
+    await save();
+  }
+  return result;
+}
+
 // src/book-repair.js
-function previewBookRepair(content, sourceBook = null) {
+function previewBookRepair(content, sourceBook = null, { splitImages: splitImages2 = false } = {}) {
   if (content.ordinaryPage) throw new Error(t("Book repair is available for managed books only."));
   const paragraphs = sourceBook ? previewParagraphRepair(content, sourceBook) : null;
   const links = previewLinkRepair(content);
   const archives = previewArchiveCleanup(content);
-  const headings = previewHeadingRepair(content);
+  const headings = previewHeadingRepair(content, sourceBook);
+  const navigation = previewNavigationRepair(content, sourceBook);
+  const images = splitImages2 ? previewImageRepair(content) : null;
   const counts = {
+    images: images?.changes.length || 0,
+    navigation: navigation?.changes ? navigation.after.chapters.length : 0,
     paragraphs: paragraphs?.changes.length || 0,
     links: links.changes.length,
     archives: archives.removable.length,
@@ -20321,11 +20891,16 @@ function previewBookRepair(content, sourceBook = null) {
     footnotes: headings.changes.filter((change) => change.footnote).length,
     merged: headings.counts.footnotes || 0
   };
-  const total = counts.paragraphs + counts.links + counts.archives + counts.chapters + counts.duplicates + counts.demoted + counts.footnotes + counts.merged;
-  return { bookKey: content.key, title: content.record.title, paragraphs, links, archives, headings, counts, total };
+  const total = counts.images + counts.paragraphs + counts.links + counts.archives + counts.chapters + counts.duplicates + counts.demoted + counts.footnotes + counts.merged + counts.navigation;
+  const refs = [...headings.changes.flatMap((change) => change.referenceChanges || []), ...archives.removable.flatMap((archive) => archive.fragments.flatMap((fragment) => fragment.referenceChanges || []))];
+  const uids = /* @__PURE__ */ new Set([...content.byUid.keys(), ...content.pages.keys(), ...refs.map((item) => item.uid)]);
+  const expected = [...uids].map((uid) => ({ uid, state: fingerprint(uid) }));
+  return { bookKey: content.key, title: content.record.title, paragraphs, links, archives, headings, navigation, images, counts, total, expected };
 }
 function describeRepair(counts) {
   const lines = [];
+  if (counts.images) lines.push(t("Separate images and text in {0} blocks; keep text IDs and child blocks", [counts.images]));
+  if (counts.navigation) lines.push(t("Replace the panel Contents with {0} entries from the original EPUB directory (body headings stay separate)", [counts.navigation]));
   if (counts.paragraphs) lines.push(t("Rejoin {0} split paragraph(s) (checked against the original EPUB)", [counts.paragraphs]));
   if (counts.links) lines.push(t("Fix {0} block(s) with broken numbered links", [counts.links]));
   if (counts.archives) lines.push(t("Remove {0} EPUB-READER:paragraph-fragments archive(s){1}", [counts.archives, counts.references ? t("; {0} reference(s) to old fragments (comments, footnote links) move to the repaired paragraph", [counts.references]) : ""]));
@@ -20336,38 +20911,39 @@ function describeRepair(counts) {
   if (counts.footnotes) lines.push(t("Turn {0} footnote marker heading(s) such as [3] into plain text", [counts.footnotes]));
   return lines;
 }
-async function applyBookRepair(content, reload, { sourceBook = null, onProgress } = {}) {
-  const key2 = `${content.key}:${Date.now()}:${api().util.generateUID()}`;
-  const record = { key: key2, bookKey: content.key, createdAt: Date.now(), steps: {}, results: { skipped: 0 } };
+async function applyBookRepair(approvedPlan, { onProgress } = {}) {
+  const plan = JSON.parse(JSON.stringify(approvedPlan));
+  if (!Array.isArray(plan.expected) || plan.expected.some((item) => fingerprint(item.uid) !== item.state)) throw Object.assign(new Error(t("Book or referenced content changed since preview. Preview the repair again.")), { code: "STALE_REPAIR_PREVIEW" });
+  if (plan.navigation?.changes && JSON.stringify(readDocument("book-navigation", plan.bookKey)) !== JSON.stringify(plan.navigation.before)) throw Object.assign(new Error(t("Book or referenced content changed since preview. Preview the repair again.")), { code: "STALE_REPAIR_PREVIEW" });
+  const key3 = `${plan.bookKey}:${Date.now()}:${api().util.generateUID()}`;
+  const record = { key: key3, bookKey: plan.bookKey, createdAt: Date.now(), steps: {}, results: { skipped: 0 } };
   const skipped = (result) => {
     record.results.skipped += result.skipped?.length || 0;
   };
-  const save = () => putDocument("book-repair", key2, record);
+  const save = () => putDocument("book-repair", key3, record);
   await save();
-  if (sourceBook) {
+  if (plan.paragraphs) {
     onProgress?.(t("Rejoining split paragraphs\u2026"));
-    const plan = previewParagraphRepair(content, sourceBook);
-    if (plan.changes.length) {
-      const result = await applyParagraphRepair(plan);
+    const paragraphs = plan.paragraphs;
+    if (paragraphs.changes.length) {
+      const result = await applyParagraphRepair(paragraphs);
       record.steps.paragraphs = result.key;
       record.results.paragraphs = result.applied.length;
       skipped(result);
       await save();
-      content = reload();
     }
   }
   onProgress?.(t("Fixing numbered links\u2026"));
-  const links = previewLinkRepair(content);
+  const links = plan.links;
   if (links.changes.length) {
     const result = await applyLinkRepair(links);
     record.steps.links = result.key;
     record.results.links = result.applied.length;
     skipped(result);
     await save();
-    content = reload();
   }
   onProgress?.(t("Removing paragraph archives\u2026"));
-  const archives = previewArchiveCleanup(content);
+  const archives = plan.archives;
   if (archives.removable.length) {
     const result = await applyArchiveCleanup(archives);
     record.steps.archives = result.key;
@@ -20375,10 +20951,9 @@ async function applyBookRepair(content, reload, { sourceBook = null, onProgress 
     skipped(result);
     record.results.references = result.retargeted.length;
     await save();
-    content = reload();
   }
   onProgress?.(t("Fixing heading levels\u2026"));
-  const headings = previewHeadingRepair(content);
+  const headings = plan.headings;
   if (headings.changes.length) {
     const result = await applyHeadingRepair(headings);
     record.steps.headings = result.key;
@@ -20386,6 +20961,15 @@ async function applyBookRepair(content, reload, { sourceBook = null, onProgress 
     skipped(result);
     await save();
   }
+  if (plan.navigation?.changes) {
+    if (plan.navigation.after.chapters.every((chapter) => api().data.pull("[:block/uid]", [":block/uid", chapter.uid]))) {
+      record.steps.navigation = plan.navigation;
+      await save();
+      await putDocument("book-navigation", plan.bookKey, plan.navigation.after);
+      record.results.navigation = plan.navigation.after.chapters.length;
+    } else record.results.skipped++;
+  }
+  if (plan.images) await applyImageRepair(plan.images, record, save);
   record.finishedAt = Date.now();
   await save();
   return record;
@@ -20394,20 +20978,40 @@ function latestBookRepair(content) {
   const headers = documentHeaders("book-repair").filter((header) => header.key.startsWith(`${content.key}:`)).sort((a, b) => b.updatedAt - a.updatedAt);
   return headers[0] ? readDocument("book-repair", headers[0].key) : null;
 }
-async function undoBookRepair(key2) {
-  const record = readDocument("book-repair", key2);
+async function undoBookRepair(key3) {
+  const record = readDocument("book-repair", key3);
   if (!record) throw new Error(t("No book repair record was found."));
   const result = { restored: 0, skipped: 0 };
   const add = (value2) => {
     result.restored += value2?.restored?.length || 0;
     result.skipped += value2?.skipped?.length || 0;
   };
+  if (record.steps.images) {
+    const images = await undoImageRepair(record, () => putDocument("book-repair", key3, record));
+    result.restored += images.restored;
+    result.skipped += images.skipped;
+  }
+  if (record.steps.navigation) {
+    if (JSON.stringify(readDocument("book-navigation", record.bookKey)) === JSON.stringify(record.steps.navigation.after)) {
+      await putDocument("book-navigation", record.bookKey, record.steps.navigation.before);
+      result.restored++;
+    } else result.skipped++;
+  }
   if (record.steps.headings) add(await undoHeadingRepair(record.steps.headings));
   if (record.steps.archives) add(await undoArchiveCleanup(record.steps.archives));
   if (record.steps.links) add(await undoLinkRepair(record.steps.links));
   if (record.steps.paragraphs) add(await undoParagraphRepair(record.steps.paragraphs));
-  await putDocument("book-repair", key2, { ...record, undoneAt: Date.now(), undo: result });
+  await putDocument("book-repair", key3, { ...record, undoneAt: Date.now(), undo: result });
   return result;
+}
+
+// src/coexistence.js
+var KEY = "__readingDeskFeatures";
+function publishFeature(name, active) {
+  const state2 = window[KEY] || (window[KEY] = {});
+  if (Boolean(state2[name]) === Boolean(active)) return;
+  state2[name] = Boolean(active);
+  window.dispatchEvent(new window.Event("reading-desk-features-change"));
 }
 
 // src/mark.js
@@ -20476,8 +21080,7 @@ function writeEditor(editor, value2, selection) {
 }
 function installMark(onChange = () => {
 }, { getQuestionTag = () => "question", getQuestionStyle = () => "tag", shortcutLabel = () => "" } = {}) {
-  window.__zenithQuickMark?.cleanup?.();
-  window.__magQuickMark?.cleanup?.();
+  publishFeature("mark", true);
   const history = /* @__PURE__ */ new Map(), busy = /* @__PURE__ */ new Set(), cleanups = [];
   let disposed = false, composing = false, menuObserver, menuTimer;
   const on = (target, name, callback, options) => {
@@ -20586,6 +21189,7 @@ function installMark(onChange = () => {
   on(document, "contextmenu", armMenu, true);
   on(document, "dblclick", armMenu, true);
   return { toggle, toggleQuestion: (uid) => toggle(uid, "question"), cleanup() {
+    publishFeature("mark", false);
     disposed = true;
     stopWatch();
     cleanups.forEach((fn) => fn());
@@ -20653,7 +21257,8 @@ function startChapterLocator(content, onChapter) {
     });
     schedule();
   };
-  const mutation = new window.MutationObserver(() => {
+  const mutation = new window.MutationObserver((mutations) => {
+    if (!blockTreeChanged(mutations)) return;
     clearTimeout(bindTimer);
     bindTimer = setTimeout(bind, 150);
   });
@@ -20707,9 +21312,9 @@ function displayCombo(combo) {
   if (!combo) return t("Not set");
   const mac = isMac();
   const parts = combo.split("+"), code = parts.pop();
-  const key2 = code.replace(/^Key/, "").replace(/^Digit/, "").replace(/^Arrow/, "").replace(/^Numpad/, "Num ");
+  const key3 = code.replace(/^Key/, "").replace(/^Digit/, "").replace(/^Arrow/, "").replace(/^Numpad/, "Num ");
   const names = mac ? { Ctrl: "\u2303", Meta: "\u2318", Alt: "\u2325", Shift: "\u21E7" } : { Ctrl: "Ctrl+", Meta: "Win+", Alt: "Alt+", Shift: "Shift+" };
-  return parts.map((part) => names[part]).join("") + key2;
+  return parts.map((part) => names[part]).join("") + key3;
 }
 function installShortcuts({ get, handlers }) {
   let paused = false;
@@ -20793,7 +21398,7 @@ function installReader(extensionAPI) {
   }, actions = {}, lastActionUid;
   const preferences = /* @__PURE__ */ new Map();
   const collapsedCatalogs = /* @__PURE__ */ new Map();
-  let panelPosition, drag;
+  let panelPosition, panelSize, drag, sizing;
   function placePanel(x, y) {
     if (!host) return;
     const rect = host.getBoundingClientRect();
@@ -20802,10 +21407,20 @@ function installReader(extensionAPI) {
     host.style.setProperty("top", `${panelPosition.y}px`, "important");
     host.style.setProperty("right", "auto", "important");
   }
+  function sizePanel(width, height) {
+    if (!host || !panel) return;
+    panelSize = { width: Math.max(Math.min(300, window.innerWidth - 24), Math.min(width, window.innerWidth - 24)), height: Math.max(Math.min(300, window.innerHeight - 24), Math.min(height, window.innerHeight - 24)) };
+    host.style.setProperty("width", `${panelSize.width}px`, "important");
+    panel.style.height = `${panelSize.height}px`;
+    panel.style.maxHeight = "calc(100dvh - 24px)";
+    const rect = host.getBoundingClientRect();
+    placePanel(panelPosition?.x ?? rect.left, panelPosition?.y ?? rect.top);
+  }
   const resize = () => {
-    if (panelPosition) placePanel(panelPosition.x, panelPosition.y);
+    if (panelSize) sizePanel(panelSize.width, panelSize.height);
+    else if (panelPosition) placePanel(panelPosition.x, panelPosition.y);
   };
-  const preference = (key2, fallback) => preferences.has(key2) ? preferences.get(key2) : extensionAPI.settings.get(key2) ?? fallback;
+  const preference = (key3, fallback) => preferences.has(key3) ? preferences.get(key3) : extensionAPI.settings.get(key3) ?? fallback;
   const report = (error) => {
     if (status?.isConnected) status.textContent = error?.message || String(error);
     else console.warn("[Reading Desk]", error);
@@ -20824,29 +21439,31 @@ function installReader(extensionAPI) {
     node.onclick = run(action);
     return node;
   };
-  async function setPreference(key2, value2) {
-    preferences.set(key2, value2);
+  async function setPreference(key3, value2) {
+    preferences.set(key3, value2);
     try {
-      await extensionAPI.settings.set(key2, value2);
-      preferences.delete(key2);
+      await extensionAPI.settings.set(key3, value2);
+      preferences.delete(key3);
       return true;
     } catch {
       report("Settings could not sync. They remain active for this session.");
       return false;
     }
   }
-  function toggleRow(label, key2, fallback, changed) {
+  function toggleRow(label, key3, fallback, changed) {
     const row = el("label", null, "rei-reader-toggle");
     const input = el("input");
     input.type = "checkbox";
-    input.checked = preference(key2, fallback);
+    input.checked = preference(key3, fallback);
     input.onchange = run(async () => {
-      await setPreference(key2, input.checked);
+      await setPreference(key3, input.checked);
       await changed?.();
     });
     row.append(input, el("span", label));
     return row;
   }
+  let stopImages = () => {
+  };
   const track = () => {
     stopTracker();
     stopTracker = () => {
@@ -20875,12 +21492,13 @@ function installReader(extensionAPI) {
     if (!panel?.isConnected || !progress) return;
     panel.querySelectorAll("[data-progress-uid]").forEach((node) => {
       const summary = progress.summary(node.dataset.progressUid);
-      node.textContent = `${t(summary.status)}${summary.seenCount && !summary.read ? t(" \xB7 approx. {0}%", [summary.percent]) : ""}`;
+      const label = `${t(summary.status)}${summary.seenCount && !summary.read ? t(" \xB7 approx. {0}%", [summary.percent]) : ""}`;
+      if (node.textContent !== label) node.textContent = label;
     });
     panel.querySelectorAll("[data-read-uid]").forEach((node) => {
       const read = progress.summary(node.dataset.readUid).read;
       node.setAttribute("aria-pressed", String(read));
-      node.textContent = read ? "\u2713" : "";
+      if (node.textContent !== (read ? "\u2713" : "")) node.textContent = read ? "\u2713" : "";
       node.title = read ? t("Read \xB7 click to unmark") : t("Mark as read");
       node.closest(".rei-reader-chapter")?.classList.toggle("rei-chapter-read", read);
     });
@@ -21336,9 +21954,11 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     let sourceBook = null;
     const summary = el("div");
     const show = () => {
-      const plan = previewBookRepair(repairContent, sourceBook);
+      const plan = previewBookRepair(repairContent, sourceBook, { splitImages: split.checked });
       const lines = describeRepair(plan.counts);
       summary.replaceChildren();
+      if (!sourceBook) summary.append(el("p", t("Choose the original EPUB to check heading levels. Without it, existing heading levels are preserved."), "rei-muted"));
+      if (sourceBook) summary.append(el("p", t("Only unique heading matches within the original chapter are repaired. Edited, missing or ambiguous matches are left unchanged. Typography-based headings need your review."), "rei-muted"));
       if (!lines.length) summary.append(el("p", t("Nothing to repair in this book."), "rei-muted"));
       else {
         const list = el("ul", null, "rei-repair-list");
@@ -21349,21 +21969,30 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       const preview = el("details");
       preview.append(el("summary", t("Preview the changes")));
       const out = [];
-      plan.paragraphs?.changes.slice(0, 40).forEach((change) => out.push(`paragraph  ${plain(change.after).slice(0, 90)}`));
-      plan.links.changes.slice(0, 60).forEach((change) => out.push(`link  ${plain(change.before).slice(0, 50)} \u2192 ${plain(change.after).slice(0, 50)}`));
-      plan.archives.removable.slice(0, 40).forEach((archive) => out.push(`archive  ${plain(archive.fragments[0]?.text || "").slice(0, 80)}${archive.references ? ` (${archive.references} reference(s) moved)` : ""}`));
-      plan.headings.changes.slice(0, 200).forEach((change) => out.push(change.type === "chapter" ? `H${change.before.heading || 0} \u2192 H${change.after.heading}  ${plain(change.text).slice(0, 80)}` : change.type === "duplicate" ? `remove duplicate H${change.heading}  ${plain(change.text).slice(0, 80)}` : change.type === "footnote" ? `footnote ${plain(change.text)} \u2192 end of \u201C${plain(change.targetText).slice(0, 60)}\u201D (${change.childUids.length} paragraphs move up)` : `H${change.before.heading} \u2192 ${change.footnote ? "plain" : "bold"}  ${plain(change.text).slice(0, 80)}`));
+      plan.images?.changes.forEach((change) => out.push(`${change.before} \u2192 ${change.parts.map((part) => part.text.trim()).join(" | ")}`));
+      if (plan.images?.skipped.length) summary.append(el("p", t("{0} complex or chapter-root image blocks were left unchanged.", [plan.images.skipped.length]), "rei-muted"));
+      if (plan.navigation?.changes) plan.navigation.after.chapters.forEach((chapter) => out.push(`${"  ".repeat(chapter.level - 1)}Contents: ${chapter.title}`));
+      if (plan.navigation?.unmatched?.length) summary.append(el("p", t("Original directory was not changed: {0} entries could not be matched uniquely.", [plan.navigation.unmatched.length]), "rei-muted"));
+      plan.paragraphs?.changes.forEach((change) => out.push(`paragraph  ${plain(change.after).slice(0, 90)}`));
+      plan.links.changes.forEach((change) => out.push(`link  ${plain(change.before).slice(0, 50)} \u2192 ${plain(change.after).slice(0, 50)}`));
+      plan.archives.removable.forEach((archive) => out.push(`archive  ${plain(archive.fragments[0]?.text || "").slice(0, 80)}${archive.references ? ` (${archive.references} reference(s) moved)` : ""}`));
+      plan.headings.changes.forEach((change) => out.push(change.type === "chapter" ? `H${change.before.heading || 0} \u2192 H${change.after.heading}  ${plain(change.text).slice(0, 80)}${change.source ? ` [${change.source}]` : ""}` : change.type === "duplicate" ? `remove duplicate H${change.heading}  ${plain(change.text).slice(0, 80)}${change.source ? ` [${change.source}]` : ""}` : change.type === "footnote" ? `footnote ${plain(change.text)} \u2192 end of \u201C${plain(change.targetText).slice(0, 60)}\u201D (${change.childUids.length} paragraphs move up)` : `H${change.before.heading} \u2192 ${change.footnote ? "plain" : "bold"}  ${plain(change.text).slice(0, 80)}`));
+      for (const change of plan.headings.changes) for (const ref of change.referenceChanges || []) out.push(`reference ((${ref.uid}))  ${ref.before} \u2192 ${ref.after}`);
+      for (const archive of plan.archives.removable) for (const fragment of archive.fragments) for (const ref of fragment.referenceChanges || []) out.push(`reference ((${ref.uid}))  ${ref.before} \u2192 ${ref.after}`);
       preview.append(el("pre", out.join("\n") || t("Nothing to change.")));
       const apply = button2(t("Repair This Book"), async () => {
         if (!window.confirm(t("Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.", [repairContent.record.title, lines.map((line) => `\u2022 ${line}`).join("\n")]))) return;
         apply.disabled = true;
         try {
-          const record = await applyBookRepair(repairContent, () => readBookContent(repairContent.record, { allowSuggested: false }), { sourceBook, onProgress: (text2) => {
+          const record = await applyBookRepair(plan, { onProgress: (text2) => {
             status.textContent = text2;
           } });
           await refresh(selectedBook);
           const r = record.results;
-          status.textContent = t("Repaired: {0}.{1} Undo is available.", [[r.paragraphs && t("{0} paragraphs", [r.paragraphs]), r.links && t("{0} link blocks", [r.links]), r.archives && t("{0} archives ({1} references moved)", [r.archives, r.references || 0]), r.headings && t("{0} headings", [r.headings])].filter(Boolean).join(", ") || t("nothing needed"), r.skipped ? t(" {0} block(s) changed since the preview were skipped; run the repair again.", [r.skipped]) : ""]);
+          status.textContent = t("Repaired: {0}.{1} Undo is available.", [[r.paragraphs && t("{0} paragraphs", [r.paragraphs]), r.links && t("{0} link blocks", [r.links]), r.archives && t("{0} archives ({1} references moved)", [r.archives, r.references || 0]), r.headings && t("{0} headings", [r.headings]), r.navigation && t("{0} directory entries", [r.navigation]), r.images && t("{0} image/text blocks", [r.images])].filter(Boolean).join(", ") || t("nothing needed"), r.skipped ? t(" {0} block(s) changed since the preview were skipped; run the repair again.", [r.skipped]) : ""]);
+        } catch (error) {
+          if (error.code === "STALE_REPAIR_PREVIEW") window.alert(error.message);
+          throw error;
         } finally {
           if (apply.isConnected) apply.disabled = false;
         }
@@ -21373,20 +22002,33 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     };
     body.append(el("p", t("Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept."), "rei-muted"));
     const fileLabel = el("label", null, "rei-setting");
-    fileLabel.append(el("span", t("Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)")));
+    fileLabel.append(el("span", t("Optional: choose the original EPUB to restore matching headings and rejoin split paragraphs (read locally, nothing is uploaded)")));
     const file = el("input");
     file.type = "file";
     file.accept = ".epub,application/epub+zip";
     file.setAttribute("aria-label", t("Original EPUB for paragraph repair"));
     fileLabel.append(file);
-    file.onchange = run(async () => {
+    const styledLabel = el("label", null, "rei-setting rei-checkbox-setting"), styled = el("input");
+    styled.type = "checkbox";
+    styledLabel.append(styled, el("span", t("Include typography-based subheadings (larger bold paragraphs; review the changes)")));
+    let parseTicket = 0;
+    const loadSource = run(async () => {
       const sourceFile = file.files?.[0];
       if (!sourceFile) return;
+      const ticket = ++parseTicket;
       summary.replaceChildren(el("p", t("Checking the original EPUB\u2026"), "rei-muted"));
-      sourceBook = await parseEpub(await sourceFile.arrayBuffer(), sourceFile.name);
-      if (file.isConnected && content === repairContent) show();
+      const parsed = await parseEpub(await sourceFile.arrayBuffer(), sourceFile.name, { includeStyledHeadings: styled.checked });
+      if (ticket === parseTicket && file.isConnected && content === repairContent) {
+        sourceBook = parsed;
+        show();
+      }
     });
-    body.append(fileLabel, summary);
+    file.onchange = styled.onchange = loadSource;
+    const splitLabel = el("label", null, "rei-setting rei-checkbox-setting"), split = el("input");
+    split.type = "checkbox";
+    splitLabel.append(split, el("span", t("Separate images and text in existing blocks (preview first)")));
+    split.onchange = show;
+    body.append(fileLabel, styledLabel, splitLabel, summary);
     show();
     const last = latestBookRepair(content);
     if (last && !last.undoneAt) body.append(button2(t("Undo Last Repair"), async () => {
@@ -21408,7 +22050,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       body.append(older);
     }
   }
-  function selectRow(label, key2, fallback, options, changed) {
+  function selectRow(label, key3, fallback, options, changed) {
     const row = el("label", null, "rei-setting");
     row.append(el("span", label));
     const select = el("select");
@@ -21417,11 +22059,11 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       option.value = value2;
       select.append(option);
     }
-    select.value = preference(key2, fallback);
+    select.value = preference(key3, fallback);
     if (select.selectedIndex < 0 || !options.some(([value2]) => value2 === select.value)) select.value = fallback;
     select.setAttribute("aria-label", label);
     select.onchange = run(async () => {
-      await setPreference(key2, select.value);
+      await setPreference(key3, select.value);
       await changed?.();
     });
     row.append(select);
@@ -21431,6 +22073,8 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     const combo = actions.shortcuts?.comboFor(id);
     return combo ? displayCombo(combo) : t("its shortcut (not set)");
   };
+  let stopRecording = () => {
+  };
   function shortcutEditor() {
     const list = el("div", null, "rei-shortcuts");
     for (const spec of SHORTCUTS) {
@@ -21438,6 +22082,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       row.append(el("span", t(spec.label)));
       const keys = button2(displayCombo(actions.shortcuts?.comboFor(spec.id) || ""), () => {
         if (keys.dataset.recording) return;
+        stopRecording();
         keys.dataset.recording = "1";
         keys.textContent = t("Press keys\u2026");
         actions.shortcuts?.pause(true);
@@ -21445,7 +22090,11 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
           delete keys.dataset.recording;
           actions.shortcuts?.pause(false);
           window.removeEventListener("keydown", onKey, true);
+          keys.textContent = displayCombo(actions.shortcuts?.comboFor(spec.id) || "");
+          stopRecording = () => {
+          };
         };
+        stopRecording = stop;
         const onKey = async (event) => {
           event.preventDefault();
           event.stopImmediatePropagation();
@@ -21490,12 +22139,12 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
   function renderSettings() {
     body.append(el("h4", t("Language")), selectRow(t("Interface language"), "reader-language", "Auto", LANGUAGES, () => relanguage()));
     body.append(el("h4", t("Library")));
-    for (const [label, key2] of [["Import EPUB", "importEpub"], ["Manage Imported Books", "manageBooks"], ["Recover Existing Book", "recoverBook"]]) {
+    for (const [label, key3] of [["Import EPUB", "importEpub"], ["Manage Imported Books", "manageBooks"], ["Recover Existing Book", "recoverBook"]]) {
       const entry = button2(t(label), async () => {
         close2();
-        await actions[key2]();
+        await actions[key3]();
       });
-      entry.disabled = !actions[key2];
+      entry.disabled = !actions[key3];
       body.append(entry);
     }
     body.append(el("h4", t("Reading")), toggleRow(t("Collapse the previous chapter when navigating"), "reader-auto-fold", true), toggleRow(t("Track browsing automatically (estimated, not comprehension)"), "reader-auto-progress", true, track), el("p", t("Automatic progress applies to managed books only. Panel subdirectory folding does not change the book itself."), "rei-muted"), selectRow(t("Text width"), "reader-text-width", "fill", TEXT_WIDTHS, () => {
@@ -21536,12 +22185,12 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       draw();
     }), el("p", t("One step for imported books: heading levels, footnote headings, broken links and leftover paragraph archives (optionally split paragraphs). Shows what will change first; one Undo restores it."), "rei-muted"));
     const quickActions = el("div", null, "rei-reader-actions");
-    for (const [label, key2] of [["Toggle Mark", "toggleMark"], ["Toggle Question", "toggleQuestion"]]) {
+    for (const [label, key3] of [["Toggle Mark", "toggleMark"], ["Toggle Question", "toggleQuestion"]]) {
       const entry = button2(t(label), async () => {
         if (!lastActionUid || !api().data.pull("[:block/uid]", [":block/uid", lastActionUid])) throw new Error(t("Click a paragraph or native comment first, then use this action."));
-        await actions[key2](lastActionUid);
+        await actions[key3](lastActionUid);
       });
-      entry.disabled = !actions[key2];
+      entry.disabled = !actions[key3];
       entry.onpointerdown = (event) => event.preventDefault();
       quickActions.append(entry);
     }
@@ -21551,7 +22200,11 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     shortcuts.after(quickActions, target);
     rememberActionTarget();
   }
+  const tabScroll = /* @__PURE__ */ new Map();
+  let drawnTab, drawnKey;
   function draw() {
+    if (drawnTab && body) tabScroll.set(`${drawnKey}:${drawnTab}`, body.scrollTop);
+    stopRecording();
     if (!body?.isConnected || !content) return;
     scopeFooter?.remove();
     scopeFooter = null;
@@ -21570,10 +22223,16 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       report(error);
     }
     panel.querySelectorAll("[data-reader-tab]").forEach((button3) => button3.setAttribute("aria-selected", String(button3.dataset.readerTab === (tab === "Repair" ? "Settings" : tab))));
+    drawnTab = tab;
+    drawnKey = content.key;
+    body.scrollTop = tabScroll.get(`${drawnKey}:${tab}`) || 0;
     renderLinks();
   }
   async function refresh(book, { followLocation = false } = {}) {
     const ticket = ++generation;
+    stopImages();
+    stopImages = () => {
+    };
     stopTracker();
     stopTracker = () => {
     };
@@ -21595,6 +22254,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       const onPage = (item) => item.pageUid === page || item.catalog?.rootUids.some((root) => owningPage(root)?.uid === page);
       book = books.find((item) => item.catalog?.rootUids.some((root) => path2.has(root))) || books.find((item) => selectedBook && bookKey(item) === bookKey(selectedBook) && onPage(item)) || books.find(onPage);
     }
+    if (!uid && !book && scope !== ALL && panel?.isConnected) scope = ALL;
     if (scope === ALL) book = null;
     if (book) book = books.find((item) => bookKey(item) === bookKey(book)) || book;
     selectedBook = book || null;
@@ -21672,6 +22332,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       selector.value = scope === ALL ? ALL : book ? bookKey(book) : pins.some((item) => item.uid === page) ? `page:${page}` : "";
     }
     if (status?.isConnected) status.textContent = content.aggregate ? t("All Books \xB7 {0} sources \xB7 {1} annotations", [content.sources.length, annotations.length]) : content.ordinaryPage ? t("Page \xB7 {0} headings \xB7 {1} annotations \xB7 progress is tracked for books only", [content.chapters.length, annotations.length]) : t("{0} \xB7 {1} blocks \xB7 {2} annotations \xB7 {3} pages", [content.record.title, content.nodes.length, annotations.length, content.pages.size]);
+    stopImages = optimizeBookImages(content);
     draw();
     track();
     locate();
@@ -21682,7 +22343,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     if (!panel?.isConnected) {
       host = el("div");
       host.id = "reading-desk-panel";
-      for (const [key2, val] of Object.entries({ all: "initial", position: "fixed", top: "54px", right: "12px", width: "min(410px, calc(100vw - 24px))", display: "block", "z-index": "2000" })) host.style.setProperty(key2, val, "important");
+      for (const [key3, val] of Object.entries({ all: "initial", position: "fixed", top: "54px", right: "12px", width: "min(410px, calc(100vw - 24px))", display: "block", "z-index": "2000" })) host.style.setProperty(key3, val, "important");
       shadow = host.attachShadow({ mode: "open" });
       shadow.append(el("style", PANEL_CSS));
       panel = el("section", null, "rei-reader");
@@ -21751,6 +22412,36 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
       panel.append(header, toolbar, tabs, status, body);
       shadow.append(panel);
       (document.querySelector(".roam-app") || document.body).append(host);
+      const grip = button2("", () => {
+      }, "rei-resize-handle");
+      grip.title = t("Resize panel: drag the corner, or use arrow keys");
+      grip.setAttribute("aria-label", grip.title);
+      grip.onpointerdown = (event) => {
+        if (event.button !== 0) return;
+        const rect = host.getBoundingClientRect();
+        placePanel(rect.left, rect.top);
+        sizing = { id: event.pointerId, x: event.clientX, y: event.clientY, width: rect.width, height: rect.height };
+        grip.setPointerCapture?.(event.pointerId);
+        event.preventDefault();
+        event.stopPropagation();
+      };
+      grip.onpointermove = (event) => {
+        if (sizing?.id === event.pointerId) sizePanel(sizing.width + event.clientX - sizing.x, sizing.height + event.clientY - sizing.y);
+      };
+      const endSizing = () => {
+        sizing = null;
+      };
+      grip.onpointerup = endSizing;
+      grip.onpointercancel = endSizing;
+      grip.onlostpointercapture = endSizing;
+      grip.onkeydown = (event) => {
+        if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+        event.preventDefault();
+        event.stopPropagation();
+        const rect = host.getBoundingClientRect(), step = event.shiftKey ? 50 : 10;
+        sizePanel(rect.width + (event.key === "ArrowRight" ? step : event.key === "ArrowLeft" ? -step : 0), rect.height + (event.key === "ArrowDown" ? step : event.key === "ArrowUp" ? -step : 0));
+      };
+      shadow.append(grip);
       resize();
       document.getElementById("reading-desk-topbar-button")?.setAttribute("aria-expanded", "true");
       panel.onkeydown = (event) => {
@@ -21773,6 +22464,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     if (position) placePanel(position.x, position.y);
   }
   function close2() {
+    stopRecording();
     clearTimeout(refreshTimer);
     links = null;
     stopLocator();
@@ -21781,6 +22473,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     updateCatalogCurrent = () => {
     };
     drag = null;
+    sizing = null;
     host?.remove();
     host = null;
     panel = null;
@@ -21798,14 +22491,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
   };
   const focusout = (event) => {
     if (!panel?.isConnected || event.composedPath().includes(host) || !event.target.matches?.('textarea.rm-block-input,[contenteditable="true"]')) return;
-    clearTimeout(refreshTimer);
-    refreshTimer = setTimeout(() => {
-      if (document.activeElement === host) {
-        if (status?.isConnected) status.textContent = t("Text or comments changed. Click Refresh to update without interrupting your work.");
-        return;
-      }
-      refresh(scope === ALL ? ALL : selectedBook).catch(report);
-    }, 1400);
+    if (status?.isConnected) status.textContent = t("Text or comments changed. Click Refresh to update without interrupting your work.");
   };
   window.addEventListener("hashchange", route);
   window.addEventListener("resize", resize);
@@ -21839,6 +22525,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
     cleanup() {
       disposed = true;
       generation++;
+      stopImages();
       stopTracker();
       progress?.flush().catch(report);
       clearTimeout(routeTimer);
@@ -21853,37 +22540,7 @@ ${t("Open the notes page (Shift+click: sidebar)")}`;
 }
 
 // src/magazine-comments.js
-var KEY = "__readingDeskCommentRail";
-var FOLIO_KEY = "__magNativeCommentRailCleanup";
-var armTrap = null;
-function evictFolioRail() {
-  let evicted = false;
-  const folio = window[FOLIO_KEY];
-  if (typeof folio === "function") {
-    try {
-      folio();
-      evicted = true;
-    } catch {
-    }
-    try {
-      delete window[FOLIO_KEY];
-    } catch {
-    }
-  }
-  if (armTrap) armTrap();
-  else if (evicted) {
-    try {
-      delete window[FOLIO_KEY];
-    } catch {
-    }
-  }
-  document.querySelectorAll(".folio-comment-room").forEach((node) => {
-    node.classList.remove("folio-comment-room");
-    node.style.removeProperty("--folio-comment-padding");
-    evicted = true;
-  });
-  return evicted;
-}
+var KEY2 = "__readingDeskCommentRail";
 var NOTE = "mag-native-comment";
 var BADGE = "mag-comment-fold-count";
 var HOST = "mag-comment-rail-host";
@@ -21924,8 +22581,7 @@ function stackNotes(items, activeIndex = -1, gap = GAP) {
   return tops;
 }
 function projection({ enabled, onError, order = () => "oldest" }) {
-  if (typeof window[KEY] === "function") window[KEY]();
-  evictFolioRail();
+  if (typeof window[KEY2] === "function") window[KEY2]();
   document.querySelectorAll(".rei-native-comment,.rei-comment-count").forEach((node) => node.remove());
   let disposed = false, loading = false, renderTimer, dataTimer, activeTarget = null, activeComment = null, lastOrder;
   const models = /* @__PURE__ */ new Map(), cleanups = [], layouts = /* @__PURE__ */ new Map(), replyCache = /* @__PURE__ */ new Map(), railMode = /* @__PURE__ */ new Map(), stickyRails = /* @__PURE__ */ new Set(), animationTimers = /* @__PURE__ */ new Map();
@@ -21946,9 +22602,9 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     if (block.style.getPropertyValue("--mag-comment-reserve") !== `${reserve}px`) block.style.setProperty("--mag-comment-reserve", `${reserve}px`);
   }
   const cardPool = /* @__PURE__ */ new Map();
-  function obtainCard(record, mode, targetUid, key2, used) {
+  function obtainCard(record, mode, targetUid, key3, used) {
     const sig = [language(), mode, record.uid, record.text, meta(record.uid).stamp || 0, replies(record.uid).map((line) => line.text).join("")].join("");
-    let card = cardPool.get(key2);
+    let card = cardPool.get(key3);
     if (!card || card.dataset.sig !== sig) {
       if (card) {
         resize?.unobserve(card);
@@ -21956,10 +22612,10 @@ function projection({ enabled, onError, order = () => "oldest" }) {
       }
       card = makeCard(record, mode, targetUid);
       card.dataset.sig = sig;
-      cardPool.set(key2, card);
+      cardPool.set(key3, card);
       resize?.observe(card);
     }
-    used.add(key2);
+    used.add(key3);
     return card;
   }
   function clearProjection({ keepRails = false, keepCards = false } = {}) {
@@ -22094,11 +22750,11 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     const preview = textOf(pull(record.uid)).slice(0, 120);
     if (!window.confirm(t("Delete this comment?\n\n{0}{1}", [preview, replies(record.uid).length ? t("\n\nIts replies are deleted too.") : ""]))) return;
     await deleteNativeComment(record);
-    cardPool.forEach((card, key2) => {
+    cardPool.forEach((card, key3) => {
       if (card.dataset.commentUid === record.uid) {
         resize?.unobserve(card);
         card.remove();
-        cardPool.delete(key2);
+        cardPool.delete(key3);
       }
     });
     await refresh();
@@ -22150,36 +22806,36 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     return plan;
   }
   function place(article, { animate = false } = {}) {
-    const state = layouts.get(article);
-    if (!state) return;
-    const items = state.items.map((item) => ({ ...item, height: item.card.offsetHeight || 28 }));
+    const state2 = layouts.get(article);
+    if (!state2) return;
+    const items = state2.items.map((item) => ({ ...item, height: item.card.offsetHeight || 28 }));
     const active = items.findIndex((item) => item.targetUid === activeTarget && (!activeComment || item.commentUid === activeComment));
     const tops = stackNotes(items, active);
     items.forEach((item, index) => {
       const top = Math.round(tops[index]);
-      state.items[index].top = top;
-      if (animate && state.items[index].base != null) item.card.style.setProperty("transform", `translate3d(0, ${top - state.items[index].base}px, 0)`, "important");
+      state2.items[index].top = top;
+      if (animate && state2.items[index].base != null) item.card.style.setProperty("transform", `translate3d(0, ${top - state2.items[index].base}px, 0)`, "important");
       else {
-        state.items[index].base = top;
+        state2.items[index].base = top;
         item.card.style.setProperty("--mag-comment-top", `${top}px`);
         item.card.style.removeProperty("transform");
       }
       item.card.classList.toggle("is-active", index === active);
     });
-    state.tops = tops;
+    state2.tops = tops;
   }
   function render3() {
-    if (disposed || window[KEY] !== cleanup2) return;
+    if (disposed || window[KEY2] !== cleanup2) return;
     if (Date.now() < quietUntil) {
       schedule();
       return;
     }
     clearProjection({ keepRails: true, keepCards: true });
+    publishFeature("comments", enabled());
     if (!enabled()) {
       clearProjection();
       return;
     }
-    evictFolioRail();
     const used = /* @__PURE__ */ new Set();
     const currentOrder = order();
     if (currentOrder !== lastOrder) {
@@ -22334,11 +22990,11 @@ function projection({ enabled, onError, order = () => "oldest" }) {
         main3.append(badge);
       }
     }
-    cardPool.forEach((card, key2) => {
-      if (!used.has(key2)) {
+    cardPool.forEach((card, key3) => {
+      if (!used.has(key3)) {
         resize?.unobserve(card);
         card.remove();
-        cardPool.delete(key2);
+        cardPool.delete(key3);
       }
     });
     document.querySelectorAll(`.${NOTE}`).forEach((card) => {
@@ -22364,9 +23020,9 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     quietUntil = Date.now() + (reveal ? 1e3 : 360);
     if ([...layouts.keys()].some((article) => railMode.get(article))) schedule();
     document.querySelectorAll(`.${ANCHOR}`).forEach((node) => node.classList.remove(ANCHOR));
-    for (const [article, state] of layouts) {
+    for (const [article, state2] of layouts) {
       animateArticle(article);
-      const item = state.items.find((entry) => sourceCard ? entry.card === sourceCard : entry.targetUid === targetUid);
+      const item = state2.items.find((entry) => sourceCard ? entry.card === sourceCard : entry.targetUid === targetUid);
       if (!item) continue;
       if (reveal) {
         item.block.classList.add(ANCHOR);
@@ -22470,7 +23126,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     scheduleData();
   });
   on(document, "focusout", (event) => {
-    if (event.target.id !== "reading-desk-panel") scheduleData();
+    if (event.target.matches?.('textarea.rm-block-input,[contenteditable="true"]')) scheduleData();
   });
   on(document, "click", (event) => {
     const target = event.target;
@@ -22478,7 +23134,7 @@ function projection({ enabled, onError, order = () => "oldest" }) {
     const block = target.closest(".roam-article .rm-block[data-block-uid],.roam-log-page .rm-block[data-block-uid]");
     if (!block) return;
     const uid = block.getAttribute("data-block-uid");
-    const owned = [...layouts.values()].some((state) => state.items.some((item) => item.targetUid === uid && item.block === block));
+    const owned = [...layouts.values()].some((state2) => state2.items.some((item) => item.targetUid === uid && item.block === block));
     if (owned) activate(uid);
     else if (activeTarget) deactivate();
   });
@@ -22495,59 +23151,27 @@ function projection({ enabled, onError, order = () => "oldest" }) {
       article.classList.remove("rd-comment-animate");
     });
     animationTimers.clear();
-    if (window[KEY] === cleanup2) {
+    if (window[KEY2] === cleanup2) {
       clearProjection();
-      delete window[KEY];
+      delete window[KEY2];
     }
     models.clear();
     replyCache.clear();
   }
-  window[KEY] = cleanup2;
-  const snapshot = () => [...layouts.values()].flatMap((state) => state.items.map((item) => ({ commentUid: item.commentUid, top: item.top, active: item.card.classList.contains("is-active") })));
+  window[KEY2] = cleanup2;
+  const snapshot = () => [...layouts.values()].flatMap((state2) => state2.items.map((item) => ({ commentUid: item.commentUid, top: item.top, active: item.card.classList.contains("is-active") })));
   return { refresh, render: render3, schedule, cleanup: cleanup2, activate, snapshot, get alive() {
-    return !disposed && window[KEY] === cleanup2;
+    return !disposed && window[KEY2] === cleanup2;
   } };
 }
 function installCommentRail({ enabled = () => true, onError = () => {
 }, order } = {}) {
   let instance, disposed = false;
-  let folioCleanup;
-  const arm = () => {
-    const existing = Object.getOwnPropertyDescriptor(window, FOLIO_KEY);
-    if (existing?.get) return;
-    folioCleanup = typeof existing?.value === "function" ? existing.value : void 0;
-    try {
-      Object.defineProperty(window, FOLIO_KEY, {
-        configurable: true,
-        get: () => folioCleanup,
-        set: (value2) => {
-          folioCleanup = value2;
-          if (typeof value2 === "function" && !disposed && enabled()) setTimeout(() => {
-            if (folioCleanup === value2) {
-              evictFolioRail();
-              instance?.schedule?.();
-            }
-          }, 0);
-        }
-      });
-    } catch {
-    }
-  };
-  armTrap = arm;
-  arm();
-  const releaseTrap = () => {
-    if (armTrap === arm) armTrap = null;
-    const value2 = folioCleanup;
-    try {
-      delete window[FOLIO_KEY];
-      if (value2) window[FOLIO_KEY] = value2;
-    } catch {
-    }
-  };
   const refresh = () => {
     if (disposed) return;
+    publishFeature("comments", enabled());
     if (!enabled()) {
-      if (typeof window[KEY] === "function") window[KEY]();
+      if (typeof window[KEY2] === "function") window[KEY2]();
       return;
     }
     if (!instance?.alive) instance = projection({ enabled, onError, ...order ? { order } : {} });
@@ -22563,7 +23187,7 @@ function installCommentRail({ enabled = () => true, onError = () => {
     disposed = true;
     window.removeEventListener("reading-desk-comments-refresh", refresh);
     instance?.cleanup();
-    releaseTrap();
+    publishFeature("comments", false);
   } };
 }
 
@@ -22589,11 +23213,11 @@ function installToolbar(open2) {
     const size = `${Math.round(Math.max(12, Math.min(18, parseFloat(style?.fontSize) || sibling?.getBoundingClientRect().width || 16)))}px`;
     const siblingButton = sibling?.closest("button,.bp3-button,.bp4-button,.bp5-button");
     if (siblingButton?.classList.contains("bp3-button")) button2.className = [...siblingButton.classList].filter((name) => /^bp3-(?:button|minimal|small)$/.test(name)).join(" ") || button2.className;
-    for (const [key2, value2] of Object.entries({ position: "static", display: "inline-flex", "align-items": "center", "justify-content": "center", "flex-shrink": "0", "pointer-events": "auto", "-webkit-app-region": "no-drag" })) button2.style.setProperty(key2, value2, "important");
+    for (const [key3, value2] of Object.entries({ position: "static", display: "inline-flex", "align-items": "center", "justify-content": "center", "flex-shrink": "0", "pointer-events": "auto", "-webkit-app-region": "no-drag" })) button2.style.setProperty(key3, value2, "important");
     const icon = document.createElement("span");
     icon.className = "bp3-icon bp3-icon-standard bp3-icon-book";
     icon.setAttribute("aria-hidden", "true");
-    for (const [key2, value2] of Object.entries({ "font-size": size, "line-height": "1", "pointer-events": "none", ...style?.color ? { color: style.color } : {} })) icon.style.setProperty(key2, value2, "important");
+    for (const [key3, value2] of Object.entries({ "font-size": size, "line-height": "1", "pointer-events": "none", ...style?.color ? { color: style.color } : {} })) icon.style.setProperty(key3, value2, "important");
     button2.append(icon);
     button2.onclick = () => Promise.resolve(open2()).catch(console.warn);
     const spacer = bar.querySelector(".rm-topbar__left-spacer");
@@ -22620,10 +23244,12 @@ var cleanup = () => {
 var index_default = {
   async onload({ extensionAPI }) {
     cleanup();
-    for (const [key2, value2] of [["reader-auto-progress", true], ["reader-comment-rail", true], ["reader-question-tags", "question"]]) {
-      if (extensionAPI.settings.get(key2) == null) {
+    await configureMetadataPages(extensionAPI);
+    enableImports();
+    for (const [key3, value2] of [["reader-auto-progress", true], ["reader-comment-rail", true], ["reader-question-tags", "question"]]) {
+      if (extensionAPI.settings.get(key3) == null) {
         try {
-          await extensionAPI.settings.set(key2, value2);
+          await extensionAPI.settings.set(key3, value2);
         } catch {
         }
       }
@@ -22655,7 +23281,7 @@ var index_default = {
       const combo = shortcuts?.comboFor(id);
       return combo ? displayCombo(combo) : "";
     };
-    shortcuts = installShortcuts({ get: (key2) => reader.preference(key2, null), handlers: {
+    shortcuts = installShortcuts({ get: (key3) => reader.preference(key3, null), handlers: {
       mark: () => mark.toggle(),
       question: () => mark.toggleQuestion(),
       panel: () => reader.isOpen ? reader.close() : reader.open(),
@@ -22676,6 +23302,7 @@ var index_default = {
       { label: "Reading Desk: Open Reading Notes", callback: () => reader.openNotes().catch((error) => window.alert(error.message)) }
     ];
     cleanup = () => {
+      cancelImports();
       toolbar.cleanup();
       reader.cleanup();
       mark.cleanup();

@@ -1,3 +1,4 @@
+import { blockTreeChanged } from "./dom-changes.js";
 import { DwellMeter } from "./progress.js";
 
 export function startTracker(progress, { onChange = () => {}, onError = () => {} } = {}) {
@@ -33,7 +34,7 @@ export function startTracker(progress, { onChange = () => {}, onError = () => {}
       if (!observed.has(element)) { observed.set(element, uid); observer.observe(element); }
     });
   };
-  const mutation = new window.MutationObserver(() => { clearTimeout(bindTimer); bindTimer = setTimeout(bind, 400); });
+  const mutation = new window.MutationObserver(mutations => { if (!blockTreeChanged(mutations)) return; clearTimeout(bindTimer); bindTimer = setTimeout(bind, 400); });
   const surface = document.querySelector(".roam-body") || document.querySelector(".roam-app") || document.body;
   if (surface) mutation.observe(surface, { childList: true, subtree: true });
   const activity = () => meter.activity(now());

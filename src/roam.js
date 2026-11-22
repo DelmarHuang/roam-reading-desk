@@ -1,13 +1,18 @@
+import { checkCancelled } from "./cancellation.js";
 import { removeJob, saveJob } from "./storage.js";
 import { prepareBlockPlan, writeBlockPlan } from "./writer.js";
 import { forgetManagedBook, getManagedBooks, getManagedLibrary, saveManagedBook } from "./library.js";
 export { getManagedBooks } from "./library.js";
 import { catalogFromPlan, readBookContent, safeRootTrees } from "./catalog.js";
 import { readerMetadataUids } from "./reader-store.js";
-import { flatten, pull as pullTree, textOf, uidOf as graphUid } from "./graph.js";
+import { flatten, owningPage, pull as pullTree, textOf, uidOf as graphUid } from "./graph.js";
 import { t } from "./i18n.js";
 
 let importInProgress = false;
+let importController;
+let importsEnabled = true;
+export function enableImports() { importsEnabled = true; }
+export function cancelImports() { importsEnabled = false; importController?.abort(); }
 
 const roam = () => window.roamAlphaAPI;
 
@@ -119,17 +124,18 @@ function uploadedUrl(result) {
   return match?.[1] || (/^https?:\/\//i.test(result) ? result : "");
 }
 
-async function uploadAssets(job, extensionAPI, onProgress) {
+async function uploadAssets(job, extensionAPI, onProgress, signal) {
   const known = new Map();
   job.attachments.forEach(item => {
     if (item.hash && item.url) known.set(item.hash, item.url);
   });
-  (await getManagedBooks(extensionAPI)).forEach(book => (book.attachments || []).forEach(item => {
+  (await getManagedBooks(extensionAPI, signal)).forEach(book => (book.attachments || []).forEach(item => {
     if (item.ownership === "unknown") return;
     if (item.hash && item.url) known.set(item.hash, item.url);
   }));
   job.progress.stage = "images";
   for (let index = job.progress.assetIndex || 0; index < job.book.assets.length; index += 1) {
+    checkCancelled(signal);
     const asset = job.book.assets[index];
     onProgress?.({ stage: "images", current: index + 1, total: job.book.assets.length, message: t("Processing image {0}/{1}", [index + 1, job.book.assets.length]) });
     if (asset.missing || !asset.bytes) {
@@ -138,7 +144,9 @@ async function uploadAssets(job, extensionAPI, onProgress) {
       let url = known.get(asset.hash);
       let reused = Boolean(url);
       if (!url) {
-        const result = await roam().file.upload({ file: await assetFile(asset), toast: { hide: true } });
+        const file = await assetFile(asset);
+        checkCancelled(signal);
+        const result = await roam().file.upload({ file, toast: { hide: true } });
         url = uploadedUrl(result);
         if (!url) throw new Error(t("Image upload returned no valid URL: {0}", [asset.path]));
         known.set(asset.hash, url);
@@ -170,7 +178,7 @@ function flattenTree(root) {
   visit(root);
   return output;
 }
-async function ensurePage(job) {
+async function ensurePage(job, signal) {
   if (!job.progress.pageUid) {
     job.progress.pageUid = roam().util.generateUID();
     job.progress.pageTitle = makeUniquePageTitle(job.requestedTitle);
@@ -178,23 +186,29 @@ async function ensurePage(job) {
   }
   if (!roam().data.pull("[:block/uid]", [":block/uid", job.progress.pageUid])) {
     if (job.progress.blockIndex > 0) throw new Error(t("The imported page was removed. Select the EPUB again to import."));
+    checkCancelled(signal);
     await roam().data.page.create({ page: { title: job.progress.pageTitle, uid: job.progress.pageUid } });
   }
   job.progress.stage = "chapters";
   await saveJob(job);
 }
 export async function runImport(job, extensionAPI, onProgress) {
+  if (!importsEnabled) throw new Error(t("Reading Desk is disabled. Enable it before importing."));
   if (importInProgress) throw new Error(t("A book is already being imported. Wait for it to finish."));
   importInProgress = true;
+  importController = new AbortController();
+  const signal = importController.signal;
   try {
     if (![3, 4].includes(job.book?.parserVersion)) throw new Error(t("This legacy job has incorrect chapter mappings. Select the EPUB again to create a new import."));
     job.error = null;
     await saveJob(job);
-    await uploadAssets(job, extensionAPI, onProgress);
-    await ensurePage(job);
+    checkCancelled(signal);
+    await uploadAssets(job, extensionAPI, onProgress, signal);
+    checkCancelled(signal);
+    await ensurePage(job, signal);
     prepareBlockPlan(job, () => roam().util.generateUID());
     await saveJob(job);
-    await writeBlockPlan(job, roam(), { checkpoint: saveJob, onProgress });
+    await writeBlockPlan(job, roam(), { checkpoint: saveJob, onProgress, signal });
     const record = {
       id: job.id,
       fileHash: job.book.fileHash,
@@ -208,10 +222,13 @@ export async function runImport(job, extensionAPI, onProgress) {
       catalog: catalogFromPlan(job),
       status: "complete"
     };
-    await saveManagedBook(extensionAPI, record);
+    checkCancelled(signal);
+    await saveManagedBook(extensionAPI, record, signal);
+    checkCancelled(signal);
     job.progress.stage = "complete";
     onProgress?.({ stage: "complete", current: 1, total: 1, message: t("Import complete") });
     await removeJob(job.id);
+    checkCancelled(signal);
     await roam().ui.mainWindow.openPage({ page: { uid: record.pageUid } });
     return record;
   } catch (error) {
@@ -221,6 +238,7 @@ export async function runImport(job, extensionAPI, onProgress) {
     throw error;
   } finally {
     importInProgress = false;
+    importController = null;
   }
 }
 
@@ -238,11 +256,12 @@ export async function prepareBookDeletion(record, extensionAPI) {
   const content = record.status === "cleanup-needed" ? null : readBookContent(record, { allowSuggested: false });
   const rootUids = content ? safeRootTrees(content) : [];
   if (rootUids.some(uid => flatten(pullTree(uid)).some(node => textOf(node).trim() === "[[roam/comments]]"))) throw new Error(t("A native comment store is inside the chapter scope. Deletion is blocked to preserve comments. Keep the comment store on the page outside the book chapters first."));
-  const bookUids = new Set(content?.nodes.map(node => node.uid) || []);
+  const bookUids = new Set(rootUids.flatMap(uid => flatten(pullTree(uid)).map(graphUid)));
   const metadataUids = new Set([...library.metadataUids, ...readerMetadataUids()]);
   const others = library.books.filter(item => item.id !== record.id || item.pageUid !== record.pageUid);
-  let rows;
+  let rows, indexedReferences;
   try {
+    indexedReferences = bookUids.size ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", [...bookUids]) || [] : [];
     rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
   } catch (error) {
     return {
@@ -265,10 +284,14 @@ export async function prepareBookDeletion(record, extensionAPI) {
     const safe = !unknownOwnership && !shared && outsideReferences === 0;
     return { ...item, shared, outsideReferences, safe, reason: unknownOwnership ? t("Original upload ownership is unknown; retained") : shared ? t("Shared with another imported book") : outsideReferences ? t("{0} references outside this book", [outsideReferences]) : t("Used only by this book") };
   });
+  const externalUids = new Set([...indexedReferences.filter(([uid]) => !bookUids.has(uid) && !metadataUids.has(uid)).map(([uid]) => uid), ...rows.filter(([uid, text]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text === "string" && [...text.matchAll(/\(\(([^()\s]+)\)\)/g)].some(match => bookUids.has(match[1]))).map(([uid]) => uid)]);
+  const textByUid = new Map(rows);
+  const externalReferences = [...externalUids].map(uid => ({ uid, text: String(textByUid.get(uid) || "").slice(0, 240), page: owningPage(uid) }));
   return {
     record,
     rootUids, blockUids: [...bookUids], blockCount: bookUids.size, pages: content ? [...content.pages.values()] : [],
-    externalBlockReferences: rows.filter(([uid, text]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text === "string" && [...text.matchAll(/\(\(([^()\s]+)\)\)/g)].some(match => bookUids.has(match[1]))).length,
+    externalBlockReferences: externalUids.size,
+    externalReferences,
     pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
     scanFailed: false,
     attachments
@@ -282,12 +305,19 @@ export async function deleteManagedBook(plan, extensionAPI, onProgress) {
   // Recheck immediately before deleting; references may have changed while
   // the confirmation dialog was open.
   plan = await prepareBookDeletion(plan.record, extensionAPI);
+  if (plan.scanFailed) throw new Error(t("Reference check failed; deletion stopped."));
+  if (plan.externalBlockReferences) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
   const record = plan.record;
   plan.attachments = plan.attachments.map(item => ({ ...item, safe: item.safe && approvedUrls.has(item.url) }));
   if (plan.rootUids.some(uid => !approvedBlocks.has(uid))) throw new Error(t("Chapter scope changed. Review the deletion preview again."));
   if (plan.blockUids.some(uid => !approvedBody.has(uid))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
   for (const uid of plan.rootUids) {
     onProgress?.(t("Deleting book chapters (preserving pages and native comments)…"));
+    const current = flatten(pullTree(uid)).map(graphUid);
+    if (current.some(id => !approvedBody.has(id))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
+    // Recheck each subtree after earlier awaited deletions as well.
+    const references = current.length ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", current) || [] : [];
+    if (references.some(([source]) => !approvedBody.has(source))) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
     await roam().data.block.delete({ block: { uid } });
   }
   const safe = plan.attachments.filter(item => item.safe);

@@ -1,3 +1,5 @@
+import { configureMetadataPages } from "./metadata-page.js";
+import { cancelImports, enableImports } from "./roam.js";
 import { openBookRecovery, openImporter, openManager, setReaderController, unloadUi } from "./ui.js";
 import { installReader } from "./reader.js";
 import { installMark, MARK_COMMAND, QUESTION_COMMAND } from "./mark.js";
@@ -15,6 +17,8 @@ let cleanup = () => {};
 export default {
   async onload({ extensionAPI }) {
     cleanup();
+    await configureMetadataPages(extensionAPI);
+    enableImports();
     for (const [key, value] of [["reader-auto-progress", true], ["reader-comment-rail", true], ["reader-question-tags", "question"]]) {
       if (extensionAPI.settings.get(key) == null) { try { await extensionAPI.settings.set(key, value); } catch { /* session defaults still work */ } }
     }
@@ -53,6 +57,7 @@ export default {
       { label: "Reading Desk: Open Reading Notes", callback: () => reader.openNotes().catch(error => window.alert(error.message)) }
     ];
     cleanup = () => {
+      cancelImports();
       toolbar.cleanup(); reader.cleanup(); mark.cleanup(); comments.cleanup(); shortcuts.cleanup(); setReaderController(null); removeAppearance();
       for (const label of [...commands.map(command => command.label), IMPORT_COMMAND, MANAGE_COMMAND, RECOVER_COMMAND]) Promise.resolve(extensionAPI.ui.commandPalette.removeCommand?.({ label })).catch(console.warn);
     };

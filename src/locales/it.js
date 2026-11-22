@@ -1,5 +1,19 @@
 // it interface strings. Keys are the English text.
 export default {
+  "Resize panel: drag the corner, or use arrow keys": "Ridimensiona il pannello: trascina l’angolo o usa i tasti freccia",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "Separare immagini e testo in {0} blocchi; mantenere gli ID del testo e i blocchi figli",
+  "Separate images and text in existing blocks (preview first)": "Separare immagini e testo nei blocchi esistenti (prima visualizza l’anteprima)",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} blocchi complessi o alla radice dei capitoli sono rimasti invariati.",
+  "{0} image/text blocks": "{0} blocchi immagine/testo",
+
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "Per importare più velocemente, mantieni attivi questa finestra e questa scheda di Roam fino al termine. Passare a un’altra app o scheda può rallentare l’importazione.",
+  "Book or referenced content changed since preview. Preview the repair again.": "Il libro o i riferimenti sono cambiati dopo l’anteprima. Ripeti l’anteprima.",
+  "Reference check failed; deletion stopped.": "Verifica dei riferimenti non riuscita; eliminazione interrotta.",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "Questo libro ha riferimenti esterni ai capitoli. Rimuovili prima di eliminare il libro.",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "{0} blocchi esterni fanno riferimento al libro. Eliminazione bloccata per conservarli.",
+  "Reference checking failed. Deletion is blocked.": "Verifica dei riferimenti non riuscita. Eliminazione bloccata.",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk è disattivato. Attivalo prima di importare.",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Importazione sospesa: Reading Desk è disattivato. Riattivalo per riprendere.",
   "Enter a destination page title.": "Inserisci il titolo della pagina di destinazione.",
   "Select annotations to include first.": "Seleziona prima le annotazioni da includere.",
   "Book repair is available for managed books only.": "La riparazione è disponibile solo per i libri gestiti.",

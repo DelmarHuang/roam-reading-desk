@@ -1,3 +1,4 @@
+import { checkCancelled } from "./cancellation.js";
 import { blockAlias } from "./link-format.js";
 import { t } from "./i18n.js";
 const IMAGE_PATTERN = /⟦EPUBI:(i\d+)⟧/g;
@@ -7,11 +8,9 @@ function valueOf(record, key) {
   return record?.[`:block/${key}`] ?? record?.[key];
 }
 
-// TOC entries (and their supplements) are the book's chapters. They become
-// H1/H2/H3 by TOC depth; the fourth level becomes bold text and deeper levels
-// stay plain. Body headings that are not TOC entries become bold paragraphs,
-// so Contents (H1–H3) shows the EPUB TOC only.
-export const chapterNodeKind = (node, parent, book) => node.kind === "toc" || node.kind === "supplement" || !parent || (book?.tocSource === "headings" && node.kind === "heading");
+// Semantic and source-styled headings participate in the outline, including
+// headings omitted from the EPUB navigation. Roam supports three levels.
+export const chapterNodeKind = (node, parent) => node.kind === "toc" || node.kind === "supplement" || !parent || node.kind === "heading";
 const boldable = text => text && !/\*\*|⟦EPUBI:|\$\$|^\s*```/.test(text);
 
 export function prepareBlockPlan(job, generateUID) {
@@ -56,11 +55,12 @@ export function prepareBlockPlan(job, generateUID) {
   return job.blockPlan;
 }
 
-export async function writeBlockPlan(job, api, { checkpoint, onProgress, wait = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds)), intervalMs = 65 } = {}) {
+export async function writeBlockPlan(job, api, { checkpoint, onProgress, signal, wait = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds)), intervalMs = 65 } = {}) {
   if (!job.blockPlan) throw new Error(t("The chapter structure has not been prepared."));
   const plan = job.blockPlan;
   job.progress.stage = "chapters";
   for (let index = job.progress.blockIndex || 0; index < plan.length; index += 1) {
+    checkCancelled(signal);
     const item = plan[index];
     const existing = api.data.pull("[:block/uid :block/string {:block/parents [:block/uid]}]", [":block/uid", item.uid]);
     if (!valueOf(existing, "uid")) {
@@ -68,7 +68,9 @@ export async function writeBlockPlan(job, api, { checkpoint, onProgress, wait = 
         location: { "parent-uid": item.parentUid, order: item.depth === 0 ? item.chapterIndex : item.order },
         block: { uid: item.uid, string: item.string, open: item.open, ...(item.heading ? { heading: item.heading } : {}) }
       });
-      await wait(intervalMs);
+      // Yield once per bounded batch: background timer throttling must not
+      // add a seconds-long timer to every individual block.
+      if ((index + 1) % 10 === 0 || index + 1 === plan.length) await wait(intervalMs * ((index + 1) % 10 || 10));
     } else {
       const expected = new Set([item.string, item.finalString].filter(value => value != null));
       const parents = valueOf(existing, "parents");
@@ -78,17 +80,21 @@ export async function writeBlockPlan(job, api, { checkpoint, onProgress, wait = 
     }
     job.progress.blockIndex = index + 1;
     job.progress.chapterIndex = index + 1 === plan.length || plan[index + 1].chapterIndex !== item.chapterIndex ? item.chapterIndex + 1 : item.chapterIndex;
+    checkCancelled(signal);
     if ((index + 1) % 20 === 0 || index + 1 === plan.length) await checkpoint?.(job);
     onProgress?.({ stage: "chapters", current: index + 1, total: plan.length, message: t("Importing chapter {0}/{1} · block {2}/{3}", [item.chapterIndex + 1, job.book.chapters.length, index + 1, plan.length]) });
   }
   const linked = plan.filter(item => item.finalString != null);
+  checkCancelled(signal);
   job.progress.stage = "links";
   await checkpoint?.(job);
   for (let index = job.progress.linkIndex || 0; index < linked.length; index += 1) {
+    checkCancelled(signal);
     const item = linked[index];
     await api.data.block.update({ block: { uid: item.uid, string: item.finalString } });
-    await wait(intervalMs);
+    if ((index + 1) % 10 === 0 || index + 1 === linked.length) await wait(intervalMs * ((index + 1) % 10 || 10));
     job.progress.linkIndex = index + 1;
+    checkCancelled(signal);
     if ((index + 1) % 20 === 0 || index + 1 === linked.length) await checkpoint?.(job);
     onProgress?.({ stage: "links", current: index + 1, total: linked.length, message: t("Resolving internal link {0}/{1}", [index + 1, linked.length]) });
   }

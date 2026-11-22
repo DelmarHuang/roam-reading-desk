@@ -3,6 +3,8 @@ import { saveManagedBook } from "./library.js";
 import { FRAGMENT_ARCHIVE } from './paragraph-repair.js';
 import { chapterNodeKind } from "./writer.js";
 import { t } from "./i18n.js";
+import { readDocument } from './reader-store.js';
+import { sourceNavigation } from './book-navigation.js';
 export { chapterNodeKind };
 
 export const isCommentRoot = node => textOf(node).trim() === "[[roam/comments]]";
@@ -75,7 +77,9 @@ export function catalogFromPlan(job) {
     visit(node.children || [], chapter ? uid : parent, chapter ? level + 1 : level);
   });
   visit(job.book.chapters);
-  return { version: 1, confirmed: true, source: "import", headings: true, rootUids: job.book.chapters.map(node => byNode.get(node)), chapters };
+  const navigation = sourceNavigation(job.book, node => byNode.get(node));
+  return { version: 1, confirmed: true, source: "import", headings: true, rootUids: job.book.chapters.map(node => byNode.get(node)), chapters,
+    ...(navigation && !navigation.unmatched.length ? {navigation: {source: navigation.source, chapters: navigation.chapters}} : {}) };
 }
 
 export function suggestCatalog(record, pageUid = record.pageUid) {
@@ -101,6 +105,21 @@ export async function confirmCatalog(record, proposed, selectedRootUids, extensi
 export function readBookContent(record, { allowSuggested = true } = {}) {
   let catalog = record.catalog?.confirmed ? record.catalog : allowSuggested ? suggestCatalog(record) : null;
   if (!catalog) throw new Error(t("Confirm this book's chapter scope in the reading panel first. No reimport or text changes are required."));
+  const rootTrees = new Map(catalog.rootUids.map(uid => [uid, pull(uid)]));
+  const navigation = String(record.id || '').startsWith('page:') ? null : readDocument('book-navigation', bookKey(record)) || catalog.navigation;
+  // Imported scope stays fixed, while Contents follows current H1–H3.
+  // A source-assisted repair need not rewrite the old import catalog.
+  if (navigation) catalog = {...catalog, chapters: navigation.chapters};
+  else if (catalog.headings || catalog.source === "legacy") {
+    // Older linked/recovered books have no `headings` flag. Their confirmed
+    // roots remain chapters even without H1, but descendants must also follow
+    // current headings instead of the stale chapter list saved when linked.
+    const outline = headingOutline([...rootTrees.values()].filter(Boolean), {
+      rootsAreChapters: !catalog.headings && catalog.source === "legacy",
+      progress: !String(record.id || "").startsWith("page:")
+    });
+    catalog = { ...catalog, chapters: outline.chapters };
+  }
   const chapterByUid = new Map(catalog.chapters.map(chapter => [chapter.uid, chapter]));
   const nodes = [];
   const byUid = new Map();
@@ -126,7 +145,7 @@ export function readBookContent(record, { allowSuggested = true } = {}) {
     path.add(uid); childrenOf(node).forEach(child => visit(child, uid)); path.delete(uid);
   };
   for (const uid of catalog.rootUids) {
-    const root = pull(uid);
+    const root = rootTrees.get(uid);
     if (!root) { missing.push(uid); continue; }
     if (titleOf(root)) throw new Error(t("Chapter scope cannot include an entire page. Confirm the book chapters again; the page will be retained."));
     const page = owningPage(uid);
@@ -144,9 +163,9 @@ export function readBookContent(record, { allowSuggested = true } = {}) {
     while (ancestor && !chain.has(ancestor.uid)) { chain.add(ancestor.uid); depth++; ancestor = visibleChapters.find(candidate => candidate.uid === ancestor.parentUid); }
     // Contents stop at three levels (H1–H3); deeper entries fold into theirs.
     // Footnote markers stored as chapters by older catalogs ("[3](((uid)))").
-    if (isFootnoteHeading(byUid.get(chapter.uid).text)) chapterAliases.set(chapter.uid, parent?.uid ?? null);
-    else if (depth >= 3 && parent) chapterAliases.set(chapter.uid, parent.uid);
-    else if (catalog.source !== "import" && parent && isHeading(byUid.get(chapter.uid).node) && chapterTitle(chapter.title) === chapterTitle(parent.title)) chapterAliases.set(chapter.uid, parent.uid);
+    if (!navigation && isFootnoteHeading(byUid.get(chapter.uid).text)) chapterAliases.set(chapter.uid, parent?.uid ?? null);
+    else if (!navigation && depth >= 3 && parent) chapterAliases.set(chapter.uid, parent.uid);
+    else if (!navigation && catalog.source !== "import" && parent && isHeading(byUid.get(chapter.uid).node) && chapterTitle(chapter.title) === chapterTitle(parent.title)) chapterAliases.set(chapter.uid, parent.uid);
     else visibleChapters.push({ ...chapter, parentUid });
   }
   nodes.forEach(node => { node.chapterUid = resolve(node.chapterUid); });

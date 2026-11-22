@@ -1,3 +1,4 @@
+import { optimizeBookImages } from "./book-images.js";
 import { api, bookKey, currentUid, openAt, owningPage, plain, updateBlock } from "./graph.js";
 import { getManagedBooks } from "./library.js";
 import { confirmCatalog, contentForPage, readBookContent, suggestCatalog } from "./catalog.js";
@@ -42,14 +43,23 @@ export function installReader(extensionAPI) {
   let stopLocator = () => {}, activeChapter = null, updateCatalogCurrent = () => {}, actions = {}, lastActionUid;
   const preferences = new Map();
   const collapsedCatalogs = new Map();
-  let panelPosition, drag;
+  let panelPosition, panelSize, drag, sizing;
   function placePanel(x, y) {
     if (!host) return;
     const rect = host.getBoundingClientRect();
     panelPosition = { x:Math.max(0, Math.min(x, window.innerWidth - rect.width)), y:Math.max(0, Math.min(y, window.innerHeight - rect.height)) };
     host.style.setProperty('left', `${panelPosition.x}px`, 'important'); host.style.setProperty('top', `${panelPosition.y}px`, 'important'); host.style.setProperty('right', 'auto', 'important');
   }
-  const resize = () => { if (panelPosition) placePanel(panelPosition.x, panelPosition.y); };
+  function sizePanel(width, height) {
+    if (!host || !panel) return;
+    panelSize = { width: Math.max(Math.min(300, window.innerWidth - 24), Math.min(width, window.innerWidth - 24)), height: Math.max(Math.min(300, window.innerHeight - 24), Math.min(height, window.innerHeight - 24)) };
+    host.style.setProperty('width', `${panelSize.width}px`, 'important');
+    panel.style.height = `${panelSize.height}px`;
+    panel.style.maxHeight = 'calc(100dvh - 24px)';
+    const rect = host.getBoundingClientRect();
+    placePanel(panelPosition?.x ?? rect.left, panelPosition?.y ?? rect.top);
+  }
+  const resize = () => { if (panelSize) sizePanel(panelSize.width, panelSize.height); else if (panelPosition) placePanel(panelPosition.x, panelPosition.y); };
   const preference = (key, fallback) => preferences.has(key) ? preferences.get(key) : extensionAPI.settings.get(key) ?? fallback;
   const report = error => { if (status?.isConnected) status.textContent = error?.message || String(error); else console.warn("[Reading Desk]", error); };
   const run = action => async event => { clearTimeout(refreshTimer); try { await action(event); } catch (error) { report(error); } };
@@ -63,6 +73,7 @@ export function installReader(extensionAPI) {
     input.onchange = run(async () => { await setPreference(key, input.checked); await changed?.(); });
     row.append(input, el("span", label)); return row;
   }
+  let stopImages = () => {};
   const track = () => {
     stopTracker(); stopTracker = () => {};
     if (progress && !content?.ordinaryPage && content.catalog.confirmed && preference("reader-auto-progress", true)) {
@@ -84,11 +95,12 @@ export function installReader(extensionAPI) {
     if (!panel?.isConnected || !progress) return;
     panel.querySelectorAll("[data-progress-uid]").forEach(node => {
       const summary = progress.summary(node.dataset.progressUid);
-      node.textContent = `${t(summary.status)}${summary.seenCount && !summary.read ? t(" · approx. {0}%", [summary.percent]) : ""}`;
+      const label = `${t(summary.status)}${summary.seenCount && !summary.read ? t(" · approx. {0}%", [summary.percent]) : ""}`;
+      if (node.textContent !== label) node.textContent = label;
     });
     panel.querySelectorAll("[data-read-uid]").forEach(node => {
       const read = progress.summary(node.dataset.readUid).read;
-      node.setAttribute("aria-pressed", String(read)); node.textContent = read ? "✓" : ""; node.title = read ? t("Read · click to unmark") : t("Mark as read");
+      node.setAttribute("aria-pressed", String(read)); if (node.textContent !== (read ? "✓" : "")) node.textContent = read ? "✓" : ""; node.title = read ? t("Read · click to unmark") : t("Mark as read");
       node.closest(".rei-reader-chapter")?.classList.toggle("rei-chapter-read", read);
     });
   }
@@ -370,42 +382,61 @@ export function installReader(extensionAPI) {
     let sourceBook = null;
     const summary = el('div');
     const show = () => {
-      const plan = previewBookRepair(repairContent, sourceBook);
+      const plan = previewBookRepair(repairContent, sourceBook, {splitImages: split.checked});
       const lines = describeRepair(plan.counts);
       summary.replaceChildren();
+      if (!sourceBook) summary.append(el("p", t("Choose the original EPUB to check heading levels. Without it, existing heading levels are preserved."), "rei-muted"));
+      if (sourceBook) summary.append(el("p", t("Only unique heading matches within the original chapter are repaired. Edited, missing or ambiguous matches are left unchanged. Typography-based headings need your review."), "rei-muted"));
       if (!lines.length) summary.append(el('p', t("Nothing to repair in this book."), 'rei-muted'));
       else { const list = el('ul', null, 'rei-repair-list'); lines.forEach(line => list.append(el('li', line))); summary.append(el('p', t("This repair will:")), list); }
       if (plan.counts.keptArchives) summary.append(el('p', t("{0} archive(s) stay because an old fragment has its own child blocks.", [plan.counts.keptArchives]), 'rei-muted'));
       const preview = el('details'); preview.append(el('summary', t("Preview the changes")));
       const out = [];
-      plan.paragraphs?.changes.slice(0, 40).forEach(change => out.push(`paragraph  ${plain(change.after).slice(0, 90)}`));
-      plan.links.changes.slice(0, 60).forEach(change => out.push(`link  ${plain(change.before).slice(0, 50)} → ${plain(change.after).slice(0, 50)}`));
-      plan.archives.removable.slice(0, 40).forEach(archive => out.push(`archive  ${plain(archive.fragments[0]?.text || '').slice(0, 80)}${archive.references ? ` (${archive.references} reference(s) moved)` : ''}`));
-      plan.headings.changes.slice(0, 200).forEach(change => out.push(change.type === 'chapter' ? `H${change.before.heading || 0} → H${change.after.heading}  ${plain(change.text).slice(0, 80)}` : change.type === 'duplicate' ? `remove duplicate H${change.heading}  ${plain(change.text).slice(0, 80)}` : change.type === 'footnote' ? `footnote ${plain(change.text)} → end of “${plain(change.targetText).slice(0, 60)}” (${change.childUids.length} paragraphs move up)` : `H${change.before.heading} → ${change.footnote ? 'plain' : 'bold'}  ${plain(change.text).slice(0, 80)}`));
+      plan.images?.changes.forEach(change => out.push(`${change.before} → ${change.parts.map(part => part.text.trim()).join(" | ")}`));
+      if (plan.images?.skipped.length) summary.append(el("p", t("{0} complex or chapter-root image blocks were left unchanged.", [plan.images.skipped.length]), "rei-muted"));
+      if (plan.navigation?.changes) plan.navigation.after.chapters.forEach(chapter => out.push(`${'  '.repeat(chapter.level - 1)}Contents: ${chapter.title}`));
+      if (plan.navigation?.unmatched?.length) summary.append(el('p', t('Original directory was not changed: {0} entries could not be matched uniquely.', [plan.navigation.unmatched.length]), 'rei-muted'));
+      plan.paragraphs?.changes.forEach(change => out.push(`paragraph  ${plain(change.after).slice(0, 90)}`));
+      plan.links.changes.forEach(change => out.push(`link  ${plain(change.before).slice(0, 50)} → ${plain(change.after).slice(0, 50)}`));
+      plan.archives.removable.forEach(archive => out.push(`archive  ${plain(archive.fragments[0]?.text || '').slice(0, 80)}${archive.references ? ` (${archive.references} reference(s) moved)` : ''}`));
+      plan.headings.changes.forEach(change => out.push(change.type === 'chapter' ? `H${change.before.heading || 0} → H${change.after.heading}  ${plain(change.text).slice(0, 80)}${change.source ? ` [${change.source}]` : ""}` : change.type === 'duplicate' ? `remove duplicate H${change.heading}  ${plain(change.text).slice(0, 80)}${change.source ? ` [${change.source}]` : ""}` : change.type === 'footnote' ? `footnote ${plain(change.text)} → end of “${plain(change.targetText).slice(0, 60)}” (${change.childUids.length} paragraphs move up)` : `H${change.before.heading} → ${change.footnote ? 'plain' : 'bold'}  ${plain(change.text).slice(0, 80)}`));
+      for (const change of plan.headings.changes) for (const ref of change.referenceChanges || []) out.push(`reference ((${ref.uid}))  ${ref.before} → ${ref.after}`);
+      for (const archive of plan.archives.removable) for (const fragment of archive.fragments) for (const ref of fragment.referenceChanges || []) out.push(`reference ((${ref.uid}))  ${ref.before} → ${ref.after}`);
       preview.append(el('pre', out.join('\n') || t("Nothing to change.")));
       const apply = button(t("Repair This Book"), async () => {
         if (!window.confirm(t("Repair {0}?\n\n{1}\n\nEverything is backed up; one Undo restores it all.", [repairContent.record.title, lines.map(line => `• ${line}`).join('\n')]))) return;
         apply.disabled = true;
         try {
-          const record = await applyBookRepair(repairContent, () => readBookContent(repairContent.record, { allowSuggested: false }), { sourceBook, onProgress: text => { status.textContent = text; } });
+          const record = await applyBookRepair(plan, { onProgress: text => { status.textContent = text; } });
           await refresh(selectedBook);
           const r = record.results;
-          status.textContent = t("Repaired: {0}.{1} Undo is available.", [[r.paragraphs && t("{0} paragraphs", [r.paragraphs]), r.links && t("{0} link blocks", [r.links]), r.archives && t("{0} archives ({1} references moved)", [r.archives, r.references || 0]), r.headings && t("{0} headings", [r.headings])].filter(Boolean).join(', ') || t("nothing needed"), r.skipped ? t(" {0} block(s) changed since the preview were skipped; run the repair again.", [r.skipped]) : '']);
+          status.textContent = t("Repaired: {0}.{1} Undo is available.", [[r.paragraphs && t("{0} paragraphs", [r.paragraphs]), r.links && t("{0} link blocks", [r.links]), r.archives && t("{0} archives ({1} references moved)", [r.archives, r.references || 0]), r.headings && t("{0} headings", [r.headings]), r.navigation && t("{0} directory entries", [r.navigation]), r.images && t("{0} image/text blocks", [r.images])].filter(Boolean).join(', ') || t("nothing needed"), r.skipped ? t(" {0} block(s) changed since the preview were skipped; run the repair again.", [r.skipped]) : '']);
+        } catch (error) {
+          if (error.code === "STALE_REPAIR_PREVIEW") window.alert(error.message);
+          throw error;
         } finally { if (apply.isConnected) apply.disabled = false; }
       }, 'rei-primary');
       apply.disabled = !plan.total;
       summary.append(preview, apply);
     };
     body.append(el('p', t("Fixes everything that can be fixed safely in one step: heading levels for Contents, footnote markers shown as headings, broken numbered links, and leftover EPUB-READER:paragraph-fragments archives. Text, comments and highlights are kept."), 'rei-muted'));
-    const fileLabel = el('label', null, 'rei-setting'); fileLabel.append(el('span', t("Optional: choose the original EPUB to also rejoin paragraphs split by old imports (read locally, nothing is uploaded)")));
+    const fileLabel = el('label', null, 'rei-setting'); fileLabel.append(el('span', t("Optional: choose the original EPUB to restore matching headings and rejoin split paragraphs (read locally, nothing is uploaded)")));
     const file = el('input'); file.type = 'file'; file.accept = '.epub,application/epub+zip'; file.setAttribute('aria-label', t("Original EPUB for paragraph repair")); fileLabel.append(file);
-    file.onchange = run(async () => {
+    const styledLabel = el('label', null, 'rei-setting rei-checkbox-setting'), styled = el('input'); styled.type = 'checkbox';
+    styledLabel.append(styled, el('span', t("Include typography-based subheadings (larger bold paragraphs; review the changes)")));
+    let parseTicket = 0;
+    const loadSource = run(async () => {
       const sourceFile = file.files?.[0]; if (!sourceFile) return;
+      const ticket = ++parseTicket;
       summary.replaceChildren(el('p', t("Checking the original EPUB…"), 'rei-muted'));
-      sourceBook = await parseEpub(await sourceFile.arrayBuffer(), sourceFile.name);
-      if (file.isConnected && content === repairContent) show();
+      const parsed = await parseEpub(await sourceFile.arrayBuffer(), sourceFile.name, { includeStyledHeadings: styled.checked });
+      if (ticket === parseTicket && file.isConnected && content === repairContent) { sourceBook = parsed; show(); }
     });
-    body.append(fileLabel, summary);
+    file.onchange = styled.onchange = loadSource;
+    const splitLabel = el("label", null, "rei-setting rei-checkbox-setting"), split = el("input"); split.type = "checkbox";
+    splitLabel.append(split, el("span", t("Separate images and text in existing blocks (preview first)")));
+    split.onchange = show;
+    body.append(fileLabel, styledLabel, splitLabel, summary);
     show();
     const last = latestBookRepair(content);
     if (last && !last.undoneAt) body.append(button(t("Undo Last Repair"), async () => {
@@ -433,14 +464,17 @@ export function installReader(extensionAPI) {
   const keyName = id => { const combo = actions.shortcuts?.comboFor(id); return combo ? displayCombo(combo) : t('its shortcut (not set)'); };
   // Click a shortcut, press the new keys. Existing shortcuts are paused while
   // recording so the keys reach the recorder.
+  let stopRecording = () => {};
   function shortcutEditor() {
     const list = el('div',null,'rei-shortcuts');
     for (const spec of SHORTCUTS) {
       const row = el('div',null,'rei-setting rei-shortcut'); row.append(el('span',t(spec.label)));
       const keys = button(displayCombo(actions.shortcuts?.comboFor(spec.id) || ''),() => {
         if (keys.dataset.recording) return;
+        stopRecording();
         keys.dataset.recording = '1'; keys.textContent = t("Press keys…"); actions.shortcuts?.pause(true);
-        const stop = () => { delete keys.dataset.recording; actions.shortcuts?.pause(false); window.removeEventListener('keydown', onKey, true); };
+        const stop = () => { delete keys.dataset.recording; actions.shortcuts?.pause(false); window.removeEventListener('keydown', onKey, true); keys.textContent = displayCombo(actions.shortcuts?.comboFor(spec.id) || ''); stopRecording = () => {}; };
+        stopRecording = stop;
         const onKey = async event => {
           event.preventDefault(); event.stopImmediatePropagation();
           if (event.key === 'Escape') { stop(); keys.textContent = displayCombo(actions.shortcuts?.comboFor(spec.id) || ''); return; }
@@ -492,7 +526,11 @@ export function installReader(extensionAPI) {
     const shortcuts = [...body.querySelectorAll('h4')].find(node => node.textContent === t('Keyboard Shortcuts'));
     shortcuts.after(quickActions,target); rememberActionTarget();
   }
+  const tabScroll = new Map();
+  let drawnTab, drawnKey;
   function draw() {
+    if (drawnTab && body) tabScroll.set(`${drawnKey}:${drawnTab}`, body.scrollTop);
+    stopRecording();
     if (!body?.isConnected || !content) return;
     scopeFooter?.remove(); scopeFooter = null;
     body.replaceChildren();
@@ -507,10 +545,13 @@ export function installReader(extensionAPI) {
       else renderRepair();
     } catch (error) { report(error); }
     panel.querySelectorAll("[data-reader-tab]").forEach(button => button.setAttribute("aria-selected", String(button.dataset.readerTab === (tab === 'Repair' ? 'Settings' : tab))));
+    drawnTab = tab; drawnKey = content.key;
+    body.scrollTop = tabScroll.get(`${drawnKey}:${tab}`) || 0;
     renderLinks();
   }
   async function refresh(book, { followLocation = false } = {}) {
     const ticket = ++generation;
+    stopImages(); stopImages = () => {};
     stopTracker(); stopTracker = () => {};
     stopLocator(); stopLocator = () => {}; activeChapter = null;
     await progress?.flush();
@@ -528,6 +569,8 @@ export function installReader(extensionAPI) {
         || books.find(item => selectedBook && bookKey(item) === bookKey(selectedBook) && onPage(item))
         || books.find(onPage);
     }
+    // Desk has no page UID. The library remains available independently.
+    if (!uid && !book && scope !== ALL && panel?.isConnected) scope = ALL;
     if (scope === ALL) book = null;
     if (book) book = books.find(item => bookKey(item) === bookKey(book)) || book;
     selectedBook = book || null;
@@ -563,6 +606,7 @@ export function installReader(extensionAPI) {
       selector.value = scope === ALL ? ALL : book ? bookKey(book) : pins.some(item => item.uid === page) ? `page:${page}` : "";
     }
     if (status?.isConnected) status.textContent = content.aggregate ? t("All Books · {0} sources · {1} annotations", [content.sources.length, annotations.length]) : content.ordinaryPage ? t("Page · {0} headings · {1} annotations · progress is tracked for books only", [content.chapters.length, annotations.length]) : t("{0} · {1} blocks · {2} annotations · {3} pages", [content.record.title, content.nodes.length, annotations.length, content.pages.size]);
+    stopImages = optimizeBookImages(content);
     draw(); track(); locate();
   }
   async function open(book, requestedTab = "Contents") {
@@ -598,6 +642,26 @@ export function installReader(extensionAPI) {
       for (const name of ["Contents", "Annotations", "Questions", "Notes", "Settings"]) { const item = button(t(name), () => { tab = name; draw(); }); item.dataset.readerTab = name; item.setAttribute("role", "tab"); item.title = t(name); tabs.append(item); }
       status = el("div", t("Loading…"), "rei-reader-status"); status.setAttribute("aria-live", "polite");
       body = el("div", null, "rei-reader-body"); body.setAttribute("role", "tabpanel"); panel.append(header, toolbar, tabs, status, body); shadow.append(panel); (document.querySelector(".roam-app") || document.body).append(host);
+      const grip = button('', () => {}, 'rei-resize-handle');
+      grip.title = t("Resize panel: drag the corner, or use arrow keys");
+      grip.setAttribute('aria-label', grip.title);
+      grip.onpointerdown = event => {
+        if (event.button !== 0) return;
+        const rect = host.getBoundingClientRect();
+        placePanel(rect.left, rect.top);
+        sizing = { id:event.pointerId, x:event.clientX, y:event.clientY, width:rect.width, height:rect.height };
+        grip.setPointerCapture?.(event.pointerId); event.preventDefault(); event.stopPropagation();
+      };
+      grip.onpointermove = event => { if (sizing?.id === event.pointerId) sizePanel(sizing.width + event.clientX - sizing.x, sizing.height + event.clientY - sizing.y); };
+      const endSizing = () => { sizing = null; };
+      grip.onpointerup = endSizing; grip.onpointercancel = endSizing; grip.onlostpointercapture = endSizing;
+      grip.onkeydown = event => {
+        if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
+        event.preventDefault(); event.stopPropagation();
+        const rect = host.getBoundingClientRect(), step = event.shiftKey ? 50 : 10;
+        sizePanel(rect.width + (event.key === 'ArrowRight' ? step : event.key === 'ArrowLeft' ? -step : 0), rect.height + (event.key === 'ArrowDown' ? step : event.key === 'ArrowUp' ? -step : 0));
+      };
+      shadow.append(grip);
       resize();
       document.getElementById("reading-desk-topbar-button")?.setAttribute("aria-expanded", "true");
       panel.onkeydown = event => { if (event.key === "Escape") { event.stopPropagation(); close(); } };
@@ -613,17 +677,16 @@ export function installReader(extensionAPI) {
     const keepTab = tab, position = panelPosition; close(); await open(null, keepTab);
     if (position) placePanel(position.x, position.y);
   }
-  function close() { clearTimeout(refreshTimer); links = null; stopLocator(); stopLocator = () => {}; updateCatalogCurrent = () => {}; drag = null; host?.remove(); host = null; panel = null; document.getElementById("reading-desk-topbar-button")?.setAttribute("aria-expanded", "false"); }
+  function close() { stopRecording(); clearTimeout(refreshTimer); links = null; stopLocator(); stopLocator = () => {}; updateCatalogCurrent = () => {}; drag = null; sizing = null; host?.remove(); host = null; panel = null; document.getElementById("reading-desk-topbar-button")?.setAttribute("aria-expanded", "false"); }
   const route = () => {
     // All Books stays put while the reader follows annotations across pages.
     clearTimeout(routeTimer); routeTimer = setTimeout(() => { if (scope === ALL) { renderLinks(); return; } refresh(null, { followLocation: true }).catch(report); }, 400);
   };
   const focusout = event => {
     if (!panel?.isConnected || event.composedPath().includes(host) || !event.target.matches?.('textarea.rm-block-input,[contenteditable="true"]')) return;
-    clearTimeout(refreshTimer); refreshTimer = setTimeout(() => {
-      if (document.activeElement === host) { if (status?.isConnected) status.textContent = t("Text or comments changed. Click Refresh to update without interrupting your work."); return; }
-      refresh(scope === ALL ? ALL : selectedBook).catch(report);
-    }, 1400);
+    // Never replace a preview, recorder, or tab while the user is working.
+    // Explicit Refresh and real route changes are the only reload triggers.
+    if (status?.isConnected) status.textContent = t("Text or comments changed. Click Refresh to update without interrupting your work.");
   };
   window.addEventListener("hashchange", route); window.addEventListener('resize',resize); document.addEventListener("focusout", focusout);
   document.addEventListener('focusin',rememberActionTarget); rememberActionTarget();
@@ -631,7 +694,7 @@ export function installReader(extensionAPI) {
   return {
     open, close, relanguage, openNotes: (sidebar = false) => openNotes(sidebar), setActions(value) { actions = value; if (panel?.isConnected && tab === 'Settings') draw(); }, async continueReading() { scope = null; await open(null,'Contents'); const last = progress?.latest(); if (last) await navigate(last[1].lastBlockUid); }, get isOpen() { return Boolean(panel?.isConnected); }, get root() { return shadow; }, refresh: () => refresh(scope === ALL ? ALL : selectedBook), preference,
     cleanup() {
-      disposed = true; generation++; stopTracker(); progress?.flush().catch(report); clearTimeout(routeTimer); clearTimeout(refreshTimer);
+      disposed = true; generation++; stopImages(); stopTracker(); progress?.flush().catch(report); clearTimeout(routeTimer); clearTimeout(refreshTimer);
       window.removeEventListener("hashchange", route); window.removeEventListener('resize',resize); document.removeEventListener("focusout", focusout); document.removeEventListener('focusin',rememberActionTarget); close();
     }
   };

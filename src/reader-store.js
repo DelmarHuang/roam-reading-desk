@@ -1,5 +1,6 @@
+import { checkCancelled } from "./cancellation.js";
 import { api, childrenOf, createBlock, pull, textOf, uidOf, updateBlock } from "./graph.js";
-import { ensureMetadataPage } from './metadata-page.js';
+import { ensureMetadataPage, metadataRows } from './metadata-page.js';
 import { t } from "./i18n.js";
 
 const PREFIX = "EPUB-READER:DOC:1 ";
@@ -9,7 +10,7 @@ const queues = new Map();
 const parse = text => JSON.parse(text.slice(PREFIX.length));
 
 export function documentHeaders(type) {
-  return (api().data.q('[:find ?uid ?s :in $ ?prefix :where [?page :node/title ?page-title] [?page :block/children ?e] [?e :block/uid ?uid] [?e :block/string ?s] [(clojure.string/starts-with? ?s ?prefix)]]', PREFIX) || []).map(([uid, text]) => ({ uid, ...parse(text) })).filter(header => !type || header.type === type);
+  return metadataRows(PAGE, PREFIX).map(([uid, text]) => ({ uid, ...parse(text) })).filter(header => !type || header.type === type);
 }
 
 export function readDocument(type, key, headerHint) {
@@ -22,7 +23,7 @@ export function readDocument(type, key, headerHint) {
   return JSON.parse(json);
 }
 
-export function putDocument(type, key, data) {
+export function putDocument(type, key, data, signal) {
   const queueKey = `${type}:${key}`;
   const previous = queues.get(queueKey) || Promise.resolve();
   const json = JSON.stringify(data);
@@ -30,19 +31,24 @@ export function putDocument(type, key, data) {
   // must not create duplicate #mark/page/block references in the graph.
   const snapshot = btoa([...new TextEncoder().encode(json)].map(byte => String.fromCharCode(byte)).join(""));
   const task = previous.catch(() => {}).then(async () => {
+    checkCancelled(signal);
     const prior = documentHeaders(type).filter(item => item.key === key).sort((a, b) => b.revision - a.revision)[0];
-    const parent = prior?.uid || await createBlock(await ensureMetadataPage(PAGE,[PREFIX,'EPUB-READER:PENDING:1 ']), `EPUB-READER:PENDING:1 ${queueKey}`);
+    const page = prior ? null : await ensureMetadataPage(PAGE,[PREFIX,'EPUB-READER:PENDING:1 '], signal);
+    checkCancelled(signal);
+    const parent = prior?.uid || await createBlock(page, `EPUB-READER:PENDING:1 ${queueKey}`);
     const bank = prior ? 1 - prior.bank : 0;
     const oldChunks = childrenOf(pull(parent)).filter(node => textOf(node).startsWith(CHUNK)).map(node => ({ uid: uidOf(node), ...JSON.parse(textOf(node).slice(CHUNK.length)) }));
     const count = Math.max(1, Math.ceil(snapshot.length / 2000));
     // Two banks retain the last complete state if a write is interrupted.
     // Reusing the inactive bank bounds storage instead of appending on scroll.
     for (let index = 0; index < count; index++) {
+      checkCancelled(signal);
       const string = CHUNK + JSON.stringify({ bank, index, text: snapshot.slice(index * 2000, (index + 1) * 2000) });
       const old = oldChunks.find(chunk => chunk.bank === bank && chunk.index === index);
       if (old) await updateBlock({ uid: old.uid, string });
       else await createBlock(parent, string);
     }
+    checkCancelled(signal);
     await updateBlock({ uid: parent, string: PREFIX + JSON.stringify({ type, key, bank, count, encoding: "base64-utf8", revision: (prior?.revision || 0) + 1, updatedAt: Date.now() }), open: false });
     return parent;
   });

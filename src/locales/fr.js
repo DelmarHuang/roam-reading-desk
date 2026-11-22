@@ -1,5 +1,19 @@
 // fr interface strings. Keys are the English text.
 export default {
+  "Resize panel: drag the corner, or use arrow keys": "Redimensionner le panneau : faites glisser le coin ou utilisez les touches fléchées",
+  "Separate images and text in {0} blocks; keep text IDs and child blocks": "Séparer les images et le texte dans {0} blocs ; conserver les identifiants du texte et les blocs enfants",
+  "Separate images and text in existing blocks (preview first)": "Séparer les images et le texte dans les blocs existants (aperçu préalable)",
+  "{0} complex or chapter-root image blocks were left unchanged.": "{0} blocs complexes ou à la racine des chapitres sont restés inchangés.",
+  "{0} image/text blocks": "{0} blocs image/texte",
+
+  "For faster importing, keep this Roam window and tab active until the import finishes. Switching to another app or tab may slow it down.": "Pour accélérer l’importation, gardez cette fenêtre et cet onglet Roam actifs jusqu’à la fin. Passer à une autre application ou un autre onglet peut la ralentir.",
+  "Book or referenced content changed since preview. Preview the repair again.": "Le livre ou les références ont changé depuis l’aperçu. Relancez l’aperçu.",
+  "Reference check failed; deletion stopped.": "Échec de la vérification des références ; suppression arrêtée.",
+  "This book has references from outside its chapters. Remove those references before deleting the book.": "Ce livre est référencé hors de ses chapitres. Retirez ces références avant de le supprimer.",
+  "{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.": "{0} blocs externes référencent le livre. La suppression est bloquée pour les préserver.",
+  "Reference checking failed. Deletion is blocked.": "Échec de la vérification des références. Suppression bloquée.",
+  "Reading Desk is disabled. Enable it before importing.": "Reading Desk est désactivé. Activez-le avant d’importer.",
+  "Import paused because Reading Desk was disabled. Enable it to resume.": "Importation suspendue : Reading Desk a été désactivé. Réactivez-le pour reprendre.",
   "Enter a destination page title.": "Saisissez le titre de la page de destination.",
   "Select annotations to include first.": "Sélectionnez d’abord les annotations à inclure.",
   "Book repair is available for managed books only.": "La réparation n’est disponible que pour les livres gérés.",

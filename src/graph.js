@@ -29,7 +29,8 @@ export function owningPage(uid) {
   return rows[0] ? { uid: rows[0][0], title: rows[0][1] } : null;
 }
 export async function currentUid() {
-  const open = await api().ui?.mainWindow?.getOpenPageOrBlockUid?.();
+  let open;
+  try { open = await api().ui?.mainWindow?.getOpenPageOrBlockUid?.(); } catch { /* Native Desk may not expose a current page. */ }
   if (open) return open;
   const hash = decodeURIComponent(window.location?.hash.match(/\/page\/([^/?]+)/)?.[1] || "");
   if (hash) return hash;

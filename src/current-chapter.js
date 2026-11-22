@@ -1,3 +1,4 @@
+import { blockTreeChanged } from "./dom-changes.js";
 // View-only location tracking. Never query or write graph data while scrolling.
 export function startChapterLocator(content, onChapter) {
   const main = document.querySelector('.roam-main');
@@ -34,7 +35,7 @@ export function startChapterLocator(content, onChapter) {
       if (!observed.has(element)) { observed.set(element,item.chapterUid); observer.observe(element); }
     }); schedule();
   };
-  const mutation = new window.MutationObserver(() => { clearTimeout(bindTimer); bindTimer = setTimeout(bind,150); });
+  const mutation = new window.MutationObserver(mutations => { if (!blockTreeChanged(mutations)) return; clearTimeout(bindTimer); bindTimer = setTimeout(bind,150); });
   mutation.observe(main,{childList:true,subtree:true});
   document.addEventListener('scroll',schedule,{capture:true,passive:true}); window.addEventListener('resize',schedule);
   bind();
