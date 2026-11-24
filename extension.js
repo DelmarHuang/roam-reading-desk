@@ -421,7 +421,11 @@ var fr_default = {
   "Missing EPUB image: {0}": "Image EPUB manquante : {0}",
   "Auto": "Auto",
   "Interface language": "Langue de l\u2019interface",
-  "Interface language for Reading Desk (Auto follows your browser).": "Langue de l\u2019interface de Reading Desk (Auto suit votre navigateur)."
+  "Interface language for Reading Desk (Auto follows your browser).": "Langue de l\u2019interface de Reading Desk (Auto suit votre navigateur).",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "{0} fichiers image n\u2019ont pas de trace d\u2019envoi v\xE9rifi\xE9e dans la biblioth\xE8que actuelle. Cela ne signifie pas que les images sont absentes.",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "Autoriser le nettoyage des images Roam de ce livre sans trace d\u2019envoi. Les fichiers encore utilis\xE9s dans le graphe seront conserv\xE9s.",
+  " Also delete {0} eligible cloud image files{1}.": " Supprimer aussi {0} fichiers image du cloud admissibles au nettoyage{1}.",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "Ceci supprime {0} blocs racines de chapitre et {1} blocs. Fichiers image du cloud \xE0 supprimer : {2}. Les pages et commentaires natifs sont conserv\xE9s."
 };
 
 // src/locales/it.js
@@ -847,7 +851,11 @@ var it_default = {
   "Missing EPUB image: {0}": "Immagine EPUB mancante: {0}",
   "Auto": "Auto",
   "Interface language": "Lingua dell\u2019interfaccia",
-  "Interface language for Reading Desk (Auto follows your browser).": "Lingua dell\u2019interfaccia di Reading Desk (Auto segue il browser)."
+  "Interface language for Reading Desk (Auto follows your browser).": "Lingua dell\u2019interfaccia di Reading Desk (Auto segue il browser).",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "{0} file immagine non hanno un registro di caricamento verificato nella libreria attuale. Questo non significa che le immagini siano assenti.",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "Consenti la pulizia delle immagini Roam di questo libro senza registro di caricamento. I file ancora usati nel grafo saranno conservati.",
+  " Also delete {0} eligible cloud image files{1}.": " Elimina anche {0} file immagine nel cloud idonei alla pulizia{1}.",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "Verranno eliminati {0} blocchi radice dei capitoli e {1} blocchi. File immagine nel cloud da eliminare: {2}. Pagine e commenti nativi saranno conservati."
 };
 
 // src/locales/de.js
@@ -1273,7 +1281,11 @@ var de_default = {
   "Missing EPUB image: {0}": "Fehlendes EPUB-Bild: {0}",
   "Auto": "Auto",
   "Interface language": "Sprache der Oberfl\xE4che",
-  "Interface language for Reading Desk (Auto follows your browser).": "Sprache der Oberfl\xE4che von Reading Desk (Auto folgt deinem Browser)."
+  "Interface language for Reading Desk (Auto follows your browser).": "Sprache der Oberfl\xE4che von Reading Desk (Auto folgt deinem Browser).",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "F\xFCr {0} Bilddateien fehlt in der aktuellen Bibliothek ein verifizierter Upload-Nachweis. Das bedeutet nicht, dass die Bilder fehlen.",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "Bereinigung der Roam-Bilddateien dieses Buchs ohne Upload-Nachweis erlauben. Im Graph noch verwendete Dateien bleiben erhalten.",
+  " Also delete {0} eligible cloud image files{1}.": " Auch {0} zur Bereinigung geeignete Bilddateien aus der Cloud l\xF6schen{1}.",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "Dies l\xF6scht {0} Kapitelwurzelbl\xF6cke und {1} Bl\xF6cke. Zu l\xF6schende Bilddateien in der Cloud: {2}. Seiten und native Kommentare bleiben erhalten."
 };
 
 // src/locales/es.js
@@ -1699,7 +1711,11 @@ var es_default = {
   "Missing EPUB image: {0}": "Falta una imagen del EPUB: {0}",
   "Auto": "Auto",
   "Interface language": "Idioma de la interfaz",
-  "Interface language for Reading Desk (Auto follows your browser).": "Idioma de la interfaz de Reading Desk (Auto sigue al navegador)."
+  "Interface language for Reading Desk (Auto follows your browser).": "Idioma de la interfaz de Reading Desk (Auto sigue al navegador).",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "{0} archivos de imagen no tienen un registro de carga verificado en la biblioteca actual. Esto no significa que falten las im\xE1genes.",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "Permitir la limpieza de las im\xE1genes de Roam de este libro sin registro de carga. Se conservar\xE1n los archivos que sigan en uso en el grafo.",
+  " Also delete {0} eligible cloud image files{1}.": " Eliminar tambi\xE9n {0} archivos de imagen en la nube aptos para la limpieza{1}.",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "Se eliminar\xE1n {0} bloques ra\xEDz de cap\xEDtulos y {1} bloques. Archivos de imagen en la nube que se eliminar\xE1n: {2}. Se conservar\xE1n las p\xE1ginas y los comentarios nativos."
 };
 
 // src/locales/zh.js
@@ -2125,7 +2141,11 @@ var zh_default = {
   "Missing EPUB image: {0}": "\u7F3A\u5C11 EPUB \u56FE\u7247\uFF1A{0}",
   "Auto": "\u81EA\u52A8",
   "Interface language": "\u754C\u9762\u8BED\u8A00",
-  "Interface language for Reading Desk (Auto follows your browser).": "Reading Desk \u7684\u754C\u9762\u8BED\u8A00\uFF08\u81EA\u52A8\uFF1A\u8DDF\u968F\u6D4F\u89C8\u5668\uFF09\u3002"
+  "Interface language for Reading Desk (Auto follows your browser).": "Reading Desk \u7684\u754C\u9762\u8BED\u8A00\uFF08\u81EA\u52A8\uFF1A\u8DDF\u968F\u6D4F\u89C8\u5668\uFF09\u3002",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "\u5F53\u524D\u4E66\u5E93\u4E2D\u6709 {0} \u4E2A\u56FE\u7247\u6587\u4EF6\u7F3A\u5C11\u53EF\u6838\u5B9E\u7684\u4E0A\u4F20\u8BB0\u5F55\uFF0C\u4E0D\u4EE3\u8868\u56FE\u7247\u4E0D\u5B58\u5728\u3002",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "\u5141\u8BB8\u6E05\u7406\u672C\u4E66\u4E2D\u7F3A\u5C11\u4E0A\u4F20\u8BB0\u5F55\u7684 Roam \u56FE\u7247\u6587\u4EF6\u3002\u56FE\u8C31\u5185\u4EFB\u4F55\u4F4D\u7F6E\u4ECD\u5728\u4F7F\u7528\u7684\u6587\u4EF6\u90FD\u4F1A\u4FDD\u7559\u3002",
+  " Also delete {0} eligible cloud image files{1}.": " \u540C\u65F6\u5220\u9664 {0} \u4E2A\u7B26\u5408\u6E05\u7406\u6761\u4EF6\u7684\u4E91\u7AEF\u56FE\u7247\u6587\u4EF6{1}\u3002",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "\u5C06\u5220\u9664 {0} \u4E2A\u7AE0\u8282\u6839\u5757\u548C {1} \u4E2A\u5757\u3002\u5C06\u5220\u9664\u7684\u4E91\u7AEF\u56FE\u7247\u6587\u4EF6\uFF1A{2} \u4E2A\u3002\u9875\u9762\u548C\u539F\u751F\u8BC4\u8BBA\u4FDD\u7559\u3002"
 };
 
 // src/i18n.js
@@ -3494,7 +3514,7 @@ async function runImport(job, extensionAPI, onProgress) {
     importController = null;
   }
 }
-async function prepareBookDeletion(record, extensionAPI) {
+async function prepareBookDeletion(record, extensionAPI, { includeUnverified = false } = {}) {
   const library = await getManagedLibrary(extensionAPI);
   const key3 = record.libraryKey || record.pageUid || record.id;
   record = library.books.find((book) => (book.libraryKey || book.pageUid || book.id) === key3);
@@ -3507,8 +3527,10 @@ async function prepareBookDeletion(record, extensionAPI) {
   const others = library.books.filter((item) => item.id !== record.id || item.pageUid !== record.pageUid);
   let rows, indexedReferences;
   try {
-    indexedReferences = bookUids.size ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", [...bookUids]) || [] : [];
-    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
+    indexedReferences = bookUids.size ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", [...bookUids]) : [];
+    if (!Array.isArray(indexedReferences)) throw new Error(t("Reference check failed; deletion stopped."));
+    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
+    if (!Array.isArray(rows)) throw new Error("Reference scan unavailable");
   } catch (error) {
     return {
       record,
@@ -3528,9 +3550,9 @@ async function prepareBookDeletion(record, extensionAPI) {
     if (item.url && !unique.has(item.url)) unique.set(item.url, item);
   });
   const attachments = [...unique.values()].map((item) => {
-    const shared = others.some((book) => (book.attachments || []).some((candidate) => candidate.url === item.url || candidate.hash && candidate.hash === item.hash));
-    const outsideReferences = rows.filter(([uid, value2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof value2 === "string" && value2.includes(item.url)).length;
-    const unknownOwnership = item.ownership === "unknown";
+    const shared = others.some((book) => book.status !== "cleanup-needed" && (book.attachments || []).some((candidate) => sameFile(candidate.url, item.url) || candidate.hash && candidate.hash === item.hash));
+    const outsideReferences = rows.filter(([uid, value2]) => !bookUids.has(uid) && !metadataUids.has(uid) && referencesFile(value2, item.url)).length;
+    const unknownOwnership = item.ownership === "unknown" && !(includeUnverified && isRoamImageFile(item.url));
     const safe = !unknownOwnership && !shared && outsideReferences === 0;
     return { ...item, shared, outsideReferences, safe, reason: unknownOwnership ? t("Original upload ownership is unknown; retained") : shared ? t("Shared with another imported book") : outsideReferences ? t("{0} references outside this book", [outsideReferences]) : t("Used only by this book") };
   });
@@ -3547,14 +3569,33 @@ async function prepareBookDeletion(record, extensionAPI) {
     externalReferences,
     pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
     scanFailed: false,
-    attachments
+    attachments,
+    includeUnverified
   };
+}
+function storageIdentity(value2) {
+  try {
+    const url = new URL(value2);
+    if (url.protocol !== "https:" || url.hostname !== "firebasestorage.googleapis.com") return null;
+    return url.origin + decodeURIComponent(url.pathname);
+  } catch {
+    return null;
+  }
+}
+function sameFile(a, b) {
+  return a === b || Boolean(storageIdentity(a) && storageIdentity(a) === storageIdentity(b));
+}
+function referencesFile(text2, url) {
+  if (typeof text2 !== "string") return false;
+  if (text2.includes(url)) return true;
+  if (!storageIdentity(url)) return false;
+  return (text2.match(/https?:\/\/[^\s<>"'()[\]{}]+/g) || []).some((candidate) => sameFile(candidate, url));
 }
 function fileStillUsed(url, metadataUids) {
   try {
     const rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
     if (!Array.isArray(rows)) return true;
-    return rows.some(([uid, text2]) => !metadataUids.has(uid) && typeof text2 === "string" && text2.includes(url));
+    return rows.some(([uid, text2]) => !metadataUids.has(uid) && referencesFile(text2, url));
   } catch {
     return true;
   }
@@ -3563,7 +3604,7 @@ async function deleteManagedBook(plan, extensionAPI, onProgress) {
   const approvedUrls = new Set(plan.attachments.filter((item) => item.safe).map((item) => item.url));
   const approvedBlocks = new Set(plan.rootUids);
   const approvedBody = new Set(plan.blockUids);
-  plan = await prepareBookDeletion(plan.record, extensionAPI);
+  plan = await prepareBookDeletion(plan.record, extensionAPI, { includeUnverified: plan.includeUnverified === true });
   if (plan.scanFailed) throw new Error(t("Reference check failed; deletion stopped."));
   if (plan.externalBlockReferences) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
   const record = plan.record;
@@ -3574,7 +3615,8 @@ async function deleteManagedBook(plan, extensionAPI, onProgress) {
     onProgress?.(t("Deleting book chapters (preserving pages and native comments)\u2026"));
     const current2 = flatten(pull(uid)).map(uidOf);
     if (current2.some((id) => !approvedBody.has(id))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
-    const references = current2.length ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", current2) || [] : [];
+    const references = current2.length ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", current2) : [];
+    if (!Array.isArray(references)) throw new Error(t("Reference check failed; deletion stopped."));
     if (references.some(([source]) => !approvedBody.has(source))) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
     await roam().data.block.delete({ block: { uid } });
   }
@@ -3595,15 +3637,23 @@ async function deleteManagedBook(plan, extensionAPI, onProgress) {
     }
   }
   const preserved = [...plan.attachments.filter((item) => !item.safe), ...retained];
-  if (failures.length) {
-    await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: failures, status: "cleanup-needed", cleanupError: "Some attachments could not be deleted" });
+  if (failures.length || preserved.length) {
+    await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: [...failures, ...preserved].map(({ safe: safe2, reason, shared, outsideReferences, ...item }) => item), status: "cleanup-needed", cleanupError: "Retained attachments can be reviewed again later" });
   } else await forgetManagedBook(extensionAPI, record);
   return { deletedAttachments: safe.length - failures.length - retained.length, preservedAttachments: preserved.length, failures };
 }
 var IMAGE_RE = /!\[[^\]]*\]\(([^()\s]+(?:\([^()\s]*\)[^()\s]*)*)\)|\{\{\[?\[?(?:img|image)\]?\]?:\s*([^}\s]+)\s*\}\}/gi;
 var imageUrlsIn = (text2) => [...String(text2 || "").matchAll(IMAGE_RE)].map((match) => match[1] || match[2]);
 var stripImages = (text2) => String(text2 || "").replace(IMAGE_RE, "").replace(/[ \t]{2,}/g, " ").replace(/^[ \t]+|[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n").trim();
-async function prepareImageRemoval(record, extensionAPI) {
+function isRoamImageFile(value2) {
+  try {
+    const url = new URL(value2);
+    return url.protocol === "https:" && url.hostname === "firebasestorage.googleapis.com" && /^\/v0\/b\/firescript-577a2\.appspot\.com\/o\/imgs\/app\/[^/]+\/[^/]+$/.test(decodeURIComponent(url.pathname));
+  } catch {
+    return false;
+  }
+}
+async function prepareImageRemoval(record, extensionAPI, { includeUnverified = false } = {}) {
   const library = await getManagedLibrary(extensionAPI);
   const key3 = record.libraryKey || record.pageUid || record.id;
   record = library.books.find((book) => (book.libraryKey || book.pageUid || book.id) === key3);
@@ -3630,21 +3680,21 @@ async function prepareImageRemoval(record, extensionAPI) {
   const others = library.books.filter((item) => (item.libraryKey || item.pageUid || item.id) !== key3);
   let rows = null;
   try {
-    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
+    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
+    if (!Array.isArray(rows)) rows = null;
   } catch {
     rows = null;
   }
   const ledger = new Map((record.attachments || []).filter((item) => item.url).map((item) => [item.url, item]));
   const files = [.../* @__PURE__ */ new Set([...ledger.keys(), ...usedUrls])].map((url) => {
     const item = ledger.get(url) || { url, ownership: "unknown" };
-    if (!ledger.has(url)) return { ...item, safe: false, reason: t("Not uploaded by this import; file retained") };
-    if (item.ownership === "unknown") return { ...item, safe: false, reason: t("Original upload ownership is unknown; file retained") };
+    if (item.ownership === "unknown" && !(includeUnverified && isRoamImageFile(url))) return { ...item, safe: false, reason: t("Original upload ownership is unknown; file retained") };
     if (!rows) return { ...item, safe: false, reason: t("Reference check failed; file retained") };
-    const shared = others.some((book) => (book.attachments || []).some((candidate) => candidate.url === url || candidate.hash && candidate.hash === item.hash));
-    const outside = rows.filter(([uid, text2]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text2 === "string" && text2.includes(url)).length;
+    const shared = others.some((book) => book.status !== "cleanup-needed" && (book.attachments || []).some((candidate) => sameFile(candidate.url, url) || candidate.hash && candidate.hash === item.hash));
+    const outside = rows.filter(([uid, text2]) => !bookUids.has(uid) && !metadataUids.has(uid) && referencesFile(text2, url)).length;
     return { ...item, shared, outsideReferences: outside, safe: !shared && !outside, reason: shared ? t("Shared with another imported book") : outside ? t("{0} references outside this book", [outside]) : t("Used only by this book") };
   });
-  return { record, blocks, files, bookUids: [...bookUids] };
+  return { record, blocks, files, bookUids: [...bookUids], includeUnverified };
 }
 async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProgress } = {}) {
   const approved = new Set(plan.files.filter((item) => item.safe).map((item) => item.url));
@@ -3687,7 +3737,7 @@ async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProg
     }
   }
   const record = plan.record;
-  await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: (record.attachments || []).filter((item) => !removed.has(item.url)), imagesRemovedAt: (/* @__PURE__ */ new Date()).toISOString() });
+  await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: [...new Map([...record.attachments || [], ...plan.files].map(({ safe, reason, shared, outsideReferences, ...item }) => [item.url, item])).values()].filter((item) => !removed.has(item.url)), imagesRemovedAt: (/* @__PURE__ */ new Date()).toISOString() });
   return result;
 }
 
@@ -19872,18 +19922,30 @@ async function openImporter(extensionAPI) {
     notice(body, t("Cannot read saved jobs: {0}", [error?.message || error]), "rei-error");
   }
 }
+function unknownImageConsent(body, files, checked, onChange) {
+  const count = files.filter((item) => item.ownership === "unknown").length;
+  if (!count) return;
+  notice(body, t("{0} image files have no verified upload record in the current library. This does not mean the images are missing.", [count]), "rei-muted");
+  const label = element("label", "rei-checkbox-row");
+  const input = element("input");
+  input.type = "checkbox";
+  input.checked = checked;
+  label.append(input, element("span", "", t("Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.")));
+  input.onchange = () => onChange(input.checked);
+  body.append(label);
+}
 function attachmentSummary(plan) {
   const safe = plan.attachments.filter((item) => item.safe).length;
   const preserved = plan.attachments.length - safe;
-  return t("This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.", [plan.rootUids.length, plan.blockCount, safe]) + (preserved ? t(" {0} shared or unverified attachments will be retained.", [preserved]) : "");
+  return t("This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.", [plan.rootUids.length, plan.blockCount, safe]) + (preserved ? t(" {0} shared or unverified attachments will be retained.", [preserved]) : "");
 }
-async function confirmImageRemoval(body, record, extensionAPI) {
+async function confirmImageRemoval(body, record, extensionAPI, includeUnverified = false) {
   body.replaceChildren();
   body.append(element("h3", "", t("Remove images \xB7 {0}", [record.title])));
   const status = notice(body, t("Finding images and checking where their files are used\u2026"), "rei-muted");
   let plan;
   try {
-    plan = await prepareImageRemoval(record, extensionAPI);
+    plan = await prepareImageRemoval(record, extensionAPI, { includeUnverified });
   } catch (error) {
     status.textContent = t("Check failed: {0}", [error?.message || error]);
     status.className = "rei-notice rei-error";
@@ -19892,6 +19954,7 @@ async function confirmImageRemoval(body, record, extensionAPI) {
     body.append(back);
     return;
   }
+  unknownImageConsent(body, plan.files, includeUnverified, (value2) => confirmImageRemoval(body, record, extensionAPI, value2));
   const safe = plan.files.filter((item) => item.safe).length, retained = plan.files.length - safe;
   const emptied = plan.blocks.filter((block) => block.remove).length;
   if (!plan.blocks.length && !safe) {
@@ -19902,11 +19965,12 @@ async function confirmImageRemoval(body, record, extensionAPI) {
     return;
   }
   status.textContent = t("{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.", [plan.blocks.length, emptied]);
-  const files = element("label", "rei-field");
+  const files = element("label", "rei-checkbox-row");
   const check = element("input");
   check.type = "checkbox";
-  check.checked = true;
-  files.append(check, element("span", "", t(" Also delete {0} uploaded image files used only by this book{1}.", [safe, retained ? t(" ({0} shared, outside-referenced or unverified files are kept)", [retained]) : ""])));
+  check.checked = safe > 0;
+  check.disabled = safe === 0;
+  files.append(check, element("span", "", t(" Also delete {0} eligible cloud image files{1}.", [safe, retained ? t(" ({0} shared, outside-referenced or unverified files are kept)", [retained]) : ""])));
   body.append(files);
   const preview = element("details");
   preview.append(element("summary", "", t("Preview the first changes")));
@@ -19942,13 +20006,13 @@ ${block.before.slice(0, 200)}
   actions.append(cancel, go);
   body.append(actions);
 }
-async function confirmDeletion(body, record, extensionAPI) {
+async function confirmDeletion(body, record, extensionAPI, includeUnverified = false) {
   body.replaceChildren();
   body.append(element("h3", "", t("Delete {0}", [record.title])));
   const status = notice(body, t("Checking attachment references in other pages and books\u2026"), "rei-muted");
   let plan;
   try {
-    plan = await prepareBookDeletion(record, extensionAPI);
+    plan = await prepareBookDeletion(record, extensionAPI, { includeUnverified });
   } catch (error) {
     status.textContent = t("Check failed: {0}", [error?.message || error]);
     status.className = "rei-notice rei-error";
@@ -19956,6 +20020,7 @@ async function confirmDeletion(body, record, extensionAPI) {
     return;
   }
   status.textContent = attachmentSummary(plan);
+  unknownImageConsent(body, plan.attachments, includeUnverified, (value2) => confirmDeletion(body, record, extensionAPI, value2));
   if (plan.pages.length) notice(body, t("Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.", [plan.pages.join("; ")]), "rei-muted");
   if (plan.externalBlockReferences) notice(body, t("{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.", [plan.externalBlockReferences]), "rei-error");
   for (const ref of plan.externalReferences || []) {
@@ -19972,7 +20037,6 @@ async function confirmDeletion(body, record, extensionAPI) {
   if (plan.scanFailed) {
     notice(body, t("Reference checking failed. Deletion is blocked."), "rei-error");
   }
-  if (record.status === "recovered") notice(body, t("This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained."), "rei-muted");
   const label = element("label", "rei-field");
   label.append(element("span", "", t("Type the full book title to confirm: {0}", [record.title])));
   const input = element("input", "rei-input");

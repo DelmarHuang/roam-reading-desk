@@ -248,7 +248,7 @@ function collectBookUids(record) {
   return new Set(tree ? flattenTree(tree).map(uidOf) : []);
 }
 
-export async function prepareBookDeletion(record, extensionAPI) {
+export async function prepareBookDeletion(record, extensionAPI, { includeUnverified = false } = {}) {
   const library = await getManagedLibrary(extensionAPI);
   const key = record.libraryKey || record.pageUid || record.id;
   record = library.books.find(book => (book.libraryKey || book.pageUid || book.id) === key);
@@ -261,8 +261,10 @@ export async function prepareBookDeletion(record, extensionAPI) {
   const others = library.books.filter(item => item.id !== record.id || item.pageUid !== record.pageUid);
   let rows, indexedReferences;
   try {
-    indexedReferences = bookUids.size ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", [...bookUids]) || [] : [];
-    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || [];
+    indexedReferences = bookUids.size ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", [...bookUids]) : [];
+    if (!Array.isArray(indexedReferences)) throw new Error(t("Reference check failed; deletion stopped."));
+    rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
+    if (!Array.isArray(rows)) throw new Error("Reference scan unavailable");
   } catch (error) {
     return {
       record,
@@ -278,9 +280,9 @@ export async function prepareBookDeletion(record, extensionAPI) {
     if (item.url && !unique.has(item.url)) unique.set(item.url, item);
   });
   const attachments = [...unique.values()].map(item => {
-    const shared = others.some(book => (book.attachments || []).some(candidate => candidate.url === item.url || (candidate.hash && candidate.hash === item.hash)));
-    const outsideReferences = rows.filter(([uid, value]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof value === "string" && value.includes(item.url)).length;
-    const unknownOwnership = item.ownership === "unknown";
+    const shared = others.some(book => book.status !== "cleanup-needed" && (book.attachments || []).some(candidate => sameFile(candidate.url, item.url) || (candidate.hash && candidate.hash === item.hash)));
+    const outsideReferences = rows.filter(([uid, value]) => !bookUids.has(uid) && !metadataUids.has(uid) && referencesFile(value, item.url)).length;
+    const unknownOwnership = item.ownership === "unknown" && !(includeUnverified && isRoamImageFile(item.url));
     const safe = !unknownOwnership && !shared && outsideReferences === 0;
     return { ...item, shared, outsideReferences, safe, reason: unknownOwnership ? t("Original upload ownership is unknown; retained") : shared ? t("Shared with another imported book") : outsideReferences ? t("{0} references outside this book", [outsideReferences]) : t("Used only by this book") };
   });
@@ -294,8 +296,26 @@ export async function prepareBookDeletion(record, extensionAPI) {
     externalReferences,
     pageExists: Boolean(record.pageUid && roam().data.pull("[:block/uid]", [":block/uid", record.pageUid])),
     scanFailed: false,
-    attachments
+    attachments, includeUnverified
   };
+}
+
+// Firebase download tokens and URL encoding do not change the stored object.
+function storageIdentity(value) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || url.hostname !== "firebasestorage.googleapis.com") return null;
+    return url.origin + decodeURIComponent(url.pathname);
+  } catch { return null; }
+}
+function sameFile(a, b) {
+  return a === b || Boolean(storageIdentity(a) && storageIdentity(a) === storageIdentity(b));
+}
+function referencesFile(text, url) {
+  if (typeof text !== "string") return false;
+  if (text.includes(url)) return true;
+  if (!storageIdentity(url)) return false;
+  return (text.match(/https?:\/\/[^\s<>"'()[\]{}]+/g) || []).some(candidate => sameFile(candidate, url));
 }
 
 // Check live content immediately before storage deletion, including plain URLs
@@ -304,7 +324,7 @@ function fileStillUsed(url, metadataUids) {
   try {
     const rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
     if (!Array.isArray(rows)) return true;
-    return rows.some(([uid, text]) => !metadataUids.has(uid) && typeof text === "string" && text.includes(url));
+    return rows.some(([uid, text]) => !metadataUids.has(uid) && referencesFile(text, url));
   } catch { return true; }
 }
 
@@ -314,7 +334,7 @@ export async function deleteManagedBook(plan, extensionAPI, onProgress) {
   const approvedBody = new Set(plan.blockUids);
   // Recheck immediately before deleting; references may have changed while
   // the confirmation dialog was open.
-  plan = await prepareBookDeletion(plan.record, extensionAPI);
+  plan = await prepareBookDeletion(plan.record, extensionAPI, { includeUnverified: plan.includeUnverified === true });
   if (plan.scanFailed) throw new Error(t("Reference check failed; deletion stopped."));
   if (plan.externalBlockReferences) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
   const record = plan.record;
@@ -326,7 +346,8 @@ export async function deleteManagedBook(plan, extensionAPI, onProgress) {
     const current = flatten(pullTree(uid)).map(graphUid);
     if (current.some(id => !approvedBody.has(id))) throw new Error(t("New content was added inside the book scope. Deletion stopped; review the preview again."));
     // Recheck each subtree after earlier awaited deletions as well.
-    const references = current.length ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", current) || [] : [];
+    const references = current.length ? roam().data.q("[:find ?sourceUid :in $ [?targetUid ...] :where [?target :block/uid ?targetUid] [?source :block/refs ?target] [?source :block/uid ?sourceUid]]", current) : [];
+    if (!Array.isArray(references)) throw new Error(t("Reference check failed; deletion stopped."));
     if (references.some(([source]) => !approvedBody.has(source))) throw new Error(t("This book has references from outside its chapters. Remove those references before deleting the book."));
     await roam().data.block.delete({ block: { uid } });
   }
@@ -341,8 +362,8 @@ export async function deleteManagedBook(plan, extensionAPI, onProgress) {
     catch (error) { failures.push({ ...safe[index], error: error?.message || String(error) }); }
   }
   const preserved = [...plan.attachments.filter(item => !item.safe), ...retained];
-  if (failures.length) {
-    await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: failures, status: "cleanup-needed", cleanupError: "Some attachments could not be deleted" });
+  if (failures.length || preserved.length) {
+    await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: [...failures, ...preserved].map(({safe, reason, shared, outsideReferences, ...item}) => item), status: "cleanup-needed", cleanupError: "Retained attachments can be reviewed again later" });
   } else await forgetManagedBook(extensionAPI, record);
   return { deletedAttachments: safe.length - failures.length - retained.length, preservedAttachments: preserved.length, failures };
 }
@@ -355,7 +376,17 @@ const IMAGE_RE = /!\[[^\]]*\]\(([^()\s]+(?:\([^()\s]*\)[^()\s]*)*)\)|\{\{\[?\[?(
 export const imageUrlsIn = text => [...String(text || "").matchAll(IMAGE_RE)].map(match => match[1] || match[2]);
 export const stripImages = text => String(text || "").replace(IMAGE_RE, "").replace(/[ \t]{2,}/g, " ").replace(/^[ \t]+|[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n").trim();
 
-export async function prepareImageRemoval(record, extensionAPI) {
+// Explicit cleanup consent is not evidence of an original upload. Keep the
+// unknown ledger state; only allow Roam-hosted image URLs in this operation.
+export function isRoamImageFile(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && url.hostname === "firebasestorage.googleapis.com" &&
+      /^\/v0\/b\/firescript-577a2\.appspot\.com\/o\/imgs\/app\/[^/]+\/[^/]+$/.test(decodeURIComponent(url.pathname));
+  } catch { return false; }
+}
+
+export async function prepareImageRemoval(record, extensionAPI, { includeUnverified = false } = {}) {
   const library = await getManagedLibrary(extensionAPI);
   const key = record.libraryKey || record.pageUid || record.id;
   record = library.books.find(book => (book.libraryKey || book.pageUid || book.id) === key);
@@ -377,18 +408,17 @@ export async function prepareImageRemoval(record, extensionAPI) {
   const metadataUids = new Set([...library.metadataUids, ...readerMetadataUids()]);
   const others = library.books.filter(item => (item.libraryKey || item.pageUid || item.id) !== key);
   let rows = null;
-  try { rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]") || []; } catch { rows = null; }
+  try { rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]"); if (!Array.isArray(rows)) rows = null; } catch { rows = null; }
   const ledger = new Map((record.attachments || []).filter(item => item.url).map(item => [item.url, item]));
   const files = [...new Set([...ledger.keys(), ...usedUrls])].map(url => {
     const item = ledger.get(url) || { url, ownership: "unknown" };
-    if (!ledger.has(url)) return { ...item, safe: false, reason: t("Not uploaded by this import; file retained") };
-    if (item.ownership === "unknown") return { ...item, safe: false, reason: t("Original upload ownership is unknown; file retained") };
+    if (item.ownership === "unknown" && !(includeUnverified && isRoamImageFile(url))) return { ...item, safe: false, reason: t("Original upload ownership is unknown; file retained") };
     if (!rows) return { ...item, safe: false, reason: t("Reference check failed; file retained") };
-    const shared = others.some(book => (book.attachments || []).some(candidate => candidate.url === url || (candidate.hash && candidate.hash === item.hash)));
-    const outside = rows.filter(([uid, text]) => !bookUids.has(uid) && !metadataUids.has(uid) && typeof text === "string" && text.includes(url)).length;
+    const shared = others.some(book => book.status !== "cleanup-needed" && (book.attachments || []).some(candidate => sameFile(candidate.url, url) || (candidate.hash && candidate.hash === item.hash)));
+    const outside = rows.filter(([uid, text]) => !bookUids.has(uid) && !metadataUids.has(uid) && referencesFile(text, url)).length;
     return { ...item, shared, outsideReferences: outside, safe: !shared && !outside, reason: shared ? t("Shared with another imported book") : outside ? t("{0} references outside this book", [outside]) : t("Used only by this book") };
   });
-  return { record, blocks, files, bookUids: [...bookUids] };
+  return { record, blocks, files, bookUids: [...bookUids], includeUnverified };
 }
 
 export async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProgress } = {}) {
@@ -418,7 +448,7 @@ export async function removeBookImages(plan, extensionAPI, { deleteFiles = true,
     }
   }
   const record = plan.record;
-  await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: (record.attachments || []).filter(item => !removed.has(item.url)), imagesRemovedAt: new Date().toISOString() });
+  await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: [...new Map([...(record.attachments || []), ...plan.files].map(({safe, reason, shared, outsideReferences, ...item}) => [item.url, item])).values()].filter(item => !removed.has(item.url)), imagesRemovedAt: new Date().toISOString() });
   return result;
 }
 

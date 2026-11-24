@@ -1,3 +1,16 @@
+## 0.7.17
+
+- Recognize Firebase image references by storage object, including changed download tokens and URL encodings, during preview and immediately before file deletion.
+- Stop book deletion if block-reference queries return an invalid result.
+- Add regression tests for alternative URLs in DNPs, inside-book links, shared ledgers, late references and unavailable block-reference results.
+
+## 0.7.16
+
+- Add explicit, default-off cleanup consent for recovered Roam image files without upload records. This does not fabricate upload ownership; shared files and failed reference scans still prevent storage deletion.
+- Keep retained files in a cleanup record after book deletion, so they can be reviewed later.
+- Clarify cloud deletion counts and align image-cleanup checkboxes with their translated labels.
+- Add regression coverage for recovered images, DNP usage, edits, scan failures and later cleanup.
+
 ## 0.7.15 · 2026-11-24
 - Preserve edited/highlighted paragraphs when finalizing internal links, including resumed imports.
 - Recheck live URL usage before deleting image files; retain files on failed scans and retain their attachment records.

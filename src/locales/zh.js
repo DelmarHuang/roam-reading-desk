@@ -423,4 +423,8 @@ export default {
   "Auto": "自动",
   "Interface language": "界面语言",
   "Interface language for Reading Desk (Auto follows your browser).": "Reading Desk 的界面语言（自动：跟随浏览器）。",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "当前书库中有 {0} 个图片文件缺少可核实的上传记录，不代表图片不存在。",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "允许清理本书中缺少上传记录的 Roam 图片文件。图谱内任何位置仍在使用的文件都会保留。",
+  " Also delete {0} eligible cloud image files{1}.": " 同时删除 {0} 个符合清理条件的云端图片文件{1}。",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "将删除 {0} 个章节根块和 {1} 个块。将删除的云端图片文件：{2} 个。页面和原生评论保留。",
 };

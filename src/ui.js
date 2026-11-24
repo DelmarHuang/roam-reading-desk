@@ -262,26 +262,38 @@ export async function openImporter(extensionAPI) {
   catch (error) { notice(body, t("Cannot read saved jobs: {0}", [error?.message || error]), "rei-error"); }
 }
 
+function unknownImageConsent(body, files, checked, onChange) {
+  const count = files.filter(item => item.ownership === "unknown").length;
+  if (!count) return;
+  notice(body, t("{0} image files have no verified upload record in the current library. This does not mean the images are missing.", [count]), "rei-muted");
+  const label = element("label", "rei-checkbox-row");
+  const input = element("input"); input.type = "checkbox"; input.checked = checked;
+  label.append(input, element("span", "", t("Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.")));
+  input.onchange = () => onChange(input.checked);
+  body.append(label);
+}
+
 function attachmentSummary(plan) {
   const safe = plan.attachments.filter(item => item.safe).length;
   const preserved = plan.attachments.length - safe;
-  return t("This deletes {0} chapter roots, {1} blocks in scope, and {2} exclusive attachments. Pages and native comments are retained.", [plan.rootUids.length, plan.blockCount, safe]) + (preserved ? t(" {0} shared or unverified attachments will be retained.", [preserved]) : "");
+  return t("This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.", [plan.rootUids.length, plan.blockCount, safe]) + (preserved ? t(" {0} shared or unverified attachments will be retained.", [preserved]) : "");
 }
 
-async function confirmImageRemoval(body, record, extensionAPI) {
+async function confirmImageRemoval(body, record, extensionAPI, includeUnverified = false) {
   body.replaceChildren();
   body.append(element("h3", "", t("Remove images · {0}", [record.title])));
   const status = notice(body, t("Finding images and checking where their files are used…"), "rei-muted");
   let plan;
-  try { plan = await prepareImageRemoval(record, extensionAPI); }
+  try { plan = await prepareImageRemoval(record, extensionAPI, { includeUnverified }); }
   catch (error) { status.textContent = t("Check failed: {0}", [error?.message || error]); status.className = "rei-notice rei-error"; const back = button(t("Back to Book List")); back.onclick = () => openManager(extensionAPI); body.append(back); return; }
+  unknownImageConsent(body, plan.files, includeUnverified, value => confirmImageRemoval(body, record, extensionAPI, value));
   const safe = plan.files.filter(item => item.safe).length, retained = plan.files.length - safe;
   const emptied = plan.blocks.filter(block => block.remove).length;
   if (!plan.blocks.length && !safe) { status.textContent = t("This book has no images left in its text."); const back = button(t("Back to Book List")); back.onclick = () => openManager(extensionAPI); body.append(back); return; }
   status.textContent = t("{0} blocks contain images. Image embeds are removed from them ({1} image-only blocks are deleted; blocks with text, children or references are kept). The book, its text, headings, comments and highlights stay.", [plan.blocks.length, emptied]);
-  const files = element("label", "rei-field");
-  const check = element("input"); check.type = "checkbox"; check.checked = true;
-  files.append(check, element("span", "", t(" Also delete {0} uploaded image files used only by this book{1}.", [safe, retained ? t(" ({0} shared, outside-referenced or unverified files are kept)", [retained]) : ""])));
+  const files = element("label", "rei-checkbox-row");
+  const check = element("input"); check.type = "checkbox"; check.checked = safe > 0; check.disabled = safe === 0;
+  files.append(check, element("span", "", t(" Also delete {0} eligible cloud image files{1}.", [safe, retained ? t(" ({0} shared, outside-referenced or unverified files are kept)", [retained]) : ""])));
   body.append(files);
   const preview = element("details"); preview.append(element("summary", "", t("Preview the first changes")));
   plan.blocks.slice(0, 20).forEach(block => preview.append(element("pre", "", `${block.uid}\n${block.before.slice(0, 200)}\n→ ${block.remove ? "(block deleted)" : block.after.slice(0, 200) || "(empty)"}`)));
@@ -303,13 +315,13 @@ async function confirmImageRemoval(body, record, extensionAPI) {
   actions.append(cancel, go); body.append(actions);
 }
 
-async function confirmDeletion(body, record, extensionAPI) {
+async function confirmDeletion(body, record, extensionAPI, includeUnverified = false) {
   body.replaceChildren();
   body.append(element("h3", "", t("Delete {0}", [record.title])));
   const status = notice(body, t("Checking attachment references in other pages and books…"), "rei-muted");
   let plan;
   try {
-    plan = await prepareBookDeletion(record, extensionAPI);
+    plan = await prepareBookDeletion(record, extensionAPI, { includeUnverified });
   } catch (error) {
     status.textContent = t("Check failed: {0}", [error?.message || error]);
     status.className = "rei-notice rei-error";
@@ -317,6 +329,7 @@ async function confirmDeletion(body, record, extensionAPI) {
     return;
   }
   status.textContent = attachmentSummary(plan);
+  unknownImageConsent(body, plan.attachments, includeUnverified, value => confirmDeletion(body, record, extensionAPI, value));
   if (plan.pages.length) notice(body, t("Affected pages: {0}. Only confirmed book chapters will be deleted; these pages will remain.", [plan.pages.join("; ")]), "rei-muted");
   if (plan.externalBlockReferences) notice(body, t("{0} blocks outside the book reference its content. Deletion is blocked to preserve those references.", [plan.externalBlockReferences]), "rei-error");
   for (const ref of plan.externalReferences || []) {
@@ -329,7 +342,7 @@ async function confirmDeletion(body, record, extensionAPI) {
   if (plan.scanFailed) {
     notice(body, t("Reference checking failed. Deletion is blocked."), "rei-error");
   }
-  if (record.status === "recovered") notice(body, t("This recovered book has no original upload ledger. Chapters can be deleted, but detected images will be retained."), "rei-muted");
+
   const label = element("label", "rei-field");
   label.append(element("span", "", t("Type the full book title to confirm: {0}", [record.title])));
   const input = element("input", "rei-input");

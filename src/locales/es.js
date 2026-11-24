@@ -423,4 +423,8 @@ export default {
   "Auto": "Auto",
   "Interface language": "Idioma de la interfaz",
   "Interface language for Reading Desk (Auto follows your browser).": "Idioma de la interfaz de Reading Desk (Auto sigue al navegador).",
+  "{0} image files have no verified upload record in the current library. This does not mean the images are missing.": "{0} archivos de imagen no tienen un registro de carga verificado en la biblioteca actual. Esto no significa que falten las imágenes.",
+  "Allow cleanup of this book's Roam image files without upload records. Files still used anywhere in the graph will be kept.": "Permitir la limpieza de las imágenes de Roam de este libro sin registro de carga. Se conservarán los archivos que sigan en uso en el grafo.",
+  " Also delete {0} eligible cloud image files{1}.": " Eliminar también {0} archivos de imagen en la nube aptos para la limpieza{1}.",
+  "This deletes {0} chapter roots and {1} blocks. Cloud image files to delete: {2}. Pages and native comments are retained.": "Se eliminarán {0} bloques raíz de capítulos y {1} bloques. Archivos de imagen en la nube que se eliminarán: {2}. Se conservarán las páginas y los comentarios nativos.",
 };

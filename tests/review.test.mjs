@@ -372,3 +372,64 @@ test('Delete Book retains attachment referenced while chapter deletion was runni
  assert.equal(result.deletedAttachments,0);assert.equal(result.preservedAttachments,1);
  assert.ok(!f.writes.some(([op])=>op==='file-delete'));f.close();
 });
+
+test('recovered image cleanup requires explicit consent and preserves shared, edited and unscannable files',async()=>{
+ const {prepareImageRemoval,removeBookImages}=await import('../src/roam.js');
+ const url='https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FTest%2Fpicture.jpg?alt=media';
+ for(const scenario of ['consent','default','outside','inside','edited','null','error','foreign']){
+  const f=fixture(),image=scenario==='foreign'?'https://other.test/pic.jpg':url;
+  f.record.status='recovered';f.record.attachments=[{url:image,ownership:'unknown'}];f.nodes.get('body00001').string='![]('+image+')';
+  if(scenario==='outside')f.add('outside',image);
+  if(scenario==='inside')f.add('plain',image,'chapter01');
+  await saveManagedBook(f.ext,f.record);
+  const plan=await prepareImageRemoval(f.record,f.ext,{includeUnverified:scenario!=='default'});
+  if(scenario==='edited')f.nodes.get('body00001').string+=' edited';
+  const q=f.api.data.q;f.api.data.q=(query,...args)=>{if(query.includes(':find ?uid ?s')){if(scenario==='null')return null;if(scenario==='error')throw Error('failed');}return q(query,...args);};
+  const result=await removeBookImages(plan,f.ext);
+  assert.equal(result.filesDeleted,scenario==='consent'?1:0,scenario);
+  const saved=(await getManagedBooks(f.ext))[0];
+  assert.equal(saved.attachments.length,scenario==='consent'?0:1,scenario);
+  if(saved.attachments.length)assert.equal(saved.attachments[0].ownership,'unknown');
+  f.close();
+ }
+});
+
+test('deleted recovered books retain a cleanup record and never delete the DNP image',async()=>{
+ const f=fixture(),url='https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FTest%2Fpicture.jpg';
+ f.record.status='recovered';f.record.attachments=[{url,ownership:'unknown'}];f.nodes.get('body00001').string='![]('+url+')';f.add('dnp',url);
+ await saveManagedBook(f.ext,f.record);
+ const plan=await prepareBookDeletion(f.record,f.ext,{includeUnverified:true});assert.equal(plan.attachments[0].safe,false);
+ await deleteManagedBook(plan,f.ext);
+ const retained=(await getManagedBooks(f.ext))[0];assert.equal(retained.status,'cleanup-needed');assert.equal(retained.attachments[0].ownership,'unknown');
+ assert.ok(!f.writes.some(([op])=>op==='file-delete'));assert.ok(f.nodes.has('dnp'));
+ f.nodes.delete('dnp');
+ const retry=await prepareBookDeletion(retained,f.ext,{includeUnverified:true});assert.equal(retry.attachments[0].safe,true);
+ const result=await deleteManagedBook(retry,f.ext);assert.equal(result.deletedAttachments,1);assert.equal((await getManagedBooks(f.ext)).length,0);f.close();
+});
+
+test('storage reference checks recognize the same Firebase object with changed token or encoding',async()=>{
+ const {prepareImageRemoval,removeBookImages}=await import('../src/roam.js');
+ const url='https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FTest%2Fpic.jpg?alt=media&token=old';
+ const alias='https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs/app/Test/pic.jpg?token=new&alt=media';
+ for(const scenario of ['preview','late','inside','book-delete','shared-ledger']){
+  const f=fixture();f.record.attachments=[{url,hash:'original'}];f.nodes.get('body00001').string='![]('+url+')';await saveManagedBook(f.ext,f.record);
+  if(scenario==='preview'||scenario==='book-delete')f.add('dnp',alias);
+  if(scenario==='inside')f.add('plain',alias,'chapter01');
+  if(scenario==='shared-ledger')await saveManagedBook(f.ext,{id:'other',pageUid:'otherpage',title:'Other',attachments:[{url:alias}]});
+  if(scenario==='book-delete'){
+   const plan=await prepareBookDeletion(f.record,f.ext);assert.equal(plan.attachments[0].safe,false);await deleteManagedBook(plan,f.ext);
+  }else{
+   const plan=await prepareImageRemoval(f.record,f.ext);
+   if(scenario==='preview'||scenario==='shared-ledger')assert.equal(plan.files[0].safe,false);
+   if(scenario==='late')f.add('dnp',alias);
+   const result=await removeBookImages(plan,f.ext);assert.equal(result.filesDeleted,0,scenario);
+  }
+  assert.ok(!f.writes.some(([op])=>op==='file-delete'),scenario);f.close();
+ }
+});
+
+test('unavailable block reference results stop Delete Book without writes',async()=>{
+ const f=fixture();await saveManagedBook(f.ext,f.record);const plan=await prepareBookDeletion(f.record,f.ext);
+ const q=f.api.data.q;f.api.data.q=(query,...args)=>query.includes('[?targetUid ...]')?null:q(query,...args);f.writes.length=0;
+ await assert.rejects(deleteManagedBook(plan,f.ext),/Reference check failed/);assert.deepEqual(f.writes,[]);f.close();
+});

@@ -30,3 +30,5 @@
 .rei-modal pre{white-space:pre-wrap;font-size:12px;background:#fbf8ef;border:1px solid #ece7db;border-radius:6px;padding:8px}
 .rei-modal input[type=checkbox]{accent-color:var(--mag-gold,#b79a37)}
 .rei-modal progress{accent-color:var(--mag-gold,#b79a37)}
+
+.rei-modal .rei-checkbox-row{display:flex;align-items:flex-start;gap:8px;margin:12px 0;font-weight:normal}.rei-modal .rei-checkbox-row input[type=checkbox]{flex:0 0 auto;width:auto;margin:4px 0 0}.rei-modal .rei-checkbox-row span{min-width:0}
