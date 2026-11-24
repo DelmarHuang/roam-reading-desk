@@ -298,6 +298,16 @@ export async function prepareBookDeletion(record, extensionAPI) {
   };
 }
 
+// Check live content immediately before storage deletion, including plain URLs
+// inside the book. Only the plugin's own metadata is excluded.
+function fileStillUsed(url, metadataUids) {
+  try {
+    const rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
+    if (!Array.isArray(rows)) return true;
+    return rows.some(([uid, text]) => !metadataUids.has(uid) && typeof text === "string" && text.includes(url));
+  } catch { return true; }
+}
+
 export async function deleteManagedBook(plan, extensionAPI, onProgress) {
   const approvedUrls = new Set(plan.attachments.filter(item => item.safe).map(item => item.url));
   const approvedBlocks = new Set(plan.rootUids);
@@ -322,16 +332,19 @@ export async function deleteManagedBook(plan, extensionAPI, onProgress) {
   }
   const safe = plan.attachments.filter(item => item.safe);
   const failures = [];
+  const retained = [];
+  const metadataUids = new Set([...(await getManagedLibrary(extensionAPI)).metadataUids, ...readerMetadataUids()]);
   for (let index = 0; index < safe.length; index += 1) {
     onProgress?.(t("Deleting attachment {0}/{1}…", [index + 1, safe.length]));
+    if (fileStillUsed(safe[index].url, metadataUids)) { retained.push(safe[index]); continue; }
     try { await roam().file.delete({ url: safe[index].url }); }
     catch (error) { failures.push({ ...safe[index], error: error?.message || String(error) }); }
   }
-  const preserved = plan.attachments.filter(item => !item.safe);
+  const preserved = [...plan.attachments.filter(item => !item.safe), ...retained];
   if (failures.length) {
     await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: failures, status: "cleanup-needed", cleanupError: "Some attachments could not be deleted" });
   } else await forgetManagedBook(extensionAPI, record);
-  return { deletedAttachments: safe.length - failures.length, preservedAttachments: preserved.length, failures };
+  return { deletedAttachments: safe.length - failures.length - retained.length, preservedAttachments: preserved.length, failures };
 }
 
 // Remove a book's images without deleting the book: image embeds are taken
@@ -385,19 +398,25 @@ export async function removeBookImages(plan, extensionAPI, { deleteFiles = true,
     onProgress?.(t("Removing images from blocks {0}/{1}…", [index + 1, plan.blocks.length]));
     const node = roam().data.pull("[:block/string {:block/children [:block/uid]}]", [":block/uid", block.uid]);
     if (!node || node[":block/string"] !== block.before) { result.skipped++; continue; }
-    if (block.remove && !(node[":block/children"] || []).length) { await roam().data.block.delete({ block: { uid: block.uid } }); result.deleted++; }
+    let referenced = true;
+    try {
+      const refs = roam().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", block.uid);
+      referenced = !Array.isArray(refs) || refs.some(([uid]) => uid !== block.uid);
+    } catch { /* Retain the block if its reference status is unknown. */ }
+    if (block.remove && !(node[":block/children"] || []).length && !referenced) { await roam().data.block.delete({ block: { uid: block.uid } }); result.deleted++; }
     else { await roam().data.block.update({ block: { uid: block.uid, string: block.after } }); result.updated++; }
   }
-  const kept = [];
+  const removed = new Set();
+  const metadataUids = new Set([...(await getManagedLibrary(extensionAPI)).metadataUids, ...readerMetadataUids()]);
   if (deleteFiles) {
     const files = plan.files.filter(item => item.safe && approved.has(item.url));
     for (const [index, file] of files.entries()) {
       onProgress?.(t("Deleting image file {0}/{1}…", [index + 1, files.length]));
-      try { await roam().file.delete({ url: file.url }); result.filesDeleted++; }
-      catch (error) { result.failures.push({ url: file.url, error: error?.message || String(error) }); kept.push(file.url); }
+      if (fileStillUsed(file.url, metadataUids)) continue;
+      try { await roam().file.delete({ url: file.url }); result.filesDeleted++; removed.add(file.url); }
+      catch (error) { result.failures.push({ url: file.url, error: error?.message || String(error) }); }
     }
   }
-  const removed = new Set(deleteFiles ? plan.files.filter(item => item.safe && !kept.includes(item.url)).map(item => item.url) : []);
   const record = plan.record;
   await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: (record.attachments || []).filter(item => !removed.has(item.url)), imagesRemovedAt: new Date().toISOString() });
   return result;

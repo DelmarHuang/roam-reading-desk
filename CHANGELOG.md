@@ -1,3 +1,10 @@
+## 0.7.15 · 2026-11-24
+- Preserve edited/highlighted paragraphs when finalizing internal links, including resumed imports.
+- Recheck live URL usage before deleting image files; retain files on failed scans and retain their attachment records.
+- Recheck references before removing image-only blocks.
+- Apply the same final attachment check to Delete Book.
+- Add regression coverage for edits, new references, plain in-book links, missing blocks and failures.
+
 ## 0.7.14 · 2026-11-22 (test build)
 
 - Replace the solid resize triangle with a subtle, theme-colored two-line grip, rounded strokes, and hover/focus feedback. Keep the resize behavior and accessible label unchanged.

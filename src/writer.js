@@ -91,7 +91,11 @@ export async function writeBlockPlan(job, api, { checkpoint, onProgress, signal,
   for (let index = job.progress.linkIndex || 0; index < linked.length; index += 1) {
     checkCancelled(signal);
     const item = linked[index];
-    await api.data.block.update({ block: { uid: item.uid, string: item.finalString } });
+    const current = api.data.pull("[:block/uid :block/string]", [":block/uid", item.uid]);
+    // Resume must never replace edits made after the initial block creation.
+    if (valueOf(current, "uid") && valueOf(current, "string") === item.string) {
+      await api.data.block.update({ block: { uid: item.uid, string: item.finalString } });
+    }
     if ((index + 1) % 10 === 0 || index + 1 === linked.length) await wait(intervalMs * ((index + 1) % 10 || 10));
     job.progress.linkIndex = index + 1;
     checkCancelled(signal);

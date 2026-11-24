@@ -320,3 +320,55 @@ test('panel resize supports drag, keyboard, reopen persistence and viewport boun
  assert.equal(document.getElementById('reading-desk-panel').style.width,'256px');assert.equal(controller.root.querySelector('.rei-reader').style.height,'236px');
  controller.cleanup();assert.equal(document.getElementById('reading-desk-panel'),null);f.close();
 });
+
+test('link finalization preserves edits, highlights, missing and already-finalized blocks on Resume',async()=>{
+ const f=fixture();const texts=['original','edited','^^original^^','final'];
+ texts.forEach((s,i)=>f.add('link'+i,s,'chapter01'));
+ const plan=[...texts.map((_,i)=>({uid:'link'+i,string:'original',finalString:'final'})),{uid:'missing',string:'original',finalString:'final'}];
+ const job={book:{chapters:[]},progress:{blockIndex:plan.length},blockPlan:plan};
+ await writeBlockPlan(job,f.api,{wait:async()=>{}});
+ assert.deepEqual(texts.map((_,i)=>f.nodes.get('link'+i).string),['final','edited','^^original^^','final']);
+ assert.deepEqual(f.writes,[['update','link0']]);assert.equal(job.progress.linkIndex,5);f.close();
+});
+
+test('Remove Images rechecks live URLs and retains ledger for files not deleted',async()=>{
+ const {prepareImageRemoval,removeBookImages}=await import('../src/roam.js');
+ for(const scenario of ['unused','edited','inside-link','new-outside','scan-error','scan-null','delete-error']){
+  const f=fixture(),url='https://example.test/picture.jpg';
+  f.record.attachments=[{url,hash:'abc'}];f.nodes.get('body00001').string='![]('+url+')';
+  await saveManagedBook(f.ext,f.record);const plan=await prepareImageRemoval(f.record,f.ext);
+  if(scenario==='edited')f.nodes.get('body00001').string+=' my edit';
+  if(scenario==='inside-link')f.add('plainlink',url,'chapter01');
+  if(scenario==='new-outside')f.add('outside',url,'page00001');
+  const q=f.api.data.q;f.api.data.q=(query,...args)=>{
+   if(query.includes(':find ?uid ?s')){
+    if(scenario==='scan-error')throw Error('offline');
+    if(scenario==='scan-null')return null;
+   }return q(query,...args);
+  };
+  if(scenario==='delete-error')f.api.file.delete=async()=>{throw Error('storage');};
+  const result=await removeBookImages(plan,f.ext);
+  assert.equal(result.filesDeleted,scenario==='unused'?1:0,scenario);
+  const saved=(await getManagedBooks(f.ext))[0];
+  assert.equal(saved.attachments.length,scenario==='unused'?0:1,scenario);
+  if(scenario==='edited')assert.ok(f.nodes.get('body00001').string.includes('my edit'));
+  f.close();
+ }
+});
+
+test('new block references after Remove Images preview preserve the target UID',async()=>{
+ const {prepareImageRemoval,removeBookImages}=await import('../src/roam.js');const f=fixture();
+ f.nodes.get('body00001').string='![](https://example.test/img)';
+ await saveManagedBook(f.ext,f.record);const plan=await prepareImageRemoval(f.record,f.ext);
+ f.add('outside','((body00001))');await removeBookImages(plan,f.ext);
+ assert.ok(f.nodes.has('body00001'));assert.equal(f.nodes.get('outside').string,'((body00001))');f.close();
+});
+
+test('Delete Book retains attachment referenced while chapter deletion was running',async()=>{
+ const f=fixture(),url='https://example.test/img';f.record.attachments=[{url,hash:'a'}];
+ await saveManagedBook(f.ext,f.record);const plan=await prepareBookDeletion(f.record,f.ext);
+ const del=f.api.data.block.delete;f.api.data.block.delete=async args=>{await del(args);f.add('lateurl',url,'page00001');};
+ const result=await deleteManagedBook(plan,f.ext);
+ assert.equal(result.deletedAttachments,0);assert.equal(result.preservedAttachments,1);
+ assert.ok(!f.writes.some(([op])=>op==='file-delete'));f.close();
+});

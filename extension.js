@@ -2495,7 +2495,10 @@ async function writeBlockPlan(job, api3, { checkpoint, onProgress, signal, wait 
   for (let index = job.progress.linkIndex || 0; index < linked.length; index += 1) {
     checkCancelled(signal);
     const item = linked[index];
-    await api3.data.block.update({ block: { uid: item.uid, string: item.finalString } });
+    const current2 = api3.data.pull("[:block/uid :block/string]", [":block/uid", item.uid]);
+    if (valueOf(current2, "uid") && valueOf(current2, "string") === item.string) {
+      await api3.data.block.update({ block: { uid: item.uid, string: item.finalString } });
+    }
     if ((index + 1) % 10 === 0 || index + 1 === linked.length) await wait(intervalMs * ((index + 1) % 10 || 10));
     job.progress.linkIndex = index + 1;
     checkCancelled(signal);
@@ -3547,6 +3550,15 @@ async function prepareBookDeletion(record, extensionAPI) {
     attachments
   };
 }
+function fileStillUsed(url, metadataUids) {
+  try {
+    const rows = roam().data.q("[:find ?uid ?s :where [?e :block/uid ?uid] [?e :block/string ?s]]");
+    if (!Array.isArray(rows)) return true;
+    return rows.some(([uid, text2]) => !metadataUids.has(uid) && typeof text2 === "string" && text2.includes(url));
+  } catch {
+    return true;
+  }
+}
 async function deleteManagedBook(plan, extensionAPI, onProgress) {
   const approvedUrls = new Set(plan.attachments.filter((item) => item.safe).map((item) => item.url));
   const approvedBlocks = new Set(plan.rootUids);
@@ -3568,19 +3580,25 @@ async function deleteManagedBook(plan, extensionAPI, onProgress) {
   }
   const safe = plan.attachments.filter((item) => item.safe);
   const failures = [];
+  const retained = [];
+  const metadataUids = /* @__PURE__ */ new Set([...(await getManagedLibrary(extensionAPI)).metadataUids, ...readerMetadataUids()]);
   for (let index = 0; index < safe.length; index += 1) {
     onProgress?.(t("Deleting attachment {0}/{1}\u2026", [index + 1, safe.length]));
+    if (fileStillUsed(safe[index].url, metadataUids)) {
+      retained.push(safe[index]);
+      continue;
+    }
     try {
       await roam().file.delete({ url: safe[index].url });
     } catch (error) {
       failures.push({ ...safe[index], error: error?.message || String(error) });
     }
   }
-  const preserved = plan.attachments.filter((item) => !item.safe);
+  const preserved = [...plan.attachments.filter((item) => !item.safe), ...retained];
   if (failures.length) {
     await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, pageUid: null, attachments: failures, status: "cleanup-needed", cleanupError: "Some attachments could not be deleted" });
   } else await forgetManagedBook(extensionAPI, record);
-  return { deletedAttachments: safe.length - failures.length, preservedAttachments: preserved.length, failures };
+  return { deletedAttachments: safe.length - failures.length - retained.length, preservedAttachments: preserved.length, failures };
 }
 var IMAGE_RE = /!\[[^\]]*\]\(([^()\s]+(?:\([^()\s]*\)[^()\s]*)*)\)|\{\{\[?\[?(?:img|image)\]?\]?:\s*([^}\s]+)\s*\}\}/gi;
 var imageUrlsIn = (text2) => [...String(text2 || "").matchAll(IMAGE_RE)].map((match) => match[1] || match[2]);
@@ -3638,7 +3656,13 @@ async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProg
       result.skipped++;
       continue;
     }
-    if (block.remove && !(node[":block/children"] || []).length) {
+    let referenced = true;
+    try {
+      const refs = roam().data.q("[:find ?u :in $ ?uid :where [?t :block/uid ?uid] [?b :block/refs ?t] [?b :block/uid ?u]]", block.uid);
+      referenced = !Array.isArray(refs) || refs.some(([uid]) => uid !== block.uid);
+    } catch {
+    }
+    if (block.remove && !(node[":block/children"] || []).length && !referenced) {
       await roam().data.block.delete({ block: { uid: block.uid } });
       result.deleted++;
     } else {
@@ -3646,21 +3670,22 @@ async function removeBookImages(plan, extensionAPI, { deleteFiles = true, onProg
       result.updated++;
     }
   }
-  const kept = [];
+  const removed = /* @__PURE__ */ new Set();
+  const metadataUids = /* @__PURE__ */ new Set([...(await getManagedLibrary(extensionAPI)).metadataUids, ...readerMetadataUids()]);
   if (deleteFiles) {
     const files = plan.files.filter((item) => item.safe && approved.has(item.url));
     for (const [index, file] of files.entries()) {
       onProgress?.(t("Deleting image file {0}/{1}\u2026", [index + 1, files.length]));
+      if (fileStillUsed(file.url, metadataUids)) continue;
       try {
         await roam().file.delete({ url: file.url });
         result.filesDeleted++;
+        removed.add(file.url);
       } catch (error) {
         result.failures.push({ url: file.url, error: error?.message || String(error) });
-        kept.push(file.url);
       }
     }
   }
-  const removed = new Set(deleteFiles ? plan.files.filter((item) => item.safe && !kept.includes(item.url)).map((item) => item.url) : []);
   const record = plan.record;
   await saveManagedBook(extensionAPI, { ...record, libraryKey: record.libraryKey || record.pageUid || record.id, attachments: (record.attachments || []).filter((item) => !removed.has(item.url)), imagesRemovedAt: (/* @__PURE__ */ new Date()).toISOString() });
   return result;
